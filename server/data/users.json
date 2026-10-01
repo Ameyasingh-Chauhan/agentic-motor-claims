@@ -1,0 +1,53 @@
+[
+  {
+    "id": "u_001",
+    "username": "Santosh Kute",
+    "password_hash": "$2b$12$FMvqO7wOH9bEUeJ1BPx0b.vEXb6BcFMhRqx1Ery1L/X6k3L7XlY0S",
+    "display_name": "Santosh Kute",
+    "role": "admin",
+    "is_developer": false,
+    "title": "Head – Motor Claims",
+    "email": "santosh.kute@abc-insurance.example",
+    "avatar": null,
+    "customer_id": null,
+    "preferences": {
+      "theme": "system",
+      "sidebar_collapsed": false,
+      "density": "comfortable"
+    }
+  },
+  {
+    "id": "u_002",
+    "username": "Ameya Chauhan",
+    "password_hash": "$2b$12$u.GvUtXfqcUxZpkhWX/GL.ZOC7sOD.ivr9bWXX2LN6nKSHnjSPjb6",
+    "display_name": "Ameya Chauhan",
+    "role": "admin",
+    "is_developer": true,
+    "title": "Solution Developer",
+    "email": "ameya.chauhan@abc-insurance.example",
+    "avatar": null,
+    "customer_id": null,
+    "preferences": {
+      "theme": "system",
+      "sidebar_collapsed": false,
+      "density": "comfortable"
+    }
+  },
+  {
+    "id": "u_003",
+    "username": "Rahul Sharma",
+    "password_hash": "$2b$12$MVCyVTwnZhz.KTGJy7vTd.gj3WOklcy6zkX0IlbRmSpQB22LUMgVC",
+    "display_name": "Rahul Sharma",
+    "role": "customer",
+    "is_developer": false,
+    "title": "Policyholder",
+    "email": "rahul.sharma@example.com",
+    "avatar": null,
+    "customer_id": "c_0001",
+    "preferences": {
+      "theme": "system",
+      "sidebar_collapsed": false,
+      "density": "comfortable"
+    }
+  }
+]

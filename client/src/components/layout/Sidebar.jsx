@@ -83,6 +83,7 @@ export function Sidebar({ variant = "rail", onNavigate }) {
   const storeCollapsed = useUiStore((s) => s.sidebarCollapsed);
   const toggleSidebar = useUiStore((s) => s.toggleSidebar);
   const user = useAuthStore((s) => s.user);
+  const theme = useUiStore((s) => s.theme);
   const collapsed = variant === "rail" && storeCollapsed;
   const main = visibleItems(NAV_ITEMS, user);
   const dev = visibleItems(DEV_NAV_ITEMS, user);
@@ -100,7 +101,7 @@ export function Sidebar({ variant = "rail", onNavigate }) {
             className="inline-flex"
           >
             <NavLink to="/" aria-label="Home" onClick={onNavigate} className="inline-flex rounded-sm">
-              <BrandLogo compact={collapsed} />
+              <BrandLogo compact={collapsed} variant={theme === "dark" ? "onDark" : "default"} imgClassName="h-auto w-[168px]" />
             </NavLink>
           </motion.span>
         </AnimatePresence>

@@ -10,6 +10,7 @@ export function ProtectedRoute({ allow, children }) {
   const user = useAuthStore((s) => s.user);
   const status = useAuthStore((s) => s.status);
   const location = useLocation();
+  if (status === "loading") return null;
   if (status === "anonymous") return <Navigate to={`/login?next=${encodeURIComponent(location.pathname)}`} replace />;
   if (allow && !allow(user)) return <ForbiddenPage />;
   return children;

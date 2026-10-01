@@ -293,7 +293,7 @@ Define as CSS variables in `tokens.css` and expose to Tailwind via `@theme`.
 | `--surface-raised` | `#FFFFFF` | `#333333` | Popovers, modals, dropdowns |
 | `--bg-muted` | `#F3F4F6` | `#333333` | Neutral active, hover, stripe and skeleton fill; never a page background |
 | `--border` | `#E5E7EB` | `#3A3A3A` | Dividers, card borders |
-| `--border-strong` | `#D1D5DB` | `#4A4A4A` | Inputs |
+| `--border-strong` | `#949494` | `#737373` | Inputs (3:1 non-text contrast) |
 | `--text` | `#111827` | `#EDEDED` | Primary text |
 | `--text-muted` | `#4B5563` | `#B3B3B3` | Secondary text |
 | `--text-subtle` | `#69707F` | `#9B9B9B` | Captions, placeholders (≥ 4.5:1 on its bg) |

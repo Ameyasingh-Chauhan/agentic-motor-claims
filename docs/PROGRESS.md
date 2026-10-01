@@ -84,5 +84,29 @@ Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 
 ### Known follow-ups
 - Topbar notifications, search results and the demo-mode badge get real data in Phases 2–3.
-- Input borders (`--border-strong`, 1.47:1 on white) are below 3:1; inputs are identified by labels and focus ring.
-  Revisit in the Phase 8 accessibility pass if a stricter reading of WCAG 1.4.11 is wanted.
+- Input borders now use the darkened `--border-strong` token and pass the 3:1 non-text contrast check in both themes.
+
+## Phase 2 — Backend core, data & auth
+
+### Delivered
+- [x] Async JSON store with per-file locks, cache, temp-file atomic replacement, and seeded reference/data files.
+- [x] Deterministic bcrypt users, JWT HS256 `amc_session` cookie, login/demo-login/me/logout endpoints, and five-attempt/60-second lockout.
+- [x] Real login route with protected-router restoration, role-aware navigation, and quick demo tiles.
+- [x] Deterministic costing and DMN services, including depreciation slabs, deductibles, total-loss routing, all 15 fraud rules, and the §12.9 calibration example.
+- [x] Seed script preserves existing users and generates 250 claims, Rahul Sharma history, five scenario records, and supporting JSON files.
+- [x] External-system mocks for Vahan, FASTAG, IIB, DL, police, and policy lookups.
+- [x] Unit tests cover the worked example, depreciation, deductibles, total loss, and each fraud rule (5 tests passed).
+
+### Acceptance check (verified 2026-10-01)
+- [x] `python scripts/seed.py` prints a deterministic summary and preserves the three required users.
+- [x] All three credentials authenticate; `/api/auth/me` restores the cookie session; logout clears it; demo-login works.
+- [x] Client `npm run contrast` and `npm run build` pass. Input `--border-strong` now meets 3:1 in both themes (3.03:1).
+- [x] `pytest -q` passes (5 tests).
+
+### Decisions
+12. **Phase 2 remains demo-only for AI:** no Vertex key is needed or called; deterministic services and seeded fallbacks provide stable data for later pipeline phases.
+13. **Authentication uses an httpOnly, SameSite=Lax JWT cookie** with in-memory lockout counters; plaintext passwords are never stored client-side.
+14. **Login visual preview:** the official `Automationedge_Logo-removebg-preview.png` is loaded through `BrandLogo`; quick-login tiles use tokenized initials avatars and Lucide role icons, while the left panel previews the seven-agent claim flow with neutral/success/warning states.
+15. **Demo-login normalization:** tile requests send the trimmed display username to `/api/auth/demo-login`; the server performs the same case-insensitive, whitespace-trimmed lookup as normal login and tests cover all three users.
+16. **Login media/layout:** the original logo remains untouched; its transparent bounds are trimmed into `client/public/assets/brand/automationedge-logo-trimmed.png` with a 2% safe margin and all rendered logo sizes are width-based. Login routes are viewport-locked with height breakpoints, while route lines use solid theme-aware gradients with moving highlight segments.
+17. **Login viewport correction:** the login root and grid now enforce a single `100dvh` viewport with late utility overrides so Tailwind `min-h-screen` cannot reintroduce scrolling. The right-panel routes use explicit SVG orange-to-blue gradients to avoid black fallback strokes.

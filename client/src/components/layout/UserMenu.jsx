@@ -11,6 +11,7 @@ export function UserMenu({ trigger, placement = "bottom-end" }) {
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const openShortcuts = useShortcutsStore((s) => s.setOpen);
+  const signOut = useAuthStore((s) => s.signOut);
 
   const items = [
     { type: "label", label: user?.email ?? user?.title ?? "" },
@@ -23,8 +24,7 @@ export function UserMenu({ trigger, placement = "bottom-end" }) {
       label: "Sign out",
       icon: LogOut,
       danger: true,
-      // Phase 2 wires this to POST /api/auth/logout.
-      onSelect: () => toast.info("Sign-in and sign-out arrive with authentication in Phase 2."),
+      onSelect: async () => { await signOut(); toast.success("Signed out"); navigate("/login", { replace: true }); },
     },
   ];
   return <DropdownMenu trigger={trigger} items={items} placement={placement} className="w-60" />;

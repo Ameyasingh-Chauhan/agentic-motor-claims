@@ -80,6 +80,7 @@ export const CONTRAST_PAIRS = [
   ["--focus-ring", "--surface", 3, "Focus ring (UI component)"],
   ["--focus-ring", "--sidebar-bg", 3, "Focus ring on sidebar"],
   ["--accent", "--bg-muted", 3, "Orange indicator bar on active nav item"],
+  ["--border-strong", "--surface", 3, "Input border"],
   ["--on-primary", "--primary", 3, "Switch / checkbox “on” (UI glyph)"],
   ["--text-subtle", "--surface", 3, "Icons (UI glyph)"],
 ];

@@ -5,11 +5,13 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { RouteError } from "../features/errors/RouteError";
 import { pages } from "./pages";
 import { can } from "../lib/permissions";
+import { LoginPage } from "../features/auth/LoginPageV2";
 
 const P = pages;
 const guard = (el, allow) => <ProtectedRoute allow={allow}>{el}</ProtectedRoute>;
 
 const router = createBrowserRouter([
+  { path: "/login", element: <LoginPage /> },
   {
     path: "/",
     element: guard(<AppShell />),

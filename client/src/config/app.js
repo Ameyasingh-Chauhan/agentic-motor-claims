@@ -5,6 +5,5 @@ export const APP_TAGLINE =
 export const BRAND_NAME = "AutomationEdge";
 export const INSURER_NAME = "ABC General Insurance";
 export const LOGO_CANDIDATES = [
-  "/assets/brand/automationedge-logo.svg",
-  "/assets/brand/automationedge-logo.png",
+  "/assets/brand/automationedge-logo-trimmed.png",
 ];

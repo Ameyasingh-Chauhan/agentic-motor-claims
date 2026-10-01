@@ -44,6 +44,7 @@ function Clock() {
  */
 export function Topbar() {
   const collapsed = useUiStore((s) => s.sidebarCollapsed);
+  const theme = useUiStore((s) => s.theme);
   const setMobileNavOpen = useUiStore((s) => s.setMobileNavOpen);
   const openPalette = useShortcutsStore((s) => s.setPaletteOpen);
   const user = useAuthStore((s) => s.user);
@@ -64,7 +65,7 @@ export function Topbar() {
       {/* Brand stays visible top-left when the sidebar is collapsed (and always below 1024px). */}
       <div className={cn("flex items-center gap-4", !collapsed && "lg:hidden")}>
         <Link to="/" aria-label="Home" className="inline-flex rounded-sm">
-          <BrandLogo />
+          <BrandLogo variant={theme === "dark" ? "onDark" : "default"} imgClassName="h-auto w-[140px]" />
         </Link>
         <span className="h-6 w-px bg-border" aria-hidden="true" />
       </div>

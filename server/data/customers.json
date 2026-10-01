@@ -1,0 +1,10 @@
+[
+  {
+    "id": "c_0001",
+    "name": "Rahul Sharma",
+    "phone": "+91 98765 43210",
+    "email": "rahul.sharma@example.com",
+    "city": "Pune",
+    "preferred_language": "hi-en"
+  }
+]

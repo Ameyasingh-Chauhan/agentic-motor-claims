@@ -40,7 +40,7 @@ export function BrandLogo({ compact = false, variant = "default", className, img
   }, [url]);
   const onDark = variant === "onDark";
 
-  if (url) {
+  if (url && !compact) {
     const img = <img src={url} alt={BRAND_NAME} className={cn("block w-auto", imgClassName)} />;
     return (
       <span className={cn("inline-flex items-center", onDark && "rounded-md bg-on-dark px-2 py-1", className)}>{img}</span>
