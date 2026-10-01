@@ -1,0 +1,25 @@
+# Secrets & local config
+server/.env
+server/credentials/*.json
+.env
+
+# User uploads
+server/uploads/
+
+# Python
+server/.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+client/node_modules/
+client/dist/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+.claude/settings.local.json

@@ -1,0 +1,296 @@
+/*
+ * Design tokens — the ONLY place raw colour / size values live (spec §6).
+ * Runtime CSS variables are defined on :root / [data-theme="light"] and [data-theme="dark"] — any subtree
+ * can force a theme (the style guide uses this for side-by-side previews);
+ * `@theme inline` exposes them to Tailwind utilities (bg-surface, text-muted, …).
+ * To apply official brand hex codes, change them here only.
+ */
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Colour roles: ORANGE = brand & action · BLUE = data & AI · GREY = structure. */
+
+  /* Surfaces — light mode is pure white everywhere (no off-white or warm tints). */
+  --bg: #ffffff;
+  --bg-subtle: #ffffff;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --sidebar-bg: #ffffff;
+  /* --bg-muted: ONLY row hover/stripes, hover states, skeletons, disabled fills — never page backgrounds. */
+  --bg-muted: #f3f4f6;
+  --border: #e5e7eb;
+  --border-strong: #d1d5db;
+
+  /* Text */
+  --text: #111827;
+  --text-muted: #4b5563;
+  --text-subtle: #69707f;
+
+  /* Brand — orange: dominant brand and action accent (no tinted backgrounds). */
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+
+  /* Brand — blue: data, AI, links and focus. */
+  --brand-blue-start: #0a4db8;
+  --brand-blue-end: #1677e5;
+  --header-gradient: linear-gradient(90deg, #f97316 0%, #f97316 35%, #1677e5 100%);
+  --login-gradient: linear-gradient(90deg, #0a4db8 0%, #1677e5 100%);
+  --hero-wash: none;
+  --blue-50: #eaf2fe;
+  --blue-600: #1668dc;
+  --blue-700: #0b4fc4;
+  --on-blue: #ffffff;
+
+  /* Neutral dark panel (Lightbox, WhatsApp "under the hood") */
+  --panel-dark: #1f1f1f;
+  --on-dark: #ffffff;
+  --on-dark-muted: #c4c4c4;
+
+  /* Dark label on brand orange retains AA contrast at the requested #F97316 fill. */
+  --primary: var(--orange-500);
+  --primary-hover: var(--orange-600);
+  --on-primary: #111827;
+  --accent: var(--orange-600);
+
+  /* Status (unchanged) */
+  --success: #15803d;
+  --success-bg: #ecfdf3;
+  --warning: #b45309;
+  --warning-bg: #fffbeb;
+  --danger: #b91c1c;
+  --danger-bg: #fef2f2;
+  --danger-hover: #991b1b;
+  --neutral-flag: #6b7280;
+  --neutral-flag-bg: #f3f4f6;
+  --on-status: #ffffff;
+
+  --focus-ring: #1668dc;
+  --overlay: rgba(17, 17, 17, 0.56);
+  --tooltip-bg: #111827;
+  --tooltip-text: #ffffff;
+  --skeleton: var(--bg-muted);
+  --skeleton-shine: #ffffff;
+
+  /* Chart palette (ordered, §6.1) — blue data primary, orange brand secondary, greys */
+  --chart-1: #1668dc;
+  --chart-2: #f97316;
+  --chart-3: #0a4db8;
+  --chart-4: #fdba74;
+  --chart-5: #60a5fa;
+  --chart-6: #64748b;
+  --chart-7: #93c5fd;
+  --chart-8: #c2410c;
+
+  /* Elevation (light uses shadows) */
+  --elev-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --elev-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --elev-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+
+  /* Layout */
+  --sidebar-w-expanded: 264px;
+  --sidebar-w-collapsed: 76px;
+  --sidebar-w: var(--sidebar-w-expanded);
+  --topbar-h: 64px;
+  --content-max: 1680px;
+  --page-pad: 32px;
+  --nav-item-h: 44px;
+  --prose-max: 72ch;
+
+  /* Motion (§6.6) */
+  --ease-std: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-press: 150ms;
+  --dur-toggle: 200ms;
+  --dur-collapse: 250ms;
+  --dur-page: 350ms;
+}
+
+:root[data-sidebar="collapsed"] {
+  --sidebar-w: var(--sidebar-w-collapsed);
+}
+
+@media (max-width: 1439px) {
+  :root {
+    --page-pad: 24px;
+  }
+}
+
+@media (max-width: 1023px) {
+  :root,
+  :root[data-sidebar="collapsed"] {
+    --sidebar-w: 0px;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Neutral charcoal greys (AutomationEdge product UI) — no navy or blue-tinted backgrounds. */
+  --bg: #1f1f1f;
+  --bg-subtle: #181818;
+  --surface: #2a2a2a;
+  --surface-raised: #333333;
+  --sidebar-bg: #2a2a2a;
+  --bg-muted: #333333;
+  --border: #3a3a3a;
+  --border-strong: #4a4a4a;
+
+  --text: #ededed;
+  --text-muted: #b3b3b3;
+  --text-subtle: #9b9b9b;
+
+  --orange-500: #fb8a3c;
+  --orange-600: #f97316;
+  --orange-700: #fdba8c;
+  --orange-800: #fed7bb;
+
+  --hero-wash: none;
+  --blue-50: rgba(79, 155, 255, 0.14);
+  --blue-600: #4f9bff;
+  --blue-700: #7db4ff;
+  --on-blue: #1f1f1f;
+
+  /* Dark text on bright orange */
+  --primary: #fb8a3c;
+  --primary-hover: #f97316;
+  --on-primary: #1f1f1f;
+  --accent: #fb8a3c;
+
+  --success: #4ade80;
+  --success-bg: rgba(74, 222, 128, 0.12);
+  --warning: #fbbf24;
+  --warning-bg: rgba(251, 191, 36, 0.12);
+  --danger: #fa8585;
+  --danger-bg: rgba(248, 113, 113, 0.12);
+  --danger-hover: #fca5a5;
+  --neutral-flag: #9ca3af;
+  --neutral-flag-bg: rgba(156, 163, 175, 0.12);
+  --on-status: #1f1f1f;
+
+  --focus-ring: #4f9bff;
+  --overlay: rgba(0, 0, 0, 0.64);
+  --tooltip-bg: #333333;
+  --tooltip-text: #ededed;
+  --skeleton: var(--bg-muted);
+  --skeleton-shine: #3a3a3a;
+
+  --chart-1: #4f9bff;
+  --chart-2: #fb8a3c;
+  --chart-3: #7db4ff;
+  --chart-4: #fdba74;
+  --chart-5: #1677e5;
+  --chart-6: #a3a3a3;
+  --chart-7: #bfdbfe;
+  --chart-8: #f97316;
+
+  /* Dark mode: borders + subtle inner highlight instead of shadows */
+  --elev-sm: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  --elev-md: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.02);
+  --elev-lg: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* ── Tailwind bridge ─────────────────────────────────────────────────────── */
+@theme inline {
+  /* Drop Tailwind's default palette & scales so only our tokens exist. */
+  --color-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-bg-muted: var(--bg-muted);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-sidebar: var(--sidebar-bg);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-muted: var(--text-muted);
+  --color-subtle: var(--text-subtle);
+  --color-orange-500: var(--orange-500);
+  --color-orange-600: var(--orange-600);
+  --color-orange-700: var(--orange-700);
+  --color-blue-50: var(--blue-50);
+  --color-blue-600: var(--blue-600);
+  --color-blue-700: var(--blue-700);
+  --color-login-gradient: var(--login-gradient);
+  --color-on-blue: var(--on-blue);
+  --color-panel-dark: var(--panel-dark);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-muted: var(--on-dark-muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-on-primary: var(--on-primary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-hover: var(--danger-hover);
+  --color-neutral: var(--neutral-flag);
+  --color-neutral-bg: var(--neutral-flag-bg);
+  --color-on-status: var(--on-status);
+  --color-focus: var(--focus-ring);
+  --color-overlay: var(--overlay);
+  --color-tooltip: var(--tooltip-bg);
+  --color-on-tooltip: var(--tooltip-text);
+  --color-skeleton: var(--skeleton);
+
+  /* Typography (§6.2) — minimum 12px */
+  --font-sans: "Inter Variable", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: 500;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 26px;
+  --text-lg--font-weight: 600;
+  --text-xl: 20px;
+  --text-xl--line-height: 28px;
+  --text-xl--font-weight: 600;
+  --text-xl--letter-spacing: -0.01em;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-2xl--font-weight: 600;
+  --text-2xl--letter-spacing: -0.01em;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 38px;
+  --text-3xl--font-weight: 700;
+  --text-3xl--letter-spacing: -0.01em;
+  --text-4xl: 36px;
+  --text-4xl--line-height: 44px;
+  --text-4xl--font-weight: 700;
+  --text-4xl--letter-spacing: -0.01em;
+
+  /* Radii (§6.3) */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-nav: 12px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Elevation */
+  --shadow-sm: var(--elev-sm);
+  --shadow-md: var(--elev-md);
+  --shadow-lg: var(--elev-lg);
+
+  /* 4px grid: Tailwind spacing multiplier (p-1 = 4px, p-6 = 24px …) */
+  --spacing: 4px;
+
+  --ease-standard: var(--ease-std);
+}

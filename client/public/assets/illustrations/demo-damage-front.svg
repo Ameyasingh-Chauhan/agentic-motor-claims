@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" width="960" height="600">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde68a"/><stop offset="1" stop-color="#fef3c7"/></linearGradient>
+    <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f97316"/><stop offset="1" stop-color="#c2410c"/></linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#sky)"/>
+  <rect y="430" width="960" height="170" fill="#9ca3af"/>
+  <rect y="430" width="960" height="8" fill="#6b7280"/>
+  <path d="M120 400c0-30 20-48 52-52l90-12 80-70c22-18 48-28 78-28h190c32 0 60 12 82 34l64 64 70 10c34 6 54 26 54 56v28H120Z" fill="url(#paint)"/>
+  <path d="M360 270c18-16 38-22 60-22h80v86H300Z" fill="#cbd5e1" opacity="0.9"/>
+  <path d="M530 248h66c22 0 40 8 56 24l48 62H530Z" fill="#cbd5e1" opacity="0.9"/>
+  <rect x="140" y="372" width="40" height="16" rx="4" fill="#fde68a"/>
+  <rect x="780" y="372" width="36" height="16" rx="4" fill="#fca5a5"/>
+  <circle cx="270" cy="430" r="56" fill="#1f2937"/><circle cx="270" cy="430" r="26" fill="#9ca3af"/>
+  <circle cx="690" cy="430" r="56" fill="#1f2937"/><circle cx="690" cy="430" r="26" fill="#9ca3af"/>
+  <rect x="430" y="390" width="120" height="26" rx="4" fill="#f8fafc" stroke="#475569"/>
+  <text x="490" y="409" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#475569">SAMPLE</text>
+  <g opacity="0.9">
+    <path d="M598 300c18-14 44-18 60-6 10 8 6 22-6 30-20 14-46 10-58-4-6-8-4-16 4-20Z" fill="#7c2d12" opacity="0.35"/>
+    <path d="M590 296l22 10m4-22l10 26m16-24l-4 28m22-14l-26 14" stroke="#431407" stroke-width="3" stroke-linecap="round"/>
+    <path d="M230 352l40-6 26 10-10 18-44 4Z" fill="#334155" opacity="0.45"/>
+    <path d="M236 356l52 12M246 348l30 26" stroke="#1e293b" stroke-width="2.5"/>
+  </g>
+  <text x="24" y="580" font-family="Arial, sans-serif" font-size="16" fill="#f8fafc" opacity="0.9">Illustration · front three-quarter</text>
+</svg>

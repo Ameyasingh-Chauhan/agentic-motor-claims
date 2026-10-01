@@ -1,0 +1,200 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 16px;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100dvh;
+    background: var(--bg);
+    font-size: 14px;
+    line-height: 20px;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  ::selection {
+    background: var(--bg-muted);
+    color: var(--text);
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  /* lucide icons: 1.75 stroke everywhere (§2); utilities like stroke-3 can still override */
+  svg.lucide {
+    stroke-width: 1.75;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+}
+
+@layer utilities {
+  /* Tabular numerals for tables, KPIs and money (§6.2) */
+  .num {
+    font-feature-settings: "tnum" 1, "cv11" 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .prose-width {
+    max-width: var(--prose-max);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Skeleton shimmer — transform-only animation */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--skeleton);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, var(--skeleton-shine), transparent);
+  animation: skeleton-shine 1.4s var(--ease-std) infinite;
+}
+@keyframes skeleton-shine {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.7);
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes progress-indeterminate {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+.progress-indeterminate {
+  animation: progress-indeterminate 1.3s var(--ease-std) infinite;
+}
+
+/* 3-cycle horizontal shake (login error, invalid forms) */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  16%,
+  50%,
+  83% {
+    transform: translateX(-6px);
+  }
+  33%,
+  66% {
+    transform: translateX(6px);
+  }
+}
+.shake {
+  animation: shake 450ms var(--ease-std);
+}
+
+/* App shell (§6.4): grid `auto | 1fr`. The sidebar's width transitions (250 ms ease-out) and the main
+   column reflows with it on every frame. (Chrome does not interpolate a var()-driven
+   grid-template-columns containing minmax(…fr), so we animate the sidebar width itself.) */
+.app-shell {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  min-height: 100dvh;
+}
+.app-sidebar {
+  width: var(--sidebar-w);
+  transition: width var(--dur-collapse) ease-out;
+}
+
+/* 3px brand accent line across the very top of the app (both themes). */
+.brand-accent-line {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 60;
+  pointer-events: none;
+  background-image: var(--header-gradient);
+}
+.bg-header-gradient {
+  background-image: var(--header-gradient);
+}
+.bg-login-gradient {
+  background-image: var(--login-gradient);
+}
+.bg-hero-wash {
+  background-image: var(--hero-wash);
+}
+
+/* Theme switch uses a View Transitions circular reveal driven from JS. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  .skeleton::after {
+    display: none;
+  }
+  .spin {
+    animation: spin 0.8s linear infinite !important;
+  }
+}
