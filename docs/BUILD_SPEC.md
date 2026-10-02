@@ -541,11 +541,13 @@ original page.
 
 ### 9.3 Quick-login tiles (`DEMO_MODE=true` only)
 
-Below the login form: "Quick demo login" with three tiles (avatar, name, role chip). Clicking a tile
-**animates typing the username into the field and fills the password with masked dots** (~600 ms total),
-then submits automatically via `POST /api/auth/demo-login {username}` (server accepts only when
-`DEMO_MODE=true`). Plaintext passwords are never sent to or stored in the client. When
-`DEMO_MODE=false` the tiles and endpoint are disabled.
+Below the login form: "Quick demo login" with three tiles (initials avatar, name, role chip, role icon).
+Clicking a tile **animates typing the username into the field and fills the real demo password
+(masked)**, then focuses the Sign in button. It **never signs in automatically**: the user clicks
+Sign in, which uses the normal `POST /api/auth/login`. Tile data, including the dummy demo passwords,
+comes from `GET /api/auth/demo-accounts`, which responds only when `DEMO_MODE=true` (404 otherwise, and
+the tiles are hidden). There is no `/api/auth/demo-login` endpoint. (User decision 21: passwords are
+sent to the browser only because these are dummy demo accounts.)
 
 ### 9.4 Permissions matrix
 
@@ -607,20 +609,30 @@ Split screen, 50/50 at ≥1440px, 45/55 below.
 
 ### 10.3 Home
 
-**A. Header row**: Greeting "Good morning, Santosh" (time-aware) + today's date small; right: "File a
-new claim" primary button and "Open dashboard" secondary.
+> Implemented and approved 2026-10-02 (Claude Code rework). Treat the current implementation as the
+> reference; this section describes it.
+
+**A. Header row**: Time-based greeting in IST with the user's first name ("Good morning" 05:00–11:59,
+"Good afternoon" 12:00–16:59, "Good evening" 17:00–21:59, "Working late" otherwise; flips live at the
+boundary) + today's date; right: "File a new claim" primary button and "Open dashboard" secondary.
 
 **B. Hero** (surface card with a 4px top border using `--header-gradient`, 20px radius; no tinted background wash):
 - Title (36px/700): **Agentic Motor Claims**
 - Description (16px, muted, max 72ch): "AI agents that take a motor claim from first notice to
   decision — verifying vehicles through India's digital public infrastructure, assessing damage from
   photos, scoring fraud with explainable evidence, and settling clean claims in minutes."
-- Right side: compact live pipeline mini-diagram (7 small agent dots with names on hover) + "Agents
-  online 7/7" green pill + "Avg. AI processing time 41 s" stat.
+- Three inline stats: claims processed today, flagged today, average AI decision time.
+- Right side: animated mini pipeline of the 7 agents (lines draw in once per session, an orange pulse
+  travels through the nodes on a loop, nodes tick blue → green; paused when the tab is hidden, static with
+  reduced motion) + "Agents online 7/7" green pill.
+- Decorative layer inside the hero only: subtle dot grid with a soft orange glow top-right and a blue
+  glow bottom-left.
 
-**C. KPI grid** (4 columns × 2 rows at ≥1366px; each card clickable → Home claims list pre-filtered or
-Dashboard section). All values derived from `claims.json` for the **current financial year (Apr–Mar)**,
-with delta vs previous month:
+**C. KPI grid** (4 columns × 2 rows at ≥1366px; each card clickable → Home claims list pre-filtered so
+the list count equals the KPI). All values derived from `claims.json` for the **current financial year
+(Apr–Mar)**. Each card: tinted icon tile in its own accent, one-line label, compact value that never
+truncates, delta chip labelled **"vs prior 30 days"** (last 30 days vs the 30 before; arrow colour follows
+meaning, e.g. up is bad for fraud, turnaround and pending), and a 12-month area sparkline inside the card:
 
 1. Total claims (FY to date)
 2. Claims settled / approved
@@ -633,7 +645,13 @@ with delta vs previous month:
 
 Customer role sees instead: "My claims", "Approved amount", "In progress", "Last update".
 
-**D. Claims browser** (card, full width):
+**D. Insight row**: left (8 cols) **Needs attention**: top 6 claims requiring action (SIU, info requested,
+SLA at risk) with avatar, vehicle, reason flag, age and Open button; right (4 cols) **Claims by status**
+donut (statuses grouped into 5 buckets, legend doubles as table view, click → filters list) and **Recent
+activity** feed (latest 6 timeline/audit events). Customer view: "Your claims needing action" with
+customer-safe reasons, customer status labels, and a feed of messages ABC sent him.
+
+**E. Claims browser** (card, full width):
 - Header: "Motor claims" + count; right: search input (ID, name, registration, city), Filters button
   (popover: vehicle type, claim type, city, garage, risk band, amount range, date range), sort menu
   (Newest, Oldest, Amount ↓/↑, Risk ↓), view toggle (Table / Cards), Export CSV.
@@ -1774,8 +1792,7 @@ You are Claims Copilot, the help assistant inside the Agentic Motor Claims app f
 | Method | Path | Role | Purpose |
 |---|---|---|---|
 | POST | `/auth/login` | public | {username, password} → sets cookie, returns user |
-| POST | `/auth/demo-login` | public, DEMO_MODE | {username} → sets cookie |
-| GET | `/auth/demo-accounts` | public, DEMO_MODE | Tiles data (name, role, avatar — no passwords) |
+| GET | `/auth/demo-accounts` | public, DEMO_MODE only (404 otherwise) | Tile data: username, display name, role, avatar and the dummy demo password |
 | POST | `/auth/logout` | any | Clears cookie |
 | GET | `/auth/me` | any | Current user |
 | PATCH | `/users/me` | any | Profile/preferences |
@@ -1851,9 +1868,10 @@ animates and content reflows smoothly with a demo chart resizing correctly; cont
 ### Phase 2 — Backend core, data & auth
 Tasks: FastAPI app, config, json_store (atomic + locks + cache), schemas, seed script (all §11 data,
 5 scenarios, Rahul's history), costing.py, dmn_engine.py (seed uses them), mocks, auth (bcrypt, JWT
-cookie, lockout, demo-login), Login page with quick-login tiles.
+cookie, lockout, demo-accounts), Login page with quick-login tiles that fill the form.
 Accept: `python scripts/seed.py` produces valid data and summary; worked example in §12.9 reproduces
-₹24,130 exactly (unit test); all three users can log in (form and tiles); wrong password shows error +
+₹24,130 exactly through the real calculation, not a hard-coded return (unit test); all three users can
+log in (manually, and via tiles that fill the form before Sign in); wrong password shows error +
 shake; lockout works; session persists on refresh; logout works.
 
 ### Phase 3 — Home & Claim Detail
@@ -1896,6 +1914,16 @@ Tasks: Support (all 8 sections incl. copilot), Profile/Settings, Dev Tools remai
 offline banner, keyboard shortcuts, performance pass (§8), accessibility pass (§6.7), final QA (§20).
 Accept: Lighthouse (production build) ≥ 90 performance and ≥ 95 accessibility on Home, Claim Detail and
 Dashboard; no console errors or warnings across a full click-through; §20 checklist all ticked.
+
+### Phase 9 — Final review & polish (Claude Code)
+Tasks: full review of every page against this spec and the §20 checklist, fixing bugs and
+inconsistencies; design polish with the ui-ux-pro-max skill (hierarchy, spacing, typography, charts, UX
+flow) within the existing tokens and colour roles; animation polish with the motion skill/MCP (page and
+shared-element transitions, micro-interactions, Agent Theatre and WhatsApp replay), respecting reduced
+motion; final performance (§8) and accessibility (§6.7) pass. Work area by area (login and shell, Home and
+Claim Detail, Dashboard, File a Claim and Agent Theatre, WhatsApp and Support) with a commit after each.
+Accept: every item in "Known follow-ups" in docs/PROGRESS.md resolved or explicitly accepted by the user;
+§20 checklist fully ticked.
 
 ---
 
