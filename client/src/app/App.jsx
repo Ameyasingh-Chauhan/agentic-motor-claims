@@ -19,6 +19,7 @@ const router = createBrowserRouter([
     handle: { crumb: "Home" },
     children: [
       { index: true, element: <P.home /> },
+      { path: "claims/:claimId", element: <P.claimDetail />, handle: { crumb: "Claim detail" } },
       { path: "dashboard", element: guard(<P.dashboard />, can.viewDashboard), handle: { crumb: "Dashboard" } },
       { path: "file-claim", element: <P.fileClaim />, handle: { crumb: "File a Claim" } },
       { path: "whatsapp", element: <P.whatsapp />, handle: { crumb: "WhatsApp Journey" } },

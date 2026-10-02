@@ -1,1 +1,142 @@
-[]
+[
+  {
+    "id": "n_000",
+    "user_id": "u_001",
+    "title": "Claim update 1: ABC-MC-2026-000001",
+    "href": "/claims/ABC-MC-2026-000001",
+    "read": false
+  },
+  {
+    "id": "n_001",
+    "user_id": "u_001",
+    "title": "Claim update 2: ABC-MC-2026-000002",
+    "href": "/claims/ABC-MC-2026-000002",
+    "read": false
+  },
+  {
+    "id": "n_002",
+    "user_id": "u_001",
+    "title": "Claim update 3: ABC-MC-2026-000003",
+    "href": "/claims/ABC-MC-2026-000003",
+    "read": false
+  },
+  {
+    "id": "n_003",
+    "user_id": "u_001",
+    "title": "Claim update 4: ABC-MC-2026-000004",
+    "href": "/claims/ABC-MC-2026-000004",
+    "read": false
+  },
+  {
+    "id": "n_004",
+    "user_id": "u_001",
+    "title": "Claim update 5: ABC-MC-2026-000005",
+    "href": "/claims/ABC-MC-2026-000005",
+    "read": false
+  },
+  {
+    "id": "n_005",
+    "user_id": "u_001",
+    "title": "Claim update 6: ABC-MC-2026-000006",
+    "href": "/claims/ABC-MC-2026-000006",
+    "read": false
+  },
+  {
+    "id": "n_006",
+    "user_id": "u_001",
+    "title": "Claim update 7: ABC-MC-2026-000007",
+    "href": "/claims/ABC-MC-2026-000007",
+    "read": true
+  },
+  {
+    "id": "n_007",
+    "user_id": "u_001",
+    "title": "Claim update 8: ABC-MC-2026-000008",
+    "href": "/claims/ABC-MC-2026-000008",
+    "read": true
+  },
+  {
+    "id": "n_008",
+    "user_id": "u_001",
+    "title": "Claim update 9: ABC-MC-2026-000009",
+    "href": "/claims/ABC-MC-2026-000009",
+    "read": true
+  },
+  {
+    "id": "n_009",
+    "user_id": "u_001",
+    "title": "Claim update 10: ABC-MC-2026-000010",
+    "href": "/claims/ABC-MC-2026-000010",
+    "read": true
+  },
+  {
+    "id": "n_010",
+    "user_id": "u_001",
+    "title": "Claim update 11: ABC-MC-2026-000011",
+    "href": "/claims/ABC-MC-2026-000011",
+    "read": true
+  },
+  {
+    "id": "n_011",
+    "user_id": "u_001",
+    "title": "Claim update 12: ABC-MC-2026-000012",
+    "href": "/claims/ABC-MC-2026-000012",
+    "read": true
+  },
+  {
+    "id": "n_012",
+    "user_id": "u_001",
+    "title": "Claim update 13: ABC-MC-2026-000013",
+    "href": "/claims/ABC-MC-2026-000013",
+    "read": true
+  },
+  {
+    "id": "n_013",
+    "user_id": "u_001",
+    "title": "Claim update 14: ABC-MC-2026-000014",
+    "href": "/claims/ABC-MC-2026-000014",
+    "read": true
+  },
+  {
+    "id": "n_014",
+    "user_id": "u_001",
+    "title": "Claim update 15: ABC-MC-2026-000015",
+    "href": "/claims/ABC-MC-2026-000015",
+    "read": true
+  },
+  {
+    "id": "n_015",
+    "user_id": "u_001",
+    "title": "Claim update 16: ABC-MC-2026-000016",
+    "href": "/claims/ABC-MC-2026-000016",
+    "read": true
+  },
+  {
+    "id": "n_016",
+    "user_id": "u_001",
+    "title": "Claim update 17: ABC-MC-2026-000017",
+    "href": "/claims/ABC-MC-2026-000017",
+    "read": true
+  },
+  {
+    "id": "n_017",
+    "user_id": "u_001",
+    "title": "Claim update 18: ABC-MC-2026-000018",
+    "href": "/claims/ABC-MC-2026-000018",
+    "read": true
+  },
+  {
+    "id": "n_018",
+    "user_id": "u_001",
+    "title": "Claim update 19: ABC-MC-2026-000019",
+    "href": "/claims/ABC-MC-2026-000019",
+    "read": true
+  },
+  {
+    "id": "n_019",
+    "user_id": "u_001",
+    "title": "Claim update 20: ABC-MC-2026-000020",
+    "href": "/claims/ABC-MC-2026-000020",
+    "read": true
+  }
+]

@@ -5,7 +5,8 @@ import { lazy } from "react";
  * so a prefetched chunk is reused instantly on navigation (§8.2).
  */
 export const loaders = {
-  home: () => import("../features/home/HomePage"),
+  home: () => import("../features/home/HomePageV2"),
+  claimDetail: () => import("../features/claims/ClaimPlaceholderPage"),
   dashboard: () => import("../features/dashboard/DashboardPage"),
   fileClaim: () => import("../features/file-claim/FileClaimPage"),
   whatsapp: () => import("../features/whatsapp/WhatsAppJourneyPage"),

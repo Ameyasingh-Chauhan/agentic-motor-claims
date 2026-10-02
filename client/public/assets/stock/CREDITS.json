@@ -1,0 +1,16 @@
+{
+  "generated_fallbacks": [
+    "car-front",
+    "car-rear",
+    "car-side",
+    "scratched-door",
+    "broken-headlamp",
+    "cracked-windshield",
+    "two-wheeler",
+    "flooded-car",
+    "commercial-vehicle",
+    "clean-vehicle"
+  ],
+  "sources": [],
+  "todo": "Add Pexels/Unsplash URLs and photographer credits when network credentials are configured."
+}

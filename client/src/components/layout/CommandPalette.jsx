@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useNavigate } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
@@ -46,11 +46,13 @@ function PaletteInner({ onClose }) {
   const user = useAuthStore((s) => s.user);
   const [q, setQ] = useState("");
   const [active, setActive] = useState(0);
+  const [claims, setClaims] = useState([]);
   const ref = useRef(null);
   const inputRef = useRef(null);
   useFocusTrap(ref, true, inputRef);
   useEscape(true, onClose);
   useScrollLock(true);
+  useEffect(() => { if (!q.trim()) { setClaims([]); return; } let alive=true; const id=setTimeout(()=>fetch(`/api/claims?q=${encodeURIComponent(q)}&page_size=8`,{credentials:"include"}).then((r)=>r.ok?r.json():null).then((d)=>alive&&setClaims(d?.items||[])).catch(()=>{}),200); return ()=>{alive=false;clearTimeout(id)}; }, [q]);
 
   const groups = useMemo(() => {
     const pages = [...visibleItems(NAV_ITEMS, user), ...visibleItems(DEV_NAV_ITEMS, user)].map((p) => ({
@@ -62,11 +64,13 @@ function PaletteInner({ onClose }) {
     const needle = q.trim().toLowerCase();
     const recent = needle ? [] : readRecent().map((r) => ({ ...r, icon: History, kind: "Recent" }));
     const matchPages = pages.filter((p) => !needle || p.label.toLowerCase().includes(needle));
+    const claimItems = claims.map((claim) => ({ to: `/claims/${claim.id}`, label: `${claim.id} · ${claim.customer_name || claim.customer_id || "Claim"}`, icon: Search, kind: "Claims" }));
     return [
       ...(recent.length ? [{ name: "Recent", items: recent }] : []),
       ...(matchPages.length ? [{ name: "Pages", items: matchPages }] : []),
+      ...(claimItems.length ? [{ name: "Claims", items: claimItems }] : []),
     ];
-  }, [q, user]);
+  }, [q, user, claims]);
   const flat = groups.flatMap((g) => g.items);
 
   const go = (item) => {

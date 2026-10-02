@@ -13,6 +13,14 @@ class DemoBody(BaseModel): username: str
 def _key(): return get_settings().jwt_secret
 def _public(u): return {k:u.get(k) for k in ("id","username","display_name","role","is_developer","title","email","avatar","customer_id","preferences")}
 async def _users(): return await read_json("users.json", [])
+async def current_user(request: Request):
+    token=request.cookies.get("amc_session")
+    if not token: raise HTTPException(401,"Not authenticated")
+    try: payload=jwt.decode(token,_key(),algorithms=["HS256"])
+    except jwt.PyJWTError: raise HTTPException(401,"Session expired")
+    u=next((x for x in await _users() if x.get("id")==payload.get("sub")),None)
+    if not u: raise HTTPException(401,"Session expired")
+    return u
 def _find(users, name):
     n=name.strip().casefold(); return next((u for u in users if u.get("username","").strip().casefold()==n),None)
 def _issue(u): return jwt.encode({"sub":u["id"],"exp":datetime.now(timezone.utc)+timedelta(minutes=get_settings().jwt_expires_minutes)},_key(),algorithm="HS256")

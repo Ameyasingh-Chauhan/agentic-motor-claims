@@ -38,3 +38,13 @@ def test_normal_login_all_users_and_wrong_passwords():
         client = TestClient(app)
         assert client.post("/api/auth/login", json={"username": name, "password": password}).status_code == 200
         assert client.post("/api/auth/login", json={"username": name, "password": "wrong"}).status_code == 401
+
+def test_home_stats_and_claim_filters_customer_safe():
+    client=TestClient(app)
+    assert client.post("/api/auth/login",json={"username":"Santosh Kute","password":"Admin@123"}).status_code==200
+    stats=client.get("/api/stats/home"); assert stats.status_code==200 and len(stats.json()["kpis"])==8
+    filtered=client.get("/api/claims",params={"status":"SETTLED","page_size":5}); assert filtered.status_code==200 and all(c["status"]=="SETTLED" for c in filtered.json()["items"])
+    client.post("/api/auth/logout")
+    assert client.post("/api/auth/login",json={"username":"Rahul Sharma","password":"Pass@123"}).status_code==200
+    data=client.get("/api/claims").json(); assert all(c["customer_id"]=="c_0001" for c in data["items"])
+    assert all(key not in c for c in data["items"] for key in ("fraud","risk","audit","internal_notes"))

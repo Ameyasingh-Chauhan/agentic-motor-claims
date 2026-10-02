@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { Bell, CheckCheck } from "lucide-react";
 import { Popover } from "../ui/Popover";
 import { Button } from "../ui/Button";
@@ -9,7 +11,12 @@ import { cn } from "../../lib/cn";
  * Notifications bell + panel. Phase 1 renders the shell (empty state); Phase 3 feeds it from
  * GET /api/notifications with grouping, mark-all-read and click-through navigation.
  */
-export function NotificationsPanel({ notifications = [], unread = 0, onMarkAllRead }) {
+export function NotificationsPanel({ notifications: initial = [], unread: initialUnread = 0, onMarkAllRead }) {
+  const [notifications, setNotifications] = useState(initial);
+  const [unread, setUnread] = useState(initialUnread);
+  const navigate = useNavigate();
+  useEffect(() => { let alive=true; fetch("/api/notifications", { credentials: "include" }).then((r)=>r.ok?r.json():null).then((d)=>{ if(alive&&d){setNotifications(d.items||[]);setUnread(d.unread||0);} }).catch(()=>{}); return ()=>{alive=false}; }, []);
+  const markAll = async () => { await fetch("/api/notifications/read", { method:"POST", credentials:"include", headers:{"Content-Type":"application/json"}, body:JSON.stringify({all:true}) }); setNotifications((items)=>items.map((n)=>({...n,read:true}))); setUnread(0); onMarkAllRead?.(); };
   return (
     <Popover
       placement="bottom-end"
@@ -38,7 +45,7 @@ export function NotificationsPanel({ notifications = [], unread = 0, onMarkAllRe
           size="sm"
           icon={CheckCheck}
           disabledReason={unread ? undefined : "No unread notifications"}
-          onClick={onMarkAllRead}
+          onClick={markAll}
         >
           Mark all read
         </Button>
@@ -47,10 +54,10 @@ export function NotificationsPanel({ notifications = [], unread = 0, onMarkAllRe
         {notifications.length === 0 ? (
           <EmptyState compact title="You're all caught up" description="Claim updates, assignments and messages will appear here." />
         ) : (
-          notifications.map((n) => (
-            <div key={n.id} className="border-b border-border px-4 py-3 text-sm text-text last:border-0">
-              {n.title}
-            </div>
+            notifications.map((n) => (
+            <button type="button" key={n.id} onClick={async()=>{if(!n.read) await fetch("/api/notifications/read",{method:"POST",credentials:"include",headers:{"Content-Type":"application/json"},body:JSON.stringify({ids:[n.id]})}); if(n.href) navigate(n.href);}} className="block w-full border-b border-border px-4 py-3 text-left text-sm text-text last:border-0 hover:bg-bg-muted">
+              <span className={n.read?"text-muted":"font-semibold"}>{n.title}</span>
+            </button>
           ))
         )}
       </div>

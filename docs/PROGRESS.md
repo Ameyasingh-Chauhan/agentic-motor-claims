@@ -110,3 +110,22 @@ Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 15. **Demo-login normalization:** tile requests send the trimmed display username to `/api/auth/demo-login`; the server performs the same case-insensitive, whitespace-trimmed lookup as normal login and tests cover all three users.
 16. **Login media/layout:** the original logo remains untouched; its transparent bounds are trimmed into `client/public/assets/brand/automationedge-logo-trimmed.png` with a 2% safe margin and all rendered logo sizes are width-based. Login routes are viewport-locked with height breakpoints, while route lines use solid theme-aware gradients with moving highlight segments.
 17. **Login viewport correction:** the login root and grid now enforce a single `100dvh` viewport with late utility overrides so Tailwind `min-h-screen` cannot reintroduce scrolling. The right-panel routes use explicit SVG orange-to-blue gradients to avoid black fallback strokes.
+
+## Phase 3 Part A — Topbar completion, Home & claim images
+
+### Delivered
+- [x] Generated and ran `scripts/fetch_stock_images.py` with neutral WebP/thumb/blur/SVG fallbacks and `CREDITS.json`; generated watermarked specimen documents with `scripts/make_specimen_docs.py`; seeded claim media references.
+- [x] Notifications API/UI loads `notifications.json`, shows unread count, marks individual/all read, and navigates to linked claims.
+- [x] Ctrl+K command palette searches live claims by ID, customer, and registration.
+- [x] Home includes hero, eight server-computed KPI cards, status chips, search, sort, table/card views, pagination, CSV export, URL state, loading/empty/error states, and claim navigation placeholder.
+- [x] Added `GET /api/stats/home` and filtered/customer-safe `GET /api/claims` endpoints.
+
+### Acceptance check (verified 2026-10-01)
+- [x] Manual FY counts from `claims.json`: 167 claims; 65 settled/approved; ₹29,09,000 approved; 33 SIU claims; 102 open claims; 167 unique claim rows represented in the stats source.
+- [x] `pytest -v` passes (8 tests), including stats, filters, and Rahul customer-safe response checks.
+- [x] `npm run build` passes.
+
+### Decisions
+18. **Phase 3A image fallback:** network-dependent stock retrieval is represented by neutral, royalty-safe SVG/WebP placeholders when no provider credentials are available; every claim media entry has a valid image, thumbnail, and blur placeholder.
+19. **Home KPI source of truth:** the API derives all KPI values from `claims.json` at request time, with customer filtering before aggregation and response shaping.
+20. **Phase status:** Phase 3 Part A is complete; Phase 3 Part B remains for the full Claim Detail workspace.
