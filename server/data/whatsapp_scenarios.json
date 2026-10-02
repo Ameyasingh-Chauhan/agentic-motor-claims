@@ -2,31 +2,31 @@
   {
     "id": "clean_rear_end",
     "title": "Clean Rear End",
-    "claim_id": "ABC-MC-2026-000001",
+    "claim_id": "ABC-MC-2026-000239",
     "messages": []
   },
   {
     "id": "fastag_mismatch",
     "title": "Fastag Mismatch",
-    "claim_id": "ABC-MC-2026-000002",
+    "claim_id": "ABC-MC-2026-000241",
     "messages": []
   },
   {
     "id": "garage_overquote",
     "title": "Garage Overquote",
-    "claim_id": "ABC-MC-2026-000003",
+    "claim_id": "ABC-MC-2026-000235",
     "messages": []
   },
   {
     "id": "theft_two_wheeler",
     "title": "Theft Two Wheeler",
-    "claim_id": "ABC-MC-2026-000004",
+    "claim_id": "ABC-MC-2026-000237",
     "messages": []
   },
   {
     "id": "flood_total_loss",
     "title": "Flood Total Loss",
-    "claim_id": "ABC-MC-2026-000005",
+    "claim_id": "ABC-MC-2026-000232",
     "messages": []
   }
 ]

@@ -63,6 +63,7 @@ export function Popover({ trigger, children, placement = "bottom-start", open: c
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.2, ease: EASE }}
               data-side={side}
+              data-popover-layer=""
             >
               {typeof children === "function" ? children({ close }) : children}
             </motion.div>

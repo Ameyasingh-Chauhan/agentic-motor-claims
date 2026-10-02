@@ -117,3 +117,34 @@ export function initials(name = "") {
     .map((p) => p[0].toUpperCase())
     .join("");
 }
+
+/** KPI money: ₹2.91 Cr / ₹45.4 L / ₹45.4 K / ₹850 — never truncates in a card. */
+export function formatINRShort(value) {
+  if (value == null || Number.isNaN(Number(value))) return "—";
+  const v = Number(value);
+  const abs = Math.abs(v);
+  const sign = v < 0 ? "-" : "";
+  const fix = (n, d) => Number(n.toFixed(d)).toString();
+  if (abs >= 1e7) return `${sign}₹${fix(abs / 1e7, 2)} Cr`;
+  if (abs >= 1e5) return `${sign}₹${fix(abs / 1e5, 1)} L`;
+  if (abs >= 1e3) return `${sign}₹${fix(abs / 1e3, 1)} K`;
+  return `${sign}₹${Math.round(abs)}`;
+}
+
+/** Durations given in hours: "42 min", "18.4 h", "3.2 d". */
+export function formatHours(hours) {
+  if (hours == null || Number.isNaN(Number(hours))) return "—";
+  const h = Number(hours);
+  if (h < 1) return `${Math.max(1, Math.round(h * 60))} min`;
+  if (h < 48) return `${(Math.round(h * 10) / 10).toString()} h`;
+  return `${(Math.round((h / 24) * 10) / 10).toString()} d`;
+}
+
+/** Time-of-day greeting in IST: morning 05–11:59, afternoon 12–16:59, evening 17–21:59, otherwise "Working late". */
+export function greetingFor(date = new Date()) {
+  const h = toIST(date).hour();
+  if (h >= 5 && h < 12) return "Good morning";
+  if (h >= 12 && h < 17) return "Good afternoon";
+  if (h >= 17 && h < 22) return "Good evening";
+  return "Working late";
+}

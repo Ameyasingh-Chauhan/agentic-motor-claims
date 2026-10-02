@@ -90,6 +90,10 @@ export function useClickOutside(refs, active, onOutside) {
     if (!active) return undefined;
     const onDown = (e) => {
       if (refs.some((r) => r.current && r.current.contains(e.target))) return;
+      // A click inside another floating layer (e.g. a Select or date picker opened from this popover) is not "outside".
+      // Only layers opened after (above) this one count — they come later in the document (portals append in order).
+      const layer = e.target instanceof Element ? e.target.closest("[data-popover-layer]") : null;
+      if (layer && refs.every((r) => !r.current || r.current.compareDocumentPosition(layer) & Node.DOCUMENT_POSITION_FOLLOWING)) return;
       cb.current?.(e);
     };
     document.addEventListener("pointerdown", onDown);

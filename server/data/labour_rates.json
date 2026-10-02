@@ -1,1 +1,21 @@
-{}
+{
+  "car_rates": {
+    "tier1": {
+      "authorised": 1100,
+      "multibrand": 750
+    },
+    "tier2": {
+      "authorised": 850,
+      "multibrand": 600
+    },
+    "tier3": {
+      "authorised": 650,
+      "multibrand": 450
+    }
+  },
+  "vehicle_type_multiplier": {
+    "Car": 1.0,
+    "2W": 0.45,
+    "CV": 1.1
+  }
+}

@@ -8,6 +8,7 @@ import {
   DatasetComponent,
   MarkLineComponent,
   AriaComponent,
+  TitleComponent,
 } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 
@@ -22,6 +23,7 @@ echarts.use([
   DatasetComponent,
   MarkLineComponent,
   AriaComponent,
+  TitleComponent,
   CanvasRenderer,
 ]);
 

@@ -1,16 +1,83 @@
-"""Explainable, deterministic fraud rules."""
-RULES = [
- ("FR-01",35,lambda c: c.get("location_contradiction",False)),("FR-02",30,lambda c: c.get("pre_existing_confidence",0)>=.70),
- ("FR-03",20,lambda c: c.get("narrative_consistent") is False and c.get("narrative_confidence",0)>=.65),("FR-04",15,lambda c:c.get("od_claims_12m",0)>=2),
- ("FR-05",15,lambda c:c.get("early_claim",False)),("FR-06",lambda c:15 if c.get("garage_variance",0)>30 else (5 if c.get("garage_variance",0)>15 else 0),lambda c:c.get("garage_variance",0)>15),
- ("FR-07",25,lambda c:c.get("network_link",False)),("FR-08",40,lambda c:c.get("blacklisted_or_stolen",False)),("FR-09",15,lambda c:c.get("owner_mismatch",False)),
- ("FR-10",20,lambda c:c.get("invalid_dl",False)),("FR-11",15,lambda c:c.get("photo_metadata_mismatch",False)),("FR-12",10,lambda c:c.get("late_intimation",False)),
- ("FR-13",15,lambda c:c.get("commercial_use",False)),("FR-14",5,lambda c:c.get("unwitnessed_night",False)),("FR-15",25,lambda c:c.get("tampering",False))]
-def evaluate_fraud(context):
-    fired=[]; not_fired=[]; score=0; hard=False
-    for rid, pts, cond in RULES:
-        hit=bool(cond(context)); (fired if hit else not_fired).append(rid)
-        if hit:
-            p=pts(context) if callable(pts) else pts; score += p; hard |= rid=="FR-08"
-    score=min(100,score); level="high" if hard or score>=71 else ("medium" if score>=30 else "low")
-    return {"score":score,"level":level,"routing":"SIU" if hard or score>=71 else ("handler" if score>=30 else "auto"),"hard_stop":hard,"fired_rule_ids":fired,"not_fired_rule_ids":not_fired}
+"""Explainable, deterministic fraud scoring (spec §13).
+
+Rule metadata (name, points, level, customer-safe reason, enabled) lives in `fraud_rules.json`; the
+conditions below read a flat `context` built from the claim. Score = min(100, Σ points of fired rules).
+The LLM may write narrative/evidence text but never changes points or the score.
+"""
+from __future__ import annotations
+
+from typing import Callable
+
+from . import reference
+
+
+def _fr06_points(c: dict) -> int:
+    v = c.get("garage_variance_pct") or 0
+    return 15 if v > 30 else (5 if v > 15 else 0)
+
+
+CONDITIONS: dict[str, Callable[[dict], bool]] = {
+    "FR-01": lambda c: bool(c.get("location_contradiction")),
+    "FR-02": lambda c: (c.get("pre_existing_confidence") or 0) >= 0.70,
+    "FR-03": lambda c: c.get("narrative_consistent") is False and (c.get("narrative_confidence") or 0) >= 0.65,
+    "FR-04": lambda c: (c.get("od_claims_12m") or 0) >= 2,
+    "FR-05": lambda c: bool(c.get("early_claim")),
+    "FR-06": lambda c: _fr06_points(c) > 0,
+    "FR-07": lambda c: bool(c.get("network_link")),
+    "FR-08": lambda c: bool(c.get("blacklisted_or_stolen")),
+    "FR-09": lambda c: bool(c.get("owner_mismatch")),
+    "FR-10": lambda c: bool(c.get("invalid_dl")),
+    "FR-11": lambda c: bool(c.get("photo_metadata_mismatch")),
+    "FR-12": lambda c: bool(c.get("late_intimation")),
+    "FR-13": lambda c: bool(c.get("commercial_use")),
+    "FR-14": lambda c: bool(c.get("unwitnessed_night")),
+    "FR-15": lambda c: (c.get("tampering_confidence") or 0) >= 0.70,
+}
+
+EVIDENCE_REFS = {
+    "FR-01": ["checks.fastag"], "FR-02": ["damage.pre_existing"], "FR-03": ["damage.narrative_consistency"],
+    "FR-04": ["checks.iib"], "FR-05": ["checks.policy"], "FR-06": ["financials.variance_pct"],
+    "FR-07": ["fraud.network_links"], "FR-08": ["checks.vahan"], "FR-09": ["checks.vahan"], "FR-10": ["checks.dl"],
+    "FR-11": ["media.exif"], "FR-12": ["incident.reported_at"], "FR-13": ["checks.fastag"],
+    "FR-14": ["incident.datetime"], "FR-15": ["documents"],
+}
+
+
+def band(score: int, hard_stop: bool = False) -> str:
+    """§6.5 bands: 0–29 low, 30–70 medium, 71–100 high. Hard stop → high."""
+    if hard_stop or score >= 71:
+        return "high"
+    return "medium" if score >= 30 else "low"
+
+
+def evaluate_fraud(context: dict, rules: list[dict] | None = None) -> dict:
+    """`context` keys are documented in CONDITIONS; optional `evidence` {rule_id: text} and
+    `confidence` {rule_id: float} explain fired rules."""
+    rules = rules if rules is not None else reference.load().fraud_rules
+    evidence = context.get("evidence", {})
+    confidence = context.get("confidence", {})
+    fired, not_fired = [], []
+    score, hard_stop = 0, False
+    for rule in rules:
+        rid = rule["id"]
+        cond = CONDITIONS.get(rid)
+        if not rule.get("enabled", True) or cond is None or not cond(context):
+            not_fired.append(rid)
+            continue
+        points = _fr06_points(context) if rid == "FR-06" else rule["points"]
+        level = ("warn" if points == rule.get("points_warn") else "fail") if rid == "FR-06" else rule["level"]
+        hard_stop |= bool(rule.get("hard_stop"))
+        score += points
+        fired.append({
+            "rule_id": rid, "name": rule["name"], "level": level, "points": points,
+            "evidence": evidence.get(rid, rule["description"]), "evidence_refs": EVIDENCE_REFS.get(rid, []),
+            "confidence": confidence.get(rid, 0.9), "customer_safe_reason": rule.get("customer_safe_reason"),
+        })
+    score = min(100, score)
+    b = band(score, hard_stop)
+    return {
+        "score": score, "band": b, "hard_stop": hard_stop,
+        "routing": "SIU" if b == "high" else ("handler" if b == "medium" else "auto"),
+        "fired": fired, "not_fired": not_fired,
+        "fired_rule_ids": [f["rule_id"] for f in fired],
+    }

@@ -1,0 +1,292 @@
+[
+  {
+    "key": "MAR-ALT",
+    "make": "Maruti Suzuki",
+    "model": "Alto K10",
+    "segment": "CAR_ENTRY",
+    "type": "Car",
+    "cc": 998,
+    "fuel": "Petrol",
+    "ex_showroom": 420000
+  },
+  {
+    "key": "MAR-WAG",
+    "make": "Maruti Suzuki",
+    "model": "Wagon R",
+    "segment": "CAR_ENTRY",
+    "type": "Car",
+    "cc": 1197,
+    "fuel": "Petrol",
+    "ex_showroom": 560000
+  },
+  {
+    "key": "REN-KWD",
+    "make": "Renault",
+    "model": "Kwid",
+    "segment": "CAR_ENTRY",
+    "type": "Car",
+    "cc": 999,
+    "fuel": "Petrol",
+    "ex_showroom": 470000
+  },
+  {
+    "key": "MAR-SWI",
+    "make": "Maruti Suzuki",
+    "model": "Swift",
+    "segment": "CAR_PREMIUM_HATCH",
+    "type": "Car",
+    "cc": 1197,
+    "fuel": "Petrol",
+    "ex_showroom": 690000
+  },
+  {
+    "key": "MAR-BAL",
+    "make": "Maruti Suzuki",
+    "model": "Baleno",
+    "segment": "CAR_PREMIUM_HATCH",
+    "type": "Car",
+    "cc": 1197,
+    "fuel": "Petrol",
+    "ex_showroom": 760000
+  },
+  {
+    "key": "MAR-DZI",
+    "make": "Maruti Suzuki",
+    "model": "Dzire",
+    "segment": "CAR_PREMIUM_HATCH",
+    "type": "Car",
+    "cc": 1197,
+    "fuel": "CNG",
+    "ex_showroom": 740000
+  },
+  {
+    "key": "HYU-I20",
+    "make": "Hyundai",
+    "model": "i20",
+    "segment": "CAR_PREMIUM_HATCH",
+    "type": "Car",
+    "cc": 1197,
+    "fuel": "Petrol",
+    "ex_showroom": 820000
+  },
+  {
+    "key": "TAT-PUN",
+    "make": "Tata",
+    "model": "Punch",
+    "segment": "CAR_PREMIUM_HATCH",
+    "type": "Car",
+    "cc": 1199,
+    "fuel": "Petrol",
+    "ex_showroom": 680000
+  },
+  {
+    "key": "TAT-ALT",
+    "make": "Tata",
+    "model": "Altroz",
+    "segment": "CAR_PREMIUM_HATCH",
+    "type": "Car",
+    "cc": 1199,
+    "fuel": "Diesel",
+    "ex_showroom": 790000
+  },
+  {
+    "key": "HYU-CRE",
+    "make": "Hyundai",
+    "model": "Creta",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "type": "Car",
+    "cc": 1497,
+    "fuel": "Petrol",
+    "ex_showroom": 1420000
+  },
+  {
+    "key": "HYU-VEN",
+    "make": "Hyundai",
+    "model": "Venue",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "type": "Car",
+    "cc": 1197,
+    "fuel": "Petrol",
+    "ex_showroom": 1020000
+  },
+  {
+    "key": "TAT-NEX",
+    "make": "Tata",
+    "model": "Nexon",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "type": "Car",
+    "cc": 1199,
+    "fuel": "Petrol",
+    "ex_showroom": 1050000
+  },
+  {
+    "key": "MAR-BRZ",
+    "make": "Maruti Suzuki",
+    "model": "Brezza",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "type": "Car",
+    "cc": 1462,
+    "fuel": "Petrol",
+    "ex_showroom": 1080000
+  },
+  {
+    "key": "KIA-SEL",
+    "make": "Kia",
+    "model": "Seltos",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "type": "Car",
+    "cc": 1497,
+    "fuel": "Diesel",
+    "ex_showroom": 1520000
+  },
+  {
+    "key": "HON-CIT",
+    "make": "Honda",
+    "model": "City",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "type": "Car",
+    "cc": 1498,
+    "fuel": "Petrol",
+    "ex_showroom": 1350000
+  },
+  {
+    "key": "MAH-XUV",
+    "make": "Mahindra",
+    "model": "XUV700",
+    "segment": "CAR_MID_SUV_MPV",
+    "type": "Car",
+    "cc": 2184,
+    "fuel": "Diesel",
+    "ex_showroom": 2100000
+  },
+  {
+    "key": "MAH-SCN",
+    "make": "Mahindra",
+    "model": "Scorpio-N",
+    "segment": "CAR_MID_SUV_MPV",
+    "type": "Car",
+    "cc": 2184,
+    "fuel": "Diesel",
+    "ex_showroom": 1850000
+  },
+  {
+    "key": "TOY-INH",
+    "make": "Toyota",
+    "model": "Innova Hycross",
+    "segment": "CAR_MID_SUV_MPV",
+    "type": "Car",
+    "cc": 1987,
+    "fuel": "Hybrid",
+    "ex_showroom": 2550000
+  },
+  {
+    "key": "KIA-CAR",
+    "make": "Kia",
+    "model": "Carens",
+    "segment": "CAR_MID_SUV_MPV",
+    "type": "Car",
+    "cc": 1497,
+    "fuel": "Petrol",
+    "ex_showroom": 1400000
+  },
+  {
+    "key": "HON-ACT",
+    "make": "Honda",
+    "model": "Activa",
+    "segment": "TW_COMMUTER",
+    "type": "2W",
+    "cc": 110,
+    "fuel": "Petrol",
+    "ex_showroom": 82000
+  },
+  {
+    "key": "HER-SPL",
+    "make": "Hero",
+    "model": "Splendor+",
+    "segment": "TW_COMMUTER",
+    "type": "2W",
+    "cc": 97,
+    "fuel": "Petrol",
+    "ex_showroom": 78000
+  },
+  {
+    "key": "HON-SHI",
+    "make": "Honda",
+    "model": "Shine",
+    "segment": "TW_COMMUTER",
+    "type": "2W",
+    "cc": 124,
+    "fuel": "Petrol",
+    "ex_showroom": 86000
+  },
+  {
+    "key": "TVS-JUP",
+    "make": "TVS",
+    "model": "Jupiter",
+    "segment": "TW_COMMUTER",
+    "type": "2W",
+    "cc": 110,
+    "fuel": "Petrol",
+    "ex_showroom": 80000
+  },
+  {
+    "key": "BAJ-PNS",
+    "make": "Bajaj",
+    "model": "Pulsar NS200",
+    "segment": "TW_PREMIUM",
+    "type": "2W",
+    "cc": 199,
+    "fuel": "Petrol",
+    "ex_showroom": 155000
+  },
+  {
+    "key": "ROY-CLA",
+    "make": "Royal Enfield",
+    "model": "Classic 350",
+    "segment": "TW_PREMIUM",
+    "type": "2W",
+    "cc": 349,
+    "fuel": "Petrol",
+    "ex_showroom": 215000
+  },
+  {
+    "key": "TVS-APA",
+    "make": "TVS",
+    "model": "Apache RTR 160",
+    "segment": "TW_PREMIUM",
+    "type": "2W",
+    "cc": 160,
+    "fuel": "Petrol",
+    "ex_showroom": 128000
+  },
+  {
+    "key": "TAT-ACE",
+    "make": "Tata",
+    "model": "Ace Gold",
+    "segment": "CV_LCV",
+    "type": "CV",
+    "cc": 694,
+    "fuel": "Diesel",
+    "ex_showroom": 560000
+  },
+  {
+    "key": "ASH-DOS",
+    "make": "Ashok Leyland",
+    "model": "Dost+",
+    "segment": "CV_LCV",
+    "type": "CV",
+    "cc": 1478,
+    "fuel": "Diesel",
+    "ex_showroom": 820000
+  },
+  {
+    "key": "MAH-BPU",
+    "make": "Mahindra",
+    "model": "Bolero Pik-Up",
+    "segment": "CV_LCV",
+    "type": "CV",
+    "cc": 2523,
+    "fuel": "Diesel",
+    "ex_showroom": 950000
+  }
+]

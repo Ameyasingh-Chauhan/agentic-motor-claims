@@ -1,1 +1,85 @@
-{}
+{
+  "hours": {
+    "rr_bumper": {
+      "label": "Remove & refit bumper",
+      "hours": 1.5
+    },
+    "rr_bonnet": {
+      "label": "Remove & refit bonnet / tailgate",
+      "hours": 1.0
+    },
+    "rr_door": {
+      "label": "Remove & refit door (incl. trims)",
+      "hours": 2.0
+    },
+    "rr_fender": {
+      "label": "Remove & refit fender",
+      "hours": 1.5
+    },
+    "replace_lamp": {
+      "label": "Replace headlamp / tail lamp / fog lamp",
+      "hours": 0.5
+    },
+    "replace_mirror": {
+      "label": "Replace mirror",
+      "hours": 0.5
+    },
+    "replace_windshield": {
+      "label": "Replace windshield / rear glass",
+      "hours": 2.0
+    },
+    "replace_door_glass": {
+      "label": "Replace door glass",
+      "hours": 1.0
+    },
+    "replace_radiator": {
+      "label": "Replace radiator / condenser",
+      "hours": 2.5
+    },
+    "replace_quarter": {
+      "label": "Replace quarter panel (cut & weld)",
+      "hours": 6.0
+    },
+    "repair_minor_dent": {
+      "label": "Dent repair — minor (< 10% of panel)",
+      "hours": 1.5
+    },
+    "repair_moderate_dent": {
+      "label": "Dent repair — moderate (10–30% of panel)",
+      "hours": 3.0
+    },
+    "plastic_repair": {
+      "label": "Plastic repair / welding",
+      "hours": 1.5
+    },
+    "wheel_alignment": {
+      "label": "Wheel alignment & balancing (after front impact)",
+      "hours": 1.0
+    },
+    "airbag": {
+      "label": "Airbag replacement (each) incl. diagnostics",
+      "hours": 2.0
+    },
+    "replace_roof": {
+      "label": "Replace roof panel (cut & weld)",
+      "hours": 8.0
+    },
+    "rr_trim": {
+      "label": "Remove & refit grille / garnish",
+      "hours": 0.5
+    },
+    "replace_wheel": {
+      "label": "Replace wheel / tyre incl. balancing",
+      "hours": 0.5
+    },
+    "replace_battery": {
+      "label": "Replace battery",
+      "hours": 0.3
+    }
+  },
+  "vehicle_type_multiplier": {
+    "Car": 1.0,
+    "2W": 0.5,
+    "CV": 1.3
+  }
+}

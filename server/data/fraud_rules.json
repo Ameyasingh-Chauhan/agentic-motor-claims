@@ -1,1 +1,140 @@
-[]
+[
+  {
+    "id": "FR-01",
+    "name": "Location contradiction (FASTag/telematics)",
+    "description": "A FASTag or parking event within ±90 min of the reported time is more than 25 km from the reported location, or a toll on the claimed route is absent.",
+    "points": 35,
+    "level": "fail",
+    "customer_safe_reason": "We need to confirm where the vehicle was at the time of the incident.",
+    "enabled": true
+  },
+  {
+    "id": "FR-02",
+    "name": "Pre-existing damage",
+    "description": "The damage assessment reports pre-existing damage with confidence ≥ 0.70 on a claimed part.",
+    "points": 30,
+    "level": "fail",
+    "customer_safe_reason": "We need a few more photos of the damaged area.",
+    "enabled": true
+  },
+  {
+    "id": "FR-03",
+    "name": "Narrative–damage inconsistency",
+    "description": "Impact direction or severity contradicts the reported story (confidence ≥ 0.65).",
+    "points": 20,
+    "level": "fail",
+    "customer_safe_reason": "Could you describe how the incident happened in a little more detail?",
+    "enabled": true
+  },
+  {
+    "id": "FR-04",
+    "name": "Frequent claimant (IIB)",
+    "description": "Two or more OD claims in the last 12 months across insurers.",
+    "points": 15,
+    "level": "warn",
+    "customer_safe_reason": "We need details of your recent claims history.",
+    "enabled": true
+  },
+  {
+    "id": "FR-05",
+    "name": "Early claim after inception / break-in",
+    "description": "Incident within 30 days of policy start, or the policy was issued after a break in cover.",
+    "points": 15,
+    "level": "warn",
+    "customer_safe_reason": "We need your previous policy details.",
+    "enabled": true
+  },
+  {
+    "id": "FR-06",
+    "name": "Garage overquote",
+    "description": "Garage quote 15–30% above the assessed estimate (5 pts, warn) or more than 30% (15 pts, fail).",
+    "points": 15,
+    "level": "fail",
+    "customer_safe_reason": "We are reviewing the repair estimate with your garage.",
+    "enabled": true,
+    "points_warn": 5,
+    "points_fail": 15
+  },
+  {
+    "id": "FR-07",
+    "name": "Organised network link",
+    "description": "Phone, garage, surveyor or bank account shared with two or more other high-risk claims in 180 days.",
+    "points": 25,
+    "level": "fail",
+    "customer_safe_reason": "We need to verify a few contact details.",
+    "enabled": true
+  },
+  {
+    "id": "FR-08",
+    "name": "Vehicle blacklisted or reported stolen",
+    "description": "Vahan or NCRB shows the vehicle as blacklisted or stolen. Hard stop.",
+    "points": 40,
+    "level": "fail",
+    "customer_safe_reason": "We need to verify your vehicle's registration details.",
+    "enabled": true,
+    "hard_stop": true
+  },
+  {
+    "id": "FR-09",
+    "name": "RC owner differs from policyholder",
+    "description": "Owner name on RC does not match the policyholder (fuzzy ratio < 0.85) without a transfer record.",
+    "points": 15,
+    "level": "warn",
+    "customer_safe_reason": "Please share proof of vehicle ownership transfer.",
+    "enabled": true
+  },
+  {
+    "id": "FR-10",
+    "name": "Driving licence invalid",
+    "description": "Licence expired on the incident date, or its class does not cover the vehicle.",
+    "points": 20,
+    "level": "fail",
+    "customer_safe_reason": "Please share a copy of the driver's valid licence.",
+    "enabled": true
+  },
+  {
+    "id": "FR-11",
+    "name": "Photo metadata mismatch",
+    "description": "Photo EXIF time more than 24 h before the incident, or EXIF GPS more than 25 km from the reported location.",
+    "points": 15,
+    "level": "warn",
+    "customer_safe_reason": "We need a few fresh photos of the vehicle.",
+    "enabled": true
+  },
+  {
+    "id": "FR-12",
+    "name": "Late intimation",
+    "description": "Reported more than 7 days after the incident.",
+    "points": 10,
+    "level": "warn",
+    "customer_safe_reason": "Please tell us why the claim was reported after a few days.",
+    "enabled": true
+  },
+  {
+    "id": "FR-13",
+    "name": "Commercial use of private vehicle",
+    "description": "Evidence of commercial use of a privately registered vehicle.",
+    "points": 15,
+    "level": "warn",
+    "customer_safe_reason": "Please confirm how the vehicle is normally used.",
+    "enabled": true
+  },
+  {
+    "id": "FR-14",
+    "name": "Unwitnessed night single-vehicle accident",
+    "description": "Between 23:00 and 05:00, no third party and no witness.",
+    "points": 5,
+    "level": "warn",
+    "customer_safe_reason": "If anyone saw the incident, please share their contact details.",
+    "enabled": true
+  },
+  {
+    "id": "FR-15",
+    "name": "Document tampering signs",
+    "description": "The document check reports tampering indicators with confidence ≥ 0.7.",
+    "points": 25,
+    "level": "fail",
+    "customer_safe_reason": "Please upload a clearer copy of your documents.",
+    "enabled": true
+  }
+]

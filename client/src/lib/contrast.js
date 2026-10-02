@@ -82,6 +82,12 @@ export const CONTRAST_PAIRS = [
   ["--accent", "--bg-muted", 3, "Orange indicator bar on active nav item"],
   ["--border-strong", "--surface", 3, "Input border"],
   ["--on-primary", "--primary", 3, "Switch / checkbox “on” (UI glyph)"],
+  ["--tint-blue", "--tint-blue-bg", 3, "KPI icon tile — blue"],
+  ["--tint-navy", "--tint-navy-bg", 3, "KPI icon tile — navy"],
+  ["--tint-orange", "--tint-orange-bg", 3, "KPI icon tile — orange"],
+  ["--tint-green", "--tint-green-bg", 3, "KPI icon tile — green"],
+  ["--tint-red", "--tint-red-bg", 3, "KPI icon tile — red"],
+  ["--tint-amber", "--tint-amber-bg", 3, "KPI icon tile — amber"],
   ["--text-subtle", "--surface", 3, "Icons (UI glyph)"],
 ];
 

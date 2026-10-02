@@ -1,1 +1,470 @@
-{}
+{
+  "MH 14 MZ 4425": [],
+  "MH 12 LP 1243": [],
+  "MH 12 EV 7684": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2024-10-05"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2024-10-05"
+    }
+  ],
+  "KA 01 HT 5536": [],
+  "GJ 01 KB 2558": [],
+  "TS 07 HU 4040": [],
+  "TS 07 FA 8400": [],
+  "UP 16 RF 5632": [],
+  "RJ 14 JW 9341": [],
+  "MH 05 RF 0838": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2024-11-12"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2024-11-12"
+    }
+  ],
+  "HR 26 CR 7194": [],
+  "TN 01 M 4654": [],
+  "MH 14 ZM 2393": [],
+  "TS 09 VL 4218": [],
+  "KA 51 LL 4451": [],
+  "DL 3C C 6319": [],
+  "GJ 27 B 1676": [],
+  "MH 03 J 3764": [],
+  "MH 01 EJ 7443": [],
+  "MH 12 AF 5480": [],
+  "TN 22 SB 5519": [],
+  "DL 4C DZ 4047": [],
+  "MH 05 FB 4591": [],
+  "GJ 01 WM 9397": [],
+  "MH 01 P 9172": [],
+  "MH 02 YG 5022": [],
+  "MH 15 YF 3777": [],
+  "TN 01 ED 2964": [],
+  "GJ 01 B 0261": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-02-23"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-02-23"
+    }
+  ],
+  "MH 14 TB 9956": [],
+  "MH 04 EE 2352": [],
+  "MH 20 YJ 3689": [],
+  "GJ 01 KM 8617": [],
+  "MH 49 YC 0749": [],
+  "DL 4C Z 2048": [],
+  "MH 15 CK 5089": [],
+  "KA 01 M 9075": [],
+  "TN 22 ST 1862": [],
+  "DL 8C MH 7829": [],
+  "MH 47 BF 8954": [],
+  "MH 05 NB 4521": [],
+  "GJ 01 HY 8037": [],
+  "MH 14 JG 7578": [],
+  "KA 53 EZ 8868": [],
+  "MH 20 K 8902": [],
+  "TN 09 BK 6375": [],
+  "KL 01 NK 4394": [],
+  "KA 01 DK 3524": [],
+  "MH 49 PY 6933": [],
+  "MH 14 T 6077": [],
+  "MH 47 HY 0195": [],
+  "MH 04 PE 0618": [],
+  "TN 01 YJ 3338": [],
+  "MH 47 X 0405": [],
+  "MH 03 GZ 3132": [],
+  "TN 09 JE 4690": [],
+  "HR 26 TM 9932": [],
+  "MH 12 AB 1234": [],
+  "UP 16 TV 6032": [],
+  "MH 01 DS 6559": [],
+  "KA 05 L 3878": [],
+  "UP 32 HN 5399": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-08-06"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-08-06"
+    }
+  ],
+  "KL 07 XJ 8535": [],
+  "KA 53 AJ 6169": [],
+  "MH 01 YT 8116": [],
+  "MH 31 E 0969": [],
+  "MH 31 EZ 1338": [],
+  "MH 03 GC 6572": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-08-27"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-08-27"
+    }
+  ],
+  "MH 03 DU 8024": [],
+  "TS 09 LW 6573": [],
+  "MH 49 XJ 4169": [],
+  "MH 04 K 0595": [],
+  "MH 31 GJ 1685": [],
+  "MH 12 JB 1752": [],
+  "MH 09 BW 4997": [],
+  "MH 12 KL 6050": [],
+  "DL 3C UJ 0626": [],
+  "DL 4C JT 7026": [],
+  "DL 3C H 8142": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-09-27"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2025-09-27"
+    }
+  ],
+  "MH 14 K 3428": [],
+  "RJ 14 EN 2733": [],
+  "MH 02 FV 1152": [],
+  "TN 22 R 7371": [],
+  "TN 01 C 4236": [],
+  "MH 04 VP 2376": [],
+  "MH 05 AG 4254": [],
+  "MH 02 YU 8472": [],
+  "GJ 27 DY 5140": [],
+  "KA 51 A 9940": [],
+  "TS 08 UR 9841": [],
+  "TN 37 NE 7772": [],
+  "GJ 27 ZD 9071": [],
+  "GJ 05 BK 7949": [],
+  "MH 05 XC 7297": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-01-04"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-01-04"
+    }
+  ],
+  "KA 03 F 1790": [],
+  "MH 47 J 3598": [],
+  "MH 12 S 0617": [],
+  "TN 09 PV 6162": [],
+  "MH 01 GY 6502": [],
+  "MH 12 EP 9817": [],
+  "KA 01 ER 1805": [],
+  "MH 15 EB 8907": [],
+  "DL 3C Y 4715": [],
+  "MH 03 W 9228": [],
+  "TS 07 PC 6663": [],
+  "DL 3C UT 8111": [],
+  "GJ 05 R 1329": [],
+  "MH 14 TM 5527": [],
+  "HR 26 UE 4818": [],
+  "RJ 14 M 3687": [],
+  "DL 1C C 4535": [],
+  "MH 20 KN 0453": [],
+  "KL 07 UT 2171": [],
+  "TN 09 PC 7501": [],
+  "RJ 27 MB 2421": [],
+  "DL 8C BC 0575": [],
+  "DL 1C CX 7830": [],
+  "MH 31 AF 6632": [],
+  "UP 16 E 5835": [],
+  "TS 09 C 2865": [],
+  "KL 07 B 9021": [],
+  "MH 04 SG 7207": [],
+  "KA 01 D 7806": [],
+  "MH 15 JL 3913": [],
+  "MH 03 EN 8653": [],
+  "MH 03 YZ 0732": [],
+  "MH 14 JY 7853": [],
+  "MH 31 VE 8567": [],
+  "UP 32 NF 7724": [],
+  "MH 47 SB 3855": [],
+  "KA 53 LG 5769": [],
+  "HR 26 FF 9309": [],
+  "MP 09 SF 8195": [],
+  "MH 12 VN 0911": [],
+  "MH 14 FJ 9920": [],
+  "KL 07 HG 5676": [],
+  "MH 15 W 6997": [],
+  "MH 31 B 3343": [],
+  "TS 08 ST 4776": [],
+  "RJ 14 MK 7924": [],
+  "MH 20 XN 9211": [],
+  "GJ 01 KB 9847": [],
+  "MH 12 JY 9356": [],
+  "HR 26 L 8927": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-05-25"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-05-25"
+    }
+  ],
+  "DL 3C D 4564": [],
+  "DL 4C ZL 1579": [],
+  "TN 01 W 5994": [],
+  "TN 66 PR 3211": [],
+  "MH 14 P 8272": [],
+  "MH 12 SL 3281": [],
+  "MH 01 HJ 6966": [],
+  "MP 09 Y 9735": [],
+  "HR 26 RB 5285": [],
+  "TN 37 X 5429": [],
+  "DL 4C MZ 1519": [],
+  "MH 01 GS 1164": [],
+  "DL 8C GF 4551": [],
+  "MH 14 NA 8302": [],
+  "DL 8C US 0497": [],
+  "MH 49 B 3164": [],
+  "WB 06 W 7842": [],
+  "GJ 01 A 3172": [],
+  "MH 05 PS 4958": [],
+  "MH 15 U 7170": [],
+  "MH 14 XZ 8147": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-07-11"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-07-11"
+    }
+  ],
+  "KL 07 SF 3067": [],
+  "KA 53 ZS 4286": [],
+  "RJ 14 Y 2326": [],
+  "KA 01 DX 1226": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-07-23"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-07-23"
+    }
+  ],
+  "GJ 01 SM 9675": [],
+  "KA 05 U 3818": [],
+  "MH 31 VW 0853": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-07-31"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-07-31"
+    }
+  ],
+  "KA 01 NC 4781": [],
+  "DL 1C A 1403": [],
+  "MH 09 Y 8403": [],
+  "KA 05 CL 4329": [],
+  "TN 37 LH 1896": [],
+  "MH 14 LS 1105": [],
+  "DL 8C WA 0815": [],
+  "MH 05 VM 0917": [],
+  "MH 12 MW 3916": [],
+  "TS 08 P 7985": [],
+  "GJ 05 S 6145": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-09"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-09"
+    }
+  ],
+  "MH 12 YD 7955": [],
+  "TS 09 HM 7167": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-10"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-10"
+    }
+  ],
+  "MH 49 U 2955": [],
+  "MH 12 R 6644": [],
+  "TN 01 WR 0584": [],
+  "RJ 14 JB 7612": [],
+  "GJ 05 RL 9854": [],
+  "WB 06 T 7204": [],
+  "MH 04 YY 1135": [],
+  "MH 14 FV 0709": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-24"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-24"
+    }
+  ],
+  "GJ 01 PY 2260": [],
+  "WB 02 KL 5568": [],
+  "MH 12 R 7559": [],
+  "MH 12 ZM 9951": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-27"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-08-27"
+    }
+  ],
+  "UP 16 PH 4738": [],
+  "WB 06 XX 3856": [],
+  "MH 03 N 8413": [],
+  "MH 01 SA 6597": [],
+  "MH 12 JN 6543": [],
+  "KA 05 BU 6200": [],
+  "MH 15 UN 3750": [],
+  "KL 07 ZF 2844": [],
+  "DL 8C HG 7868": [],
+  "MH 31 K 2014": [],
+  "MH 15 GY 1754": [],
+  "MH 04 TP 7545": [],
+  "GA 01 TS 1962": [],
+  "MH 12 SZ 3346": [],
+  "KA 09 DD 4673": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-08"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-08"
+    }
+  ],
+  "KA 51 AX 4036": [],
+  "TS 07 WY 2684": [],
+  "MH 20 PE 1748": [],
+  "DL 4C VL 8173": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-13"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-13"
+    }
+  ],
+  "UP 32 G 2451": [],
+  "TN 37 ZA 4936": [],
+  "KA 51 F 4760": [],
+  "GJ 27 G 0035": [],
+  "MH 12 D 3868": [],
+  "MH 05 UB 7717": [],
+  "MH 14 MD 6038": [],
+  "MH 31 PE 7836": [],
+  "MH 14 M 9310": [],
+  "MH 12 NJ 2036": [],
+  "HR 26 SL 6740": [],
+  "TS 08 WW 5121": [],
+  "WB 06 ZY 2515": [],
+  "CH 01 BK 8782": [],
+  "MH 04 GH 3301": [],
+  "MH 47 LN 6103": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-27"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-27"
+    }
+  ],
+  "MH 01 V 1690": [],
+  "KL 07 CD 5512": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-29"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-09-29"
+    }
+  ],
+  "MH 14 FL 7618": [],
+  "MH 14 EF 7788": [],
+  "HR 26 C 9722": [],
+  "KL 07 GG 5116": [],
+  "MH 12 XX 4521": [],
+  "KL 07 Y 1160": [],
+  "GJ 01 AW 8452": [],
+  "GJ 01 M 6007": [],
+  "HR 26 W 9493": [],
+  "MH 47 YD 5806": [],
+  "MH 14 GC 1597": [],
+  "MH 12 DV 4874": [],
+  "UP 16 UG 4206": [
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-10-02"
+    },
+    {
+      "insurer": "Other insurer",
+      "type": "OD",
+      "date": "2026-10-02"
+    }
+  ],
+  "MH 05 TJ 3475": []
+}

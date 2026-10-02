@@ -84,6 +84,27 @@
   --chart-6: #64748b;
   --chart-7: #93c5fd;
   --chart-8: #c2410c;
+  /* Login flowing lines (§10.1): orange left of the form, blue right */
+  --flow-base-opacity: 0.16;
+  --flow-highlight-opacity: 0.55;
+  --flow-glow-opacity: 0;
+  /* KPI icon tiles: accent glyph on its own tint (decorative tint, not a surface state) */
+  --tint-blue: #1668dc;
+  --tint-blue-bg: #eaf2fe;
+  --tint-navy: #0a4db8;
+  --tint-navy-bg: #e6edf8;
+  --tint-green: var(--success);
+  --tint-green-bg: var(--success-bg);
+  --tint-red: var(--danger);
+  --tint-red-bg: var(--danger-bg);
+  --tint-orange: #c2410c;
+  --tint-orange-bg: #fff1e6;
+  --tint-amber: var(--warning);
+  --tint-amber-bg: var(--warning-bg);
+  /* Home hero decoration (inside the hero only) */
+  --hero-dot: rgba(17, 24, 39, 0.07);
+  --hero-glow-orange: rgba(249, 115, 22, 0.1);
+  --hero-glow-blue: rgba(22, 104, 220, 0.1);
 
   /* Elevation (light uses shadows) */
   --elev-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
@@ -185,6 +206,18 @@
   --chart-6: #a3a3a3;
   --chart-7: #bfdbfe;
   --chart-8: #f97316;
+  --flow-base-opacity: 0.24;
+  --flow-highlight-opacity: 0.8;
+  --flow-glow-opacity: 0.28;
+  --tint-blue: #4f9bff;
+  --tint-blue-bg: rgba(79, 155, 255, 0.14);
+  --tint-navy: #7db4ff;
+  --tint-navy-bg: rgba(125, 180, 255, 0.12);
+  --tint-orange: #fdba8c;
+  --tint-orange-bg: rgba(251, 138, 60, 0.14);
+  --hero-dot: rgba(255, 255, 255, 0.06);
+  --hero-glow-orange: rgba(251, 138, 60, 0.18);
+  --hero-glow-blue: rgba(79, 155, 255, 0.18);
 
   /* Dark mode: borders + subtle inner highlight instead of shadows */
   --elev-sm: inset 0 1px 0 rgba(255, 255, 255, 0.03);
@@ -244,6 +277,18 @@
   --color-tooltip: var(--tooltip-bg);
   --color-on-tooltip: var(--tooltip-text);
   --color-skeleton: var(--skeleton);
+  --color-tint-blue: var(--tint-blue);
+  --color-tint-blue-bg: var(--tint-blue-bg);
+  --color-tint-navy: var(--tint-navy);
+  --color-tint-navy-bg: var(--tint-navy-bg);
+  --color-tint-green: var(--tint-green);
+  --color-tint-green-bg: var(--tint-green-bg);
+  --color-tint-red: var(--tint-red);
+  --color-tint-red-bg: var(--tint-red-bg);
+  --color-tint-orange: var(--tint-orange);
+  --color-tint-orange-bg: var(--tint-orange-bg);
+  --color-tint-amber: var(--tint-amber);
+  --color-tint-amber-bg: var(--tint-amber-bg);
 
   /* Typography (§6.2) — minimum 12px */
   --font-sans: "Inter Variable", "Inter", "Segoe UI", system-ui, sans-serif;

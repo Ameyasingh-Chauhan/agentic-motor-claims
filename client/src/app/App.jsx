@@ -1,11 +1,13 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter } from "react-router";
+// react-router/dom wires ReactDOM.flushSync so navigations can opt out of transitions (instant filter updates).
+import { RouterProvider } from "react-router/dom";
 import { Providers } from "./providers";
 import { AppShell } from "../components/layout/AppShell";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { RouteError } from "../features/errors/RouteError";
 import { pages } from "./pages";
 import { can } from "../lib/permissions";
-import { LoginPage } from "../features/auth/LoginPageV2";
+import { LoginPage } from "../features/auth/LoginPage";
 
 const P = pages;
 const guard = (el, allow) => <ProtectedRoute allow={allow}>{el}</ProtectedRoute>;

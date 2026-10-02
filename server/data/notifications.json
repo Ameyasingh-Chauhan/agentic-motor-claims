@@ -2,141 +2,388 @@
   {
     "id": "n_000",
     "user_id": "u_001",
-    "title": "Claim update 1: ABC-MC-2026-000001",
-    "href": "/claims/ABC-MC-2026-000001",
-    "read": false
+    "title": "Information requested: ABC-MC-2026-000249",
+    "body": "Chaitanya Raja · Splendor+",
+    "href": "/claims/ABC-MC-2026-000249",
+    "created_at": "2026-10-02T16:40:00+05:30",
+    "read": true
   },
   {
     "id": "n_001",
     "user_id": "u_001",
-    "title": "Claim update 2: ABC-MC-2026-000002",
-    "href": "/claims/ABC-MC-2026-000002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000250",
+    "body": "Wakeeta Badal · Nexon",
+    "href": "/claims/ABC-MC-2026-000250",
+    "created_at": "2026-10-02T11:12:27+05:30",
     "read": false
   },
   {
     "id": "n_002",
     "user_id": "u_001",
-    "title": "Claim update 3: ABC-MC-2026-000003",
-    "href": "/claims/ABC-MC-2026-000003",
+    "title": "New claim in AI processing: ABC-MC-2026-000248",
+    "body": "Advika Muni · Creta",
+    "href": "/claims/ABC-MC-2026-000248",
+    "created_at": "2026-10-02T06:52:28+05:30",
     "read": false
   },
   {
     "id": "n_003",
     "user_id": "u_001",
-    "title": "Claim update 4: ABC-MC-2026-000004",
-    "href": "/claims/ABC-MC-2026-000004",
+    "title": "Referred to SIU: ABC-MC-2026-000247",
+    "body": "Pratyush Bandi · City",
+    "href": "/claims/ABC-MC-2026-000247",
+    "created_at": "2026-10-02T05:11:52+05:30",
     "read": false
   },
   {
     "id": "n_004",
     "user_id": "u_001",
-    "title": "Claim update 5: ABC-MC-2026-000005",
-    "href": "/claims/ABC-MC-2026-000005",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000246",
+    "body": "Nikita Bains · Jupiter",
+    "href": "/claims/ABC-MC-2026-000246",
+    "created_at": "2026-10-02T05:10:22+05:30",
     "read": false
   },
   {
     "id": "n_005",
     "user_id": "u_001",
-    "title": "Claim update 6: ABC-MC-2026-000006",
-    "href": "/claims/ABC-MC-2026-000006",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000245",
+    "body": "Xalak Viswanathan · Scorpio-N",
+    "href": "/claims/ABC-MC-2026-000245",
+    "created_at": "2026-10-02T04:17:53+05:30",
     "read": false
   },
   {
     "id": "n_006",
     "user_id": "u_001",
-    "title": "Claim update 7: ABC-MC-2026-000007",
-    "href": "/claims/ABC-MC-2026-000007",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000244",
+    "body": "Michael Malhotra · Splendor+",
+    "href": "/claims/ABC-MC-2026-000244",
+    "created_at": "2026-10-02T04:11:53+05:30",
     "read": true
   },
   {
     "id": "n_007",
     "user_id": "u_001",
-    "title": "Claim update 8: ABC-MC-2026-000008",
-    "href": "/claims/ABC-MC-2026-000008",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000243",
+    "body": "Widisha Chakrabarti · Alto K10",
+    "href": "/claims/ABC-MC-2026-000243",
+    "created_at": "2026-10-02T03:09:46+05:30",
     "read": true
   },
   {
     "id": "n_008",
     "user_id": "u_001",
-    "title": "Claim update 9: ABC-MC-2026-000009",
-    "href": "/claims/ABC-MC-2026-000009",
+    "title": "Referred to SIU: ABC-MC-2026-000242",
+    "body": "Hiral Khalsa · Ace Gold",
+    "href": "/claims/ABC-MC-2026-000242",
+    "created_at": "2026-10-01T06:18:41+05:30",
     "read": true
   },
   {
     "id": "n_009",
     "user_id": "u_001",
-    "title": "Claim update 10: ABC-MC-2026-000010",
-    "href": "/claims/ABC-MC-2026-000010",
+    "title": "Referred to SIU: ABC-MC-2026-000241",
+    "body": "Arjun Desai · Creta",
+    "href": "/claims/ABC-MC-2026-000241",
+    "created_at": "2026-10-01T02:42:38+05:30",
     "read": true
   },
   {
     "id": "n_010",
     "user_id": "u_001",
-    "title": "Claim update 11: ABC-MC-2026-000011",
-    "href": "/claims/ABC-MC-2026-000011",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000240",
+    "body": "Girik Prabhakar · Scorpio-N",
+    "href": "/claims/ABC-MC-2026-000240",
+    "created_at": "2026-09-30T18:45:31+05:30",
     "read": true
   },
   {
     "id": "n_011",
     "user_id": "u_001",
-    "title": "Claim update 12: ABC-MC-2026-000012",
-    "href": "/claims/ABC-MC-2026-000012",
+    "title": "Information requested: ABC-MC-2026-000237",
+    "body": "Imran Shaikh · Activa",
+    "href": "/claims/ABC-MC-2026-000237",
+    "created_at": "2026-09-30T05:03:34+05:30",
     "read": true
   },
   {
     "id": "n_012",
     "user_id": "u_001",
-    "title": "Claim update 13: ABC-MC-2026-000013",
-    "href": "/claims/ABC-MC-2026-000013",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000239",
+    "body": "Rahul Sharma · Creta",
+    "href": "/claims/ABC-MC-2026-000239",
+    "created_at": "2026-09-29T21:41:52+05:30",
     "read": true
   },
   {
     "id": "n_013",
     "user_id": "u_001",
-    "title": "Claim update 14: ABC-MC-2026-000014",
-    "href": "/claims/ABC-MC-2026-000014",
+    "title": "Awaiting your review: ABC-MC-2026-000238",
+    "body": "Gauri Lal · Bolero Pik-Up",
+    "href": "/claims/ABC-MC-2026-000238",
+    "created_at": "2026-09-29T20:16:52+05:30",
     "read": true
   },
   {
     "id": "n_014",
     "user_id": "u_001",
-    "title": "Claim update 15: ABC-MC-2026-000015",
-    "href": "/claims/ABC-MC-2026-000015",
+    "title": "Claim approved: ABC-MC-2026-000236",
+    "body": "Mason Sengupta · Dzire",
+    "href": "/claims/ABC-MC-2026-000236",
+    "created_at": "2026-09-29T13:49:36+05:30",
     "read": true
   },
   {
     "id": "n_015",
     "user_id": "u_001",
-    "title": "Claim update 16: ABC-MC-2026-000016",
-    "href": "/claims/ABC-MC-2026-000016",
+    "title": "Awaiting your review: ABC-MC-2026-000235",
+    "body": "Priya Nair · Baleno",
+    "href": "/claims/ABC-MC-2026-000235",
+    "created_at": "2026-09-29T09:42:51+05:30",
     "read": true
   },
   {
     "id": "n_016",
     "user_id": "u_001",
-    "title": "Claim update 17: ABC-MC-2026-000017",
-    "href": "/claims/ABC-MC-2026-000017",
+    "title": "Claim approved: ABC-MC-2026-000234",
+    "body": "Patrick Bawa · Bolero Pik-Up",
+    "href": "/claims/ABC-MC-2026-000234",
+    "created_at": "2026-09-28T13:04:56+05:30",
     "read": true
   },
   {
     "id": "n_017",
     "user_id": "u_001",
-    "title": "Claim update 18: ABC-MC-2026-000018",
-    "href": "/claims/ABC-MC-2026-000018",
+    "title": "Awaiting your review: ABC-MC-2026-000233",
+    "body": "Kabir Nayak · Swift",
+    "href": "/claims/ABC-MC-2026-000233",
+    "created_at": "2026-09-27T10:57:18+05:30",
     "read": true
   },
   {
     "id": "n_018",
     "user_id": "u_001",
-    "title": "Claim update 19: ABC-MC-2026-000019",
-    "href": "/claims/ABC-MC-2026-000019",
+    "title": "Awaiting your review: ABC-MC-2026-000232",
+    "body": "Kavita Joshi · Swift",
+    "href": "/claims/ABC-MC-2026-000232",
+    "created_at": "2026-09-27T10:17:36+05:30",
     "read": true
   },
   {
     "id": "n_019",
     "user_id": "u_001",
-    "title": "Claim update 20: ABC-MC-2026-000020",
-    "href": "/claims/ABC-MC-2026-000020",
+    "title": "Information requested: ABC-MC-2026-000231",
+    "body": "Praneel Murty · Classic 350",
+    "href": "/claims/ABC-MC-2026-000231",
+    "created_at": "2026-09-27T01:17:00+05:30",
     "read": true
+  },
+  {
+    "id": "n_020",
+    "user_id": "u_002",
+    "title": "Information requested: ABC-MC-2026-000249",
+    "body": "Chaitanya Raja · Splendor+",
+    "href": "/claims/ABC-MC-2026-000249",
+    "created_at": "2026-10-02T16:40:00+05:30",
+    "read": false
+  },
+  {
+    "id": "n_021",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000250",
+    "body": "Wakeeta Badal · Nexon",
+    "href": "/claims/ABC-MC-2026-000250",
+    "created_at": "2026-10-02T11:12:27+05:30",
+    "read": false
+  },
+  {
+    "id": "n_022",
+    "user_id": "u_002",
+    "title": "New claim in AI processing: ABC-MC-2026-000248",
+    "body": "Advika Muni · Creta",
+    "href": "/claims/ABC-MC-2026-000248",
+    "created_at": "2026-10-02T06:52:28+05:30",
+    "read": false
+  },
+  {
+    "id": "n_023",
+    "user_id": "u_002",
+    "title": "Referred to SIU: ABC-MC-2026-000247",
+    "body": "Pratyush Bandi · City",
+    "href": "/claims/ABC-MC-2026-000247",
+    "created_at": "2026-10-02T05:11:52+05:30",
+    "read": false
+  },
+  {
+    "id": "n_024",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000246",
+    "body": "Nikita Bains · Jupiter",
+    "href": "/claims/ABC-MC-2026-000246",
+    "created_at": "2026-10-02T05:10:22+05:30",
+    "read": false
+  },
+  {
+    "id": "n_025",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000245",
+    "body": "Xalak Viswanathan · Scorpio-N",
+    "href": "/claims/ABC-MC-2026-000245",
+    "created_at": "2026-10-02T04:17:53+05:30",
+    "read": false
+  },
+  {
+    "id": "n_026",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000244",
+    "body": "Michael Malhotra · Splendor+",
+    "href": "/claims/ABC-MC-2026-000244",
+    "created_at": "2026-10-02T04:11:53+05:30",
+    "read": true
+  },
+  {
+    "id": "n_027",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000243",
+    "body": "Widisha Chakrabarti · Alto K10",
+    "href": "/claims/ABC-MC-2026-000243",
+    "created_at": "2026-10-02T03:09:46+05:30",
+    "read": true
+  },
+  {
+    "id": "n_028",
+    "user_id": "u_002",
+    "title": "Referred to SIU: ABC-MC-2026-000242",
+    "body": "Hiral Khalsa · Ace Gold",
+    "href": "/claims/ABC-MC-2026-000242",
+    "created_at": "2026-10-01T06:18:41+05:30",
+    "read": true
+  },
+  {
+    "id": "n_029",
+    "user_id": "u_002",
+    "title": "Referred to SIU: ABC-MC-2026-000241",
+    "body": "Arjun Desai · Creta",
+    "href": "/claims/ABC-MC-2026-000241",
+    "created_at": "2026-10-01T02:42:38+05:30",
+    "read": true
+  },
+  {
+    "id": "n_030",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000240",
+    "body": "Girik Prabhakar · Scorpio-N",
+    "href": "/claims/ABC-MC-2026-000240",
+    "created_at": "2026-09-30T18:45:31+05:30",
+    "read": true
+  },
+  {
+    "id": "n_031",
+    "user_id": "u_002",
+    "title": "Information requested: ABC-MC-2026-000237",
+    "body": "Imran Shaikh · Activa",
+    "href": "/claims/ABC-MC-2026-000237",
+    "created_at": "2026-09-30T05:03:34+05:30",
+    "read": true
+  },
+  {
+    "id": "n_032",
+    "user_id": "u_002",
+    "title": "Pre-auth issued automatically: ABC-MC-2026-000239",
+    "body": "Rahul Sharma · Creta",
+    "href": "/claims/ABC-MC-2026-000239",
+    "created_at": "2026-09-29T21:41:52+05:30",
+    "read": true
+  },
+  {
+    "id": "n_033",
+    "user_id": "u_002",
+    "title": "Awaiting your review: ABC-MC-2026-000238",
+    "body": "Gauri Lal · Bolero Pik-Up",
+    "href": "/claims/ABC-MC-2026-000238",
+    "created_at": "2026-09-29T20:16:52+05:30",
+    "read": true
+  },
+  {
+    "id": "n_034",
+    "user_id": "u_002",
+    "title": "Claim approved: ABC-MC-2026-000236",
+    "body": "Mason Sengupta · Dzire",
+    "href": "/claims/ABC-MC-2026-000236",
+    "created_at": "2026-09-29T13:49:36+05:30",
+    "read": true
+  },
+  {
+    "id": "n_035",
+    "user_id": "u_002",
+    "title": "Awaiting your review: ABC-MC-2026-000235",
+    "body": "Priya Nair · Baleno",
+    "href": "/claims/ABC-MC-2026-000235",
+    "created_at": "2026-09-29T09:42:51+05:30",
+    "read": true
+  },
+  {
+    "id": "n_036",
+    "user_id": "u_002",
+    "title": "Claim approved: ABC-MC-2026-000234",
+    "body": "Patrick Bawa · Bolero Pik-Up",
+    "href": "/claims/ABC-MC-2026-000234",
+    "created_at": "2026-09-28T13:04:56+05:30",
+    "read": true
+  },
+  {
+    "id": "n_037",
+    "user_id": "u_002",
+    "title": "Awaiting your review: ABC-MC-2026-000233",
+    "body": "Kabir Nayak · Swift",
+    "href": "/claims/ABC-MC-2026-000233",
+    "created_at": "2026-09-27T10:57:18+05:30",
+    "read": true
+  },
+  {
+    "id": "n_038",
+    "user_id": "u_002",
+    "title": "Awaiting your review: ABC-MC-2026-000232",
+    "body": "Kavita Joshi · Swift",
+    "href": "/claims/ABC-MC-2026-000232",
+    "created_at": "2026-09-27T10:17:36+05:30",
+    "read": true
+  },
+  {
+    "id": "n_039",
+    "user_id": "u_002",
+    "title": "Information requested: ABC-MC-2026-000231",
+    "body": "Praneel Murty · Classic 350",
+    "href": "/claims/ABC-MC-2026-000231",
+    "created_at": "2026-09-27T01:17:00+05:30",
+    "read": true
+  },
+  {
+    "id": "n_040",
+    "user_id": "u_003",
+    "title": "Update on your claim ABC-MC-2025-000058",
+    "body": "Payment of ₹11,550 for claim ABC-MC-2025-000058 has been completed.",
+    "href": "/claims/ABC-MC-2025-000058",
+    "created_at": "2025-08-01T12:18:42+05:30",
+    "read": false
+  },
+  {
+    "id": "n_041",
+    "user_id": "u_003",
+    "title": "Update on your claim ABC-MC-2026-000230",
+    "body": "We need a little more information to process claim ABC-MC-2026-000230. Please share the requested details.",
+    "href": "/claims/ABC-MC-2026-000230",
+    "created_at": "2026-09-26T13:41:33+05:30",
+    "read": false
+  },
+  {
+    "id": "n_042",
+    "user_id": "u_003",
+    "title": "Update on your claim ABC-MC-2026-000239",
+    "body": "Good news! Cashless pre-approval for claim ABC-MC-2026-000239 has been issued to Dani Kia Service, Baner.",
+    "href": "/claims/ABC-MC-2026-000239",
+    "created_at": "2026-09-29T21:41:52+05:30",
+    "read": false
   }
 ]

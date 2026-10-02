@@ -1,1 +1,35 @@
-{}
+{
+  "per_panel": {
+    "CAR_ENTRY": {
+      "rate": 3200,
+      "metallic_surcharge": 0.1
+    },
+    "CAR_PREMIUM_HATCH": {
+      "rate": 3800,
+      "metallic_surcharge": 0.1
+    },
+    "CAR_COMPACT_SUV_SEDAN": {
+      "rate": 4200,
+      "metallic_surcharge": 0.12
+    },
+    "CAR_MID_SUV_MPV": {
+      "rate": 5200,
+      "metallic_surcharge": 0.12
+    },
+    "TW_COMMUTER": {
+      "rate": 900,
+      "metallic_surcharge": 0.0
+    },
+    "TW_PREMIUM": {
+      "rate": 1400,
+      "metallic_surcharge": 0.0
+    },
+    "CV_LCV": {
+      "rate": 3500,
+      "metallic_surcharge": 0.0
+    }
+  },
+  "blend_pct": 0.4,
+  "material_share": 0.25,
+  "material_depreciation": 0.5
+}

@@ -1,1 +1,51 @@
-{}
+{
+  "material_pct": {
+    "rubber": 50,
+    "nylon": 50,
+    "plastic": 50,
+    "tyre": 50,
+    "battery": 50,
+    "fibreglass": 30,
+    "glass": 0,
+    "airbag": 0
+  },
+  "metal_by_age_months": [
+    {
+      "max_months": 6,
+      "pct": 0
+    },
+    {
+      "max_months": 12,
+      "pct": 5
+    },
+    {
+      "max_months": 24,
+      "pct": 10
+    },
+    {
+      "max_months": 36,
+      "pct": 15
+    },
+    {
+      "max_months": 48,
+      "pct": 25
+    },
+    {
+      "max_months": 60,
+      "pct": 35
+    },
+    {
+      "max_months": 120,
+      "pct": 40
+    },
+    {
+      "max_months": null,
+      "pct": 50
+    }
+  ],
+  "consumables_line": {
+    "Car": 600,
+    "2W": 200,
+    "CV": 800
+  }
+}

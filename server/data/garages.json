@@ -1,1 +1,1062 @@
-[]
+[
+  {
+    "id": "g_001",
+    "name": "Dani Kia Service, Baner",
+    "city": "Pune",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 5,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2048601278"
+  },
+  {
+    "id": "g_002",
+    "name": "Nagarajan Auto Works, Kothrud",
+    "city": "Pune",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 4.5,
+    "avg_tat_days": 7,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2051473104"
+  },
+  {
+    "id": "g_003",
+    "name": "Thakkar Toyota Service, Baner",
+    "city": "Pune",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.2,
+    "avg_tat_days": 6,
+    "brands": [
+      "Toyota"
+    ],
+    "contact": "+91 2022171427"
+  },
+  {
+    "id": "g_004",
+    "name": "Vala Honda Service, Chembur",
+    "city": "Mumbai",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.7,
+    "avg_tat_days": 6,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2077962320"
+  },
+  {
+    "id": "g_005",
+    "name": "Chauhan Auto Works, Chembur",
+    "city": "Mumbai",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 4.1,
+    "avg_tat_days": 6,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2085698815"
+  },
+  {
+    "id": "g_006",
+    "name": "Kapoor Honda Service, Chembur",
+    "city": "Mumbai",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 3.8,
+    "avg_tat_days": 4,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2027313932"
+  },
+  {
+    "id": "g_007",
+    "name": "Salvi Kia Service, Majiwada",
+    "city": "Thane",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 8,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2093524993"
+  },
+  {
+    "id": "g_008",
+    "name": "Swaminathan Auto Works, Ghodbunder Road",
+    "city": "Thane",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.7,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2026376341"
+  },
+  {
+    "id": "g_009",
+    "name": "Sastry Kia Service, Ghodbunder Road",
+    "city": "Thane",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.7,
+    "avg_tat_days": 7,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2043689519"
+  },
+  {
+    "id": "g_010",
+    "name": "Khatri Kia Service, Nashik",
+    "city": "Nashik",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.3,
+    "avg_tat_days": 8,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2077363825"
+  },
+  {
+    "id": "g_011",
+    "name": "Agate Auto Works, Nashik",
+    "city": "Nashik",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 4.2,
+    "avg_tat_days": 5,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2046109392"
+  },
+  {
+    "id": "g_012",
+    "name": "Buch Maruti Suzuki Service, Nagpur",
+    "city": "Nagpur",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.7,
+    "avg_tat_days": 6,
+    "brands": [
+      "Maruti Suzuki"
+    ],
+    "contact": "+91 2080180947"
+  },
+  {
+    "id": "g_013",
+    "name": "Choudhry Auto Works, Nagpur",
+    "city": "Nagpur",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 4.1,
+    "avg_tat_days": 6,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2072633522"
+  },
+  {
+    "id": "g_014",
+    "name": "Mani Toyota Service, Pimpri-Chinchwad",
+    "city": "Pimpri-Chinchwad",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 3,
+    "brands": [
+      "Toyota"
+    ],
+    "contact": "+91 2048932423"
+  },
+  {
+    "id": "g_015",
+    "name": "Chaudhari Auto Works, Pimpri-Chinchwad",
+    "city": "Pimpri-Chinchwad",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 3.9,
+    "avg_tat_days": 8,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2079145394"
+  },
+  {
+    "id": "g_016",
+    "name": "Sengupta Mahindra Service, Pimpri-Chinchwad",
+    "city": "Pimpri-Chinchwad",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.0,
+    "avg_tat_days": 6,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2074309920"
+  },
+  {
+    "id": "g_017",
+    "name": "Apte Kia Service, Aurangabad",
+    "city": "Aurangabad",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.3,
+    "avg_tat_days": 3,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2036116972"
+  },
+  {
+    "id": "g_018",
+    "name": "Swaminathan Auto Works, Aurangabad",
+    "city": "Aurangabad",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 3.8,
+    "avg_tat_days": 3,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2070563108"
+  },
+  {
+    "id": "g_019",
+    "name": "Murthy Honda Service, Kolhapur",
+    "city": "Kolhapur",
+    "tier": 3,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 7,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2015994039"
+  },
+  {
+    "id": "g_020",
+    "name": "Kade Tata Service, Moti Nagar",
+    "city": "New Delhi",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 4,
+    "brands": [
+      "Tata"
+    ],
+    "contact": "+91 2010688684"
+  },
+  {
+    "id": "g_021",
+    "name": "Ranganathan Auto Works, Naraina",
+    "city": "New Delhi",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.6,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2076033634"
+  },
+  {
+    "id": "g_022",
+    "name": "Krishnamurthy Kia Service, Moti Nagar",
+    "city": "New Delhi",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.3,
+    "avg_tat_days": 6,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2088911235"
+  },
+  {
+    "id": "g_023",
+    "name": "Pall Honda Service, Gurugram",
+    "city": "Gurugram",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.3,
+    "avg_tat_days": 3,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2066073339"
+  },
+  {
+    "id": "g_024",
+    "name": "Parikh Auto Works, Gurugram",
+    "city": "Gurugram",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.7,
+    "avg_tat_days": 5,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2078142594"
+  },
+  {
+    "id": "g_025",
+    "name": "Puri Mahindra Service, Gurugram",
+    "city": "Gurugram",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.3,
+    "avg_tat_days": 4,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2060466696"
+  },
+  {
+    "id": "g_026",
+    "name": "Varghese Maruti Suzuki Service, Noida",
+    "city": "Noida",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 3.9,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki"
+    ],
+    "contact": "+91 2056575946"
+  },
+  {
+    "id": "g_027",
+    "name": "Bose Auto Works, Noida",
+    "city": "Noida",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 3.8,
+    "avg_tat_days": 6,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2053991209"
+  },
+  {
+    "id": "g_028",
+    "name": "Oak Mahindra Service, Noida",
+    "city": "Noida",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 3.9,
+    "avg_tat_days": 6,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2086721298"
+  },
+  {
+    "id": "g_029",
+    "name": "Chakraborty Toyota Service, Koramangala",
+    "city": "Bengaluru",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 4,
+    "brands": [
+      "Toyota"
+    ],
+    "contact": "+91 2068197822"
+  },
+  {
+    "id": "g_030",
+    "name": "Yogi Auto Works, Koramangala",
+    "city": "Bengaluru",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 8,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2019329269"
+  },
+  {
+    "id": "g_031",
+    "name": "Master Mahindra Service, Koramangala",
+    "city": "Bengaluru",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 4,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2016071552"
+  },
+  {
+    "id": "g_032",
+    "name": "Mani Mahindra Service, Mysuru",
+    "city": "Mysuru",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.4,
+    "avg_tat_days": 6,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2012747414"
+  },
+  {
+    "id": "g_033",
+    "name": "Shankar Auto Works, Mysuru",
+    "city": "Mysuru",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.6,
+    "avg_tat_days": 7,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2028484701"
+  },
+  {
+    "id": "g_034",
+    "name": "Dhaliwal Kia Service, Guindy",
+    "city": "Chennai",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.2,
+    "avg_tat_days": 6,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2081539513"
+  },
+  {
+    "id": "g_035",
+    "name": "More Auto Works, Ambattur",
+    "city": "Chennai",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.1,
+    "avg_tat_days": 5,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2033447159"
+  },
+  {
+    "id": "g_036",
+    "name": "Bakshi Mahindra Service, Ambattur",
+    "city": "Chennai",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.6,
+    "avg_tat_days": 6,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2048610449"
+  },
+  {
+    "id": "g_037",
+    "name": "Pillay Hyundai Service, Coimbatore",
+    "city": "Coimbatore",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.3,
+    "avg_tat_days": 3,
+    "brands": [
+      "Hyundai"
+    ],
+    "contact": "+91 2080766545"
+  },
+  {
+    "id": "g_038",
+    "name": "Patla Auto Works, Coimbatore",
+    "city": "Coimbatore",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 3,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2022498300"
+  },
+  {
+    "id": "g_039",
+    "name": "Shenoy Kia Service, Gachibowli",
+    "city": "Hyderabad",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.3,
+    "avg_tat_days": 9,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2099979425"
+  },
+  {
+    "id": "g_040",
+    "name": "Sami Auto Works, Kukatpally",
+    "city": "Hyderabad",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 7,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2086817133"
+  },
+  {
+    "id": "g_041",
+    "name": "Chana Maruti Suzuki Service, Kukatpally",
+    "city": "Hyderabad",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.1,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki"
+    ],
+    "contact": "+91 2086241241"
+  },
+  {
+    "id": "g_042",
+    "name": "Rastogi Honda Service, Ahmedabad",
+    "city": "Ahmedabad",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.1,
+    "avg_tat_days": 7,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2027799708"
+  },
+  {
+    "id": "g_043",
+    "name": "Tara Auto Works, Ahmedabad",
+    "city": "Ahmedabad",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.8,
+    "avg_tat_days": 4,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2024231875"
+  },
+  {
+    "id": "g_044",
+    "name": "Dada Toyota Service, Ahmedabad",
+    "city": "Ahmedabad",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.6,
+    "avg_tat_days": 8,
+    "brands": [
+      "Toyota"
+    ],
+    "contact": "+91 2094568783"
+  },
+  {
+    "id": "g_045",
+    "name": "Sandal Honda Service, Surat",
+    "city": "Surat",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 3,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2049062210"
+  },
+  {
+    "id": "g_046",
+    "name": "Toor Auto Works, Surat",
+    "city": "Surat",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 3.9,
+    "avg_tat_days": 6,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2044499597"
+  },
+  {
+    "id": "g_047",
+    "name": "Swaminathan Maruti Suzuki Service, Kolkata",
+    "city": "Kolkata",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 5,
+    "brands": [
+      "Maruti Suzuki"
+    ],
+    "contact": "+91 2026511507"
+  },
+  {
+    "id": "g_048",
+    "name": "Rao Auto Works, Kolkata",
+    "city": "Kolkata",
+    "tier": 1,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.8,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2057017385"
+  },
+  {
+    "id": "g_049",
+    "name": "Vohra Toyota Service, Kolkata",
+    "city": "Kolkata",
+    "tier": 1,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 8,
+    "brands": [
+      "Toyota"
+    ],
+    "contact": "+91 2092563342"
+  },
+  {
+    "id": "g_050",
+    "name": "Kuruvilla Mahindra Service, Jaipur",
+    "city": "Jaipur",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 6,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2067193390"
+  },
+  {
+    "id": "g_051",
+    "name": "Salvi Auto Works, Jaipur",
+    "city": "Jaipur",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.3,
+    "avg_tat_days": 5,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2062217045"
+  },
+  {
+    "id": "g_052",
+    "name": "Srinivas Toyota Service, Udaipur",
+    "city": "Udaipur",
+    "tier": 3,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 6,
+    "brands": [
+      "Toyota"
+    ],
+    "contact": "+91 2013176036"
+  },
+  {
+    "id": "g_053",
+    "name": "Varghese Kia Service, Lucknow",
+    "city": "Lucknow",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 9,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2026416872"
+  },
+  {
+    "id": "g_054",
+    "name": "Vasa Auto Works, Lucknow",
+    "city": "Lucknow",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.4,
+    "avg_tat_days": 3,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2082767058"
+  },
+  {
+    "id": "g_055",
+    "name": "Bakshi Hyundai Service, Indore",
+    "city": "Indore",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 3,
+    "brands": [
+      "Hyundai"
+    ],
+    "contact": "+91 2031759933"
+  },
+  {
+    "id": "g_056",
+    "name": "Kapur Auto Works, Indore",
+    "city": "Indore",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.3,
+    "avg_tat_days": 7,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2096958788"
+  },
+  {
+    "id": "g_057",
+    "name": "Dayal Maruti Suzuki Service, Vyttila",
+    "city": "Kochi",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 3.9,
+    "avg_tat_days": 6,
+    "brands": [
+      "Maruti Suzuki"
+    ],
+    "contact": "+91 2061553823"
+  },
+  {
+    "id": "g_058",
+    "name": "Bawa Auto Works, Vyttila",
+    "city": "Kochi",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2026805141"
+  },
+  {
+    "id": "g_059",
+    "name": "Virk Honda Service, Thiruvananthapuram",
+    "city": "Thiruvananthapuram",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.5,
+    "avg_tat_days": 7,
+    "brands": [
+      "Honda"
+    ],
+    "contact": "+91 2084477168"
+  },
+  {
+    "id": "g_060",
+    "name": "Chauhan Auto Works, Thiruvananthapuram",
+    "city": "Thiruvananthapuram",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 4.0,
+    "avg_tat_days": 3,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2047155703"
+  },
+  {
+    "id": "g_061",
+    "name": "Sanghvi Mahindra Service, Chandigarh",
+    "city": "Chandigarh",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.1,
+    "avg_tat_days": 8,
+    "brands": [
+      "Mahindra"
+    ],
+    "contact": "+91 2089678422"
+  },
+  {
+    "id": "g_062",
+    "name": "Singhal Auto Works, Chandigarh",
+    "city": "Chandigarh",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": true,
+    "rating": 3.8,
+    "avg_tat_days": 9,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2078994182"
+  },
+  {
+    "id": "g_063",
+    "name": "Dhar Tata Service, Bhubaneswar",
+    "city": "Bhubaneswar",
+    "tier": 2,
+    "type": "authorised",
+    "cashless": true,
+    "rating": 4.6,
+    "avg_tat_days": 5,
+    "brands": [
+      "Tata"
+    ],
+    "contact": "+91 2017550517"
+  },
+  {
+    "id": "g_064",
+    "name": "Subramaniam Auto Works, Bhubaneswar",
+    "city": "Bhubaneswar",
+    "tier": 2,
+    "type": "multibrand",
+    "cashless": false,
+    "rating": 4.3,
+    "avg_tat_days": 4,
+    "brands": [
+      "Maruti Suzuki",
+      "Hyundai",
+      "Tata",
+      "Mahindra",
+      "Honda",
+      "Kia",
+      "Toyota"
+    ],
+    "contact": "+91 2078265854"
+  },
+  {
+    "id": "g_065",
+    "name": "Karnik Kia Service, Goa (Panaji)",
+    "city": "Goa (Panaji)",
+    "tier": 3,
+    "type": "authorised",
+    "cashless": false,
+    "rating": 4.2,
+    "avg_tat_days": 5,
+    "brands": [
+      "Kia"
+    ],
+    "contact": "+91 2041207329"
+  }
+]

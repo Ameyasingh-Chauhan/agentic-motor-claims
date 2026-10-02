@@ -1,1 +1,19 @@
-{}
+{
+  "compulsory": {
+    "car_upto_1500cc": 1000,
+    "car_above_1500cc": 2000,
+    "2W": 100,
+    "CV": 500
+  },
+  "applies_to": [
+    "OD",
+    "Glass",
+    "Theft",
+    "Total loss"
+  ],
+  "total_loss_threshold_pct": 75,
+  "salvage_pct_range": [
+    15,
+    25
+  ]
+}

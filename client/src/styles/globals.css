@@ -47,46 +47,8 @@
   }
 }
 
-.login-flow-line { fill: none; stroke: url("#login-flow-gradient"); stroke: var(--blue-600); stroke-width: 1.5; stroke-dasharray: 12 18; animation: login-flow 28s linear infinite; }
-@keyframes login-flow { to { stroke-dashoffset: -900; } }
-.login-page { height: 100dvh; max-height: 100dvh; overflow: hidden; }
-.login-page > .brand-accent-line + .grid { height: calc(100dvh - 3px); min-height: 0; }
-.login-page img[alt="AutomationEdge"] { width: 220px; height: auto; }
 header img[alt="AutomationEdge"] { width: 140px !important; height: auto !important; }
 .app-sidebar img[alt="AutomationEdge"] { width: 168px !important; height: auto !important; }
-.login-page .login-flow-line { fill: none; stroke: url(#login-flow-gradient); stroke-dasharray: none; stroke-width: 2; opacity: .14; animation: none; }
-.login-page .login-flow-line.flow-reverse { stroke: url(#login-flow-gradient-reverse); }
-.login-page .login-flow-highlight { fill: none; stroke: #1668DC; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 80 920; animation: login-flow 20s linear infinite; opacity: .45; filter: url("#login-flow-glow"); }
-[data-theme="dark"] .login-page .login-flow-line { stroke: url(#login-flow-gradient-dark); }
-[data-theme="dark"] .login-page .login-flow-line.flow-reverse { stroke: url(#login-flow-gradient-dark-reverse); }
-[data-theme="dark"] .login-page .login-flow-highlight { stroke: #4F9BFF; }
-[data-theme="dark"] .login-page .login-flow-line { opacity: .22; }
-[data-theme="dark"] .login-page .login-flow-highlight { opacity: .6; }
-@media (prefers-reduced-motion: no-preference) {
-  .login-page .login-flow-highlight:nth-of-type(2) { animation-duration: 27s; animation-delay: -8s; }
-  .login-page .login-flow-highlight:nth-of-type(3) { animation-duration: 14s; animation-delay: -4s; }
-}
-@media (max-height: 820px) {
-  .login-page h1 { font-size: 30px; }
-  .login-page form, .login-page .mt-8 { margin-top: 16px; }
-  .login-page main > div.relative { padding: 16px !important; }
-  .login-page main input { height: 40px; }
-  .login-page main button { min-height: 40px; }
-  .login-page main .group { height: 48px; }
-}
-@media (max-height: 720px) {
-  .login-page section .text-white\/70 { display: none; }
-  .login-page section > div > p { font-size: 15px; }
-  .login-page section .mt-5 { margin-top: 12px; }
-  .login-page section .mt-4 { margin-top: 8px; }
-  .login-page section .mt-8 { margin-top: 16px; }
-}
-@media (max-height: 640px) {
-  .login-page section h1 { display: none; }
-  .login-page section > div > p { display: none; }
-  .login-page section .mt-5 { display: none; }
-  .login-page section .mt-4 { display: none; }
-}
 
 @layer utilities {
   /* Tabular numerals for tables, KPIs and money (§6.2) */
@@ -238,17 +200,4 @@ header img[alt="AutomationEdge"] { width: 140px !important; height: auto !import
   .spin {
     animation: spin 0.8s linear infinite !important;
   }
-}
-
-@layer utilities {
-  .login-page { height: 100dvh !important; min-height: 0 !important; max-height: 100dvh !important; overflow: hidden !important; }
-  .login-page > .brand-accent-line + .grid { height: calc(100dvh - 3px) !important; min-height: 0 !important; }
-}
-@media (max-height: 820px) {
-  .login-page main > div.relative { padding: 16px !important; }
-  .login-page main input { height: 40px !important; }
-  .login-page main .group { height: 48px !important; }
-}
-@media (max-height: 720px) {
-  .login-page main .group { height: 44px !important; }
 }

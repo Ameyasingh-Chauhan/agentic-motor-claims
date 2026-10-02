@@ -1,1 +1,302 @@
-[]
+[
+  {
+    "city": "Pune",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 18.52,
+    "lng": 73.86,
+    "rto_codes": [
+      "MH 12",
+      "MH 14"
+    ]
+  },
+  {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 19.08,
+    "lng": 72.88,
+    "rto_codes": [
+      "MH 01",
+      "MH 02",
+      "MH 03",
+      "MH 47"
+    ]
+  },
+  {
+    "city": "Thane",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 19.22,
+    "lng": 72.98,
+    "rto_codes": [
+      "MH 04",
+      "MH 05"
+    ]
+  },
+  {
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "tier": 2,
+    "lat": 20.0,
+    "lng": 73.79,
+    "rto_codes": [
+      "MH 15"
+    ]
+  },
+  {
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "tier": 2,
+    "lat": 21.15,
+    "lng": 79.09,
+    "rto_codes": [
+      "MH 31",
+      "MH 49"
+    ]
+  },
+  {
+    "city": "Pimpri-Chinchwad",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 18.63,
+    "lng": 73.8,
+    "rto_codes": [
+      "MH 14"
+    ]
+  },
+  {
+    "city": "Aurangabad",
+    "state": "Maharashtra",
+    "tier": 2,
+    "lat": 19.88,
+    "lng": 75.34,
+    "rto_codes": [
+      "MH 20"
+    ]
+  },
+  {
+    "city": "Kolhapur",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 16.7,
+    "lng": 74.24,
+    "rto_codes": [
+      "MH 09"
+    ]
+  },
+  {
+    "city": "New Delhi",
+    "state": "Delhi",
+    "tier": 1,
+    "lat": 28.61,
+    "lng": 77.21,
+    "rto_codes": [
+      "DL 3C",
+      "DL 8C",
+      "DL 4C",
+      "DL 1C"
+    ]
+  },
+  {
+    "city": "Gurugram",
+    "state": "Haryana",
+    "tier": 1,
+    "lat": 28.46,
+    "lng": 77.03,
+    "rto_codes": [
+      "HR 26"
+    ]
+  },
+  {
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "tier": 1,
+    "lat": 28.54,
+    "lng": 77.39,
+    "rto_codes": [
+      "UP 16"
+    ]
+  },
+  {
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "tier": 1,
+    "lat": 12.97,
+    "lng": 77.59,
+    "rto_codes": [
+      "KA 01",
+      "KA 03",
+      "KA 05",
+      "KA 51",
+      "KA 53"
+    ]
+  },
+  {
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "tier": 2,
+    "lat": 12.3,
+    "lng": 76.64,
+    "rto_codes": [
+      "KA 09"
+    ]
+  },
+  {
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "tier": 1,
+    "lat": 13.08,
+    "lng": 80.27,
+    "rto_codes": [
+      "TN 01",
+      "TN 09",
+      "TN 22"
+    ]
+  },
+  {
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "tier": 2,
+    "lat": 11.02,
+    "lng": 76.96,
+    "rto_codes": [
+      "TN 37",
+      "TN 66"
+    ]
+  },
+  {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "tier": 1,
+    "lat": 17.39,
+    "lng": 78.49,
+    "rto_codes": [
+      "TS 09",
+      "TS 07",
+      "TS 08"
+    ]
+  },
+  {
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "tier": 1,
+    "lat": 23.02,
+    "lng": 72.57,
+    "rto_codes": [
+      "GJ 01",
+      "GJ 27"
+    ]
+  },
+  {
+    "city": "Surat",
+    "state": "Gujarat",
+    "tier": 2,
+    "lat": 21.17,
+    "lng": 72.83,
+    "rto_codes": [
+      "GJ 05"
+    ]
+  },
+  {
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "tier": 1,
+    "lat": 22.57,
+    "lng": 88.36,
+    "rto_codes": [
+      "WB 02",
+      "WB 06"
+    ]
+  },
+  {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "tier": 2,
+    "lat": 26.91,
+    "lng": 75.79,
+    "rto_codes": [
+      "RJ 14"
+    ]
+  },
+  {
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 24.59,
+    "lng": 73.71,
+    "rto_codes": [
+      "RJ 27"
+    ]
+  },
+  {
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "tier": 2,
+    "lat": 26.85,
+    "lng": 80.95,
+    "rto_codes": [
+      "UP 32"
+    ]
+  },
+  {
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "tier": 2,
+    "lat": 22.72,
+    "lng": 75.86,
+    "rto_codes": [
+      "MP 09"
+    ]
+  },
+  {
+    "city": "Kochi",
+    "state": "Kerala",
+    "tier": 2,
+    "lat": 9.93,
+    "lng": 76.27,
+    "rto_codes": [
+      "KL 07"
+    ]
+  },
+  {
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "tier": 2,
+    "lat": 8.52,
+    "lng": 76.94,
+    "rto_codes": [
+      "KL 01"
+    ]
+  },
+  {
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "tier": 2,
+    "lat": 30.73,
+    "lng": 76.78,
+    "rto_codes": [
+      "CH 01"
+    ]
+  },
+  {
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "tier": 2,
+    "lat": 20.3,
+    "lng": 85.82,
+    "rto_codes": [
+      "OD 02"
+    ]
+  },
+  {
+    "city": "Goa (Panaji)",
+    "state": "Goa",
+    "tier": 3,
+    "lat": 15.49,
+    "lng": 73.83,
+    "rto_codes": [
+      "GA 01"
+    ]
+  }
+]

@@ -25,11 +25,32 @@ async def read_json(name: str | Path, default: Any = None) -> Any:
         return value
 
 async def write_json(name: str | Path, value: Any) -> None:
-    p = _path(name); p.parent.mkdir(parents=True, exist_ok=True)
+    p = _path(name)
     async with _lock(p):
-        tmp = p.with_suffix(p.suffix + ".tmp")
-        tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
-        os.replace(tmp, p); _cache[p] = value
+        _atomic_write(p, value)
+        _cache[p] = value
+
+def _atomic_write(p: Path, value: Any) -> None:
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_suffix(p.suffix + ".tmp")
+    tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(tmp, p)
+
+
+def read_json_sync(name: str | Path, default: Any = None) -> Any:
+    """Synchronous read for scripts and startup code (seed, reference loading). Bypasses the cache."""
+    try:
+        return json.loads(_path(name).read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return default
+
+
+def write_json_sync(name: str | Path, value: Any) -> None:
+    """Synchronous atomic write for scripts (seed). Drops any cached copy so the server re-reads it."""
+    p = _path(name)
+    _atomic_write(p, value)
+    _cache.pop(p, None)
+
 
 def invalidate(name: str | Path | None = None) -> None:
     if name is None: _cache.clear()

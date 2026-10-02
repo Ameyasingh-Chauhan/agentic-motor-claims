@@ -110,6 +110,7 @@ export const Select = forwardRef(function Select(
               ref={listRef}
               id={`${id}-list`}
               role="listbox"
+              data-popover-layer=""
               aria-labelledby={id}
               className="fixed top-0 left-0 z-[75] max-h-72 overflow-y-auto rounded-md border border-border bg-surface-raised p-1 shadow-lg"
               style={{ x: pos.x, y: pos.y, minWidth: btnRef.current?.offsetWidth }}

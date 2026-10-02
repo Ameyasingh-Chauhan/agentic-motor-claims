@@ -15,7 +15,8 @@ from fastapi.middleware.gzip import GZipMiddleware
 
 from .config import get_settings, log_startup_state
 from .routers.auth import router as auth_router
-from .routers.home import router as home_router
+from .routers.claims import router as claims_router
+from .routers.stats import router as stats_router
 from .routers.notifications import router as notifications_router
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -39,7 +40,8 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(auth_router)
-    app.include_router(home_router)
+    app.include_router(claims_router)
+    app.include_router(stats_router)
     app.include_router(notifications_router)
 
     @app.get("/api/system/status")
