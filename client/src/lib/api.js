@@ -28,3 +28,14 @@ export async function api(path, { method = "GET", body, params, signal } = {}) {
   if (!res.ok) throw new ApiError(messageFrom(data, res.statusText || "Request failed"), res.status, data);
   return data;
 }
+
+/** Multipart upload to /api (POST /uploads/{claim_id}): `fields` become form fields beside `file`. Same errors as `api()`. */
+export async function uploadFile(path, file, fields = {}, { signal } = {}) {
+  const form = new FormData();
+  form.append("file", file, file.name);
+  for (const [k, v] of Object.entries(fields)) if (v != null) form.append(k, v);
+  const res = await fetch(`/api${path}`, { method: "POST", body: form, credentials: "include", signal });
+  const data = await res.json().catch(() => null);
+  if (!res.ok) throw new ApiError(messageFrom(data, res.statusText || "Upload failed"), res.status, data);
+  return data;
+}

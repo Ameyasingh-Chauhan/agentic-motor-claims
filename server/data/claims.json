@@ -180875,5 +180875,198 @@
     "amount_approved": 10290.0,
     "risk_score": 0,
     "risk_band": "low"
+  },
+  {
+    "id": "ABC-MC-2026-000251",
+    "status": "SUBMITTED",
+    "created_at": "2026-10-04T02:50:01+05:30",
+    "updated_at": "2026-10-04T02:50:01+05:30",
+    "channel": "app",
+    "origin": "app",
+    "customer_id": "c_0028",
+    "policy_no": "ABC/PC/2026/427672",
+    "vehicle_id": "v_0029",
+    "claim_type": "OD",
+    "incident": {
+      "type": "front_collision",
+      "label": "Front collision",
+      "datetime": "2026-10-03T18:17:00+05:30",
+      "reported_at": "2026-10-04T02:50:01+05:30",
+      "location": {
+        "text": "Western Express Highway near Andheri flyover",
+        "city": "Mumbai",
+        "lat": 19.1197,
+        "lng": 72.8468
+      },
+      "narrative_original": "The car ahead braked suddenly on the Western Express Highway near the Andheri flyover and I could not stop in time. The front bumper, grille and left headlamp are broken.",
+      "narrative_language": "en",
+      "narrative_en": "The car ahead braked suddenly on the Western Express Highway near the Andheri flyover and I could not stop in time. The front bumper, grille and left headlamp are broken.",
+      "cause": "Front collision",
+      "third_party_involved": true,
+      "injuries": false,
+      "fir": null,
+      "damaged_parts_mentioned": []
+    },
+    "settlement": {
+      "mode": "reimbursement",
+      "garage_id": null,
+      "bank": null
+    },
+    "document_conditions": [],
+    "media": [
+      {
+        "id": "m_1",
+        "kind": "photo",
+        "slot": "front",
+        "url": "/api/files/ABC-MC-2026-000251/m_1.webp",
+        "thumb": "/api/files/ABC-MC-2026-000251/m_1-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000251/m_1-original.jpg",
+        "caption": "Front of the car after the impact",
+        "uploaded_at": "2026-10-04T02:49:58+05:30",
+        "uploaded_by": "u_002",
+        "credit": null,
+        "mime": "image/jpeg",
+        "size_kb": 1127,
+        "original_name": "front.jpg",
+        "width": 1199,
+        "height": 1600,
+        "blur_data": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMABAAAsBMJZwCsAEK/MSniigA9GwLOyl6dTNZuPsvylP8BmjvSuVzWlMex3KTuJLMdCnnh5uGZwAA",
+        "exif": {
+          "captured_at": "2026-10-03T18:42:00+05:30",
+          "lat": 19.1197,
+          "lng": 72.8468,
+          "device": "samsung Galaxy S23"
+        },
+        "quality": {
+          "blur_score": 2281.5,
+          "brightness": 0.4,
+          "ok": true
+        }
+      },
+      {
+        "id": "m_2",
+        "kind": "photo",
+        "slot": "closeup",
+        "url": "/api/files/ABC-MC-2026-000251/m_2.webp",
+        "thumb": "/api/files/ABC-MC-2026-000251/m_2-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000251/m_2-original.jpg",
+        "caption": "Close-up of the broken headlamp",
+        "uploaded_at": "2026-10-04T02:49:59+05:30",
+        "uploaded_by": "u_002",
+        "credit": null,
+        "mime": "image/jpeg",
+        "size_kb": 51,
+        "original_name": "closeup.jpg",
+        "width": 612,
+        "height": 408,
+        "blur_data": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAAAQAgCdASoQAAsAAsBMJZwCdAEfnTSndS/oAPKWYF9XiLCC+SdurDO7rcFwsBT+p/TpgAAA",
+        "exif": {
+          "captured_at": "2026-10-03T18:42:40+05:30",
+          "lat": 19.1197,
+          "lng": 72.8468,
+          "device": "samsung Galaxy S23"
+        },
+        "quality": {
+          "blur_score": 737.5,
+          "brightness": 0.34,
+          "ok": true
+        }
+      }
+    ],
+    "documents": [
+      {
+        "id": "d_1",
+        "type": "RC",
+        "requirement": "rc",
+        "url": "/api/files/ABC-MC-2026-000251/d_1.webp",
+        "thumb": "/api/files/ABC-MC-2026-000251/d_1-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000251/d_1-original.jpg",
+        "status": "received",
+        "extracted": {},
+        "checks": [],
+        "uploaded_at": "2026-10-04T02:50:00+05:30",
+        "uploaded_by": "u_002",
+        "mime": "image/jpeg",
+        "size_kb": 153,
+        "original_name": "rc.jpg",
+        "width": 1400,
+        "height": 880,
+        "blur_data": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACwAQCdASoQAAoAAsBMJaQAAu187MkAAP73JOBi+1CIgAAA",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 2551.0,
+          "brightness": 0.94,
+          "ok": true
+        }
+      }
+    ],
+    "checks": {},
+    "damage": {
+      "items": [],
+      "pre_existing": []
+    },
+    "financials": null,
+    "fraud": null,
+    "decision": null,
+    "communications": [],
+    "assignee": null,
+    "internal_notes": [],
+    "timeline": [
+      {
+        "ts": "2026-10-04T02:50:01+05:30",
+        "actor": "u_002",
+        "type": "fnol_received",
+        "text": "FNOL received via App"
+      }
+    ],
+    "audit": [
+      {
+        "ts": "2026-10-04T02:49:56+05:30",
+        "actor": "u_002",
+        "action": "created",
+        "from": null,
+        "to": "DRAFT",
+        "reason": "Draft created via App"
+      },
+      {
+        "ts": "2026-10-04T02:50:01+05:30",
+        "actor": "u_002",
+        "action": "status_change",
+        "from": "DRAFT",
+        "to": "SUBMITTED",
+        "reason": "Submitted in app; awaiting AI pipeline"
+      }
+    ],
+    "pipeline_run_id": null,
+    "ai_processing_s": null,
+    "sla": {
+      "target_hours": 48,
+      "due_at": "2026-10-06T02:50:01+05:30",
+      "breached": false
+    },
+    "scenario_id": null,
+    "customer_name": "Arjun Manda",
+    "city": "Mumbai",
+    "garage_name": null,
+    "registration": "MH 02 VB 3124",
+    "vehicle": {
+      "make": "Maruti Suzuki",
+      "model": "Swift",
+      "type": "Car",
+      "segment": "CAR_PREMIUM_HATCH",
+      "colour": "Black",
+      "thumb": "/assets/stock/clean/clean_hatch-thumb.webp",
+      "blur_data": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoQAAwAAsBMJYwCdAEOwVFEAAD+8ghQ163L8HHazySavHJfYcf3eBe5IHDZ05gAAAA="
+    },
+    "amount_claimed": 38500.0,
+    "amount_approved": 0.0,
+    "risk_score": null,
+    "risk_band": null,
+    "garage_quote": 38500.0
   }
 ]

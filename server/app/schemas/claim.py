@@ -137,28 +137,30 @@ class Claim(_Model):
     vehicle_id: str
     claim_type: Literal["OD", "TP", "Theft", "Glass", "Total loss"]
     incident: Incident
-    settlement: dict
-    media: list[Media]
-    documents: list[Document]
-    checks: dict[str, Check]
-    damage: Damage
-    financials: Financials
-    fraud: Fraud
-    decision: Decision
-    communications: list[dict]
-    assignee: str | None
+    settlement: dict = {}
+    media: list[Media] = []
+    documents: list[Document] = []
+    checks: dict[str, Check] = {}
+    damage: Damage = Damage()
+    # Pipeline outputs: null on an app-filed claim until the agent pipeline fills them (Phase 5, §11.6).
+    financials: Financials | None = None
+    fraud: Fraud | None = None
+    decision: Decision | None = None
+    communications: list[dict] = []
+    assignee: str | None = None
     internal_notes: list[dict] = []
     timeline: list[Event]
     audit: list[dict]
-    pipeline_run_id: str | None
-    sla: dict
+    pipeline_run_id: str | None = None
+    sla: dict = {}
     scenario_id: str | None = None
+    origin: Literal["app"] | None = None  # "app" = filed in the app (wizard / Dev Tools); seeded claims have none
     # Denormalised list fields (derived by the seed from the records above; never edited separately).
     customer_name: str
     city: str
     registration: str
     vehicle: dict
-    amount_claimed: float
-    amount_approved: float
-    risk_score: int
-    risk_band: Literal["low", "medium", "high"]
+    amount_claimed: float = 0
+    amount_approved: float = 0
+    risk_score: int | None = None
+    risk_band: Literal["low", "medium", "high"] | None = None

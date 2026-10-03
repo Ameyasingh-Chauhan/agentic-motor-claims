@@ -1102,6 +1102,32 @@ Content (from the source document):
 
 ---
 
+### 11.6 Data persistence contract
+
+New claims filed in the app (wizard, Phase 6; Dev Tools sample claim) are the centrepiece of the demo. Phases 4, 5 and 6 must follow
+this contract.
+
+- **Single source of truth.** `claims.json` holds every claim. New claims are appended to it with the same schema as seeded claims
+  (§11.2) and IDs continuing the global sequence (`ABC-MC-<YYYY>-<6 digits>`, YYYY = year filed, the 6-digit counter continues from the
+  highest existing ID). A new claim starts as `DRAFT` (`POST /api/claims`), is edited with `PATCH /api/claims/{id}` while it is a draft,
+  and becomes `SUBMITTED` via `POST /api/claims/{id}/submit` (timeline + audit entries, admin notification; the agent pipeline attaches
+  to submit in Phase 5). Drafts are visible only through `GET /api/claims/{id}` to their owner and admins; lists and stats exclude them.
+- **Pipeline outputs are nullable until Phase 5.** `fraud`, `financials`, `decision`, `risk_score` and `risk_band` are `null` on a
+  submitted claim until the pipeline fills them; every API view, stat and screen handles `null` (e.g. "AI assessment pending").
+- **Private uploads.** Uploaded files are stored in `server/uploads/<claim_id>/` (photos, videos, audio, documents), never in
+  `client/public`, and served only by the authenticated endpoint `GET /api/files/<claim_id>/<file>` to the claim's owner or an admin
+  (everyone else gets 404; unauthenticated requests 401). Media/document URLs in the claim point at that endpoint.
+- **Processed on arrival** (`POST /api/uploads/{claim_id}`, multipart `file` + `kind` + `slot`): images become WebP (longest side
+  ≤ 1600 px, never upscaled) + 320 px thumbnail + base64 blur placeholder; EXIF capture time, GPS and device are extracted; a quality
+  score (blur = variance of the Laplacian, brightness = mean luminance) is computed; size and MIME type are recorded in the claim's
+  `media` (photo/video/audio) or `documents` array. The original file is kept beside the processed copy for later agent analysis.
+  `DELETE /api/uploads/{claim_id}/{media_id}` removes a file from a draft.
+- **Every write goes through `json_store`** (per-file lock, atomic temp-file + `os.replace`, read-modify-write under the lock) and updates
+  the cache immediately; the cache also re-reads a file whose mtime changed (external edits, re-seed) — so Home KPIs, the claims list,
+  search, the status donut, Needs attention, Recent activity and the Dashboard (Phase 4) include new claims instantly with no restart.
+- **Rendered identically.** Seeded and user-created claims use the same components everywhere; the only difference the UI may show is an
+  optional "Filed in app" channel badge, driven by `origin: "app"` on user-created claims (seeded claims have no `origin`).
+
 ## 12. Reference cost data & calculation rules
 
 All values are **dummy reference values for the demo**, realistic for India in 2026, stored in JSON so

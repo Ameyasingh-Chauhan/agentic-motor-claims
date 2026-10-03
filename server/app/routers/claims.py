@@ -8,7 +8,7 @@ from collections import Counter
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 
-from ..services.claim_views import SEGMENTS, customer_status, now_ist, row, to_customer_view, with_media_availability
+from ..services.claim_views import SEGMENTS, customer_status, listed, now_ist, row, to_customer_view, with_media_availability
 from ..services.json_store import read_json
 from .auth import current_user
 
@@ -18,7 +18,7 @@ SORTS = {
     "created_at:desc": (lambda c: c["created_at"], True), "created_at:asc": (lambda c: c["created_at"], False),
     "updated_at:desc": (lambda c: c["updated_at"], True),
     "amount:desc": (lambda c: c["amount_claimed"], True), "amount:asc": (lambda c: c["amount_claimed"], False),
-    "risk:desc": (lambda c: c["risk_score"], True),
+    "risk:desc": (lambda c: -1 if c.get("risk_score") is None else c["risk_score"], True),  # unscored claims last
 }
 
 
@@ -26,8 +26,10 @@ def _is_customer(user: dict) -> bool:
     return user.get("role") == "customer"
 
 
-async def _visible(user: dict) -> list[dict]:
+async def _visible(user: dict, *, drafts: bool = False) -> list[dict]:
     claims = await read_json("claims.json", [])
+    if not drafts:
+        claims = listed(claims)
     if _is_customer(user):
         return [c for c in claims if c["customer_id"] == user.get("customer_id")]
     return claims
@@ -55,7 +57,7 @@ def _filter(claims: list[dict], *, user: dict, q, vehicle_type, claim_type, city
                 return False
         amount = c["amount_claimed"]
         return ((not vt or c["vehicle"]["type"] in vt) and (not ct or c["claim_type"] in ct) and (not cities or c["city"] in cities)
-                and (not garage or c.get("garage_name") == garage) and (not bands or c["risk_band"] in bands)
+                and (not garage or c.get("garage_name") == garage) and (not bands or c.get("risk_band") in bands)
                 and (min_amount is None or amount >= min_amount) and (max_amount is None or amount <= max_amount)
                 and (not from_ or c["created_at"][:10] >= from_) and (not to or c["created_at"][:10] <= to)
                 and (pred is None or pred(c)))
@@ -75,7 +77,9 @@ async def list_claims(
     customer = _is_customer(user)
     rows = _filter(await _visible(user), user=user, q=q, vehicle_type=vehicle_type, claim_type=claim_type, city=city, garage=garage,
                    risk_band=risk_band, min_amount=min_amount, max_amount=max_amount, from_=from_, to=to, segment=segment)
-    shown = (lambda c: customer_status(c["status"])) if customer else (lambda c: c["status"])
+    # Chips: a SUBMITTED claim is waiting for the AI pipeline, so it counts (and filters) under "AI processing".
+    chip = {"SUBMITTED": "PROCESSING"}
+    shown = (lambda c: chip.get(s := customer_status(c["status"]), s)) if customer else (lambda c: chip.get(c["status"], c["status"]))
     status_counts = Counter(shown(c) for c in rows)  # live counts for the chips: every filter except status
     statuses = _csv(status)
     if statuses:
@@ -134,7 +138,7 @@ async def export_csv(
 
 @router.get("/claims/{claim_id}")
 async def get_claim(claim_id: str, user=Depends(current_user)):
-    claim = next((c for c in await _visible(user) if c["id"] == claim_id), None)
+    claim = next((c for c in await _visible(user, drafts=True) if c["id"] == claim_id), None)
     if claim is None:
         raise HTTPException(404, "Claim not found")
     claim = with_media_availability(claim)

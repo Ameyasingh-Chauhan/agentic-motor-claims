@@ -14,7 +14,7 @@ from fastapi import APIRouter, Depends
 
 from ..services.claim_views import (
     BUCKETS, CUSTOMER_BUCKETS, OPEN_STATUSES, PAID_STATUSES, PENDING_ACTION, customer_status, fraud_saving, fy_start, is_auto, is_decided,
-    is_fraud_detected, now_ist, sla_state, status_at, to_customer_view, ts,
+    is_fraud_detected, listed, now_ist, sla_state, status_at, to_customer_view, ts,
 )
 from ..config import get_settings
 from ..services.json_store import read_json
@@ -124,28 +124,31 @@ def hero(claims: list[dict], now: datetime, *, customer: bool) -> dict:
     today = now.replace(hour=0, minute=0, second=0, microsecond=0)
     recent = [c for c in claims if ts(c["created_at"]) > now - WINDOW] or claims
     out = {"agents_online": AGENTS, "agents_total": AGENTS,
-           "avg_ai_seconds": round(mean(c.get("ai_processing_s", 0) for c in recent), 1) if recent else None}
+           "avg_ai_seconds": round(mean(ai), 1) if (ai := [c["ai_processing_s"] for c in recent if c.get("ai_processing_s")]) else None}
     todays = [c for c in claims if ts(c["created_at"]) >= today]
     if customer:
         return out | {"claims_filed": len(claims), "in_progress": sum(1 for c in claims if c["status"] in OPEN_STATUSES)}
-    return out | {"processed_today": len(todays), "flagged_today": sum(1 for c in todays if c["risk_band"] != "low")}
+    return out | {"processed_today": len(todays), "flagged_today": sum(1 for c in todays if c.get("risk_band") in ("medium", "high"))}
 
 
 def _reason(c: dict, sla: dict, *, customer: bool) -> dict:
     if customer:
         items = ((c.get("decision") or {}).get("info_request") or {}).get("items") or []
         return {"level": "warn", "text": "We need: " + ", ".join(items) if items else "We need a little more information"}
-    fired = sorted(c["fraud"]["fired"], key=lambda f: -f["points"])
+    fired = sorted((c.get("fraud") or {}).get("fired", []), key=lambda f: -f["points"])
+    fin = c.get("financials") or {}
     top = fired[0]["name"] if fired else None
     if c["status"] == "SIU_INVESTIGATION":
         base = {"level": "fail", "text": f"SIU referral · {top}" if top else "SIU referral"}
     elif c["status"] == "INFO_REQUESTED":
-        items = (c["decision"].get("info_request") or {}).get("items") or ["documents"]
+        items = ((c.get("decision") or {}).get("info_request") or {}).get("items") or ["documents"]
         base = {"level": "warn", "text": f"Awaiting customer · {items[0]}"}
-    elif c["financials"]["total_loss_check"]["is_total_loss"]:
+    elif (fin.get("total_loss_check") or {}).get("is_total_loss"):
         base = {"level": "warn", "text": "Total loss · handler review"}
-    elif c["financials"].get("variance_level") in ("warn", "fail"):
-        base = {"level": "warn", "text": f"Garage quote {c['financials']['variance_pct']:.0f}% above estimate"}
+    elif fin.get("variance_level") in ("warn", "fail"):
+        base = {"level": "warn", "text": f"Garage quote {fin['variance_pct']:.0f}% above estimate"}
+    elif c.get("fraud") is None:
+        base = {"level": "warn", "text": "AI assessment pending"}
     else:
         base = {"level": "warn", "text": f"Medium risk · {top}" if top else "Handler review"}
     if sla["breached"]:
@@ -162,7 +165,7 @@ def needs_attention(claims: list[dict], now: datetime, *, customer: bool) -> lis
         if c["status"] not in statuses:
             continue
         sla = sla_state(c, now)
-        priority = (3 if sla["breached"] else 2 if sla["due_soon"] else 0) + (2 if c["status"] == "SIU_INVESTIGATION" else 0) + c["risk_score"] / 100
+        priority = (3 if sla["breached"] else 2 if sla["due_soon"] else 0) + (2 if c["status"] == "SIU_INVESTIGATION" else 0) + (c.get("risk_score") or 0) / 100
         rows.append((priority, c, sla))
     rows.sort(key=lambda r: (-r[0], r[1]["created_at"]))
     out = []
@@ -171,7 +174,7 @@ def needs_attention(claims: list[dict], now: datetime, *, customer: bool) -> lis
                 "registration": c["registration"], "vehicle": c["vehicle"], "created_at": c["created_at"], "sla": sla,
                 "reason": _reason(c, sla, customer=customer)}
         if not customer:
-            item["risk_score"] = c["risk_score"]
+            item["risk_score"] = c.get("risk_score")
         out.append(item)
     return out
 
@@ -199,7 +202,7 @@ def recent_activity(claims: list[dict], users: dict, *, customer: bool) -> list[
         source = to_customer_view(c)["timeline"] if customer else c["timeline"]
         for e in source:
             if customer or e["type"] in ACTIVITY_TYPES:
-                if not customer and e["type"] == "risk_scored" and c["risk_band"] == "low":
+                if not customer and e["type"] == "risk_scored" and c.get("risk_band") == "low":
                     continue
                 events.append((e, c))
     events.sort(key=lambda p: p[0]["ts"], reverse=True)
@@ -218,7 +221,7 @@ def recent_activity(claims: list[dict], users: dict, *, customer: bool) -> list[
 async def home_stats(user=Depends(current_user)):
     now = now_ist()
     customer = user.get("role") == "customer"
-    claims = await read_json("claims.json", [])
+    claims = listed(await read_json("claims.json", []))
     if customer:
         claims = [c for c in claims if c["customer_id"] == user.get("customer_id")]
     users = {u["id"]: u.get("display_name") for u in await read_json("users.json", [])}

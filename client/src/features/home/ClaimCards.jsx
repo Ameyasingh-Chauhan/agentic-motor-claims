@@ -1,13 +1,16 @@
 import { memo, useRef } from "react";
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { CircleX, TriangleAlert, CircleCheck } from "lucide-react";
+import { CircleX, TriangleAlert, CircleCheck, Hourglass } from "lucide-react";
 import { ClaimStatusBadge } from "../../components/ui/StatusFlag";
 import { RiskChip } from "../../components/ui/RiskChip";
 import { formatDate, formatINR } from "../../lib/format";
 import { VehicleThumb } from "./VehicleThumb";
 
-function Flags({ flags }) {
+function Flags({ flags, pending }) {
+  if (pending) {  // app-filed claim the AI pipeline has not assessed yet (§11.6)
+    return <span className="inline-flex items-center gap-1 text-caption text-muted"><Hourglass size={14} aria-hidden="true" />AI assessment pending</span>;
+  }
   if (!flags) return null;
   if (!flags.red && !flags.amber) {
     return <span className="inline-flex items-center gap-1 text-caption text-success"><CircleCheck size={14} aria-hidden="true" />No flags</span>;
@@ -41,7 +44,7 @@ const ClaimCard = memo(function ClaimCard({ c, customer, onIntent, animate }) {
             <span className="absolute top-3 left-3 rounded-sm bg-surface shadow-sm">
               <ClaimStatusBadge status={c.status} audience={customer ? "customer" : "handler"} />
             </span>
-            {!customer && (
+            {!customer && c.risk_score != null && (
               <span className="absolute top-3 right-3 rounded-sm bg-surface shadow-sm"><RiskChip score={c.risk_score} /></span>
             )}
           </div>
@@ -54,7 +57,7 @@ const ClaimCard = memo(function ClaimCard({ c, customer, onIntent, animate }) {
             <p className="truncate text-sm text-muted">{c.vehicle.make} {c.vehicle.model} · <span className="mono">{c.registration}</span></p>
             <div className="mt-auto flex items-end justify-between gap-2 pt-3">
               <span className="num text-lg text-text">{formatINR(c.amount_claimed)}</span>
-              {!customer && <Flags flags={c.flags} />}
+              {!customer && <Flags flags={c.flags} pending={c.risk_score == null} />}
             </div>
           </div>
         </Link>

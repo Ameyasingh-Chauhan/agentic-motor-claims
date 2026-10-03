@@ -1,12 +1,20 @@
 # Build progress
 
 ## Resume point
-**Stage 1 (user-provided photos) — ✅ complete (2026-10-03), awaiting the user's testing; not committed.** Last completed sub-step: **6**.
-Final state: seed re-run after the duplicate-box fix (exit 0, 250 claims, 1,027 documents, `users.json` byte-identical), `pytest -v`
-60 passed, `npm run build` and `npm run contrast` pass, uvicorn was verified on the fresh data, then stopped at the user's request (start it with `uvicorn app.main:app --reload --port 8000` from `/server`). Details: "Phase 3 Stage 1" at the end of this file.
-**Exact next step:** user tests Stage 1 (checklist in the Stage 1 summary). Then Phase 3B — Claim Detail (`/claims/:id`), BUILD_SPEC.md §10.4.
-**Temporary state:** none. `server/.cache/seed.py.bak` (pre-rewire seed) is no longer needed and can be deleted.
+**Phase 3B — follow `docs/PHASE_3B_BRIEF.md` (the user's brief, verbatim).** Stage 1 ✅ committed (`1e58b4c`).
+**Stage 2 — new-claim data persistence: ✅ complete (2026-10-04), not committed; waiting for the user to test and say "continue".**
+Last completed sub-step: **2.7 — browser pass (admin light + dark, Rahul dark + light), real data restored (sha256 identical to
+before the test; `server/uploads/` empty). pytest 69 passed, `npm run build` and `npm run contrast` pass.** Details: "Phase 3B Stage 2"
+at the end of this file.
+**Exact next step (only after "continue"):** Stage 3 — Claim Detail page (`/claims/:claimId`, BUILD_SPEC §10.4 + the brief's Stage 3
+list). Plan: 3.1 actions backend (POST /api/claims/{id}/actions status matrix, notes, messages, undo) + tests · 3.2 page shell (header +
+compact bar, flags strip, tabs, right rail, 404) · 3.3 Overview/Timeline/Damage · 3.4 Verification/Fraud/Financials · 3.5 Documents/
+Media/Communications/Audit · 3.6 actions UI (modals, optimistic, Undo) · 3.7 customer view + banned-word test · 3.8 shared-element
+transition + back-link restore · 3.9 browser pass.
+**Constraints:** no full re-seed without asking the user (~17 min); tests only on the temp-data fixture; do not commit.
+**Temporary state:** none.
 
+## Stage 1 record (2026-10-03)
 **Done this session (2026-10-03):**
 - Sub-step 1: `clean_motorcycle.jpg` verified (a 1920×1080 WebP saved with a .jpg name; Pillow reads it). Catalogued as a clean
   Royal Enfield Classic (`model_key` ROY-CLA, body motorcycle, Black, no plate box — the rear plate is edge-on) and built (1600×900).
@@ -389,3 +397,55 @@ The Phase 2 and 3A sections above overstated what was delivered. Verified state 
   `lamp_tail_01`, `scratch_01`; AVIF: `clean_scooter`, `cv_01`). The venv's Pillow reads them all; the system Python's may not read AVIF.
 - `client/public/assets/audio/scenarios/`: the five scenario voice notes are not recorded yet (README lists names and lines);
   `media[].available` is false until they exist.
+
+## Phase 3B Stage 2 — New-claim data persistence (2026-10-04)
+
+### Delivered
+- [x] BUILD_SPEC.md **§11.6 Data persistence contract** (single source of truth, private uploads, processing on arrival, json_store
+      writes + instant visibility, identical rendering, nullable pipeline outputs, `origin: "app"`).
+- [x] `json_store`: mtime-checked cache (external edits / re-seeds picked up without restarting uvicorn), file I/O in
+      `asyncio.to_thread`, `update_json` locked read-modify-write (no lost concurrent writes), per-event-loop locks, `invalidate`.
+- [x] `tests/conftest.py`: every test runs on a temporary copy of `server/data/` + `server/uploads/` (`AMC_DATA_DIR` /
+      `AMC_UPLOADS_DIR`), restored after each test; a guard fails any test that would touch the real data.
+- [x] Endpoints (`routers/filing.py`): `POST /api/claims` (draft), `PATCH /api/claims/{id}`, `POST /api/uploads/{claim_id}`
+      (multipart file + kind + slot + caption), `DELETE /api/uploads/{claim_id}/{item_id}`, `GET /api/files/{claim_id}/{file}`,
+      `POST /api/claims/{id}/submit` (validation, SUBMITTED, SLA due, timeline + audit, admin notifications, `run_id: null`).
+- [x] `services/uploads.py`: WebP ≤ 1600 px + 320 px thumb + blur placeholder, EXIF capture time / GPS / device, quality (Laplacian
+      blur score, brightness), original kept, explicit MIME types.
+- [x] Schema: `fraud/financials/decision/risk_score/risk_band` nullable, `origin`; stats, lists, sort, filters and Home cards
+      null-safe ("AI assessment pending" on unscored cards; "—" risk in the table).
+- [x] `scripts/make_sample_upload_set.py` → `client/public/assets/samples/in-app-claim/` (2 real photos with EXIF, specimen RC,
+      `sample.json`). Dev Tools "Create sample in-app claim" runs create → 3 uploads → submit through the real endpoints with a progress
+      log and Open claim / Find on Home links.
+- [x] Tests: `test_json_store.py` (3), `test_filing.py` (6, incl. the full Rahul flow: create, 2 EXIF photos + 1 document, submit, list
+      + search by ID and registration, files for owner/admin only, 401 anonymous, 404 other customer, stats +1, EXIF/thumbs in detail,
+      admin notifications, "AI processing" chip). 69 tests total.
+
+### Verification (2026-10-04, Chrome)
+- Admin (Ameya, light): Dev Tools button filed ABC-MC-2026-000252; every step logged (WebP size, EXIF time, GPS, quality). Found via
+  Home search (registration without spaces) and Ctrl+K; "Claims processed today" and Recent activity updated without a restart; card in
+  dark theme shows the uploaded photo (via `/api/files`), "Submitted", "AI assessment pending".
+- Rahul (dark + light): filed ABC-MC-2026-000253 on his own policy through the same endpoints; My claims 3 → 4, In progress 2, "Claim
+  filed via App · You"; his API view has no fraud/risk/audit/internal fields; no banned words on his Home; photo loads for him.
+- No console errors. Afterwards the real `claims.json` / `notifications.json` were restored and the test uploads deleted.
+
+### Decisions
+43. **Drafts are private**: excluded from lists, search, stats and KPIs; reachable only via `GET /api/claims/{id}` by owner/admin.
+44. **`created_at` = submission (FNOL) time**; the draft creation is kept in the audit trail (`action: "created"`).
+45. **"AI processing" chip includes SUBMITTED** (server-side grouping in `/api/claims` counts and the status filter), so Home's approved
+    chip bar is unchanged; the row badge still says "Submitted".
+46. **Who may upload**: owner while DRAFT or INFO_REQUESTED (Stage 3 "Respond to info request"), admins at any status; removal only from
+    drafts. Customers can file only on their own policies (404 otherwise); admins can file for anyone (Dev Tools sample).
+47. **Private files answer 404** to other customers (no hint that the claim exists) and 401 when signed out.
+48. **Uploaded documents start as `received`** (the Document agent verifies them in Phase 5); document quality ignores the photo
+    over-exposure rule (white paper is bright).
+49. **Sample set** uses the first active black Maruti Swift policy (ABC/PC/2026/427672, Arjun Manda — matches the black-hatch photos)
+    with a fixed EXIF time of 03 Oct 2026 18:42 IST and a ₹38,500 garage quote. Re-run `scripts/make_sample_upload_set.py` after a re-seed.
+
+### Known follow-ups
+- Narrative language detection/translation waits for the Intake agent (Phase 5): until then `narrative_en` = the customer's text.
+- The sample's EXIF time is fixed, so a sample filed days later shows a growing capture-to-report gap (a late-intimation rule may fire
+  once the pipeline runs).
+- HEIC photos (iPhone default) are not accepted yet (Pillow needs `pillow-heif`); no malware scanning of uploads.
+- The topbar bell count refreshes on page load / panel open, not live.
+- Dev Tools: raw JSON viewer, pipeline inspector, LLM mode, demo reset remain Phase 5.

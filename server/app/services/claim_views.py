@@ -10,6 +10,7 @@ from pathlib import Path
 from typing import Callable
 
 from ..config import SERVER_DIR
+from . import uploads
 
 PUBLIC_DIR = SERVER_DIR.parent / "client" / "public"
 
@@ -19,6 +20,11 @@ OPEN_STATUSES = {"SUBMITTED", "PROCESSING", "INFO_REQUESTED", "UNDER_REVIEW", "S
 PENDING_ACTION = {"INFO_REQUESTED", "UNDER_REVIEW", "SIU_INVESTIGATION"}
 PAID_STATUSES = {"APPROVED", "PREAUTH_ISSUED", "SETTLED"}
 CLOSED_UNPAID = {"DECLINED", "FRAUD_CONFIRMED", "WITHDRAWN"}
+
+
+def listed(claims: list[dict]) -> list[dict]:
+    """Claims shown in lists, stats and search: everything except unsubmitted drafts (§11.6)."""
+    return [c for c in claims if c["status"] != "DRAFT"]
 
 
 def now_ist() -> datetime:
@@ -124,7 +130,7 @@ def row(c: dict, *, customer: bool, now: datetime) -> dict:
     first_photo = next((m for m in c.get("media", []) if m["kind"] == "photo"), None)
     out = {
         "id": c["id"], "status": customer_status(c["status"]) if customer else c["status"], "created_at": c["created_at"], "updated_at": c["updated_at"],
-        "channel": c["channel"], "claim_type": c["claim_type"], "customer_name": c["customer_name"], "city": c["city"],
+        "channel": c["channel"], "origin": c.get("origin"), "claim_type": c["claim_type"], "customer_name": c["customer_name"], "city": c["city"],
         "registration": c["registration"], "vehicle": c["vehicle"], "garage_name": c.get("garage_name"),
         "incident": {"type": c["incident"]["type"], "label": c["incident"].get("label"), "description": c["incident"]["narrative_en"],
                      "datetime": c["incident"]["datetime"]},
@@ -133,7 +139,7 @@ def row(c: dict, *, customer: bool, now: datetime) -> dict:
         "sla": sla_state(c, now),
     }
     if not customer:
-        out |= {"risk_score": c["risk_score"], "risk_band": c["risk_band"], "flags": flag_counts(c), "assignee": c.get("assignee")}
+        out |= {"risk_score": c.get("risk_score"), "risk_band": c.get("risk_band"), "flags": flag_counts(c), "assignee": c.get("assignee")}
     return out
 
 
@@ -170,6 +176,10 @@ def with_media_availability(c: dict) -> dict:
     media = []
     for m in c.get("media", []):
         url = m.get("url")
-        available = bool(url) and (not url.startswith("/assets/") or (PUBLIC_DIR / url.lstrip("/")).is_file())
+        if url and url.startswith("/api/files/"):  # private upload (§11.6): server/uploads/<claim_id>/<file>
+            _, _, _, claim_id, name = url.split("/", 4)
+            available = uploads.safe_file(claim_id, name) is not None
+        else:
+            available = bool(url) and (not url.startswith("/assets/") or (PUBLIC_DIR / url.lstrip("/")).is_file())
         media.append({**m, "available": available})
     return {**c, "media": media}

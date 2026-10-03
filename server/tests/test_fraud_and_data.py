@@ -21,7 +21,7 @@ RULE_CONTEXTS = {
 @pytest.fixture(scope="module")
 def claims():
     reference.reload()
-    return read_json_sync("claims.json", [])
+    return [c for c in read_json_sync("claims.json", []) if c.get("origin") != "app"]  # seeded claims only
 
 
 @pytest.mark.parametrize("rule_id", sorted(RULE_CONTEXTS))

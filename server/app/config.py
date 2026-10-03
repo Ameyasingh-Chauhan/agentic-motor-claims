@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal
@@ -19,8 +20,9 @@ from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 SERVER_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = SERVER_DIR / "data"
-UPLOADS_DIR = SERVER_DIR / "uploads"
+# Overridable so tests (tests/conftest.py) run against a temporary copy and never touch the real data or uploads.
+DATA_DIR = Path(os.environ.get("AMC_DATA_DIR") or SERVER_DIR / "data")
+UPLOADS_DIR = Path(os.environ.get("AMC_UPLOADS_DIR") or SERVER_DIR / "uploads")
 PROMPTS_DIR = SERVER_DIR / "prompts"
 
 log = logging.getLogger("amc.config")
