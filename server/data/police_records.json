@@ -1,146 +1,114 @@
 {
-  "MH 05 RF 0838": [
+  "TN 09 C 3014": [
     {
       "type": "stolen_vehicle",
-      "number": "2149/2024",
+      "number": "2951/2024",
+      "station": "Chennai Police Station",
+      "date": "2024-09-29"
+    }
+  ],
+  "MH 03 JV 1080": [
+    {
+      "type": "stolen_vehicle",
+      "number": "1687/2024",
+      "station": "Mumbai Police Station",
+      "date": "2024-11-21"
+    }
+  ],
+  "TN 22 Y 3196": [
+    {
+      "type": "stolen_vehicle",
+      "number": "2455/2025",
+      "station": "Chennai Police Station",
+      "date": "2025-01-20"
+    }
+  ],
+  "MH 12 EK 1553": [
+    {
+      "type": "stolen_vehicle",
+      "number": "235/2025",
+      "station": "Pune Police Station",
+      "date": "2025-03-12"
+    }
+  ],
+  "MH 15 ZL 7689": [
+    {
+      "type": "stolen_vehicle",
+      "number": "945/2025",
+      "station": "Nashik Police Station",
+      "date": "2025-03-26"
+    }
+  ],
+  "WB 02 Z 8829": [
+    {
+      "type": "stolen_vehicle",
+      "number": "1234/2025",
+      "station": "Kolkata Police Station",
+      "date": "2025-10-28"
+    }
+  ],
+  "MH 05 RK 0547": [
+    {
+      "type": "stolen_vehicle",
+      "number": "1558/2025",
       "station": "Thane Police Station",
-      "date": "2024-11-12"
+      "date": "2025-12-02"
     }
   ],
-  "MH 15 YF 3777": [
+  "MH 05 CX 0229": [
     {
       "type": "stolen_vehicle",
-      "number": "806/2025",
-      "station": "Nashik Police Station",
-      "date": "2025-02-14"
+      "number": "813/2026",
+      "station": "Thane Police Station",
+      "date": "2026-03-11"
     }
   ],
-  "MH 49 YC 0749": [
+  "GJ 01 JH 8194": [
     {
       "type": "stolen_vehicle",
-      "number": "2338/2025",
-      "station": "Nagpur Police Station",
-      "date": "2025-03-31"
-    }
-  ],
-  "GJ 27 DY 5140": [
-    {
-      "type": "stolen_vehicle",
-      "number": "2303/2025",
+      "number": "1908/2026",
       "station": "Ahmedabad Police Station",
-      "date": "2025-11-25"
+      "date": "2026-04-05"
     }
   ],
-  "TS 08 UR 9841": [
+  "GJ 27 DU 5720": [
     {
       "type": "stolen_vehicle",
-      "number": "539/2025",
-      "station": "Hyderabad Police Station",
-      "date": "2025-12-01"
-    }
-  ],
-  "KL 07 B 9021": [
-    {
-      "type": "stolen_vehicle",
-      "number": "1961/2026",
-      "station": "Kochi Police Station",
-      "date": "2026-04-08"
-    }
-  ],
-  "MH 15 JL 3913": [
-    {
-      "type": "stolen_vehicle",
-      "number": "289/2026",
-      "station": "Nashik Police Station",
-      "date": "2026-04-13"
-    }
-  ],
-  "MH 31 VE 8567": [
-    {
-      "type": "stolen_vehicle",
-      "number": "123/2026",
-      "station": "Nagpur Police Station",
-      "date": "2026-04-19"
-    }
-  ],
-  "MP 09 Y 9735": [
-    {
-      "type": "stolen_vehicle",
-      "number": "905/2026",
-      "station": "Indore Police Station",
-      "date": "2026-06-08"
-    }
-  ],
-  "GJ 01 SM 9675": [
-    {
-      "type": "stolen_vehicle",
-      "number": "420/2026",
+      "number": "1157/2026",
       "station": "Ahmedabad Police Station",
-      "date": "2026-07-23"
+      "date": "2026-06-04"
     }
   ],
-  "MH 31 VW 0853": [
+  "TS 09 UL 3222": [
     {
       "type": "stolen_vehicle",
-      "number": "2182/2026",
-      "station": "Nagpur Police Station",
-      "date": "2026-07-31"
-    }
-  ],
-  "KA 05 CL 4329": [
-    {
-      "type": "stolen_vehicle",
-      "number": "1312/2026",
-      "station": "Bengaluru Police Station",
-      "date": "2026-08-01"
-    }
-  ],
-  "TS 09 HM 7167": [
-    {
-      "type": "stolen_vehicle",
-      "number": "1274/2026",
+      "number": "1469/2026",
       "station": "Hyderabad Police Station",
       "date": "2026-08-08"
     }
   ],
-  "MH 12 JN 6543": [
+  "WB 02 N 2134": [
     {
       "type": "stolen_vehicle",
-      "number": "2335/2026",
-      "station": "Pune Police Station",
-      "date": "2026-08-30"
+      "number": "2115/2026",
+      "station": "Kolkata Police Station",
+      "date": "2026-09-17"
     }
   ],
-  "KA 05 BU 6200": [
+  "MH 47 LZ 3913": [
     {
       "type": "stolen_vehicle",
-      "number": "2005/2026",
+      "number": "289/2026",
+      "station": "Mumbai Police Station",
+      "date": "2026-09-22"
+    }
+  ],
+  "KA 03 B 3289": [
+    {
+      "type": "stolen_vehicle",
+      "number": "1191/2026",
       "station": "Bengaluru Police Station",
-      "date": "2026-08-30"
-    }
-  ],
-  "KA 09 DD 4673": [
-    {
-      "type": "stolen_vehicle",
-      "number": "302/2026",
-      "station": "Mysuru Police Station",
-      "date": "2026-09-06"
-    }
-  ],
-  "KA 51 F 4760": [
-    {
-      "type": "stolen_vehicle",
-      "number": "2279/2026",
-      "station": "Bengaluru Police Station",
-      "date": "2026-09-13"
-    }
-  ],
-  "GJ 27 G 0035": [
-    {
-      "type": "stolen_vehicle",
-      "number": "2125/2026",
-      "station": "Ahmedabad Police Station",
-      "date": "2026-09-16"
+      "date": "2026-09-28"
     }
   ],
   "MH 14 EF 7788": [
@@ -148,7 +116,15 @@
       "type": "stolen_vehicle",
       "number": "PMP/1129/2026",
       "station": "Pimpri Police Station",
-      "date": "2026-09-21"
+      "date": "2026-09-22"
+    }
+  ],
+  "TN 66 K 3376": [
+    {
+      "type": "stolen_vehicle",
+      "number": "1693/2026",
+      "station": "Coimbatore Police Station",
+      "date": "2026-10-01"
     }
   ]
 }

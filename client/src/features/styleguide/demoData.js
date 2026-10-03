@@ -90,4 +90,22 @@ export const LIGHTBOX_ITEMS = [
     exif: { Camera: "Demo illustration", Captured: "30 Sep 2026, 02:15 PM IST" },
   },
   { src: `${IMG}/demo-damage-rear.svg`, caption: "Rear view (no AI annotations)", alt: "Illustration of a grey hatchback, rear view", exif: {} },
+  // Real photos: zoom is capped at native resolution (1200 × 1600 zooms in; the 360 × 240 one is already at full size).
+  {
+    src: "/assets/stock/car-front/car_front_02.webp",
+    caption: "Photo, 1200 × 1600 — zoom capped at native resolution",
+    alt: "White SUV with heavy front damage",
+    annotations: [
+      { x: 0.37, y: 0.56, w: 0.35, h: 0.23, label: "Front bumper · broken", severity: "severe" },
+      { x: 0.2, y: 0.28, w: 0.11, h: 0.12, label: "Headlamp · broken", severity: "severe" },
+      { x: 0.54, y: 0.54, w: 0.18, h: 0.3, label: "Bumper bracket · oxidised fracture", severity: "pre_existing" },
+    ],
+    exif: { Resolution: "1200 × 1600" },
+  },
+  {
+    src: "/assets/stock/clean/clean_scooter.webp",
+    caption: "Photo, 360 × 240 — already at full resolution, zoom disabled",
+    alt: "Blue scooter, side view",
+    exif: { Resolution: "360 × 240" },
+  },
 ];

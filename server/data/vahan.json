@@ -8,7 +8,7 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-05-26"
+    "registered_on": "2024-05-27"
   },
   "MH 12 XX 4521": {
     "registration": "MH 12 XX 4521",
@@ -19,7 +19,7 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-02-27"
+    "registered_on": "2024-02-28"
   },
   "KL 07 CD 5512": {
     "registration": "KL 07 CD 5512",
@@ -30,7 +30,7 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-11-24"
+    "registered_on": "2024-11-25"
   },
   "MH 14 EF 7788": {
     "registration": "MH 14 EF 7788",
@@ -41,7 +41,7 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": true,
-    "registered_on": "2025-01-15"
+    "registered_on": "2025-01-16"
   },
   "MH 04 GH 3301": {
     "registration": "MH 04 GH 3301",
@@ -52,51 +52,51 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2018-01-26"
+    "registered_on": "2018-01-27"
   },
-  "MH 01 EJ 7443": {
-    "registration": "MH 01 EJ 7443",
+  "MH 05 ZB 1114": {
+    "registration": "MH 05 ZB 1114",
     "owner": "Bina Nadig",
-    "class": "Car",
-    "make_model": "Kia Carens",
+    "class": "CV",
+    "make_model": "Mahindra Bolero Pik-Up",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-08-04"
+    "registered_on": "2025-05-05"
   },
-  "MH 15 JL 3913": {
-    "registration": "MH 15 JL 3913",
+  "MH 47 LZ 3913": {
+    "registration": "MH 47 LZ 3913",
     "owner": "Sneha Goswami",
     "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
+    "make_model": "Maruti Suzuki Dzire",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": true,
-    "registered_on": "2025-06-03"
+    "registered_on": "2022-08-05"
   },
-  "GJ 01 B 0261": {
-    "registration": "GJ 01 B 0261",
+  "RJ 14 WE 8074": {
+    "registration": "RJ 14 WE 8074",
     "owner": "Kamala Char",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Brezza",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-11-03"
+    "registered_on": "2023-10-05"
   },
-  "MH 01 SA 6597": {
-    "registration": "MH 01 SA 6597",
+  "MH 02 DN 8165": {
+    "registration": "MH 02 DN 8165",
     "owner": "Aadi Seth",
     "class": "Car",
-    "make_model": "Tata Altroz",
+    "make_model": "Maruti Suzuki Baleno",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2019-12-06"
+    "registered_on": "2025-07-04"
   },
   "MH 01 GS 1164": {
     "registration": "MH 01 GS 1164",
@@ -107,835 +107,824 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-06-03"
+    "registered_on": "2024-06-04"
   },
-  "MH 05 NB 4521": {
-    "registration": "MH 05 NB 4521",
+  "UP 32 WX 8032": {
+    "registration": "UP 32 WX 8032",
     "owner": "Krishna Kapoor",
+    "class": "Car",
+    "make_model": "Renault Kwid",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-04-04"
+  },
+  "KA 01 F 8347": {
+    "registration": "KA 01 F 8347",
+    "owner": "Bina Chad",
+    "class": "Car",
+    "make_model": "Hyundai Creta",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-06-05"
+  },
+  "MH 14 S 6623": {
+    "registration": "MH 14 S 6623",
+    "owner": "Yashica Sabharwal",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-02-04"
+  },
+  "MH 49 CK 2932": {
+    "registration": "MH 49 CK 2932",
+    "owner": "Akshay Cherian",
     "class": "Car",
     "make_model": "Kia Seltos",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-07-03"
+    "registered_on": "2022-12-05"
   },
-  "HR 26 CR 7194": {
-    "registration": "HR 26 CR 7194",
-    "owner": "Bina Chad",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-07-05"
-  },
-  "MH 20 K 8902": {
-    "registration": "MH 20 K 8902",
-    "owner": "Yashica Sabharwal",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-03-04"
-  },
-  "MH 12 LP 1243": {
-    "registration": "MH 12 LP 1243",
-    "owner": "Akshay Cherian",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2018-02-05"
-  },
-  "HR 26 SL 6740": {
-    "registration": "HR 26 SL 6740",
+  "MH 20 NK 1273": {
+    "registration": "MH 20 NK 1273",
     "owner": "Atharv Bal",
     "class": "Car",
-    "make_model": "Hyundai Creta",
+    "make_model": "Hyundai i20",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2015-12-29"
+    "registered_on": "2025-07-04"
   },
-  "UP 32 NF 7724": {
-    "registration": "UP 32 NF 7724",
+  "MH 31 RC 7898": {
+    "registration": "MH 31 RC 7898",
     "owner": "Widisha Shukla",
     "class": "Car",
-    "make_model": "Maruti Suzuki Brezza",
+    "make_model": "Mahindra XUV700",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-10-03"
+    "registered_on": "2025-12-03"
   },
-  "KA 51 AX 4036": {
-    "registration": "KA 51 AX 4036",
+  "KL 07 NW 5560": {
+    "registration": "KL 07 NW 5560",
     "owner": "Radha Nayar",
     "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
+    "make_model": "Kia Seltos",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-07-05"
+    "registered_on": "2014-04-09"
   },
-  "KL 01 NK 4394": {
-    "registration": "KL 01 NK 4394",
-    "owner": "Bahadurjit Hayre",
+  "DL 1C L 8095": {
+    "registration": "DL 1C L 8095",
+    "owner": "Chakradev Bava",
     "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
+    "make_model": "Maruti Suzuki Alto K10",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-05-04"
+    "registered_on": "2025-01-03"
   },
-  "MH 31 E 0969": {
-    "registration": "MH 31 E 0969",
-    "owner": "Anmol Dayal",
-    "class": "Car",
-    "make_model": "Tata Punch",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2015-03-09"
-  },
-  "DL 3C UT 8111": {
-    "registration": "DL 3C UT 8111",
-    "owner": "Anjali Sandal",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-10-03"
-  },
-  "MH 03 GC 6572": {
-    "registration": "MH 03 GC 6572",
-    "owner": "Owen Lall",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-11-02"
-  },
-  "MH 12 JB 1752": {
-    "registration": "MH 12 JB 1752",
-    "owner": "Peter Nanda",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-08-03"
-  },
-  "UP 32 HN 5399": {
-    "registration": "UP 32 HN 5399",
-    "owner": "Girindra Kala",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-03-04"
-  },
-  "KA 01 DK 3524": {
-    "registration": "KA 01 DK 3524",
-    "owner": "Qabil Bala",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-09-04"
-  },
-  "MH 14 TM 5527": {
-    "registration": "MH 14 TM 5527",
-    "owner": "Tarak Choudhary",
+  "HR 26 BD 6468": {
+    "registration": "HR 26 BD 6468",
+    "owner": "Tejas Varughese",
     "class": "2W",
     "make_model": "Honda Activa",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-03-05"
+    "registered_on": "2025-05-05"
   },
-  "MH 03 EN 8653": {
-    "registration": "MH 03 EN 8653",
-    "owner": "Amrita Deo",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2018-12-06"
-  },
-  "HR 26 TM 9932": {
-    "registration": "HR 26 TM 9932",
-    "owner": "Darpan Parekh",
-    "class": "Car",
-    "make_model": "Tata Nexon",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-07-04"
-  },
-  "MH 47 SB 3855": {
-    "registration": "MH 47 SB 3855",
-    "owner": "Bishakha Murty",
+  "MH 14 F 8135": {
+    "registration": "MH 14 F 8135",
+    "owner": "Oeshi Brar",
     "class": "2W",
-    "make_model": "Bajaj Pulsar NS200",
+    "make_model": "Honda Activa",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-08-04"
+    "registered_on": "2025-12-03"
   },
-  "DL 4C JT 7026": {
-    "registration": "DL 4C JT 7026",
-    "owner": "Aarini Sachdeva",
+  "KA 03 LG 5705": {
+    "registration": "KA 03 LG 5705",
+    "owner": "Adya Shetty",
     "class": "Car",
     "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-09-02"
+    "registered_on": "2024-06-04"
   },
-  "DL 3C UJ 0626": {
-    "registration": "DL 3C UJ 0626",
-    "owner": "Jason Chandra",
+  "UP 32 B 5768": {
+    "registration": "UP 32 B 5768",
+    "owner": "Eshana Venkataraman",
     "class": "Car",
-    "make_model": "Tata Punch",
+    "make_model": "Maruti Suzuki Swift",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-09-04"
+    "registered_on": "2024-03-05"
   },
-  "MH 05 UB 7717": {
-    "registration": "MH 05 UB 7717",
-    "owner": "Netra Mutti",
+  "DL 8C VC 3317": {
+    "registration": "DL 8C VC 3317",
+    "owner": "Anusha Chandra",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Wagon R",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-09-05"
+  },
+  "RJ 27 MU 4183": {
+    "registration": "RJ 27 MU 4183",
+    "owner": "Indira Dugar",
+    "class": "Car",
+    "make_model": "Honda City",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-04-06"
+  },
+  "TS 09 KL 9539": {
+    "registration": "TS 09 KL 9539",
+    "owner": "Chaitaly Loyal",
     "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
+    "make_model": "Tata Ace Gold",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-10-04"
+    "registered_on": "2024-04-04"
   },
-  "GJ 27 DY 5140": {
-    "registration": "GJ 27 DY 5140",
+  "DL 1C ZC 0577": {
+    "registration": "DL 1C ZC 0577",
+    "owner": "Hitesh Bhasin",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-11-03"
+  },
+  "MH 12 ST 6092": {
+    "registration": "MH 12 ST 6092",
+    "owner": "Aradhana Bhatt",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-11-03"
+  },
+  "MH 12 E 0502": {
+    "registration": "MH 12 E 0502",
+    "owner": "Dev Atwal",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-01-04"
+  },
+  "KA 53 TN 4256": {
+    "registration": "KA 53 TN 4256",
+    "owner": "Gopal Keer",
+    "class": "2W",
+    "make_model": "Honda Shine",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": true,
+    "stolen": false,
+    "registered_on": "2019-07-08"
+  },
+  "MH 14 YF 8511": {
+    "registration": "MH 14 YF 8511",
+    "owner": "Netra Mutti",
+    "class": "Car",
+    "make_model": "Honda City",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-07-06"
+  },
+  "MH 12 T 4229": {
+    "registration": "MH 12 T 4229",
     "owner": "Yachana Krishnamurthy",
     "class": "2W",
-    "make_model": "Hero Splendor+",
+    "make_model": "Honda Shine",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2025-11-02"
+    "stolen": false,
+    "registered_on": "2024-08-04"
   },
-  "GJ 01 HY 8037": {
-    "registration": "GJ 01 HY 8037",
+  "MH 02 VB 3124": {
+    "registration": "MH 02 VB 3124",
     "owner": "Arjun Manda",
     "class": "Car",
-    "make_model": "Tata Punch",
+    "make_model": "Maruti Suzuki Swift",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-04-05"
+    "registered_on": "2024-07-05"
   },
-  "HR 26 L 8927": {
-    "registration": "HR 26 L 8927",
+  "MH 01 G 9266": {
+    "registration": "MH 01 G 9266",
     "owner": "Hema Hora",
-    "class": "Car",
-    "make_model": "Mahindra Scorpio-N",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2018-07-07"
-  },
-  "GJ 01 KB 9847": {
-    "registration": "GJ 01 KB 9847",
-    "owner": "Baljiwan Dass",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-10-04"
-  },
-  "MH 12 EP 9817": {
-    "registration": "MH 12 EP 9817",
-    "owner": "Ishani Sagar",
-    "class": "Car",
-    "make_model": "Hyundai i20",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-07-03"
-  },
-  "WB 02 KL 5568": {
-    "registration": "WB 02 KL 5568",
-    "owner": "Jeremiah Goswami",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-08-03"
-  },
-  "GJ 05 BK 7949": {
-    "registration": "GJ 05 BK 7949",
-    "owner": "Vedant Bajaj",
-    "class": "Car",
-    "make_model": "Hyundai i20",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-02-03"
-  },
-  "MH 01 DS 6559": {
-    "registration": "MH 01 DS 6559",
-    "owner": "Divya Devi",
     "class": "2W",
     "make_model": "Honda Activa",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-08-04"
+    "registered_on": "2022-02-04"
   },
-  "DL 8C WA 0815": {
-    "registration": "DL 8C WA 0815",
-    "owner": "Harini Venkatesh",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2017-06-07"
-  },
-  "MH 01 YT 8116": {
-    "registration": "MH 01 YT 8116",
-    "owner": "Yashoda Dora",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-12-04"
-  },
-  "MH 04 K 0595": {
-    "registration": "MH 04 K 0595",
-    "owner": "Kavya Parmer",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-10-04"
-  },
-  "MH 14 ZM 2393": {
-    "registration": "MH 14 ZM 2393",
-    "owner": "Raghav Dutt",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-01-04"
-  },
-  "WB 06 W 7842": {
-    "registration": "WB 06 W 7842",
-    "owner": "Baljiwan Gera",
-    "class": "Car",
-    "make_model": "Tata Punch",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-02-01"
-  },
-  "MH 04 EE 2352": {
-    "registration": "MH 04 EE 2352",
-    "owner": "Arjun Desai",
-    "class": "Car",
-    "make_model": "Tata Altroz",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-07-05"
-  },
-  "KL 07 SF 3067": {
-    "registration": "KL 07 SF 3067",
-    "owner": "Lajita Yohannan",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-11-03"
-  },
-  "HR 26 C 9722": {
-    "registration": "HR 26 C 9722",
-    "owner": "Gauri Lal",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-06-03"
-  },
-  "DL 1C C 4535": {
-    "registration": "DL 1C C 4535",
-    "owner": "Brinda Merchant",
-    "class": "CV",
-    "make_model": "Ashok Leyland Dost+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2016-03-08"
-  },
-  "MH 14 P 8272": {
-    "registration": "MH 14 P 8272",
-    "owner": "Varsha Sami",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-09-02"
-  },
-  "CH 01 BK 8782": {
-    "registration": "CH 01 BK 8782",
-    "owner": "Praneel Murty",
-    "class": "2W",
-    "make_model": "Royal Enfield Classic 350",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-12-04"
-  },
-  "MH 47 HY 0195": {
-    "registration": "MH 47 HY 0195",
-    "owner": "Kavya Bhatt",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Brezza",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-11-02"
-  },
-  "GJ 05 R 1329": {
-    "registration": "GJ 05 R 1329",
-    "owner": "Yuvraj Date",
-    "class": "CV",
-    "make_model": "Ashok Leyland Dost+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-01-02"
-  },
-  "DL 8C MH 7829": {
-    "registration": "DL 8C MH 7829",
-    "owner": "Adweta Mitra",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-08-03"
-  },
-  "TN 01 YJ 3338": {
-    "registration": "TN 01 YJ 3338",
-    "owner": "Yatin Parmer",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-06-04"
-  },
-  "RJ 14 Y 2326": {
-    "registration": "RJ 14 Y 2326",
-    "owner": "Devika Lanka",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-07-04"
-  },
-  "TS 09 LW 6573": {
-    "registration": "TS 09 LW 6573",
-    "owner": "Ekantika Tak",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-12-04"
-  },
-  "MH 14 LS 1105": {
-    "registration": "MH 14 LS 1105",
-    "owner": "Thomas Pall",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-10-04"
-  },
-  "DL 8C GF 4551": {
-    "registration": "DL 8C GF 4551",
-    "owner": "Mohammed Sathe",
-    "class": "Car",
-    "make_model": "Honda City",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-12-04"
-  },
-  "MH 31 EZ 1338": {
-    "registration": "MH 31 EZ 1338",
-    "owner": "Amaira Saxena",
-    "class": "CV",
-    "make_model": "Tata Ace Gold",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-05-04"
-  },
-  "MH 31 AF 6632": {
-    "registration": "MH 31 AF 6632",
-    "owner": "Garima Dhar",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2018-11-05"
-  },
-  "TN 37 NE 7772": {
-    "registration": "TN 37 NE 7772",
-    "owner": "Mugdha Bains",
-    "class": "Car",
-    "make_model": "Hyundai i20",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-09-02"
-  },
-  "TN 01 M 4654": {
-    "registration": "TN 01 M 4654",
-    "owner": "Shaurya Samra",
-    "class": "Car",
-    "make_model": "Hyundai i20",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2016-01-18"
-  },
-  "MH 20 XN 9211": {
-    "registration": "MH 20 XN 9211",
-    "owner": "Advaith Loke",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Brezza",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-10-03"
-  },
-  "MH 12 SL 3281": {
-    "registration": "MH 12 SL 3281",
-    "owner": "Vamakshi Subramanian",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-04-05"
-  },
-  "MH 47 BF 8954": {
-    "registration": "MH 47 BF 8954",
-    "owner": "Amruta Narain",
-    "class": "Car",
-    "make_model": "Honda City",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-07-05"
-  },
-  "MH 12 R 6644": {
-    "registration": "MH 12 R 6644",
-    "owner": "Farhan Guha",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-02-01"
-  },
-  "MH 14 M 9310": {
-    "registration": "MH 14 M 9310",
-    "owner": "Samuel Garde",
-    "class": "Car",
-    "make_model": "Tata Punch",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-02-01"
-  },
-  "MH 03 W 9228": {
-    "registration": "MH 03 W 9228",
-    "owner": "Hritik Bala",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-08-04"
-  },
-  "MH 05 FB 4591": {
-    "registration": "MH 05 FB 4591",
-    "owner": "Vihaan Sinha",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-01-03"
-  },
-  "MH 12 D 3868": {
-    "registration": "MH 12 D 3868",
-    "owner": "Vrinda Narain",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-06-04"
-  },
-  "UP 16 E 5835": {
-    "registration": "UP 16 E 5835",
-    "owner": "Vasana Pau",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-02-01"
-  },
-  "WB 06 XX 3856": {
-    "registration": "WB 06 XX 3856",
-    "owner": "Yauvani Ratta",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-10-03"
-  },
-  "MH 14 JG 7578": {
-    "registration": "MH 14 JG 7578",
-    "owner": "Dhruv Upadhyay",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-08-04"
-  },
-  "MH 14 T 6077": {
-    "registration": "MH 14 T 6077",
-    "owner": "Ekta Suresh",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-08-03"
-  },
-  "TN 22 ST 1862": {
-    "registration": "TN 22 ST 1862",
-    "owner": "Owen Kurian",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-07-04"
-  },
-  "DL 4C DZ 4047": {
-    "registration": "DL 4C DZ 4047",
-    "owner": "Ubika Khosla",
-    "class": "CV",
-    "make_model": "Tata Ace Gold",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-12-03"
-  },
-  "DL 8C US 0497": {
-    "registration": "DL 8C US 0497",
-    "owner": "Siddharth Madan",
+  "MH 04 S 2023": {
+    "registration": "MH 04 S 2023",
+    "owner": "Irya Mittal",
     "class": "Car",
     "make_model": "Kia Carens",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-10-03"
+    "registered_on": "2024-10-04"
   },
-  "MH 04 VP 2376": {
-    "registration": "MH 04 VP 2376",
-    "owner": "Ranbir Doshi",
+  "MH 03 JV 1080": {
+    "registration": "MH 03 JV 1080",
+    "owner": "Leena Purohit",
+    "class": "2W",
+    "make_model": "TVS Jupiter",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": true,
+    "stolen": true,
+    "registered_on": "2024-03-05"
+  },
+  "MH 03 Z 4803": {
+    "registration": "MH 03 Z 4803",
+    "owner": "Mekhala Kumer",
     "class": "Car",
     "make_model": "Mahindra Scorpio-N",
     "rc_status": "active",
     "hypothecation": null,
-    "blacklisted": true,
+    "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-02-03"
+    "registered_on": "2024-11-03"
   },
-  "TN 22 SB 5519": {
-    "registration": "TN 22 SB 5519",
-    "owner": "Bakhshi Mand",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
+  "MH 12 EK 1553": {
+    "registration": "MH 12 EK 1553",
+    "owner": "Omisha Lalla",
+    "class": "2W",
+    "make_model": "Hero Splendor+",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-07-05"
+    "stolen": true,
+    "registered_on": "2025-08-04"
   },
-  "KA 01 HT 5536": {
-    "registration": "KA 01 HT 5536",
-    "owner": "Ishanvi Dave",
+  "UP 16 JL 1650": {
+    "registration": "UP 16 JL 1650",
+    "owner": "Baljiwan Varkey",
     "class": "2W",
     "make_model": "Honda Shine",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-02-03"
+    "registered_on": "2022-07-06"
   },
-  "MH 20 YJ 3689": {
-    "registration": "MH 20 YJ 3689",
-    "owner": "Mitesh Sachdev",
+  "MH 04 E 6088": {
+    "registration": "MH 04 E 6088",
+    "owner": "Advay Kibe",
     "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
+    "make_model": "Tata Punch",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-04-03"
+    "registered_on": "2023-09-05"
   },
-  "MH 14 MD 6038": {
-    "registration": "MH 14 MD 6038",
-    "owner": "Januja Chanda",
+  "MH 02 AK 5825": {
+    "registration": "MH 02 AK 5825",
+    "owner": "Mohini Parsa",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-05-05"
+  },
+  "KA 09 TE 0257": {
+    "registration": "KA 09 TE 0257",
+    "owner": "Jagrati Sharaf",
+    "class": "Car",
+    "make_model": "Hyundai Venue",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-10-04"
+  },
+  "MH 12 MR 3918": {
+    "registration": "MH 12 MR 3918",
+    "owner": "Nirja Dube",
+    "class": "2W",
+    "make_model": "Hero Splendor+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-05-06"
+  },
+  "DL 1C PP 0476": {
+    "registration": "DL 1C PP 0476",
+    "owner": "Baljiwan Gera",
+    "class": "CV",
+    "make_model": "Tata Ace Gold",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-10-04"
+  },
+  "MP 09 TG 2890": {
+    "registration": "MP 09 TG 2890",
+    "owner": "Harrison Badami",
+    "class": "Car",
+    "make_model": "Toyota Innova Hycross",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-12-03"
+  },
+  "DL 4C XT 6675": {
+    "registration": "DL 4C XT 6675",
+    "owner": "Arjun Desai",
+    "class": "Car",
+    "make_model": "Tata Nexon",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-06-04"
+  },
+  "MH 14 E 1465": {
+    "registration": "MH 14 E 1465",
+    "owner": "Gauri Lal",
+    "class": "Car",
+    "make_model": "Mahindra XUV700",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-01-05"
+  },
+  "DL 4C PT 6400": {
+    "registration": "DL 4C PT 6400",
+    "owner": "Brinda Merchant",
     "class": "2W",
     "make_model": "TVS Jupiter",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-04-03"
+    "registered_on": "2023-02-04"
   },
-  "TN 01 W 5994": {
-    "registration": "TN 01 W 5994",
-    "owner": "Yashoda Baria",
+  "TS 09 XD 7184": {
+    "registration": "TS 09 XD 7184",
+    "owner": "Varsha Sami",
     "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": true,
-    "stolen": false,
-    "registered_on": "2022-12-04"
-  },
-  "MH 04 PE 0618": {
-    "registration": "MH 04 PE 0618",
-    "owner": "Aarini Narasimhan",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
+    "make_model": "Mahindra Scorpio-N",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-08-03"
+    "registered_on": "2024-05-05"
   },
-  "MH 14 MZ 4425": {
-    "registration": "MH 14 MZ 4425",
-    "owner": "Rachita Iyengar",
+  "KL 01 FE 5921": {
+    "registration": "KL 01 FE 5921",
+    "owner": "Praneel Murty",
     "class": "2W",
     "make_model": "Honda Shine",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2019-03-07"
+    "registered_on": "2014-04-09"
   },
-  "MH 04 TP 7545": {
-    "registration": "MH 04 TP 7545",
+  "MH 12 U 6120": {
+    "registration": "MH 12 U 6120",
+    "owner": "Kavya Bhatt",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-07-04"
+  },
+  "DL 4C YW 6074": {
+    "registration": "DL 4C YW 6074",
+    "owner": "Yuvraj Date",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-08-05"
+  },
+  "OD 02 WB 3856": {
+    "registration": "OD 02 WB 3856",
+    "owner": "Adweta Mitra",
+    "class": "2W",
+    "make_model": "TVS Jupiter",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-08-06"
+  },
+  "MH 05 RK 0547": {
+    "registration": "MH 05 RK 0547",
+    "owner": "Yatin Parmer",
+    "class": "2W",
+    "make_model": "Honda Shine",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2025-03-05"
+  },
+  "OD 02 GZ 0589": {
+    "registration": "OD 02 GZ 0589",
+    "owner": "Devika Lanka",
+    "class": "CV",
+    "make_model": "Tata Ace Gold",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-04-06"
+  },
+  "DL 3C DE 7948": {
+    "registration": "DL 3C DE 7948",
+    "owner": "Ekantika Tak",
+    "class": "Car",
+    "make_model": "Tata Nexon",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-08-04"
+  },
+  "KA 51 BR 1329": {
+    "registration": "KA 51 BR 1329",
+    "owner": "Thomas Pall",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-11-04"
+  },
+  "RJ 14 XD 1769": {
+    "registration": "RJ 14 XD 1769",
+    "owner": "Mohammed Sathe",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-02-02"
+  },
+  "MH 12 EU 1272": {
+    "registration": "MH 12 EU 1272",
+    "owner": "Amaira Saxena",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-08-05"
+  },
+  "RJ 27 F 6220": {
+    "registration": "RJ 27 F 6220",
+    "owner": "Garima Dhar",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-01-03"
+  },
+  "MH 02 MG 5477": {
+    "registration": "MH 02 MG 5477",
+    "owner": "Mugdha Bains",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-09-03"
+  },
+  "MH 12 MW 7554": {
+    "registration": "MH 12 MW 7554",
+    "owner": "Shaurya Samra",
+    "class": "Car",
+    "make_model": "Tata Nexon",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-10-04"
+  },
+  "WB 02 N 2134": {
+    "registration": "WB 02 N 2134",
+    "owner": "Advaith Loke",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2023-08-05"
+  },
+  "RJ 14 JE 8943": {
+    "registration": "RJ 14 JE 8943",
+    "owner": "Vamakshi Subramanian",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-09-05"
+  },
+  "TS 08 HV 2919": {
+    "registration": "TS 08 HV 2919",
+    "owner": "Amruta Narain",
+    "class": "Car",
+    "make_model": "Tata Altroz",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-05-05"
+  },
+  "GJ 27 EM 7053": {
+    "registration": "GJ 27 EM 7053",
+    "owner": "Farhan Guha",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-10-04"
+  },
+  "KA 03 P 8587": {
+    "registration": "KA 03 P 8587",
+    "owner": "Samuel Garde",
+    "class": "Car",
+    "make_model": "Renault Kwid",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2016-03-09"
+  },
+  "KL 07 YL 0683": {
+    "registration": "KL 07 YL 0683",
+    "owner": "Hritik Bala",
+    "class": "2W",
+    "make_model": "TVS Jupiter",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-02-04"
+  },
+  "MH 04 K 1315": {
+    "registration": "MH 04 K 1315",
+    "owner": "Vihaan Sinha",
+    "class": "Car",
+    "make_model": "Kia Carens",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-07-05"
+  },
+  "TN 22 MN 7408": {
+    "registration": "TN 22 MN 7408",
+    "owner": "Vrinda Narain",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-04-04"
+  },
+  "WB 02 Z 8829": {
+    "registration": "WB 02 Z 8829",
+    "owner": "Vasana Pau",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": true,
+    "stolen": true,
+    "registered_on": "2021-07-06"
+  },
+  "TN 22 Y 3196": {
+    "registration": "TN 22 Y 3196",
+    "owner": "Yauvani Ratta",
+    "class": "2W",
+    "make_model": "Honda Shine",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2023-10-05"
+  },
+  "DL 8C DG 5490": {
+    "registration": "DL 8C DG 5490",
+    "owner": "Dhruv Upadhyay",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-05-05"
+  },
+  "MH 15 ZL 7689": {
+    "registration": "MH 15 ZL 7689",
+    "owner": "Ekta Suresh",
+    "class": "2W",
+    "make_model": "Hero Splendor+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2023-06-05"
+  },
+  "MH 04 DY 8659": {
+    "registration": "MH 04 DY 8659",
+    "owner": "Owen Kurian",
+    "class": "Car",
+    "make_model": "Toyota Innova Hycross",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-11-03"
+  },
+  "MH 12 MN 5047": {
+    "registration": "MH 12 MN 5047",
+    "owner": "Ubika Khosla",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Wagon R",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-09-05"
+  },
+  "MH 14 ET 7813": {
+    "registration": "MH 14 ET 7813",
+    "owner": "Siddharth Madan",
+    "class": "2W",
+    "make_model": "Hero Splendor+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-06-05"
+  },
+  "TN 09 C 3014": {
+    "registration": "TN 09 C 3014",
+    "owner": "Ranbir Doshi",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2022-03-06"
+  },
+  "WB 02 W 7282": {
+    "registration": "WB 02 W 7282",
+    "owner": "Bakhshi Mand",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Brezza",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-01-03"
+  },
+  "KL 07 CV 5397": {
+    "registration": "KL 07 CV 5397",
+    "owner": "Ishanvi Dave",
+    "class": "Car",
+    "make_model": "Renault Kwid",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2019-09-06"
+  },
+  "MH 03 J 7424": {
+    "registration": "MH 03 J 7424",
+    "owner": "Mitesh Sachdev",
+    "class": "Car",
+    "make_model": "Hyundai Venue",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-02-02"
+  },
+  "KA 53 KD 3593": {
+    "registration": "KA 53 KD 3593",
+    "owner": "Januja Chanda",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-07-06"
+  },
+  "MH 15 H 8671": {
+    "registration": "MH 15 H 8671",
+    "owner": "Yashoda Baria",
+    "class": "CV",
+    "make_model": "Tata Ace Gold",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-01-04"
+  },
+  "OD 02 KH 0517": {
+    "registration": "OD 02 KH 0517",
+    "owner": "Aarini Narasimhan",
+    "class": "Car",
+    "make_model": "Mahindra Scorpio-N",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-08-04"
+  },
+  "GJ 01 JH 8194": {
+    "registration": "GJ 01 JH 8194",
+    "owner": "Rachita Iyengar",
+    "class": "2W",
+    "make_model": "Hero Splendor+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2025-09-03"
+  },
+  "UP 16 DV 9338": {
+    "registration": "UP 16 DV 9338",
     "owner": "Nathan Wason",
     "class": "Car",
     "make_model": "Hyundai Creta",
@@ -943,472 +932,461 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-05-05"
+    "registered_on": "2022-05-06"
   },
-  "TS 07 PC 6663": {
-    "registration": "TS 07 PC 6663",
+  "MH 01 GM 9175": {
+    "registration": "MH 01 GM 9175",
     "owner": "Dayamai Sastry",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-02-04"
+  },
+  "MH 03 EE 4252": {
+    "registration": "MH 03 EE 4252",
+    "owner": "Farhan Pandya",
     "class": "Car",
     "make_model": "Tata Punch",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-09-04"
+    "registered_on": "2025-05-05"
   },
-  "GJ 01 SM 9675": {
-    "registration": "GJ 01 SM 9675",
-    "owner": "Farhan Pandya",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2024-03-04"
-  },
-  "TN 09 BK 6375": {
-    "registration": "TN 09 BK 6375",
+  "MH 02 GM 7565": {
+    "registration": "MH 02 GM 7565",
     "owner": "Priya Balasubramanian",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-03-04"
-  },
-  "KA 51 F 4760": {
-    "registration": "KA 51 F 4760",
-    "owner": "Vansha Verma",
     "class": "Car",
     "make_model": "Hyundai i20",
     "rc_status": "active",
     "hypothecation": null,
-    "blacklisted": true,
-    "stolen": true,
-    "registered_on": "2020-05-06"
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-11-05"
   },
-  "TS 09 VL 4218": {
-    "registration": "TS 09 VL 4218",
+  "GJ 01 YH 9428": {
+    "registration": "GJ 01 YH 9428",
+    "owner": "Vansha Verma",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-07-05"
+  },
+  "MH 47 UX 0388": {
+    "registration": "MH 47 UX 0388",
     "owner": "Hritik Dhawan",
-    "class": "CV",
-    "make_model": "Tata Ace Gold",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-10-03"
+    "registered_on": "2023-11-04"
   },
-  "DL 8C BC 0575": {
-    "registration": "DL 8C BC 0575",
+  "TN 09 W 6931": {
+    "registration": "TN 09 W 6931",
     "owner": "Eta Kumar",
-    "class": "2W",
-    "make_model": "Honda Activa",
+    "class": "Car",
+    "make_model": "Tata Nexon",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-08-03"
+    "registered_on": "2025-10-04"
   },
-  "KA 05 BU 6200": {
-    "registration": "KA 05 BU 6200",
+  "MH 01 S 5737": {
+    "registration": "MH 01 S 5737",
     "owner": "Guneet Majumdar",
     "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2024-06-03"
-  },
-  "MH 05 PS 4958": {
-    "registration": "MH 05 PS 4958",
-    "owner": "Ekaraj Wable",
-    "class": "CV",
-    "make_model": "Tata Ace Gold",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-03-04"
-  },
-  "MH 05 AG 4254": {
-    "registration": "MH 05 AG 4254",
-    "owner": "Varenya Zachariah",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-06-04"
-  },
-  "MH 05 XC 7297": {
-    "registration": "MH 05 XC 7297",
-    "owner": "Manya Chanda",
-    "class": "2W",
-    "make_model": "TVS Apache RTR 160",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-07-05"
-  },
-  "MH 47 X 0405": {
-    "registration": "MH 47 X 0405",
-    "owner": "Jagdish Natt",
-    "class": "2W",
-    "make_model": "TVS Apache RTR 160",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-11-02"
-  },
-  "MH 12 ZM 9951": {
-    "registration": "MH 12 ZM 9951",
-    "owner": "Mugdha Khare",
-    "class": "Car",
-    "make_model": "Tata Nexon",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-11-02"
-  },
-  "UP 32 G 2451": {
-    "registration": "UP 32 G 2451",
-    "owner": "Reva Gulati",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-03-04"
-  },
-  "MH 15 EB 8907": {
-    "registration": "MH 15 EB 8907",
-    "owner": "Amol Tara",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-07-03"
-  },
-  "MH 09 BW 4997": {
-    "registration": "MH 09 BW 4997",
-    "owner": "Chaitaly Khosla",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-12-04"
-  },
-  "DL 4C MZ 1519": {
-    "registration": "DL 4C MZ 1519",
-    "owner": "Zinal Ganesan",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-01-02"
-  },
-  "WB 06 ZY 2515": {
-    "registration": "WB 06 ZY 2515",
-    "owner": "Onkar Shankar",
-    "class": "Car",
-    "make_model": "Mahindra XUV700",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2019-07-07"
-  },
-  "MH 15 YF 3777": {
-    "registration": "MH 15 YF 3777",
-    "owner": "Abdul Konda",
-    "class": "Car",
-    "make_model": "Tata Nexon",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2024-04-03"
-  },
-  "UP 16 TV 6032": {
-    "registration": "UP 16 TV 6032",
-    "owner": "Kavya Chad",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-10-05"
-  },
-  "MH 14 K 3428": {
-    "registration": "MH 14 K 3428",
-    "owner": "Sara Banik",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-11-02"
-  },
-  "GA 01 TS 1962": {
-    "registration": "GA 01 TS 1962",
-    "owner": "Vasatika Batta",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-09-04"
-  },
-  "MH 14 XZ 8147": {
-    "registration": "MH 14 XZ 8147",
-    "owner": "Samarth Amble",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-04-05"
-  },
-  "TS 08 P 7985": {
-    "registration": "TS 08 P 7985",
-    "owner": "Ekbal Ganesh",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-04-03"
-  },
-  "KA 01 M 9075": {
-    "registration": "KA 01 M 9075",
-    "owner": "Indira Kari",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-07-03"
-  },
-  "DL 1C CX 7830": {
-    "registration": "DL 1C CX 7830",
-    "owner": "Odika Raju",
-    "class": "Car",
-    "make_model": "Tata Punch",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-08-03"
-  },
-  "HR 26 FF 9309": {
-    "registration": "HR 26 FF 9309",
-    "owner": "Nitesh Iyengar",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-07-05"
-  },
-  "MH 04 SG 7207": {
-    "registration": "MH 04 SG 7207",
-    "owner": "Anirudh Padmanabhan",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-03-04"
-  },
-  "MH 03 DU 8024": {
-    "registration": "MH 03 DU 8024",
-    "owner": "Manthan Naidu",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-10-04"
-  },
-  "KA 03 F 1790": {
-    "registration": "KA 03 F 1790",
-    "owner": "Ladli Chakraborty",
-    "class": "2W",
-    "make_model": "Royal Enfield Classic 350",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2016-06-07"
-  },
-  "MH 12 KL 6050": {
-    "registration": "MH 12 KL 6050",
-    "owner": "Ansh Krishnan",
-    "class": "Car",
-    "make_model": "Tata Nexon",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-02-03"
-  },
-  "TS 09 HM 7167": {
-    "registration": "TS 09 HM 7167",
-    "owner": "Damyanti Wali",
-    "class": "2W",
     "make_model": "Honda Activa",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2023-07-05"
-  },
-  "MH 04 YY 1135": {
-    "registration": "MH 04 YY 1135",
-    "owner": "Xavier Sinha",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-11-02"
+    "registered_on": "2025-11-03"
   },
-  "MH 49 YC 0749": {
-    "registration": "MH 49 YC 0749",
-    "owner": "Joshua Agrawal",
-    "class": "Car",
-    "make_model": "Mahindra XUV700",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2023-07-05"
-  },
-  "MH 49 B 3164": {
-    "registration": "MH 49 B 3164",
-    "owner": "Sachi Merchant",
-    "class": "2W",
-    "make_model": "Royal Enfield Classic 350",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-12-04"
-  },
-  "GJ 01 A 3172": {
-    "registration": "GJ 01 A 3172",
-    "owner": "Gopal Karan",
+  "TS 07 WA 4021": {
+    "registration": "TS 07 WA 4021",
+    "owner": "Ekaraj Wable",
     "class": "Car",
     "make_model": "Maruti Suzuki Brezza",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-12-03"
+    "registered_on": "2022-06-06"
   },
-  "GJ 05 RL 9854": {
-    "registration": "GJ 05 RL 9854",
-    "owner": "Reva Sawhney",
+  "OD 02 CJ 5797": {
+    "registration": "OD 02 CJ 5797",
+    "owner": "Varenya Zachariah",
     "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
+    "make_model": "Maruti Suzuki Dzire",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-04-03"
+    "registered_on": "2024-09-03"
   },
-  "DL 4C ZL 1579": {
-    "registration": "DL 4C ZL 1579",
-    "owner": "Dhriti Ganguly",
+  "KL 01 KT 1305": {
+    "registration": "KL 01 KT 1305",
+    "owner": "Manya Chanda",
+    "class": "Car",
+    "make_model": "Mahindra XUV700",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-08-06"
+  },
+  "RJ 27 JM 3779": {
+    "registration": "RJ 27 JM 3779",
+    "owner": "Jagdish Natt",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-09-03"
+  },
+  "TS 07 G 6088": {
+    "registration": "TS 07 G 6088",
+    "owner": "Mugdha Khare",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-12-04"
+  },
+  "KA 51 WC 5912": {
+    "registration": "KA 51 WC 5912",
+    "owner": "Reva Gulati",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-08-04"
+  },
+  "TN 66 K 3376": {
+    "registration": "TN 66 K 3376",
+    "owner": "Amol Tara",
     "class": "2W",
-    "make_model": "TVS Apache RTR 160",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-11-03"
-  },
-  "TN 09 JE 4690": {
-    "registration": "TN 09 JE 4690",
-    "owner": "Chaitaly Raval",
-    "class": "Car",
-    "make_model": "Honda City",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-07-05"
-  },
-  "MH 47 LN 6103": {
-    "registration": "MH 47 LN 6103",
-    "owner": "Kabir Nayak",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-02-04"
-  },
-  "GJ 27 G 0035": {
-    "registration": "GJ 27 G 0035",
-    "owner": "Kritika Lall",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
+    "make_model": "TVS Jupiter",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": true,
-    "registered_on": "2024-05-04"
+    "registered_on": "2023-07-06"
   },
-  "MH 12 R 7559": {
-    "registration": "MH 12 R 7559",
-    "owner": "Chasmum Barad",
+  "MH 47 DP 8014": {
+    "registration": "MH 47 DP 8014",
+    "owner": "Chaitaly Khosla",
     "class": "2W",
     "make_model": "Honda Activa",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-10-04"
+    "registered_on": "2022-07-06"
   },
-  "TN 37 X 5429": {
-    "registration": "TN 37 X 5429",
-    "owner": "Sai Prashad",
+  "MH 15 KP 8620": {
+    "registration": "MH 15 KP 8620",
+    "owner": "Zinal Ganesan",
+    "class": "Car",
+    "make_model": "Kia Carens",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-07-05"
+  },
+  "RJ 14 MW 4507": {
+    "registration": "RJ 14 MW 4507",
+    "owner": "Onkar Shankar",
+    "class": "2W",
+    "make_model": "TVS Apache RTR 160",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-09-03"
+  },
+  "MH 01 MG 6213": {
+    "registration": "MH 01 MG 6213",
+    "owner": "Abdul Konda",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-09-05"
+  },
+  "KA 01 RA 2338": {
+    "registration": "KA 01 RA 2338",
+    "owner": "Kavya Chad",
+    "class": "2W",
+    "make_model": "TVS Jupiter",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-11-03"
+  },
+  "DL 8C WJ 7708": {
+    "registration": "DL 8C WJ 7708",
+    "owner": "Sara Banik",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-04-04"
+  },
+  "RJ 14 PG 7049": {
+    "registration": "RJ 14 PG 7049",
+    "owner": "Vasatika Batta",
+    "class": "Car",
+    "make_model": "Kia Carens",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2015-05-10"
+  },
+  "MH 14 T 1242": {
+    "registration": "MH 14 T 1242",
+    "owner": "Samarth Amble",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-03-05"
+  },
+  "UP 32 JZ 6698": {
+    "registration": "UP 32 JZ 6698",
+    "owner": "Ekbal Ganesh",
+    "class": "Car",
+    "make_model": "Renault Kwid",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": true,
+    "stolen": false,
+    "registered_on": "2023-08-05"
+  },
+  "MH 12 R 6301": {
+    "registration": "MH 12 R 6301",
+    "owner": "Maya Shetty",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-01-06"
+  },
+  "MH 14 L 5637": {
+    "registration": "MH 14 L 5637",
+    "owner": "Onveer Khalsa",
+    "class": "Car",
+    "make_model": "Mahindra XUV700",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-10-04"
+  },
+  "MH 14 SY 8590": {
+    "registration": "MH 14 SY 8590",
+    "owner": "Arya Ganguly",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-03-05"
+  },
+  "MH 15 ZY 2515": {
+    "registration": "MH 15 ZY 2515",
+    "owner": "Kalpit Varughese",
+    "class": "Car",
+    "make_model": "Mahindra XUV700",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2019-07-08"
+  },
+  "MH 14 EN 5065": {
+    "registration": "MH 14 EN 5065",
+    "owner": "Jack Dewan",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-11-05"
+  },
+  "MH 05 D 0659": {
+    "registration": "MH 05 D 0659",
+    "owner": "Yauvani Parekh",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Brezza",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-08-05"
+  },
+  "KA 51 Z 2524": {
+    "registration": "KA 51 Z 2524",
+    "owner": "Krishna Konda",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-11-03"
+  },
+  "KA 03 LV 4609": {
+    "registration": "KA 03 LV 4609",
+    "owner": "Damyanti Wali",
+    "class": "Car",
+    "make_model": "Tata Altroz",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2013-11-26"
+  },
+  "TN 22 W 9707": {
+    "registration": "TN 22 W 9707",
+    "owner": "Xavier Sinha",
+    "class": "Car",
+    "make_model": "Hyundai Creta",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2017-01-01"
+  },
+  "MH 14 PG 6644": {
+    "registration": "MH 14 PG 6644",
+    "owner": "Joshua Agrawal",
+    "class": "CV",
+    "make_model": "Tata Ace Gold",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": true,
+    "stolen": false,
+    "registered_on": "2020-07-06"
+  },
+  "OD 02 GU 3681": {
+    "registration": "OD 02 GU 3681",
+    "owner": "Lakshmi Ahluwalia",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-05-05"
+  },
+  "TN 09 X 6525": {
+    "registration": "TN 09 X 6525",
+    "owner": "Ekta Sawhney",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-05-05"
+  },
+  "MH 20 VZ 0039": {
+    "registration": "MH 20 VZ 0039",
+    "owner": "Upasna Minhas",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Brezza",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-09-03"
+  },
+  "HR 26 XY 9731": {
+    "registration": "HR 26 XY 9731",
+    "owner": "Samarth Kala",
     "class": "Car",
     "make_model": "Tata Nexon",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-09-02"
+    "registered_on": "2024-11-03"
   },
-  "MH 12 NJ 2036": {
-    "registration": "MH 12 NJ 2036",
+  "MH 31 WR 6749": {
+    "registration": "MH 31 WR 6749",
+    "owner": "Lekha Dave",
+    "class": "Car",
+    "make_model": "Tata Altroz",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-11-04"
+  },
+  "MH 12 M 8524": {
+    "registration": "MH 12 M 8524",
+    "owner": "Kritika Lall",
+    "class": "2W",
+    "make_model": "Honda Shine",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-01-05"
+  },
+  "TN 01 CH 6858": {
+    "registration": "TN 01 CH 6858",
+    "owner": "Chasmum Barad",
+    "class": "Car",
+    "make_model": "Hyundai Creta",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-07-06"
+  },
+  "MH 31 SS 6580": {
+    "registration": "MH 31 SS 6580",
+    "owner": "Sai Prashad",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-06-06"
+  },
+  "KL 07 RZ 7305": {
+    "registration": "KL 07 RZ 7305",
     "owner": "Geetika Misra",
     "class": "CV",
     "make_model": "Tata Ace Gold",
@@ -1416,472 +1394,439 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2014-11-07"
+    "registered_on": "2022-06-06"
   },
-  "RJ 27 MB 2421": {
-    "registration": "RJ 27 MB 2421",
+  "MH 12 ES 8533": {
+    "registration": "MH 12 ES 8533",
     "owner": "Yashawini Palla",
-    "class": "Car",
-    "make_model": "Mahindra XUV700",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-06-05"
-  },
-  "KA 01 D 7806": {
-    "registration": "KA 01 D 7806",
-    "owner": "Oviya Vora",
     "class": "Car",
     "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-08-03"
+    "registered_on": "2021-09-05"
   },
-  "TS 07 WY 2684": {
-    "registration": "TS 07 WY 2684",
-    "owner": "Krishna Parekh",
+  "MH 05 CX 0229": {
+    "registration": "MH 05 CX 0229",
+    "owner": "Oviya Vora",
     "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-06-03"
-  },
-  "KA 09 DD 4673": {
-    "registration": "KA 09 DD 4673",
-    "owner": "Urvashi Dugar",
-    "class": "Car",
-    "make_model": "Hyundai i20",
+    "make_model": "Honda Shine",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": true,
-    "registered_on": "2025-01-02"
+    "registered_on": "2021-12-05"
   },
-  "RJ 14 MK 7924": {
-    "registration": "RJ 14 MK 7924",
-    "owner": "Frado Chaudhuri",
+  "MH 01 R 3731": {
+    "registration": "MH 01 R 3731",
+    "owner": "Krishna Parekh",
     "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
+    "make_model": "Tata Altroz",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-07-04"
+    "registered_on": "2023-07-06"
   },
-  "MH 03 N 8413": {
-    "registration": "MH 03 N 8413",
-    "owner": "Zaitra Chaudhari",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
+  "KA 53 AF 7563": {
+    "registration": "KA 53 AF 7563",
+    "owner": "Urvashi Dugar",
+    "class": "Car",
+    "make_model": "Tata Altroz",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2021-04-05"
+    "registered_on": "2024-03-05"
   },
-  "GJ 01 WM 9397": {
-    "registration": "GJ 01 WM 9397",
-    "owner": "Gunbir Bhatti",
+  "MH 12 YH 2816": {
+    "registration": "MH 12 YH 2816",
+    "owner": "Frado Chaudhuri",
     "class": "Car",
     "make_model": "Maruti Suzuki Baleno",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2021-07-05"
+    "registered_on": "2023-10-05"
   },
-  "KL 07 UT 2171": {
-    "registration": "KL 07 UT 2171",
-    "owner": "Hitesh Halder",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2019-06-06"
-  },
-  "KL 07 Y 1160": {
-    "registration": "KL 07 Y 1160",
-    "owner": "Hiral Khalsa",
-    "class": "CV",
-    "make_model": "Tata Ace Gold",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-02-03"
-  },
-  "MH 20 KN 0453": {
-    "registration": "MH 20 KN 0453",
-    "owner": "Karan Chand",
+  "TN 09 YK 6809": {
+    "registration": "TN 09 YK 6809",
+    "owner": "Zaitra Chaudhari",
     "class": "Car",
-    "make_model": "Tata Nexon",
+    "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2019-08-06"
+    "registered_on": "2024-07-05"
   },
-  "MH 12 VN 0911": {
-    "registration": "MH 12 VN 0911",
-    "owner": "Darsh Sen",
-    "class": "2W",
-    "make_model": "Honda Shine",
+  "TN 09 E 0234": {
+    "registration": "TN 09 E 0234",
+    "owner": "Gunbir Bhatti",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-10-04"
+    "registered_on": "2024-07-05"
   },
-  "MH 14 TB 9956": {
-    "registration": "MH 14 TB 9956",
-    "owner": "Pratyush Sangha",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-02-03"
-  },
-  "MH 47 J 3598": {
-    "registration": "MH 47 J 3598",
-    "owner": "Inaya Ganguly",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-11-03"
-  },
-  "KA 53 LG 5769": {
-    "registration": "KA 53 LG 5769",
-    "owner": "Radhika Chaudry",
+  "KA 01 AB 6038": {
+    "registration": "KA 01 AB 6038",
+    "owner": "Hitesh Halder",
     "class": "Car",
     "make_model": "Maruti Suzuki Swift",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-09-04"
+    "registered_on": "2014-04-09"
   },
-  "MH 02 YG 5022": {
-    "registration": "MH 02 YG 5022",
-    "owner": "Eiravati Sane",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-01-03"
-  },
-  "MH 31 GJ 1685": {
-    "registration": "MH 31 GJ 1685",
-    "owner": "Oni Kulkarni",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Wagon R",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-09-04"
-  },
-  "TS 08 WW 5121": {
-    "registration": "TS 08 WW 5121",
-    "owner": "Bina Sachdev",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-07-05"
-  },
-  "KA 53 ZS 4286": {
-    "registration": "KA 53 ZS 4286",
-    "owner": "Dayamai Lanka",
-    "class": "Car",
-    "make_model": "Mahindra XUV700",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2019-01-05"
-  },
-  "GJ 27 ZD 9071": {
-    "registration": "GJ 27 ZD 9071",
-    "owner": "Rudra Nazareth",
-    "class": "Car",
-    "make_model": "Tata Punch",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-06-04"
-  },
-  "MH 12 MW 3916": {
-    "registration": "MH 12 MW 3916",
-    "owner": "Krisha Chhabra",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-06-03"
-  },
-  "UP 16 PH 4738": {
-    "registration": "UP 16 PH 4738",
-    "owner": "Krishna Parmar",
-    "class": "Car",
-    "make_model": "Kia Seltos",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-04-05"
-  },
-  "MH 02 FV 1152": {
-    "registration": "MH 02 FV 1152",
-    "owner": "Advaith Parsa",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-05-04"
-  },
-  "MH 12 AF 5480": {
-    "registration": "MH 12 AF 5480",
-    "owner": "Chaitaly Zachariah",
-    "class": "Car",
-    "make_model": "Mahindra XUV700",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-08-04"
-  },
-  "DL 3C Y 4715": {
-    "registration": "DL 3C Y 4715",
-    "owner": "Charita Kurian",
-    "class": "Car",
-    "make_model": "Mahindra Scorpio-N",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-09-02"
-  },
-  "MH 01 V 1690": {
-    "registration": "MH 01 V 1690",
-    "owner": "Patrick Bawa",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-11-02"
-  },
-  "MP 09 SF 8195": {
-    "registration": "MP 09 SF 8195",
-    "owner": "Zaitra Bhagat",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-05-04"
-  },
-  "TN 37 LH 1896": {
-    "registration": "TN 37 LH 1896",
-    "owner": "Jackson Bhavsar",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-08-04"
-  },
-  "TS 07 HU 4040": {
-    "registration": "TS 07 HU 4040",
-    "owner": "Ridhi Bajwa",
-    "class": "2W",
-    "make_model": "TVS Apache RTR 160",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2026-03-04"
-  },
-  "MH 15 UN 3750": {
-    "registration": "MH 15 UN 3750",
-    "owner": "Ranveer Behl",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-08-04"
-  },
-  "TN 09 PC 7501": {
-    "registration": "TN 09 PC 7501",
-    "owner": "Nitesh Ranganathan",
+  "MH 02 DX 6676": {
+    "registration": "MH 02 DX 6676",
+    "owner": "Sachi Shukla",
     "class": "CV",
     "make_model": "Ashok Leyland Dost+",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-03-04"
+    "registered_on": "2025-02-02"
   },
-  "RJ 14 EN 2733": {
-    "registration": "RJ 14 EN 2733",
-    "owner": "Manan Acharya",
-    "class": "Car",
-    "make_model": "Renault Kwid",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-09-02"
-  },
-  "UP 16 RF 5632": {
-    "registration": "UP 16 RF 5632",
-    "owner": "Anamika Shere",
+  "RJ 14 EA 0596": {
+    "registration": "RJ 14 EA 0596",
+    "owner": "Ubika Sampath",
     "class": "Car",
     "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-12-04"
+    "registered_on": "2025-05-05"
   },
-  "MP 09 Y 9735": {
-    "registration": "MP 09 Y 9735",
-    "owner": "Azaan Chauhan",
-    "class": "Car",
-    "make_model": "Kia Carens",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2022-04-05"
-  },
-  "TS 09 C 2865": {
-    "registration": "TS 09 C 2865",
-    "owner": "Falan Anne",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2016-01-07"
-  },
-  "GJ 01 KM 8617": {
-    "registration": "GJ 01 KM 8617",
-    "owner": "Robert Oak",
-    "class": "Car",
-    "make_model": "Kia Carens",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-12-03"
-  },
-  "MH 12 EV 7684": {
-    "registration": "MH 12 EV 7684",
-    "owner": "Elijah Kar",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-03-06"
-  },
-  "HR 26 RB 5285": {
-    "registration": "HR 26 RB 5285",
-    "owner": "Mason Hari",
+  "MH 49 GD 7429": {
+    "registration": "MH 49 GD 7429",
+    "owner": "Indali Chaudhari",
     "class": "2W",
-    "make_model": "Honda Shine",
+    "make_model": "TVS Jupiter",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-07-04"
+    "registered_on": "2024-11-03"
   },
-  "TN 01 WR 0584": {
-    "registration": "TN 01 WR 0584",
-    "owner": "Janani Halder",
-    "class": "2W",
-    "make_model": "Bajaj Pulsar NS200",
+  "MH 15 C 7677": {
+    "registration": "MH 15 C 7677",
+    "owner": "Inaya Ganguly",
+    "class": "CV",
+    "make_model": "Tata Ace Gold",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-12-04"
+    "registered_on": "2022-06-06"
   },
-  "MH 01 P 9172": {
-    "registration": "MH 01 P 9172",
-    "owner": "Bhavini Warrior",
+  "GJ 01 P 5254": {
+    "registration": "GJ 01 P 5254",
+    "owner": "Radhika Chaudry",
     "class": "Car",
-    "make_model": "Toyota Innova Hycross",
+    "make_model": "Mahindra XUV700",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-05-05"
+    "registered_on": "2024-03-05"
   },
-  "KL 07 ZF 2844": {
-    "registration": "KL 07 ZF 2844",
-    "owner": "Bahadurjit Mody",
+  "KA 53 WC 0617": {
+    "registration": "KA 53 WC 0617",
+    "owner": "Vivaan Viswanathan",
     "class": "Car",
-    "make_model": "Tata Nexon",
+    "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-12-04"
+    "registered_on": "2024-03-05"
   },
-  "DL 8C HG 7868": {
-    "registration": "DL 8C HG 7868",
-    "owner": "Damyanti Dasgupta",
+  "MH 47 YR 1597": {
+    "registration": "MH 47 YR 1597",
+    "owner": "Triveni Mannan",
     "class": "2W",
     "make_model": "Honda Activa",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-08-03"
+    "registered_on": "2025-09-03"
   },
-  "MH 12 YD 7955": {
-    "registration": "MH 12 YD 7955",
-    "owner": "Bhanumati Misra",
+  "MH 14 HM 0290": {
+    "registration": "MH 14 HM 0290",
+    "owner": "Nicholas Parmar",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-01-05"
+  },
+  "UP 16 VY 4787": {
+    "registration": "UP 16 VY 4787",
+    "owner": "Eesha Das",
+    "class": "Car",
+    "make_model": "Honda City",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-06-04"
+  },
+  "GJ 27 TZ 1524": {
+    "registration": "GJ 27 TZ 1524",
+    "owner": "Hredhaan Pradhan",
+    "class": "CV",
+    "make_model": "Ashok Leyland Dost+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-02-02"
+  },
+  "KA 03 B 3289": {
+    "registration": "KA 03 B 3289",
+    "owner": "Libni Panchal",
+    "class": "2W",
+    "make_model": "Honda Shine",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2023-06-05"
+  },
+  "GJ 01 DJ 0972": {
+    "registration": "GJ 01 DJ 0972",
+    "owner": "Unnati Basu",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-08-06"
+  },
+  "GJ 27 UM 2083": {
+    "registration": "GJ 27 UM 2083",
+    "owner": "Ganga Sankaran",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-08-06"
+  },
+  "TN 22 D 2117": {
+    "registration": "TN 22 D 2117",
+    "owner": "Samuel Kamdar",
+    "class": "CV",
+    "make_model": "Ashok Leyland Dost+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-08-04"
+  },
+  "MH 15 BU 8275": {
+    "registration": "MH 15 BU 8275",
+    "owner": "Tanmayi Chauhan",
+    "class": "Car",
+    "make_model": "Mahindra XUV700",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-10-05"
+  },
+  "KA 01 AY 3465": {
+    "registration": "KA 01 AY 3465",
+    "owner": "Hritik Sahota",
+    "class": "CV",
+    "make_model": "Ashok Leyland Dost+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-03-05"
+  },
+  "MH 03 R 0490": {
+    "registration": "MH 03 R 0490",
+    "owner": "Arjun Mangat",
+    "class": "Car",
+    "make_model": "Hyundai Venue",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-05-05"
+  },
+  "GA 01 MZ 2816": {
+    "registration": "GA 01 MZ 2816",
+    "owner": "Charan Sachdeva",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2015-12-08"
+  },
+  "TS 09 K 5221": {
+    "registration": "TS 09 K 5221",
+    "owner": "Mekhala Bava",
+    "class": "CV",
+    "make_model": "Ashok Leyland Dost+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-10-05"
+  },
+  "MH 15 B 2499": {
+    "registration": "MH 15 B 2499",
+    "owner": "Manan Acharya",
+    "class": "Car",
+    "make_model": "Tata Nexon",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-04-06"
+  },
+  "MH 31 CM 3420": {
+    "registration": "MH 31 CM 3420",
+    "owner": "Anamika Shere",
     "class": "Car",
     "make_model": "Maruti Suzuki Brezza",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-10-03"
+    "registered_on": "2022-07-06"
   },
-  "TN 09 PV 6162": {
-    "registration": "TN 09 PV 6162",
+  "KA 01 UV 2640": {
+    "registration": "KA 01 UV 2640",
+    "owner": "Azaan Chauhan",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-08-04"
+  },
+  "MH 05 XV 1684": {
+    "registration": "MH 05 XV 1684",
+    "owner": "Falan Anne",
+    "class": "Car",
+    "make_model": "Mahindra XUV700",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-06-04"
+  },
+  "MH 15 ZD 9071": {
+    "registration": "MH 15 ZD 9071",
+    "owner": "Robert Oak",
+    "class": "CV",
+    "make_model": "Mahindra Bolero Pik-Up",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-10-05"
+  },
+  "MH 14 AL 6180": {
+    "registration": "MH 14 AL 6180",
+    "owner": "Elijah Kar",
+    "class": "CV",
+    "make_model": "Mahindra Bolero Pik-Up",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-10-05"
+  },
+  "MH 04 XE 2152": {
+    "registration": "MH 04 XE 2152",
+    "owner": "Mason Hari",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-05-06"
+  },
+  "TS 09 HK 2801": {
+    "registration": "TS 09 HK 2801",
+    "owner": "Janani Halder",
+    "class": "Car",
+    "make_model": "Tata Altroz",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-08-04"
+  },
+  "TS 09 UL 3222": {
+    "registration": "TS 09 UL 3222",
+    "owner": "Bhavini Warrior",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2026-01-03"
+  },
+  "TN 22 GW 2713": {
+    "registration": "TN 22 GW 2713",
+    "owner": "Bahadurjit Mody",
+    "class": "2W",
+    "make_model": "Royal Enfield Classic 350",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-03-05"
+  },
+  "MH 02 CM 5031": {
+    "registration": "MH 02 CM 5031",
+    "owner": "Damyanti Dasgupta",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2017-10-11"
+  },
+  "KA 09 TT 7103": {
+    "registration": "KA 09 TT 7103",
+    "owner": "Bhanumati Misra",
+    "class": "2W",
+    "make_model": "Royal Enfield Classic 350",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-10-04"
+  },
+  "MH 03 ZR 4484": {
+    "registration": "MH 03 ZR 4484",
     "owner": "Saksham Jain",
     "class": "Car",
     "make_model": "Maruti Suzuki Wagon R",
@@ -1889,65 +1834,65 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-02-03"
+    "registered_on": "2024-08-04"
   },
-  "MH 31 B 3343": {
-    "registration": "MH 31 B 3343",
+  "UP 32 PY 2924": {
+    "registration": "UP 32 PY 2924",
     "owner": "Girindra Kulkarni",
     "class": "Car",
-    "make_model": "Kia Carens",
+    "make_model": "Maruti Suzuki Swift",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-02-03"
+    "registered_on": "2025-05-05"
   },
-  "WB 06 T 7204": {
-    "registration": "WB 06 T 7204",
+  "MH 02 FC 0042": {
+    "registration": "MH 02 FC 0042",
     "owner": "Theodore Basak",
     "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
+    "make_model": "Maruti Suzuki Dzire",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-03-04"
+    "registered_on": "2020-01-06"
   },
-  "KL 07 B 9021": {
-    "registration": "KL 07 B 9021",
+  "GJ 01 P 6486": {
+    "registration": "GJ 01 P 6486",
     "owner": "David Oommen",
-    "class": "2W",
-    "make_model": "Bajaj Pulsar NS200",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2024-09-02"
-  },
-  "TS 08 ST 4776": {
-    "registration": "TS 08 ST 4776",
-    "owner": "Hemangini Rau",
     "class": "CV",
     "make_model": "Tata Ace Gold",
     "rc_status": "active",
     "hypothecation": null,
-    "blacklisted": false,
+    "blacklisted": true,
     "stolen": false,
-    "registered_on": "2024-11-02"
+    "registered_on": "2021-11-05"
   },
-  "HR 26 UE 4818": {
-    "registration": "HR 26 UE 4818",
-    "owner": "Urmi Dhingra",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
+  "MH 04 M 8433": {
+    "registration": "MH 04 M 8433",
+    "owner": "Faris Bail",
+    "class": "2W",
+    "make_model": "TVS Jupiter",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-04-03"
+    "registered_on": "2025-05-05"
   },
-  "GJ 05 S 6145": {
-    "registration": "GJ 05 S 6145",
+  "GJ 27 DU 5720": {
+    "registration": "GJ 27 DU 5720",
+    "owner": "Urmi Dhingra",
+    "class": "2W",
+    "make_model": "Hero Splendor+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": true,
+    "registered_on": "2025-01-03"
+  },
+  "TS 09 CF 4313": {
+    "registration": "TS 09 CF 4313",
     "owner": "Xavier Sami",
     "class": "CV",
     "make_model": "Mahindra Bolero Pik-Up",
@@ -1955,10 +1900,10 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2026-03-04"
+    "registered_on": "2023-01-04"
   },
-  "KA 05 U 3818": {
-    "registration": "KA 05 U 3818",
+  "KA 53 PH 0821": {
+    "registration": "KA 53 PH 0821",
     "owner": "Jairaj Barad",
     "class": "2W",
     "make_model": "Honda Shine",
@@ -1966,765 +1911,820 @@
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-08-03"
+    "registered_on": "2018-05-08"
   },
-  "KL 07 HG 5676": {
-    "registration": "KL 07 HG 5676",
+  "KA 05 HD 3219": {
+    "registration": "KA 05 HD 3219",
     "owner": "Charvi Gola",
     "class": "Car",
-    "make_model": "Tata Nexon",
+    "make_model": "Maruti Suzuki Dzire",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2025-04-03"
+    "registered_on": "2023-11-04"
   },
-  "MH 49 U 2955": {
-    "registration": "MH 49 U 2955",
+  "MH 02 E 8104": {
+    "registration": "MH 02 E 8104",
     "owner": "Rachana Iyer",
-    "class": "2W",
-    "make_model": "Honda Activa",
+    "class": "Car",
+    "make_model": "Kia Carens",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-01-03"
+    "registered_on": "2025-01-03"
   },
-  "KA 05 L 3878": {
-    "registration": "KA 05 L 3878",
+  "RJ 27 F 9713": {
+    "registration": "RJ 27 F 9713",
     "owner": "Adweta Nadig",
     "class": "Car",
-    "make_model": "Hyundai Creta",
+    "make_model": "Maruti Suzuki Alto K10",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-12-04"
+    "registered_on": "2025-08-04"
   },
-  "TN 66 PR 3211": {
-    "registration": "TN 66 PR 3211",
+  "MH 05 B 4626": {
+    "registration": "MH 05 B 4626",
     "owner": "Fariq Sharma",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2026-04-03"
-  },
-  "MH 03 GZ 3132": {
-    "registration": "MH 03 GZ 3132",
-    "owner": "Unnati Sha",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-06-04"
-  },
-  "KA 01 DX 1226": {
-    "registration": "KA 01 DX 1226",
-    "owner": "Ucchal Nayar",
-    "class": "CV",
-    "make_model": "Tata Ace Gold",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-08-05"
-  },
-  "MH 31 K 2014": {
-    "registration": "MH 31 K 2014",
-    "owner": "Gavin Dar",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-03-04"
-  },
-  "TN 01 C 4236": {
-    "registration": "TN 01 C 4236",
-    "owner": "Eesha Kara",
-    "class": "2W",
-    "make_model": "Royal Enfield Classic 350",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-10-03"
-  },
-  "MH 14 NA 8302": {
-    "registration": "MH 14 NA 8302",
-    "owner": "Onkar Mahal",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-02-01"
-  },
-  "MH 31 VW 0853": {
-    "registration": "MH 31 VW 0853",
-    "owner": "Kabir Lata",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2025-01-02"
-  },
-  "KL 07 GG 5116": {
-    "registration": "KL 07 GG 5116",
-    "owner": "Girik Prabhakar",
-    "class": "Car",
-    "make_model": "Mahindra Scorpio-N",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2021-03-06"
-  },
-  "RJ 14 JB 7612": {
-    "registration": "RJ 14 JB 7612",
-    "owner": "Ekaraj Bhakta",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2019-10-06"
-  },
-  "TN 22 R 7371": {
-    "registration": "TN 22 R 7371",
-    "owner": "Vrishti Behl",
-    "class": "Car",
-    "make_model": "Honda City",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-09-02"
-  },
-  "GJ 01 KB 2558": {
-    "registration": "GJ 01 KB 2558",
-    "owner": "Nachiket Tailor",
-    "class": "2W",
-    "make_model": "Bajaj Pulsar NS200",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-01-02"
-  },
-  "GJ 01 PY 2260": {
-    "registration": "GJ 01 PY 2260",
-    "owner": "Ryan Bansal",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-05-04"
-  },
-  "KA 01 NC 4781": {
-    "registration": "KA 01 NC 4781",
-    "owner": "Gopal Salvi",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-12-03"
-  },
-  "TS 08 UR 9841": {
-    "registration": "TS 08 UR 9841",
-    "owner": "Fiyaz Buch",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2020-12-04"
-  },
-  "TS 07 FA 8400": {
-    "registration": "TS 07 FA 8400",
-    "owner": "Balvan Bawa",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-09-04"
-  },
-  "MH 03 YZ 0732": {
-    "registration": "MH 03 YZ 0732",
-    "owner": "Dayamai Ganesan",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-09-02"
-  },
-  "MH 03 J 3764": {
-    "registration": "MH 03 J 3764",
-    "owner": "Waida Chaudhari",
-    "class": "Car",
-    "make_model": "Mahindra Scorpio-N",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": true,
-    "stolen": false,
-    "registered_on": "2024-12-03"
-  },
-  "MH 12 S 0617": {
-    "registration": "MH 12 S 0617",
-    "owner": "Chaitanya Bumb",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2026-03-04"
-  },
-  "MH 14 FL 7618": {
-    "registration": "MH 14 FL 7618",
-    "owner": "Mason Sengupta",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-01-03"
-  },
-  "KL 07 XJ 8535": {
-    "registration": "KL 07 XJ 8535",
-    "owner": "Omkaar Jani",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-07-05"
-  },
-  "GJ 27 B 1676": {
-    "registration": "GJ 27 B 1676",
-    "owner": "Kabir Sur",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-11-02"
-  },
-  "MH 05 RF 0838": {
-    "registration": "MH 05 RF 0838",
-    "owner": "Krishna Cherian",
-    "class": "2W",
-    "make_model": "Honda Shine",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2023-09-04"
-  },
-  "MH 31 PE 7836": {
-    "registration": "MH 31 PE 7836",
-    "owner": "Harini Murthy",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-03-04"
-  },
-  "MH 01 GY 6502": {
-    "registration": "MH 01 GY 6502",
-    "owner": "Megha Karpe",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-09-04"
-  },
-  "MH 31 VE 8567": {
-    "registration": "MH 31 VE 8567",
-    "owner": "Zarna Din",
-    "class": "2W",
-    "make_model": "Bajaj Pulsar NS200",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2024-03-04"
-  },
-  "KA 51 LL 4451": {
-    "registration": "KA 51 LL 4451",
-    "owner": "Gavin Devi",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-07-03"
-  },
-  "MH 12 SZ 3346": {
-    "registration": "MH 12 SZ 3346",
-    "owner": "Alka Kapur",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-06-04"
-  },
-  "MH 15 U 7170": {
-    "registration": "MH 15 U 7170",
-    "owner": "Owen Aurora",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-02-03"
-  },
-  "TN 01 ED 2964": {
-    "registration": "TN 01 ED 2964",
-    "owner": "Laban Raval",
-    "class": "Car",
-    "make_model": "Toyota Innova Hycross",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-04-03"
-  },
-  "UP 16 UG 4206": {
-    "registration": "UP 16 UG 4206",
-    "owner": "Chaitanya Raja",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-07-03"
-  },
-  "DL 1C A 1403": {
-    "registration": "DL 1C A 1403",
-    "owner": "Advay Misra",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-02-03"
-  },
-  "KA 01 ER 1805": {
-    "registration": "KA 01 ER 1805",
-    "owner": "Henry Kaul",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-07-05"
-  },
-  "MH 14 FV 0709": {
-    "registration": "MH 14 FV 0709",
-    "owner": "Rajeshri Hayer",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2026-04-03"
-  },
-  "MH 20 PE 1748": {
-    "registration": "MH 20 PE 1748",
-    "owner": "Kiaan Chandran",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-07-03"
-  },
-  "MH 02 YU 8472": {
-    "registration": "MH 02 YU 8472",
-    "owner": "Hemani Ratti",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-12-04"
-  },
-  "MH 05 VM 0917": {
-    "registration": "MH 05 VM 0917",
-    "owner": "Tanay Ravel",
-    "class": "Car",
-    "make_model": "Tata Punch",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-09-02"
-  },
-  "RJ 14 JW 9341": {
-    "registration": "RJ 14 JW 9341",
-    "owner": "Jonathan Swaminathan",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": true,
-    "stolen": false,
-    "registered_on": "2024-09-02"
-  },
-  "MH 49 XJ 4169": {
-    "registration": "MH 49 XJ 4169",
-    "owner": "Dominic Jaggi",
-    "class": "CV",
-    "make_model": "Mahindra Bolero Pik-Up",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-12-02"
-  },
-  "MH 14 JY 7853": {
-    "registration": "MH 14 JY 7853",
-    "owner": "Ekavir Som",
-    "class": "2W",
-    "make_model": "Honda Activa",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-08-04"
-  },
-  "MH 09 Y 8403": {
-    "registration": "MH 09 Y 8403",
-    "owner": "Jasmit Bora",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-07-04"
-  },
-  "DL 4C VL 8173": {
-    "registration": "DL 4C VL 8173",
-    "owner": "Niharika Babu",
-    "class": "Car",
-    "make_model": "Kia Seltos",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2022-04-05"
-  },
-  "RJ 14 M 3687": {
-    "registration": "RJ 14 M 3687",
-    "owner": "Faraj Barman",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-04-05"
-  },
-  "DL 4C Z 2048": {
-    "registration": "DL 4C Z 2048",
-    "owner": "Naksh Chopra",
     "class": "Car",
     "make_model": "Tata Nexon",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2022-08-04"
+    "registered_on": "2025-02-02"
   },
-  "KA 05 CL 4329": {
-    "registration": "KA 05 CL 4329",
-    "owner": "Frado Magar",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2025-04-03"
-  },
-  "MH 15 CK 5089": {
-    "registration": "MH 15 CK 5089",
-    "owner": "Bhavya D’Alia",
-    "class": "2W",
-    "make_model": "Hero Splendor+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2020-11-04"
-  },
-  "TN 37 ZA 4936": {
-    "registration": "TN 37 ZA 4936",
-    "owner": "Dominic Karan",
-    "class": "2W",
-    "make_model": "Royal Enfield Classic 350",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2026-01-02"
-  },
-  "MH 01 HJ 6966": {
-    "registration": "MH 01 HJ 6966",
-    "owner": "Parth Kalita",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Brezza",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-02-01"
-  },
-  "KA 53 EZ 8868": {
-    "registration": "KA 53 EZ 8868",
-    "owner": "Meghana Batra",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Baleno",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-02-03"
-  },
-  "DL 3C H 8142": {
-    "registration": "DL 3C H 8142",
-    "owner": "Bhavini Ram",
-    "class": "Car",
-    "make_model": "Hyundai Creta",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-10-03"
-  },
-  "MH 49 PY 6933": {
-    "registration": "MH 49 PY 6933",
-    "owner": "Qushi Luthra",
-    "class": "2W",
-    "make_model": "Bajaj Pulsar NS200",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-02-03"
-  },
-  "KA 51 A 9940": {
-    "registration": "KA 51 A 9940",
-    "owner": "Sai Raval",
-    "class": "CV",
-    "make_model": "Ashok Leyland Dost+",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2017-06-07"
-  },
-  "MH 12 JN 6543": {
-    "registration": "MH 12 JN 6543",
-    "owner": "Udarsh Kari",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Brezza",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": true,
-    "registered_on": "2021-05-05"
-  },
-  "MH 14 FJ 9920": {
-    "registration": "MH 14 FJ 9920",
-    "owner": "Bhavani Ramesh",
+  "MH 03 DY 2628": {
+    "registration": "MH 03 DY 2628",
+    "owner": "Unnati Sha",
     "class": "Car",
     "make_model": "Maruti Suzuki Wagon R",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-01-03"
+    "registered_on": "2024-11-03"
   },
-  "MH 15 W 6997": {
-    "registration": "MH 15 W 6997",
-    "owner": "Chanakya Nazareth",
-    "class": "2W",
-    "make_model": "TVS Apache RTR 160",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-08-04"
-  },
-  "KA 53 AJ 6169": {
-    "registration": "KA 53 AJ 6169",
-    "owner": "Yashodhara Shroff",
+  "MH 20 FL 2759": {
+    "registration": "MH 20 FL 2759",
+    "owner": "Ucchal Nayar",
     "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
+    "make_model": "Tata Punch",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2024-10-03"
+    "registered_on": "2024-01-04"
   },
-  "DL 3C D 4564": {
-    "registration": "DL 3C D 4564",
-    "owner": "Advaith Rattan",
-    "class": "Car",
-    "make_model": "Honda City",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-04-03"
-  },
-  "DL 3C C 6319": {
-    "registration": "DL 3C C 6319",
-    "owner": "Chaitanya Kohli",
-    "class": "Car",
-    "make_model": "Renault Kwid",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2016-02-11"
-  },
-  "MH 12 JY 9356": {
-    "registration": "MH 12 JY 9356",
-    "owner": "Yash Datta",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Dzire",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-02-03"
-  },
-  "MH 15 GY 1754": {
-    "registration": "MH 15 GY 1754",
-    "owner": "Lopa Thakur",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Swift",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-04-03"
-  },
-  "HR 26 W 9493": {
-    "registration": "HR 26 W 9493",
-    "owner": "Xalak Viswanathan",
-    "class": "Car",
-    "make_model": "Mahindra Scorpio-N",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2024-03-04"
-  },
-  "MH 14 GC 1597": {
-    "registration": "MH 14 GC 1597",
-    "owner": "Pratyush Bandi",
-    "class": "Car",
-    "make_model": "Honda City",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": true,
-    "stolen": false,
-    "registered_on": "2023-10-04"
-  },
-  "GJ 01 AW 8452": {
-    "registration": "GJ 01 AW 8452",
-    "owner": "Widisha Chakrabarti",
-    "class": "Car",
-    "make_model": "Maruti Suzuki Alto K10",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2025-10-03"
-  },
-  "MH 47 YD 5806": {
-    "registration": "MH 47 YD 5806",
-    "owner": "Nikita Bains",
-    "class": "2W",
-    "make_model": "TVS Jupiter",
-    "rc_status": "active",
-    "hypothecation": null,
-    "blacklisted": false,
-    "stolen": false,
-    "registered_on": "2023-11-03"
-  },
-  "MH 05 TJ 3475": {
-    "registration": "MH 05 TJ 3475",
-    "owner": "Wakeeta Badal",
+  "GJ 27 H 1588": {
+    "registration": "GJ 27 H 1588",
+    "owner": "Gavin Dar",
     "class": "Car",
     "make_model": "Tata Nexon",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-08-04"
+    "registered_on": "2024-12-04"
   },
-  "MH 12 DV 4874": {
-    "registration": "MH 12 DV 4874",
-    "owner": "Advika Muni",
+  "HR 26 HN 0922": {
+    "registration": "HR 26 HN 0922",
+    "owner": "Eesha Kara",
     "class": "Car",
     "make_model": "Hyundai Creta",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-06-04"
+    "registered_on": "2026-02-02"
   },
-  "GJ 01 M 6007": {
-    "registration": "GJ 01 M 6007",
-    "owner": "Michael Malhotra",
+  "MH 03 FB 8888": {
+    "registration": "MH 03 FB 8888",
+    "owner": "Onkar Mahal",
     "class": "2W",
     "make_model": "Hero Splendor+",
     "rc_status": "active",
     "hypothecation": null,
     "blacklisted": false,
     "stolen": false,
-    "registered_on": "2023-11-03"
+    "registered_on": "2023-12-05"
+  },
+  "MH 14 MS 4997": {
+    "registration": "MH 14 MS 4997",
+    "owner": "Kabir Lata",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Wagon R",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-05-05"
+  },
+  "KA 51 K 7555": {
+    "registration": "KA 51 K 7555",
+    "owner": "Girik Prabhakar",
+    "class": "Car",
+    "make_model": "Toyota Innova Hycross",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-12-05"
+  },
+  "MH 14 GS 0348": {
+    "registration": "MH 14 GS 0348",
+    "owner": "Ekaraj Bhakta",
+    "class": "Car",
+    "make_model": "Honda City",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-02-04"
+  },
+  "MH 09 VU 8368": {
+    "registration": "MH 09 VU 8368",
+    "owner": "Vrishti Behl",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-09-05"
+  },
+  "KA 01 MV 0373": {
+    "registration": "KA 01 MV 0373",
+    "owner": "Nachiket Tailor",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-11-05"
+  },
+  "MP 09 U 6758": {
+    "registration": "MP 09 U 6758",
+    "owner": "Ryan Bansal",
+    "class": "2W",
+    "make_model": "Royal Enfield Classic 350",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2026-03-05"
+  },
+  "TS 08 GZ 5656": {
+    "registration": "TS 08 GZ 5656",
+    "owner": "Gopal Salvi",
+    "class": "Car",
+    "make_model": "Toyota Innova Hycross",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-06-04"
+  },
+  "RJ 14 T 5503": {
+    "registration": "RJ 14 T 5503",
+    "owner": "Fiyaz Buch",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-01-03"
+  },
+  "GJ 27 DV 0321": {
+    "registration": "GJ 27 DV 0321",
+    "owner": "Balvan Bawa",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-03-05"
+  },
+  "MH 49 UZ 6737": {
+    "registration": "MH 49 UZ 6737",
+    "owner": "Dayamai Ganesan",
+    "class": "Car",
+    "make_model": "Mahindra Scorpio-N",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-06-04"
+  },
+  "KA 03 UP 6379": {
+    "registration": "KA 03 UP 6379",
+    "owner": "Waida Chaudhari",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-12-05"
+  },
+  "MH 14 U 2955": {
+    "registration": "MH 14 U 2955",
+    "owner": "Chaitanya Bumb",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-01-04"
+  },
+  "DL 4C L 3878": {
+    "registration": "DL 4C L 3878",
+    "owner": "Mason Sengupta",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-08-04"
+  },
+  "TN 09 RG 8646": {
+    "registration": "TN 09 RG 8646",
+    "owner": "Omkaar Jani",
+    "class": "2W",
+    "make_model": "Bajaj Pulsar NS200",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-07-06"
+  },
+  "MH 47 PA 2879": {
+    "registration": "MH 47 PA 2879",
+    "owner": "Kabir Sur",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-12-04"
+  },
+  "TS 08 KS 2844": {
+    "registration": "TS 08 KS 2844",
+    "owner": "Krishna Cherian",
+    "class": "CV",
+    "make_model": "Ashok Leyland Dost+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-12-04"
+  },
+  "KA 03 NL 9484": {
+    "registration": "KA 03 NL 9484",
+    "owner": "Harini Murthy",
+    "class": "2W",
+    "make_model": "Bajaj Pulsar NS200",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2017-11-07"
+  },
+  "KA 51 N 7710": {
+    "registration": "KA 51 N 7710",
+    "owner": "Megha Karpe",
+    "class": "Car",
+    "make_model": "Kia Carens",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-04-06"
+  },
+  "TN 09 Z 1630": {
+    "registration": "TN 09 Z 1630",
+    "owner": "Zarna Din",
+    "class": "2W",
+    "make_model": "TVS Jupiter",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-03-05"
+  },
+  "HR 26 R 2232": {
+    "registration": "HR 26 R 2232",
+    "owner": "Gavin Devi",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-03-06"
+  },
+  "WB 06 UG 0446": {
+    "registration": "WB 06 UG 0446",
+    "owner": "Alka Kapur",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-04-06"
+  },
+  "MP 09 G 4016": {
+    "registration": "MP 09 G 4016",
+    "owner": "Owen Aurora",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-12-05"
+  },
+  "KA 03 BW 7393": {
+    "registration": "KA 03 BW 7393",
+    "owner": "Udarsh Sibal",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-02-04"
+  },
+  "MH 09 T 0223": {
+    "registration": "MH 09 T 0223",
+    "owner": "Shivani Apte",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Brezza",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-11-04"
+  },
+  "DL 4C DF 8174": {
+    "registration": "DL 4C DF 8174",
+    "owner": "Chatura Cheema",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-11-05"
+  },
+  "KA 51 HK 9299": {
+    "registration": "KA 51 HK 9299",
+    "owner": "Janya Sarkar",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-02-04"
+  },
+  "DL 4C BD 7645": {
+    "registration": "DL 4C BD 7645",
+    "owner": "Yasti Deol",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-09-05"
+  },
+  "KL 01 FA 8400": {
+    "registration": "KL 01 FA 8400",
+    "owner": "Ranveer Wadhwa",
+    "class": "Car",
+    "make_model": "Mahindra Scorpio-N",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-09-03"
+  },
+  "TS 08 MK 6958": {
+    "registration": "TS 08 MK 6958",
+    "owner": "Anmol Ganesan",
+    "class": "2W",
+    "make_model": "TVS Apache RTR 160",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-05-05"
+  },
+  "MH 02 RF 0301": {
+    "registration": "MH 02 RF 0301",
+    "owner": "Gaurika Jayaraman",
+    "class": "Car",
+    "make_model": "Tata Altroz",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-12-05"
+  },
+  "MH 04 S 0617": {
+    "registration": "MH 04 S 0617",
+    "owner": "Megha Nagar",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2026-03-05"
+  },
+  "MH 09 WS 2884": {
+    "registration": "MH 09 WS 2884",
+    "owner": "Jagdish Ben",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-11-03"
+  },
+  "MH 47 JA 6939": {
+    "registration": "MH 47 JA 6939",
+    "owner": "Jatin Gara",
+    "class": "2W",
+    "make_model": "TVS Apache RTR 160",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-04-04"
+  },
+  "MH 05 HN 9951": {
+    "registration": "MH 05 HN 9951",
+    "owner": "Balendra Ray",
+    "class": "CV",
+    "make_model": "Ashok Leyland Dost+",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-05-05"
+  },
+  "MH 03 R 5057": {
+    "registration": "MH 03 R 5057",
+    "owner": "Lila Bose",
+    "class": "Car",
+    "make_model": "Honda City",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2018-08-07"
+  },
+  "MH 12 E 0248": {
+    "registration": "MH 12 E 0248",
+    "owner": "Aarav Dugar",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Wagon R",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-07-05"
+  },
+  "MH 14 Z 7276": {
+    "registration": "MH 14 Z 7276",
+    "owner": "Frado Magar",
+    "class": "Car",
+    "make_model": "Hyundai Venue",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-12-04"
+  },
+  "MH 14 Y 0723": {
+    "registration": "MH 14 Y 0723",
+    "owner": "Bhavya D’Alia",
+    "class": "2W",
+    "make_model": "Honda Activa",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-01-05"
+  },
+  "MH 12 RW 0269": {
+    "registration": "MH 12 RW 0269",
+    "owner": "Dominic Karan",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-09-05"
+  },
+  "GJ 01 G 0532": {
+    "registration": "GJ 01 G 0532",
+    "owner": "Parth Kalita",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-02-04"
+  },
+  "KA 53 CR 8012": {
+    "registration": "KA 53 CR 8012",
+    "owner": "Advik Parsa",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-02-04"
+  },
+  "MH 12 RT 5019": {
+    "registration": "MH 12 RT 5019",
+    "owner": "Ekta Mangat",
+    "class": "2W",
+    "make_model": "Royal Enfield Classic 350",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-09-05"
+  },
+  "MH 15 DD 9737": {
+    "registration": "MH 15 DD 9737",
+    "owner": "Naksh Suri",
+    "class": "Car",
+    "make_model": "Hyundai i20",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-07-04"
+  },
+  "RJ 14 A 9547": {
+    "registration": "RJ 14 A 9547",
+    "owner": "Balveer Majumdar",
+    "class": "Car",
+    "make_model": "Honda City",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-01-03"
+  },
+  "RJ 14 Y 5037": {
+    "registration": "RJ 14 Y 5037",
+    "owner": "Janaki Oak",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-01-04"
+  },
+  "RJ 14 RZ 7350": {
+    "registration": "RJ 14 RZ 7350",
+    "owner": "Advay Sachar",
+    "class": "Car",
+    "make_model": "Tata Nexon",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-02-02"
+  },
+  "TS 09 B 5411": {
+    "registration": "TS 09 B 5411",
+    "owner": "Samar Upadhyay",
+    "class": "Car",
+    "make_model": "Kia Carens",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-09-05"
+  },
+  "MH 14 FD 2294": {
+    "registration": "MH 14 FD 2294",
+    "owner": "Ucchal Chopra",
+    "class": "2W",
+    "make_model": "Bajaj Pulsar NS200",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-02-04"
+  },
+  "MH 15 W 9218": {
+    "registration": "MH 15 W 9218",
+    "owner": "Bhavini Ratta",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-04-06"
+  },
+  "MH 03 EH 3118": {
+    "registration": "MH 03 EH 3118",
+    "owner": "Dhriti Sahni",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Wagon R",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-07-06"
+  },
+  "DL 3C YF 9414": {
+    "registration": "DL 3C YF 9414",
+    "owner": "Harinakshi Ramachandran",
+    "class": "2W",
+    "make_model": "TVS Apache RTR 160",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-07-04"
+  },
+  "UP 32 SC 3272": {
+    "registration": "UP 32 SC 3272",
+    "owner": "Dalbir Tata",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-07-04"
+  },
+  "DL 8C GW 0673": {
+    "registration": "DL 8C GW 0673",
+    "owner": "Riya Rout",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-02-04"
+  },
+  "TS 09 LC 9715": {
+    "registration": "TS 09 LC 9715",
+    "owner": "Abeer Bal",
+    "class": "Car",
+    "make_model": "Mahindra Scorpio-N",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-10-05"
+  },
+  "MH 14 H 2340": {
+    "registration": "MH 14 H 2340",
+    "owner": "Patrick Upadhyay",
+    "class": "CV",
+    "make_model": "Mahindra Bolero Pik-Up",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2022-09-05"
+  },
+  "KA 03 W 2380": {
+    "registration": "KA 03 W 2380",
+    "owner": "Panini Dhillon",
+    "class": "2W",
+    "make_model": "Honda Shine",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2026-01-03"
+  },
+  "KA 51 L 2595": {
+    "registration": "KA 51 L 2595",
+    "owner": "Luke Behl",
+    "class": "CV",
+    "make_model": "Tata Ace Gold",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2021-07-06"
+  },
+  "MH 04 H 0893": {
+    "registration": "MH 04 H 0893",
+    "owner": "Reva Mahajan",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Dzire",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-02-02"
+  },
+  "KA 51 VR 9118": {
+    "registration": "KA 51 VR 9118",
+    "owner": "Sarthak Chowdhury",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Brezza",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-09-03"
+  },
+  "OD 02 DZ 3561": {
+    "registration": "OD 02 DZ 3561",
+    "owner": "Kashish Kalita",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2026-01-03"
+  },
+  "DL 8C JP 6675": {
+    "registration": "DL 8C JP 6675",
+    "owner": "Reva Deol",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Swift",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-07-06"
+  },
+  "KA 53 EZ 8868": {
+    "registration": "KA 53 EZ 8868",
+    "owner": "Elijah Datta",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Baleno",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-02-04"
+  },
+  "TS 07 T 1250": {
+    "registration": "TS 07 T 1250",
+    "owner": "Udyati Chakraborty",
+    "class": "Car",
+    "make_model": "Tata Punch",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2025-10-04"
+  },
+  "TN 22 L 3148": {
+    "registration": "TN 22 L 3148",
+    "owner": "Vrinda Chana",
+    "class": "Car",
+    "make_model": "Kia Seltos",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2024-09-03"
+  },
+  "TS 08 TW 3184": {
+    "registration": "TS 08 TW 3184",
+    "owner": "Mason Golla",
+    "class": "Car",
+    "make_model": "Maruti Suzuki Alto K10",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2020-02-05"
   }
 }

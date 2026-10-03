@@ -3,8 +3,8 @@
 Photos come from `stock_photo_manifest.json` (curated in `stock_curation.py`, processed by `fetch_stock_images.py build`).
 A claim's photos always come from one vehicle `group` (several shots of the same car) plus, optionally, a close-up of
 the same colour, so a claim never shows two different cars. Damage items are derived from the parts boxed on those
-photos, which is what keeps every annotation box on visible damage. Demo scenarios and showcase claims get photos no
-other scenario/showcase claim uses; ordinary claims share the pool.
+photos, which is what keeps every annotation box on visible damage. Photos are reused freely across seeded claims (reuse is
+spread evenly); only the five demo scenarios name distinct, curated sets (seed.SCENARIO_PHOTOS).
 """
 from __future__ import annotations
 
@@ -19,7 +19,7 @@ BODY_BY_MODEL = {
     "ROY-CLA": "motorcycle", "TVS-APA": "motorcycle",
 }
 COLOUR_FAMILY = {"Pearl White": "light", "Silver": "light", "Grey": "mid", "Black": "dark", "Blue": "dark", "Red": "warm",
-                 "Orange": "warm", "Brown": "warm", "Yellow": "warm", "Green": "dark"}
+                 "Orange": "warm", "Brown": "warm", "Yellow": "warm", "Green": "dark", "Champagne": "light"}
 
 # Damage word on the photo → costing operation (spec §12.9 operations).
 REPLACE_WORDS = {"broken", "torn", "shattered", "deformed", "crushed", "bent", "missing", "oxidised fracture", "water damage", "submerged"}
@@ -47,27 +47,20 @@ class MediaPicker:
         self.groups: dict[str, list[dict]] = defaultdict(list)
         for p in self.damage:
             self.groups[p["group"]].append(p)
-        self.reserved: set[str] = set()       # photo ids taken by scenarios / showcase claims
-        self.uses: Counter = Counter()          # spreads reuse evenly across ordinary claims
-        self.shortfall = 0                      # unique requests that had to fall back to reuse
+        self.uses: Counter = Counter()          # spreads reuse evenly across claims
 
     # -- helpers ------------------------------------------------------------------------------
-    def _ok(self, p: dict, unique: bool) -> bool:
-        return not unique or p["id"] not in self.reserved
-
-    def _take(self, photos: list[dict], unique: bool) -> list[dict]:
+    def _take(self, photos: list[dict]) -> list[dict]:
         for p in photos:
             self.uses[p["id"]] += 1
-            if unique:
-                self.reserved.add(p["id"])
         return photos
 
     def take_ids(self, ids: list[str]) -> list[dict]:
         """Scenarios name their photos explicitly (best match, curated)."""
-        return self._take([self.by_id[i] for i in ids if i in self.by_id], unique=True)
+        return self._take([self.by_id[i] for i in ids if i in self.by_id])
 
     # -- damage photos ------------------------------------------------------------------------
-    def for_claim(self, vtype: str, incident: str, *, model_key: str | None = None, unique: bool = False,
+    def for_claim(self, vtype: str, incident: str, *, model_key: str | None = None,
                   parts: set[str] | None = None, max_photos: int = 3, colour: str | None = None,
                   allow_pre_existing: bool = False) -> list[dict]:
         """Pick one vehicle group (+ optional same-colour close-up) suited to the incident and vehicle type.
@@ -80,15 +73,17 @@ class MediaPicker:
         def clean_story(p: dict) -> bool:
             return allow_pre_existing or not any(b.get("kind") == "pre_existing" for b in p["boxes"])
 
-        pool = [p for p in self.damage if p["vehicle_type"] == vtype and clean_story(p)]
+        def body_ok(p: dict) -> bool:  # a scooter and a motorcycle look nothing alike, so two-wheeler bodies must match
+            return vtype != "2W" or body == "any" or p.get("body") in (body, "any")
+
+        pool = [p for p in self.damage if p["vehicle_type"] == vtype and clean_story(p) and body_ok(p)]
         primaries = [p for p in pool if p["view"] != "closeup"]
         # Wide shots suited to the incident first; glass claims (and gaps in the pool) fall back to close-ups.
         suited = [p for p in primaries if incident in p["incidents"]] or [p for p in pool if incident in p["incidents"]] or primaries
 
         def score(p: dict) -> tuple:
             group_parts = {b["part"] for g in self.groups[p["group"]] for b in g["boxes"]}
-            return (self._ok(p, unique),
-                    len(group_parts & parts) if parts else 0,
+            return (len(group_parts & parts) if parts else 0,
                     p.get("body") in (body, "any"),
                     family is None or COLOUR_FAMILY.get(p.get("colour") or "") == family,
                     -self.uses[p["id"]],
@@ -97,26 +92,24 @@ class MediaPicker:
         if not suited:
             return []
         primary = max(suited, key=score)
-        if unique and not self._ok(primary, unique):
-            self.shortfall += 1
         chosen = [primary] + [g for g in self.groups[primary["group"]]
-                              if g["id"] != primary["id"] and self._ok(g, unique)
+                              if g["id"] != primary["id"]
                               and (g["category"] != "windshield" or incident in ("glass", "front_collision", "animal"))]
         chosen = chosen[:max_photos]
         if len(chosen) < max_photos:
             family = COLOUR_FAMILY.get(primary.get("colour") or "", "?")
-            closeups = [p for p in self.damage if p["view"] == "closeup" and p["vehicle_type"] == vtype and self._ok(p, unique) and clean_story(p)
+            closeups = [p for p in self.damage if p["view"] == "closeup" and p["vehicle_type"] == vtype and clean_story(p)
                         and incident in p["incidents"] and COLOUR_FAMILY.get(p.get("colour") or "", "?") == family
                         and p["zone"] == primary["zone"]]
             if closeups:
                 chosen.append(max(closeups, key=lambda p: (-self.uses[p["id"]], self.rng.random())))
-        return self._take(chosen, unique)
+        return self._take(chosen)
 
     # -- clean vehicle photos ------------------------------------------------------------------
     def clean_for(self, vtype: str, model_key: str | None) -> dict | None:
-        exact = [p for p in self.clean if p.get("model_key") == model_key]
-        pool = exact or [p for p in self.clean if p["vehicle_type"] == vtype and not p.get("model_key")] or \
-            [p for p in self.clean if p["vehicle_type"] == vtype]
+        body = BODY_BY_MODEL.get(model_key or "")
+        same_type = [p for p in self.clean if p["vehicle_type"] == vtype]
+        pool = [p for p in self.clean if p.get("model_key") == model_key] or [p for p in same_type if p.get("body") == body] or same_type
         if not pool:
             return None
         p = min(pool, key=lambda p: (self.uses[p["id"]], p["id"]))

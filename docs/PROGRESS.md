@@ -1,55 +1,53 @@
 # Build progress
 
 ## Resume point
-**Stopped mid Stage 1 (wrap-up, 2026-10-02). App verified runnable:** backend starts (`/api/system/status` OK), `pytest -v` 49 passed,
-`npm run build` and `npm run contrast` pass. `claims.json` is unchanged (old seed output); nothing half-written.
+**Stage 1 (user-provided photos) — ✅ complete (2026-10-03), awaiting the user's testing; not committed.** Last completed sub-step: **6**.
+Final state: seed re-run after the duplicate-box fix (exit 0, 250 claims, 1,027 documents, `users.json` byte-identical), `pytest -v`
+60 passed, `npm run build` and `npm run contrast` pass, uvicorn was verified on the fresh data, then stopped at the user's request (start it with `uvicorn app.main:app --reload --port 8000` from `/server`). Details: "Phase 3 Stage 1" at the end of this file.
+**Exact next step:** user tests Stage 1 (checklist in the Stage 1 summary). Then Phase 3B — Claim Detail (`/claims/:id`), BUILD_SPEC.md §10.4.
+**Temporary state:** none. `server/.cache/seed.py.bak` (pre-rewire seed) is no longer needed and can be deleted.
 
-**Done in Stage 1 so far**
-- `server/scripts/fetch_stock_images.py`: `discover <category>` (Commons + Openverse; Pexels too if `PEXELS_API_KEY` is in `server/.env`;
-  CC0/PDM/BY/BY-SA only; Openverse throttled ≥ 4 s with 429 back-off) and `build [--prune-legacy]` (licence re-check from source metadata,
-  Flickr original-page check, plate blur, WebP 1600 + 320 thumb + blur placeholder, `CREDITS.json`, Windows-safe swap via `scripts/fs_sync.py`).
-- **58 damage photos curated + boxed** in `server/scripts/stock_curation.py` (the source of truth; running it rebuilds
-  `server/data/stock_photo_manifest.json`, which is currently consistent: 58 entries in PICKS order).
-  By theme: car front 14 · car rear 8 (incl. 1 same-car crop) · car side 7 (incl. 1 crop) · scratches 2 · lamps 3 · glass 6 ·
-  two-wheelers 6 · commercial 9 (incl. 1 flooded pickup) · flood 3. Clean-vehicle thumbnails: **0 (not started)**.
-  Boxes on the first 25 were verified on contact sheets (`server/.cache/stock/annotated/`); the other 33 are placed from gridded
-  views but **not yet rendered/verified**.
-- A trial `build` ran once, before photos 26–58 existed: only the first 25 are in `client/public/assets/stock/<category>/`
-  (legacy `fallback-*` placeholders kept because the current claims.json still uses them).
-- `document_requirements.json` written (§11.5, from `scripts/reference_data.py`; the seed rewrites it).
-- New: `scripts/make_specimen_docs.py` (per-claim renderer, bundled OFL fonts in `scripts/assets/fonts/`), `scripts/seed_documents.py`
-  (document records, match flags, `document_conditions`), `scripts/seed_media.py` (photo picker: vehicle group, incident, body, colour,
-  scenario/showcase uniqueness; damage items + boxes derived from photo boxes), `scripts/render_annotations.py` (verification sheets).
-- `seed.py` rewired to all of the above (+ `SCENARIO_PHOTOS`, native-script narratives, voice-note media, licence data in
-  `checks.dl.data` / `driving_licences.json`, 30 showcase claims unique). A dry-run of `generate()` validated all 250 claims before
-  the flood/2W/CV photos were added. **Seed NOT yet run.**
-- `client/public/assets/audio/scenarios/README.md` (5 file names + script lines). `GET /api/claims/{id}` adds `media[].available`
-  (file exists). `schemas/claim.py`: `Media.url` may be null (transcript-only voice notes).
+**Done this session (2026-10-03):**
+- Sub-step 1: `clean_motorcycle.jpg` verified (a 1920×1080 WebP saved with a .jpg name; Pillow reads it). Catalogued as a clean
+  Royal Enfield Classic (`model_key` ROY-CLA, body motorcycle, Black, no plate box — the rear plate is edge-on) and built (1600×900).
+  `seed_media.for_claim`: two-wheeler body is now a hard filter, so motorcycle claims never show the scooter damage photos (they get no
+  damage photos until a motorcycle damage photo exists; thumbnail + theft photo = `clean_motorcycle`). `seed.py`: when a claim's photos
+  do not show the insured vehicle (none, or TP), the vehicle colour follows the clean photo; TP claims cost with `idv=0` so a large
+  third-party bill no longer turns into an own-vehicle "Total loss" (that bug gave a 2W total loss a car photo). Dry run of `generate()`:
+  all 250 claims validate, scenarios unchanged (scores 90/5/35/10/0).
+- Sub-step 2: `python scripts/stock_curation.py` + `python scripts/build_stock_photos.py --prune-legacy` → 26 photos.
 
-**Exact next sub-step:** clean-vehicle thumbnails. Run `server\.venv\Scripts\python -u scripts/fetch_stock_images.py discover clean`
-from `/server` (needs network outside the sandbox; Windows `curl` fails on certificate-revocation checks, Python works). Curate into
-`stock_curation.py` with out-category `"clean"`, view `"overall"`, no boxes, plus a `model_key` (e.g. `HYU-CRE`) where the photo shows that
-model — `build_manifest()` needs a small addition to carry `model_key`. Include a clean **scooter** (Activa theft scenario) and a clean LCV.
+**Done in the previous session (2026-10-02 → 03, never recorded here):**
+- **Photo source switched** from Commons/Openverse discovery to **user-provided photos** in `server/assets_src/photos/` (26 files).
+  `fetch_stock_images.py` is kept but unused. New `server/scripts/build_stock_photos.py [--prune-legacy]`: optional crop, plate
+  pixelate + blur, WebP ≤ 1600 px (never upscaled) + 320 px thumb + base64 blur placeholder, EXIF/GPS stripped, `CREDITS.json`
+  ("Provided by user"), temp folder swapped in via `fs_sync.sync_dir`; writes url/thumb/size/blur back into the manifest.
+- `stock_curation.py` rewritten as the catalogue of those photos (25 catalogued: 20 damage + 5 clean; boxes `[ymin,xmin,ymax,xmax]`
+  0–1000 on the source, re-expressed relative to `crop` where one is set; kind D = fresh, P = pre-existing; clean photos may carry a
+  `model_key`). `car_front_02` carries the pre-existing `BMRF` "oxidised fracture" box (fastag_mismatch FR-02 story).
+  `clean_motorcycle.jpg` was not catalogued (the original file was not a real image).
+- Build ran with `--prune-legacy`: all 25 photos are in `client/public/assets/stock/<category>/`, the `fallback-*` placeholders and
+  the old Commons files are gone (shown as deletions in `git status`).
+- `seed_media.py`: no more "unique showcase" reservation — photos are reused evenly; only the five scenarios use distinct curated
+  sets. `clean_for()` prefers exact `model_key`, then same body (scooter/motorcycle), then same vehicle type. Champagne colour added.
+- `seed.py`: `SCENARIO_PHOTOS` = clean_rear_end → car_rear_01, fastag_mismatch → car_front_02, garage_overquote → car_side_01,
+  flood_total_loss → flood_01; theft_two_wheeler shows the clean scooter. Scenario items/narratives rewritten to match the photos
+  (e.g. clean_rear_end: bumper + quarter panel + tail lamp; garage_overquote: two left doors, no mirror; Activa is Blue;
+  pre-existing bracket points at `m_1`). Summary line now prints "scenario photo sets distinct".
+- `render_annotations.py` writes sheets to `server/.cache/stock/review/`.
+- `Lightbox.jsx`: zoom capped at the image's native resolution (`naturalWidth / offsetWidth`, ≤ 5×), re-measured on load/resize;
+  "+" disabled with the label "Shown at full resolution" when the photo is already at native size. **Not yet verified in a browser.**
+- Seed ran to completion once (15:28) with these photos; a second run was interrupted (see temporary state above).
 
-**Remaining Stage 1 sub-steps after that**
-1. `python scripts/stock_curation.py`, then `python scripts/fetch_stock_images.py build --prune-legacy` (builds every photo, removes `fallback-*`).
-2. `python scripts/render_annotations.py manifest`; check the sheets for photos 26–58 and fix any box.
-3. `python scripts/seed.py` (writes claims and renders ~1,300 documents into `client/public/assets/documents/`). Confirm `users.json` is
-   byte-identical (`git diff --stat server/data/users.json`) and the summary shows `photo reuse fallbacks for unique sets: 0`.
-4. Restart uvicorn. Run `render_annotations.py scenarios` plus `claims <5 more ids>` and verify ≥ 10 annotated photos, including all 5 scenarios.
-5. Add tests: manifest boxes within 0–1000; every seeded box references a photo the claim has; scenario + showcase photos unique;
-   document URLs exist on disk; no Aadhaar/PAN images.
-6. Playwright check of Home (cards and table thumbnails show real photos). Then `pytest -v`, `npm run build`, `npm run contrast`.
-   Write the Stage 1 PROGRESS section: decisions (Commons/Openverse sources, photo-first damage items, same-car crops, audio availability
-   flag) and known follow-ups (thin scratch/close-up pool, few Indian-model photos, European scooters for 2W damage).
-
-**Background processes / caches:** no background tasks of mine are running (discovery stopped; the two `pyServer.py` python processes
-on this machine are unrelated). Git-ignored caches in `server/.cache/`:
-- `stock/candidates/<category>/`: candidates.json + numbered contact sheets. The `n` numbers in `stock_curation.py` refer to these files, so keep them. `clean/` was deleted (partial); re-run discover.
-- `stock/originals/`: downloaded originals, reused by build.
-- `stock/annotated/`: verification sheets.
-- `discover.log`.
-- `seed.py.bak`: the pre-rewire seed; delete once the new seed is verified.
+**Remaining Stage 1 sub-steps**
+1. Catalogue + build `clean_motorcycle`; motorcycle claims use it.
+2. Rebuild the manifest (`python scripts/stock_curation.py` + build) and confirm the `car_front_02` pre-existing box is present.
+3. Full `python scripts/seed.py` (foreground, ≥ 15 min timeout; takes ~8½ min). Check `users.json` byte-identical, no
+   `documents.__building__`, every document URL exists, no orphan document folders.
+4. Fresh uvicorn; browser check: Home thumbnails/cards, 5 scenarios + boxes (red pre-existing box on fastag_mismatch), motorcycle
+   claims, Lightbox zoom cap.
+5. Stage 1 tests; `pytest -v`, `npm run build`, `npm run contrast`.
+6. `server/assets_src/photos/README.md` (how to replace a photo).
 
 Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 
@@ -57,7 +55,7 @@ Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 |---|---|
 | 1 — Foundation & design system | ✅ Done (2026-10-01) |
 | 2 — Backend core, data & auth | ⚠️ Partly stubbed — see Phase 1–2 audit |
-| 3 — Home & Claim Detail | 🟡 Home done (rework 2026-10-02); Claim Detail next |
+| 3 — Home & Claim Detail | 🟡 Home done (rework 2026-10-02); Stage 1 photos/documents done (2026-10-03); Claim Detail next |
 | 4 — Dashboard | — |
 | 5 — Agents & pipeline | — |
 | 6 — File a Claim, Agent Theatre, Results | — |
@@ -313,3 +311,81 @@ The Phase 2 and 3A sections above overstated what was delivered. Verified state 
   to see the new data. `uvicorn --reload` did not pick up file changes in this environment.
 - Claim Detail (`/claims/:id`) is still the Phase 3B placeholder; rows, cards and links already navigate and prefetch it.
 
+
+## Phase 3 Stage 1 — Claim photos, documents & seed media (2026-10-02 → 03)
+
+### Delivered
+- [x] User-provided photo pipeline: `server/assets_src/photos/` (26 photos) → `scripts/stock_curation.py` (catalogue, hand-placed
+      damage/plate boxes) → `stock_photo_manifest.json` → `scripts/build_stock_photos.py` (crop, plate blur, WebP ≤ 1600 px + thumb +
+      blur placeholder, EXIF stripped, `CREDITS.json`). How to replace a photo: `server/assets_src/photos/README.md`.
+- [x] `render_annotations.py`: review sheets for the manifest, any claim, the five scenarios, and `grid <photo_id>` (0–1000
+      coordinate grid on a source photo for placing boxes).
+- [x] Seed media are photo-first: a claim's damage items and annotation boxes come from the boxes on its photos; specimen documents
+      rendered per claim into `client/public/assets/documents/<claim_id>/`; KYC is a masked registry lookup (no Aadhaar/PAN images).
+- [x] Lightbox zoom capped at the photo's native resolution.
+- [x] Tests: `tests/test_stage1_media.py`.
+
+### Verification (2026-10-03)
+- [x] Seed: full run completed (exit 0), 250 claims validated, `users.json` byte-identical (sha256), no `documents.__building__`,
+      every document URL exists and no stale files (test). Scenario outcomes unchanged (scores 90 / 5 / 35 / 10 / 0).
+- [x] Review sheet `render_annotations.py scenarios`: every box sits on visible damage; fastag_mismatch shows the red
+      "Bumper inner bracket · oxidised fracture" box on the hanging bracket; theft_two_wheeler shows the clean scooter (plate blurred).
+- [x] Browser (Chrome, admin): Home card view — 25 cards, real photos, none broken, no fallback tiles. Table view — all 25 rows show a
+      vehicle thumbnail at a 1,640 px table width (checked with CSS `zoom: 0.65`, because this display is only 1,280 CSS px wide and the
+      approved table hides thumbnails below 1,360 px). `/api/claims/{id}` for the 5 scenarios: right photo, `available: true`, boxes as on
+      the sheet. All 29 motorcycle claims: thumbnail `clean_motorcycle`; OD cards fall back to it; no scooter photos.
+- [x] Lightbox on `/styleguide` (developer): `car_front_02` (1200×1600) zoom stops at 463% (native) with "+" disabled; `clean_scooter`
+      (360×240) opens at 100% with "+" disabled, labelled "Shown at full resolution"; SVG illustrations still zoom to 500%; zoom resets to
+      100% when moving between images. No console errors from the app.
+
+### Decisions
+37. **Photos are user-provided only** (credit "Provided by user"); the Commons/Openverse tool `fetch_stock_images.py` stays in the
+    repo unused. Photos are reused across seeded claims (spread evenly); only the five demo scenarios have distinct, curated sets
+    (`SCENARIO_PHOTOS`). The earlier "30 unique showcase claims" rule was dropped — 20 damage photos cannot cover 30 claims uniquely.
+38. **Two-wheeler body type is a hard match**: motorcycles never show scooter damage photos. With no motorcycle damage photo yet,
+    motorcycle OD claims carry no damage photos (items come from the rate-card picker, as for any claim without a matching photo);
+    their thumbnail and theft photo are `clean_motorcycle`.
+39. **Vehicle colour follows the only picture of the vehicle**: damage photos when present, otherwise (no photos, or TP where the photos
+    show the other car) the clean thumbnail photo.
+40. **TP claims are costed with `idv = 0`** so a large third-party bill is never relabelled as an own-vehicle "Total loss".
+41. **One catalogued box per damage item**: paired parts (left/right headlamps, doors…) share a part code; a box visible on the photo is
+    attached to the first such item only, so the Damage tab never draws the same box twice.
+42. **Lightbox zoom limit** = `naturalWidth / displayed width` (1×–5×); when the photo is already shown at native size the "+" button
+    is disabled with the label "Shown at full resolution". SVGs are exempt (vector art never pixelates).
+
+### Known follow-ups
+- **Photos to replace before client demo** (kept for now at the user's request; replace with the same file name, see
+  `server/assets_src/photos/README.md`). "Low resolution" = long side under 800 px in the source.
+
+  | File | Issue |
+  |---|---|
+  | `car_rear_01.jpg` (800×558) | watermark |
+  | `scratch_01.jpg` (737×900) | watermark |
+  | `car_side_03.jpg` (600×421) | watermark; low resolution (a crop already drops its stock-site footer strip) |
+  | `tw_02.jpg` (523×594) | watermark; low resolution |
+  | `car_front_02.jpg` (3024×4032) | Team-BHP site mark |
+  | `clean_sedan.jpg` (678×452) | Team-BHP site mark; low resolution |
+  | `clean_suv.jpg` (640×480) | Team-BHP site mark; low resolution |
+  | `clean_scooter.jpg` (360×240) | low resolution (smallest photo) |
+  | `car_rear_02.jpg` (387×516) | low resolution |
+  | `car_side_02.jpg` (447×447) | low resolution |
+  | `glass_01.jpg` (540×360) | low resolution |
+  | `scratch_02.jpg` (540×360) | low resolution |
+  | `car_rear_03.jpg` (612×408) | low resolution |
+  | `lamp_front_01.jpg` (612×408) | low resolution |
+  | `car_side_01.jpg` (645×360) | low resolution |
+  | `cv_01.jpg` (686×380) | low resolution |
+  | `glass_02.jpg` (694×442) | low resolution |
+  | `clean_cv.jpg` (720×405) | low resolution |
+  | `clean_hatch.jpg` (720×540) | low resolution |
+  | `tw_01.jpg` (720×480) | low resolution |
+
+- **Photo coverage gaps:** no motorcycle damage photo (motorcycle OD claims have none), one commercial-vehicle and one flood photo,
+  no clean photo matching most specific models. Most source files are below the 1600 px build size, so they are served at native size.
+- **Thumbnail vs damage-photo colour:** the Home thumbnail is always the clean photo for the body type (e.g. the blue scooter), while the
+  vehicle colour follows the claim's damage photos (e.g. a black scooter), so the two can differ for OD claims. Fixing it properly needs
+  more clean photos per colour or using the first damage photo as the thumbnail.
+- Some files have a different format from their `.jpg` extension (WebP: `car_rear_01`, `car_side_03`, `clean_motorcycle`, `flood_01`,
+  `lamp_tail_01`, `scratch_01`; AVIF: `clean_scooter`, `cv_01`). The venv's Pillow reads them all; the system Python's may not read AVIF.
+- `client/public/assets/audio/scenarios/`: the five scenario voice notes are not recorded yet (README lists names and lines);
+  `media[].available` is false until they exist.

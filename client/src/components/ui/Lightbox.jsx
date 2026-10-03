@@ -52,7 +52,8 @@ function ToolButton({ icon: Icon, label, onClick, active, disabled }) {
 /**
  * Lightbox (§7). items: [{ src, alt, thumb?, caption?, annotations?: [{x,y,w,h,label,severity}] (0–1 fractions),
  * reference?: src of a "before" image, exif?: { key: value } }]
- * Zoom 1–5× (wheel, pinch, buttons, +/−), pan (drag), ←/→, thumbnails, annotations toggle (A),
+ * Zoom 1–5× (wheel, pinch, buttons, +/−), capped at the image's native resolution so small photos never look
+ * pixelated; pan (drag), ←/→, thumbnails, annotations toggle (A),
  * compare slider, download, EXIF panel (I). Esc closes.
  */
 export function Lightbox({ open, onClose, items = [], index: startIndex = 0 }) {
@@ -74,14 +75,20 @@ function LightboxInner({ onClose, items, startIndex }) {
   const rootRef = useRef(null);
   const stageRef = useRef(null);
   const frameRef = useRef(null);
+  const imgRef = useRef(null);
   const pointers = useRef(new Map());
   const gesture = useRef(null);
+  // Highest zoom at which one image pixel still covers at least one CSS pixel (≤ MAX_Z); measured per image.
+  const [measured, setMeasured] = useState({ src: null, limit: MIN_Z });
+  const maxZRef = useRef(MIN_Z);
 
   useFocusTrap(rootRef, true);
   useEscape(true, onClose);
   useScrollLock(true);
 
   const item = items[index];
+  const maxZ = measured.src === item.src ? measured.limit : MIN_Z;
+  maxZRef.current = maxZ;
   const hasAnno = Boolean(item.annotations?.length);
   const canCompare = Boolean(item.reference);
 
@@ -102,11 +109,27 @@ function LightboxInner({ onClose, items, startIndex }) {
   /** Zoom to `next`, keeping the point (cx, cy) — relative to the stage centre — fixed on screen. */
   const zoomAt = useCallback((next, cx = 0, cy = 0) => {
     setZoom((z) => {
-      const nz = clamp(next(z), MIN_Z, MAX_Z);
+      const nz = clamp(next(z), MIN_Z, maxZRef.current);
       setPan((p) => (nz === 1 ? { x: 0, y: 0 } : { x: cx - ((cx - p.x) * nz) / z, y: cy - ((cy - p.y) * nz) / z }));
       return nz;
     });
   }, []);
+
+  const measure = useCallback(() => {
+    const img = imgRef.current;
+    if (!img || !img.naturalWidth || !img.offsetWidth) return;
+    // Vector images never pixelate (an SVG's naturalWidth is only its nominal size), so they keep the full range.
+    const vector = /\.svg(\?|#|$)/i.test(img.currentSrc || img.src) || /^data:image\/svg/i.test(img.src);
+    const limit = vector ? MAX_Z : clamp(img.naturalWidth / img.offsetWidth, MIN_Z, MAX_Z);
+    maxZRef.current = limit;
+    setMeasured({ src: img.getAttribute("src"), limit });
+    setZoom((z) => (z > limit ? limit : z));
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [measure]);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -207,7 +230,7 @@ function LightboxInner({ onClose, items, startIndex }) {
           </p>
         </div>
         <ToolButton icon={Minus} label="Zoom out (−)" onClick={() => zoomAt((z) => z - 0.5)} disabled={zoom <= MIN_Z} />
-        <ToolButton icon={Plus} label="Zoom in (+)" onClick={() => zoomAt((z) => z + 0.5)} disabled={zoom >= MAX_Z} />
+        <ToolButton icon={Plus} label={maxZ <= MIN_Z ? "Shown at full resolution" : "Zoom in (+)"} onClick={() => zoomAt((z) => z + 0.5)} disabled={zoom >= maxZ} />
         <ToolButton icon={RotateCcw} label="Reset zoom (0)" onClick={reset} disabled={zoom === 1} />
         <span className="mx-1 h-6 w-px bg-on-dark/20" aria-hidden="true" />
         <ToolButton icon={ScanSearch} label="Show AI annotations (A)" onClick={() => setShowAnno((v) => !v)} active={showAnno && hasAnno} disabled={!hasAnno} />
@@ -230,7 +253,7 @@ function LightboxInner({ onClose, items, startIndex }) {
         {/* Stage */}
         <div
           ref={stageRef}
-          className={cn("relative flex min-w-0 flex-1 touch-none items-center justify-center overflow-hidden select-none", zoom > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in")}
+          className={cn("relative flex min-w-0 flex-1 touch-none items-center justify-center overflow-hidden select-none", zoom > 1 ? "cursor-grab active:cursor-grabbing" : maxZ > MIN_Z ? "cursor-zoom-in" : "cursor-default")}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
@@ -261,6 +284,8 @@ function LightboxInner({ onClose, items, startIndex }) {
             ) : (
               <img
                 key={item.src}
+                ref={imgRef}
+                onLoad={measure}
                 src={item.src}
                 alt={item.alt || item.caption || ""}
                 draggable={false}

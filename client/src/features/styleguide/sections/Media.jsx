@@ -34,6 +34,8 @@ export function Media() {
           <FileTile kind="image" name="left-side.svg" size={248_320} uploadedAt={now - 5 * 60_000} thumb={LIGHTBOX_ITEMS[0].src} flag={{ level: "pass", label: "Fresh damage" }} onOpen={() => open(0)} />
           <FileTile kind="image" name="front-34.svg" size={301_004} uploadedAt={now - 6 * 60_000} thumb={LIGHTBOX_ITEMS[1].src} flag={{ level: "fail", label: "Pre-existing" }} onOpen={() => open(1)} />
           <FileTile kind="image" name="rear.svg" size={198_112} uploadedAt={now - 7 * 60_000} thumb={LIGHTBOX_ITEMS[2].src} flag={{ level: "warn", label: "Low light" }} onOpen={() => open(2)} />
+          <FileTile kind="image" name="car_front_02.webp" size={420_528} uploadedAt={now - 8 * 60_000} thumb="/assets/stock/car-front/car_front_02-thumb.webp" flag={{ level: "fail", label: "Pre-existing" }} onOpen={() => open(3)} />
+          <FileTile kind="image" name="clean_scooter.webp" size={14_000} uploadedAt={now - 9 * 60_000} thumb="/assets/stock/clean/clean_scooter-thumb.webp" onOpen={() => open(4)} />
           <FileTile kind="pdf" name="RC-MH12AB1234.pdf" size={1_204_000} uploadedAt={now - 3600_000} flag={{ level: "pass", label: "Verified" }} onOpen={() => {}} />
           <FileTile kind="image" name="uploading.jpg" size={2_400_000} progress={progress} onRemove={() => {}} />
           <FileTile kind="image" name="missing.webp" size={0} thumb="/assets/claims/none/missing.webp" flag={{ level: "pending", label: "Pending" }} />

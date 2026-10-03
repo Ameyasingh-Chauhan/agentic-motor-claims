@@ -3,8 +3,9 @@
     python scripts/render_annotations.py manifest [--ids a,b,c]     # boxes + plate boxes from stock_photo_manifest.json
     python scripts/render_annotations.py claims <claim_id> [...]     # the boxes a seeded claim actually carries
     python scripts/render_annotations.py scenarios                   # all five demo scenarios
+    python scripts/render_annotations.py grid <photo_id>             # 0–1000 grid on a SOURCE photo, for placing boxes
 
-Sheets are written to server/.cache/stock/annotated/. Colours follow the Damage tab: green = fresh damage,
+Sheets are written to server/.cache/stock/review/. Colours follow the Damage tab: green = fresh damage,
 red = pre-existing, amber = low confidence / overquoted; plate boxes are drawn dashed grey.
 """
 from __future__ import annotations
@@ -21,7 +22,7 @@ sys.path.insert(0, str(SERVER))
 from app.services.json_store import read_json_sync  # noqa: E402
 
 PUBLIC = ROOT / "client" / "public"
-OUT = SERVER / ".cache" / "stock" / "annotated"
+OUT = SERVER / ".cache" / "stock" / "review"
 FONT = Path(__file__).resolve().parent / "assets" / "fonts" / "inter-latin-wght-normal.woff2"
 TONES = {"pass": (22, 163, 74), "fail": (220, 38, 38), "warn": (217, 119, 6), "plate": (160, 160, 160)}
 
@@ -108,6 +109,31 @@ def claim_tiles(claim_ids: list[str]) -> list[tuple[str, Image.Image]]:
     return tiles
 
 
+def grid(photo_id: str) -> Path:
+    """Draw the box_2d coordinate grid (0–1000, lines every 50) on a source photo in server/assets_src/photos/."""
+    from PIL import ImageOps
+    src = next((f for f in (SERVER / "assets_src" / "photos").iterdir() if f.stem == photo_id), None)
+    if src is None:
+        sys.exit(f"no source photo named {photo_id}.* in server/assets_src/photos/")
+    im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
+    im.thumbnail((1400, 1400))
+    d = ImageDraw.Draw(im)
+    w, h = im.size
+    f = font(max(12, w // 80))
+    for v in range(0, 1001, 50):
+        colour = (255, 40, 40) if v % 100 == 0 else (255, 200, 0)
+        d.line((v / 1000 * w, 0, v / 1000 * w, h), fill=colour, width=1)
+        d.line((0, v / 1000 * h, w, v / 1000 * h), fill=colour, width=1)
+        if v % 100 == 0:
+            d.text((v / 1000 * w + 3, 2), str(v), font=f, fill=(255, 255, 0))      # x (columns) along the top
+            d.text((3, v / 1000 * h + 2), str(v), font=f, fill=(255, 255, 0))      # y (rows) down the left
+    path = OUT / f"grid_{photo_id}.jpg"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    im.save(path, quality=88)
+    print(f"  {path}  (source {src.name})")
+    return path
+
+
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser()
@@ -117,7 +143,12 @@ def main() -> None:
     c = sub.add_parser("claims")
     c.add_argument("ids", nargs="+")
     sub.add_parser("scenarios")
+    g = sub.add_parser("grid")
+    g.add_argument("photo_id")
     args = ap.parse_args()
+    if args.cmd == "grid":
+        grid(args.photo_id)
+        return
     if args.cmd == "manifest":
         tiles = manifest_tiles(set(args.ids.split(",")) if args.ids else None)
         name = "manifest"
