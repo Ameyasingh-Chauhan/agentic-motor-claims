@@ -1,1 +1,261 @@
-{}
+{
+  "2W": {
+    "mandatory": [
+      {
+        "doc": "claim_form",
+        "label": "Claim form (signed or digital)"
+      },
+      {
+        "doc": "policy",
+        "label": "Policy copy or cover note"
+      },
+      {
+        "doc": "rc",
+        "label": "RC copy"
+      },
+      {
+        "doc": "dl",
+        "label": "Driving licence of rider"
+      },
+      {
+        "doc": "kyc",
+        "label": "KYC (Aadhaar / PAN / Voter ID / Passport)"
+      }
+    ],
+    "conditional": [
+      {
+        "doc": "fir",
+        "label": "FIR",
+        "when": [
+          "theft",
+          "third_party"
+        ],
+        "reason": "Required for theft and third-party claims"
+      },
+      {
+        "doc": "original_rc",
+        "label": "Original RC",
+        "when": [
+          "theft"
+        ],
+        "reason": "Surrendered on a theft settlement"
+      },
+      {
+        "doc": "original_policy",
+        "label": "Original policy",
+        "when": [
+          "theft"
+        ],
+        "reason": "Required for theft settlement"
+      },
+      {
+        "doc": "tax_receipt",
+        "label": "Road tax receipt",
+        "when": [
+          "theft"
+        ],
+        "reason": "Required for theft settlement"
+      },
+      {
+        "doc": "rto_theft_declaration",
+        "label": "RTO theft declaration",
+        "when": [
+          "theft"
+        ],
+        "reason": "Informs the RTO the vehicle was stolen"
+      },
+      {
+        "doc": "original_keys",
+        "label": "All original keys",
+        "when": [
+          "theft"
+        ],
+        "reason": "Confirms the vehicle was locked and keys are accounted for"
+      },
+      {
+        "doc": "repair_bills",
+        "label": "Original repair bills and payment receipts",
+        "when": [
+          "reimbursement"
+        ],
+        "reason": "Needed to reimburse repairs you paid for"
+      }
+    ],
+    "optional": [
+      {
+        "doc": "photos",
+        "label": "Photos of vehicle and site (strongly recommended)"
+      },
+      {
+        "doc": "witness",
+        "label": "Witness details"
+      }
+    ]
+  },
+  "Car": {
+    "mandatory": [
+      {
+        "doc": "claim_form",
+        "label": "Claim form (signed or digitally authorised)"
+      },
+      {
+        "doc": "rc",
+        "label": "RC (verified copy)"
+      },
+      {
+        "doc": "dl",
+        "label": "Driving licence of driver"
+      },
+      {
+        "doc": "policy",
+        "label": "Policy documents"
+      },
+      {
+        "doc": "kyc",
+        "label": "KYC"
+      }
+    ],
+    "conditional": [
+      {
+        "doc": "fir",
+        "label": "FIR",
+        "when": [
+          "theft",
+          "major_accident",
+          "bodily_injury",
+          "malicious_damage",
+          "third_party"
+        ],
+        "reason": "Required for theft, major accidents, injury, malicious damage and third-party property damage"
+      },
+      {
+        "doc": "repair_estimate",
+        "label": "Repair estimate",
+        "when": [
+          "reimbursement"
+        ],
+        "reason": "Needed to assess a reimbursement claim"
+      },
+      {
+        "doc": "repair_invoice",
+        "label": "Final invoices and payment receipts",
+        "when": [
+          "reimbursement"
+        ],
+        "reason": "Needed to reimburse repairs you paid for"
+      },
+      {
+        "doc": "lender_noc",
+        "label": "Lender NOC + Form 35",
+        "when": [
+          "financed"
+        ],
+        "reason": "The vehicle is hypothecated to a lender"
+      },
+      {
+        "doc": "rto_forms",
+        "label": "RTO Forms 28, 29, 30",
+        "when": [
+          "second_hand_or_total_loss",
+          "theft"
+        ],
+        "reason": "Transfer of ownership to the insurer"
+      },
+      {
+        "doc": "purchase_invoice",
+        "label": "Original purchase invoice",
+        "when": [
+          "rti_claim"
+        ],
+        "reason": "Return-to-invoice add-on claim"
+      },
+      {
+        "doc": "original_keys",
+        "label": "Original keys",
+        "when": [
+          "theft"
+        ],
+        "reason": "Confirms the keys are accounted for"
+      },
+      {
+        "doc": "subrogation_letter",
+        "label": "Subrogation letter",
+        "when": [
+          "theft"
+        ],
+        "reason": "Transfers recovery rights to the insurer"
+      },
+      {
+        "doc": "discharge_voucher",
+        "label": "Claim discharge voucher",
+        "when": [
+          "theft"
+        ],
+        "reason": "Signed on settlement of a theft claim"
+      }
+    ],
+    "optional": [
+      {
+        "doc": "cancelled_cheque",
+        "label": "Cancelled cheque (required only for reimbursement)"
+      },
+      {
+        "doc": "photos",
+        "label": "Photos / videos"
+      },
+      {
+        "doc": "medical",
+        "label": "Medical reports & bills (bodily injury)"
+      }
+    ]
+  },
+  "CV": {
+    "mandatory": [
+      {
+        "doc": "claim_form",
+        "label": "Claim form"
+      },
+      {
+        "doc": "rc",
+        "label": "RC"
+      },
+      {
+        "doc": "dl",
+        "label": "Driving licence valid for the vehicle class"
+      },
+      {
+        "doc": "fitness",
+        "label": "Fitness certificate"
+      },
+      {
+        "doc": "permit",
+        "label": "Permit"
+      }
+    ],
+    "conditional": [
+      {
+        "doc": "repair_estimate",
+        "label": "Repair estimates and final bills",
+        "when": [
+          "damage"
+        ],
+        "reason": "Needed to assess the damage"
+      },
+      {
+        "doc": "fir",
+        "label": "FIR",
+        "when": [
+          "theft",
+          "third_party"
+        ],
+        "reason": "Required for theft and third-party claims"
+      }
+    ],
+    "optional": [
+      {
+        "doc": "policy",
+        "label": "Physical policy copy (if not verifiable digitally)"
+      }
+    ]
+  }
+}

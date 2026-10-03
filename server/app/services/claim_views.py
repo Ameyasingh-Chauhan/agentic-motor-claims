@@ -6,7 +6,12 @@ equals the row count of the list it opens.
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+from pathlib import Path
 from typing import Callable
+
+from ..config import SERVER_DIR
+
+PUBLIC_DIR = SERVER_DIR.parent / "client" / "public"
 
 IST = timezone(timedelta(hours=5, minutes=30))
 
@@ -157,3 +162,14 @@ def to_customer_view(c: dict) -> dict:
                        for e in c.get("timeline", []) if e["type"] in CUSTOMER_EVENT_TYPES]
     out["documents"] = [{k: v for k, v in d.items() if k != "checks"} for d in c.get("documents", [])]
     return out
+
+
+def with_media_availability(c: dict) -> dict:
+    """Mark each media item `available` (its file exists). Scenario voice notes are recorded by the user and dropped
+    into client/public/assets/audio/scenarios/ later; until then the UI shows the transcript with "Audio not retained"."""
+    media = []
+    for m in c.get("media", []):
+        url = m.get("url")
+        available = bool(url) and (not url.startswith("/assets/") or (PUBLIC_DIR / url.lstrip("/")).is_file())
+        media.append({**m, "available": available})
+    return {**c, "media": media}

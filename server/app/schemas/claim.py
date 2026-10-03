@@ -42,7 +42,7 @@ class Incident(_Model):
 class Media(_Model):
     id: str
     kind: Literal["photo", "audio", "video"]
-    url: str
+    url: str | None  # None for voice notes whose audio was not retained (transcript only)
     thumb: str | None = None
     blur_data: str | None = None
     slot: str | None = None

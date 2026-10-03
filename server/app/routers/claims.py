@@ -8,7 +8,7 @@ from collections import Counter
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 
-from ..services.claim_views import SEGMENTS, customer_status, now_ist, row, to_customer_view
+from ..services.claim_views import SEGMENTS, customer_status, now_ist, row, to_customer_view, with_media_availability
 from ..services.json_store import read_json
 from .auth import current_user
 
@@ -137,4 +137,5 @@ async def get_claim(claim_id: str, user=Depends(current_user)):
     claim = next((c for c in await _visible(user) if c["id"] == claim_id), None)
     if claim is None:
         raise HTTPException(404, "Claim not found")
+    claim = with_media_availability(claim)
     return to_customer_view(claim) if _is_customer(user) else claim

@@ -23,3 +23,6 @@ Thumbs.db
 .idea/
 *.log
 .claude/settings.local.json
+
+# Local download caches (stock photo originals, contact sheets)
+server/.cache/

@@ -1,0 +1,3159 @@
+{
+  "about": "Curated stock photos with hand-placed damage boxes (box_2d = [ymin, xmin, ymax, xmax], 0–1000). Edit server/scripts/stock_curation.py, then run it and `fetch_stock_images.py build`.",
+  "photos": [
+    {
+      "id": "car_front_01",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:2017 Toyota Rav4 XLE Hybrid AWD-I (37112449035).jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision",
+        "animal"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          740,
+          240,
+          860,
+          380
+        ]
+      ],
+      "group": "rav4",
+      "colour": "Blue",
+      "body": "suv",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "dent",
+          "box_2d": [
+            260,
+            120,
+            530,
+            700
+          ],
+          "kind": "damage",
+          "label": "Bonnet · dent"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            450,
+            520,
+            620,
+            720
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · broken"
+        },
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            90,
+            280,
+            270,
+            690
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · shattered"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_01.webp",
+      "thumb": "/assets/stock/car-front/car_front_01-thumb.webp",
+      "width": 1600,
+      "height": 1065,
+      "blur_data": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoQAAsAAsBMJagCdADcH4cYhMAA/u4pfJ1vsVLIk/tJ7ndhMh/nOPaOCqjjwSdeROVokfm3Htj4Ew4+t7gAAA==",
+      "credit": {
+        "author": "Greg Gjerdingen from Willmar, USA",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:2017_Toyota_Rav4_XLE_Hybrid_AWD-I_(37112449035).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_front_02",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Broken car front bumper.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          360,
+          90,
+          410,
+          140
+        ]
+      ],
+      "group": "bmw3",
+      "colour": "Blue",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "FBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            600,
+            170,
+            860,
+            620
+          ],
+          "kind": "damage",
+          "label": "Front bumper · broken"
+        },
+        {
+          "part": "BMRF",
+          "damage_type": "deformed",
+          "box_2d": [
+            650,
+            360,
+            830,
+            600
+          ],
+          "kind": "damage",
+          "label": "Bumper reinforcement / bracket · deformed"
+        },
+        {
+          "part": "GRIL",
+          "damage_type": "broken",
+          "box_2d": [
+            420,
+            190,
+            580,
+            380
+          ],
+          "kind": "damage",
+          "label": "Front grille · broken"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_02.webp",
+      "thumb": "/assets/stock/car-front/car_front_02-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADQAQCdASoQAAwAAsBMJQBOgCFpZO2HEAD9/GNcLM7vZyU/02VWGEWrAiQ9yIxJfPcxGy5b1SjtgAAA",
+      "credit": {
+        "author": "Santeri Viinamäki",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Broken_car_front_bumper.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    },
+    {
+      "id": "car_front_03",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:2010-05-30 Wrecked Honda Civic DX on Gregson St in Durham.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "front_collision",
+        "side_swipe"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "civic",
+      "colour": "Silver",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "FNDR",
+          "damage_type": "deformed",
+          "box_2d": [
+            560,
+            250,
+            800,
+            560
+          ],
+          "kind": "damage",
+          "label": "Front fender · deformed"
+        },
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            520,
+            180,
+            640,
+            520
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            620,
+            120,
+            780,
+            330
+          ],
+          "kind": "damage",
+          "label": "Front bumper · broken"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_03.webp",
+      "thumb": "/assets/stock/car-front/car_front_03-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAAAQAgCdASoQAAsAAsBMJZQCw7EfYZvkLWYAAP70QJtIzo2ZMeQjuSh/DsARu9JljtJEcz9SpioKtAAA",
+      "credit": {
+        "author": "Ildar Sagdejev (Specious)",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:2010-05-30_Wrecked_Honda_Civic_DX_on_Gregson_St_in_Durham.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    },
+    {
+      "id": "car_front_04",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Crashed Taxi - Multiple Car Accident - Rabindra Sadan Area - Kolkata 2012-06-13 01323.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          660,
+          250,
+          730,
+          400
+        ]
+      ],
+      "group": "amby",
+      "colour": "Yellow",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            420,
+            230,
+            580,
+            500
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "deformed",
+          "box_2d": [
+            540,
+            180,
+            690,
+            500
+          ],
+          "kind": "damage",
+          "label": "Front bumper · deformed"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_04.webp",
+      "thumb": "/assets/stock/car-front/car_front_04-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAABwAQCdASoQAAwAAsBMJZQCdAAtIAD+9546Uqzv1DcDBDl9rrwvwG2XDEhudgTnltirVzddLJoPi1a3huCvvkAA",
+      "credit": {
+        "author": "Biswarup Ganguly",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Crashed_Taxi_-_Multiple_Car_Accident_-_Rabindra_Sadan_Area_-_Kolkata_2012-06-13_01323.jpg",
+        "licence": "CC BY 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+      }
+    },
+    {
+      "id": "car_front_05",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Close view of a damaged car front in an outdoor setting during daylight hours near a road in a city area with visible wear and tear.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "closeup",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "cu_silver_1",
+      "colour": "Silver",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "FBMP",
+          "damage_type": "crack",
+          "box_2d": [
+            430,
+            0,
+            880,
+            700
+          ],
+          "kind": "damage",
+          "label": "Front bumper · crack"
+        },
+        {
+          "part": "BMRF",
+          "damage_type": "oxidised fracture",
+          "box_2d": [
+            420,
+            440,
+            640,
+            660
+          ],
+          "kind": "pre_existing",
+          "label": "Bumper reinforcement / bracket · oxidised fracture"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/closeup/car_front_05.webp",
+      "thumb": "/assets/stock/closeup/car_front_05-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAsAAsBMJZwAAoZ4qfqAAP5kxlqeGpOEARUbdgbEk/j7uhYJ7Sz0cAA=",
+      "credit": {
+        "author": "Shixart1985",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Close_view_of_a_damaged_car_front_in_an_outdoor_setting_during_daylight_hours_near_a_road_in_a_city_area_with_visible_wear_and_tear.jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_front_06",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Front bumper broken.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "left",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          660,
+          100,
+          720,
+          170
+        ]
+      ],
+      "group": "vectra",
+      "colour": "Blue",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "FBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            560,
+            70,
+            800,
+            330
+          ],
+          "kind": "damage",
+          "label": "Front bumper · broken"
+        },
+        {
+          "part": "FNDR",
+          "damage_type": "dent",
+          "box_2d": [
+            520,
+            280,
+            780,
+            380
+          ],
+          "kind": "damage",
+          "label": "Front fender · dent"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_06.webp",
+      "thumb": "/assets/stock/car-front/car_front_06-thumb.webp",
+      "width": 1600,
+      "height": 896,
+      "blur_data": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoQAAkAAsBMJZQCdACob27MAAD+sj99nrHXFPfjw/K/4YzPtPX1iHcjlgSXf/qxQAgCvw5ogAA=",
+      "credit": {
+        "author": "Tiia Monto",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Front_bumper_broken.jpg",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+      }
+    },
+    {
+      "id": "car_front_07",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Crashed Citroën C3.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision",
+        "animal"
+      ],
+      "severity": "moderate",
+      "plates": [
+        [
+          740,
+          160,
+          790,
+          270
+        ]
+      ],
+      "group": "c3",
+      "colour": "Red",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "HLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            590,
+            320,
+            690,
+            400
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · broken"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "crack",
+          "box_2d": [
+            640,
+            300,
+            800,
+            440
+          ],
+          "kind": "damage",
+          "label": "Front bumper · crack"
+        },
+        {
+          "part": "FNDR",
+          "damage_type": "dent",
+          "box_2d": [
+            540,
+            380,
+            740,
+            450
+          ],
+          "kind": "damage",
+          "label": "Front fender · dent"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_07.webp",
+      "thumb": "/assets/stock/car-front/car_front_07-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAQCdASoQAAwAAsBMJQBOgBMoWAAAzi7YKs5ZhbUidSbcjSGcu5i7fZ8zdz/pFw/OPRJAk8YymtwgFbnN4AAA",
+      "credit": {
+        "author": "Tommi Nummelin",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Crashed_Citro%C3%ABn_C3.jpg",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+      }
+    },
+    {
+      "id": "car_front_08",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:The front of a car shows major damage.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "closeup",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "cu_white_1",
+      "colour": "Pearl White",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "FBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            460,
+            0,
+            1000,
+            750
+          ],
+          "kind": "damage",
+          "label": "Front bumper · broken"
+        },
+        {
+          "part": "BMRF",
+          "damage_type": "deformed",
+          "box_2d": [
+            380,
+            490,
+            560,
+            640
+          ],
+          "kind": "damage",
+          "label": "Bumper reinforcement / bracket · deformed"
+        },
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            190,
+            0,
+            360,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/closeup/car_front_08.webp",
+      "thumb": "/assets/stock/closeup/car_front_08-thumb.webp",
+      "width": 1068,
+      "height": 1600,
+      "blur_data": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoLABAAAsBMJZQCdADcrB5zi4AA/u0QUBgMSFenni10OuruH5jvKMohpcqE/0hdVss0gNt+jGODV3vf4rgAAA==",
+      "credit": {
+        "author": "Shixart1985",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:The_front_of_a_car_shows_major_damage.jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_front_09",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Toyota car accident Japan.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "left",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "corolla_w",
+      "colour": "Pearl White",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            330,
+            480,
+            520,
+            860
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "crack",
+          "box_2d": [
+            480,
+            780,
+            640,
+            860
+          ],
+          "kind": "damage",
+          "label": "Front bumper · crack"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_09.webp",
+      "thumb": "/assets/stock/car-front/car_front_09-thumb.webp",
+      "width": 1280,
+      "height": 960,
+      "blur_data": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoQAAwAAsBMJZwAAh2YxXCMgADOI6ts/YMcc7+i8NbYvqaUCpghMypWkOGGFvzRB4AAAA==",
+      "credit": {
+        "author": "Snake Head 1995",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_car_accident_Japan.jpg",
+        "licence": "CC BY-SA 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/3.0/"
+      }
+    },
+    {
+      "id": "car_front_10",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Uber Self Driving Car - postcrash.png",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "xc90",
+      "colour": "Grey",
+      "body": "suv",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            310,
+            200,
+            560,
+            860
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        },
+        {
+          "part": "GRIL",
+          "damage_type": "broken",
+          "box_2d": [
+            470,
+            580,
+            700,
+            870
+          ],
+          "kind": "damage",
+          "label": "Front grille · broken"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "crack",
+          "box_2d": [
+            470,
+            300,
+            600,
+            560
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · crack"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "scratch",
+          "box_2d": [
+            600,
+            300,
+            900,
+            880
+          ],
+          "kind": "damage",
+          "label": "Front bumper · scratch"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_10.webp",
+      "thumb": "/assets/stock/car-front/car_front_10-thumb.webp",
+      "width": 535,
+      "height": 450,
+      "blur_data": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAA0AAsBMJQBdgBDczMypAAD+8o1H/0Q6sGSJtaR2YNXoYJLm53MucV2mtpWmAYvZ3TvAMzMQepMNQAA=",
+      "credit": {
+        "author": "NTSB",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Uber_Self_Driving_Car_-_postcrash.png",
+        "licence": "Public Domain",
+        "licence_url": "https://creativecommons.org/publicdomain/mark/1.0/"
+      }
+    },
+    {
+      "id": "car_front_11",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Alto 800 accident.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision",
+        "animal"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          880,
+          150,
+          950,
+          300
+        ]
+      ],
+      "group": "alto",
+      "colour": "Pearl White",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "dent",
+          "box_2d": [
+            450,
+            100,
+            700,
+            580
+          ],
+          "kind": "damage",
+          "label": "Bonnet · dent"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            600,
+            380,
+            820,
+            560
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · broken"
+        },
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            130,
+            250,
+            400,
+            620
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · shattered"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "crack",
+          "box_2d": [
+            700,
+            40,
+            950,
+            600
+          ],
+          "kind": "damage",
+          "label": "Front bumper · crack"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_11.webp",
+      "thumb": "/assets/stock/car-front/car_front_11-thumb.webp",
+      "width": 1600,
+      "height": 900,
+      "blur_data": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAkAAsBMJZwAAudfw6CPgAD+95475R0/1l2p8Lofg/D3VF8E38CPMajqDgAA",
+      "credit": {
+        "author": "Hashimmv",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Alto_800_accident.jpg",
+        "licence": "CC BY-SA 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    },
+    {
+      "id": "glass_01",
+      "category": "windshield",
+      "source": "commons",
+      "ref": "File:2017 Toyota Rav4 XLE Hybrid AWD-I (36942342782).jpg",
+      "vehicle_type": "Car",
+      "zone": "glass",
+      "view": "closeup",
+      "incidents": [
+        "glass"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "rav4",
+      "colour": "Blue",
+      "body": "suv",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            250,
+            230,
+            850,
+            940
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · shattered"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/windshield/glass_01.webp",
+      "thumb": "/assets/stock/windshield/glass_01-thumb.webp",
+      "width": 1600,
+      "height": 1065,
+      "blur_data": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoQAAsAAsBMJbACdAEM2FITeP6wAP3Vz5ZKkkVh/z/d75oGeZlpSk9jjSsFPbY5TpiC9Rk/Z9eqh5r3YmeJx4AA",
+      "credit": {
+        "author": "Greg Gjerdingen from Willmar, USA",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:2017_Toyota_Rav4_XLE_Hybrid_AWD-I_(36942342782).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "glass_02",
+      "category": "windshield",
+      "source": "commons",
+      "ref": "File:2017 Toyota Rav4 XLE Hybrid AWD-I (37112487895).jpg",
+      "vehicle_type": "Car",
+      "zone": "glass",
+      "view": "closeup",
+      "incidents": [
+        "glass"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "rav4",
+      "colour": "Blue",
+      "body": "suv",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            60,
+            140,
+            980,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · shattered"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/windshield/glass_02.webp",
+      "thumb": "/assets/stock/windshield/glass_02-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAAAwAgCdASoQAAwAAsBMJZgCdADRG7W9EgrNAAD+qtn9wUG9BWablqqxqlTVZQiC04GgLHJqlze4ZLwBd1c4VUhgAAA=",
+      "credit": {
+        "author": "Greg Gjerdingen from Willmar, USA",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:2017_Toyota_Rav4_XLE_Hybrid_AWD-I_(37112487895).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_rear_01",
+      "category": "car-rear",
+      "source": "openverse",
+      "ref": "44e5d54c-76da-4f87-8718-dbc9ebf19248",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "rear_end",
+        "parking_scrape"
+      ],
+      "severity": "minor",
+      "plates": [
+        [
+          480,
+          150,
+          530,
+          250
+        ]
+      ],
+      "group": "mondeo",
+      "colour": "Grey",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "RBMP",
+          "damage_type": "scratch",
+          "box_2d": [
+            580,
+            290,
+            720,
+            410
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · scratch"
+        },
+        {
+          "part": "QPNL",
+          "damage_type": "dent",
+          "box_2d": [
+            520,
+            330,
+            690,
+            440
+          ],
+          "kind": "damage",
+          "label": "Quarter panel · dent"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-rear/car_rear_01.webp",
+      "thumb": "/assets/stock/car-rear/car_rear_01-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoQAAsAAsBMJZACsACzMI/kAP6r0+ztEF/0tlmRhR7cRqE9NJ4jD8ted0+AAA==",
+      "credit": {
+        "author": "Charlie from United Kingdom",
+        "source": "openverse",
+        "source_url": "https://commons.wikimedia.org/w/index.php?curid=38913040",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_rear_02",
+      "category": "car-rear",
+      "source": "commons",
+      "ref": "File:Two car accident temporarily closes Rock Quarry Road (15468891310).jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "rear_end"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          450,
+          310,
+          530,
+          420
+        ]
+      ],
+      "group": "focus",
+      "colour": "Black",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "TLGT",
+          "damage_type": "deformed",
+          "box_2d": [
+            330,
+            160,
+            500,
+            600
+          ],
+          "kind": "damage",
+          "label": "Tailgate / boot lid · deformed"
+        },
+        {
+          "part": "RBMP",
+          "damage_type": "deformed",
+          "box_2d": [
+            580,
+            100,
+            720,
+            620
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · deformed"
+        },
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            480,
+            130,
+            620,
+            230
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-rear/car_rear_02.webp",
+      "thumb": "/assets/stock/car-rear/car_rear_02-thumb.webp",
+      "width": 1600,
+      "height": 1060,
+      "blur_data": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoQAAsAAsBMJQBOgBbWnzQYUADHSx4f000VePuoH7HUb+nDWPoC3GfFHdYW8RFVknNTFDhZkAA=",
+      "credit": {
+        "author": "KOMUnews",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Two_car_accident_temporarily_closes_Rock_Quarry_Road_(15468891310).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_rear_03",
+      "category": "car-rear",
+      "source": "commons",
+      "ref": "File:Blue Tesla Model Y without rear bumper at Tesla Collision Boston June 2026.jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "rear_end",
+        "side_swipe"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "modely",
+      "colour": "Blue",
+      "body": "suv",
+      "boxes": [
+        {
+          "part": "RBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            580,
+            180,
+            830,
+            560
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · broken"
+        },
+        {
+          "part": "QPNL",
+          "damage_type": "deformed",
+          "box_2d": [
+            300,
+            420,
+            700,
+            650
+          ],
+          "kind": "damage",
+          "label": "Quarter panel · deformed"
+        },
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            520,
+            450,
+            620,
+            510
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-rear/car_rear_03.webp",
+      "thumb": "/assets/stock/car-rear/car_rear_03-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoQAAsAAsBMJYwCdADyt1Bl+YAA/vex7BarjtxCE4CAYHTkAhu0CBeeJHo1PWB2bvQGt/gAAAA=",
+      "credit": {
+        "author": "4300streetcar",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Blue_Tesla_Model_Y_without_rear_bumper_at_Tesla_Collision_Boston_June_2026.jpg",
+        "licence": "CC BY 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    },
+    {
+      "id": "car_rear_04",
+      "category": "car-rear",
+      "source": "commons",
+      "ref": "File:Grey Tesla Model Y without rear bumper at Tesla Collision Boston June 2026.jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "rear_end"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          500,
+          440,
+          570,
+          520
+        ],
+        [
+          340,
+          780,
+          370,
+          820
+        ]
+      ],
+      "group": "model3",
+      "colour": "Grey",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "RBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            650,
+            280,
+            880,
+            720
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · broken"
+        },
+        {
+          "part": "QPNL",
+          "damage_type": "dent",
+          "box_2d": [
+            450,
+            630,
+            800,
+            720
+          ],
+          "kind": "damage",
+          "label": "Quarter panel · dent"
+        },
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            440,
+            620,
+            560,
+            710
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-rear/car_rear_04.webp",
+      "thumb": "/assets/stock/car-rear/car_rear_04-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADwAQCdASoQAAsAAsBMJYwCdACzzs8UdcwA/vnI77m9Z53PrK03sutcy+9XELVjpxpnKjluFwAAAA==",
+      "credit": {
+        "author": "4300streetcar",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Grey_Tesla_Model_Y_without_rear_bumper_at_Tesla_Collision_Boston_June_2026.jpg",
+        "licence": "CC BY 4.0",
+        "licence_url": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    },
+    {
+      "id": "car_rear_05",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:The end for the Laguna. (14160350996).jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "closeup",
+      "incidents": [
+        "rear_end",
+        "parking_scrape"
+      ],
+      "severity": "minor",
+      "plates": [
+        [
+          0,
+          300,
+          140,
+          600
+        ]
+      ],
+      "group": "cu_silver_2",
+      "colour": "Silver",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "RBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            270,
+            160,
+            620,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · broken"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/closeup/car_rear_05.webp",
+      "thumb": "/assets/stock/closeup/car_rear_05-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAwAAsBMJZwAAbt2LoawAP7qU+NlYO2dFH1K/OXSyCPP8M6wy6q6OAA=",
+      "credit": {
+        "author": "Riley from Christchurch, New Zealand",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:The_end_for_the_Laguna._(14160350996).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_rear_06",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Car collision in a junkyard with damaged vehicles in different conditions.jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "closeup",
+      "incidents": [
+        "rear_end"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "cu_grey_1",
+      "colour": "Grey",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "QPNL",
+          "damage_type": "deformed",
+          "box_2d": [
+            350,
+            560,
+            700,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Quarter panel · deformed"
+        },
+        {
+          "part": "TLMP",
+          "damage_type": "crack",
+          "box_2d": [
+            580,
+            810,
+            690,
+            930
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · crack"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/closeup/car_rear_06.webp",
+      "thumb": "/assets/stock/closeup/car_rear_06-thumb.webp",
+      "width": 1067,
+      "height": 1600,
+      "blur_data": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADwAQCdASoLABAAAsBMJaQAAp1JM2cr8AAA/sj1LyREHxbEJu2FNfCLl33TQvL29VVXTp6KAAA=",
+      "credit": {
+        "author": "Shixart1985",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Car_collision_in_a_junkyard_with_damaged_vehicles_in_different_conditions.jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_front_12",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Ouch! (6156662611).jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          670,
+          230,
+          760,
+          330
+        ]
+      ],
+      "group": "skyline",
+      "colour": "Black",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "FBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            500,
+            170,
+            1000,
+            600
+          ],
+          "kind": "damage",
+          "label": "Front bumper · broken"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            420,
+            180,
+            560,
+            280
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · broken"
+        },
+        {
+          "part": "FNDR",
+          "damage_type": "torn",
+          "box_2d": [
+            380,
+            450,
+            600,
+            620
+          ],
+          "kind": "damage",
+          "label": "Front fender · torn"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-front/car_front_12.webp",
+      "thumb": "/assets/stock/car-front/car_front_12-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAwAAsBMJagC7ACnIf7OAAD0RQyPouydri3Mab8CQwFke85LApeoxq1leKEWnG7UrTV7MWOAAA==",
+      "credit": {
+        "author": "Riley from Christchurch, New Zealand",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ouch!_(6156662611).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_side_01",
+      "category": "car-side",
+      "source": "commons",
+      "ref": "File:1982 Citroen BX 16 TRS (pre-facelift) (10477496885).jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "side_swipe",
+        "front_collision"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "bx",
+      "colour": "Silver",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            330,
+            560,
+            500,
+            880
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        },
+        {
+          "part": "DGLS",
+          "damage_type": "shattered",
+          "box_2d": [
+            200,
+            250,
+            450,
+            420
+          ],
+          "kind": "damage",
+          "label": "Door glass · shattered"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "crack",
+          "box_2d": [
+            450,
+            780,
+            560,
+            880
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · crack"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-side/car_side_01.webp",
+      "thumb": "/assets/stock/car-side/car_side_01-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAAsAAsBMJZwCdAB8X7QAAP4nomVS3X5eDr+IwP+zY4xF9p4liZkWguU/13KwAAA=",
+      "credit": {
+        "author": "Charlie from United Kingdom",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:1982_Citroen_BX_16_TRS_(pre-facelift)_(10477496885).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_side_02",
+      "category": "car-side",
+      "source": "commons",
+      "ref": "File:1982 Citroen BX 16 TRS (pre-facelift) (10477472365).jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "side_swipe",
+        "rear_end"
+      ],
+      "severity": "moderate",
+      "plates": [
+        [
+          480,
+          150,
+          560,
+          280
+        ]
+      ],
+      "group": "bx",
+      "colour": "Silver",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "DGLS",
+          "damage_type": "shattered",
+          "box_2d": [
+            180,
+            600,
+            400,
+            800
+          ],
+          "kind": "damage",
+          "label": "Door glass · shattered"
+        },
+        {
+          "part": "RBMP",
+          "damage_type": "scratch",
+          "box_2d": [
+            580,
+            0,
+            730,
+            480
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · scratch"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-side/car_side_02.webp",
+      "thumb": "/assets/stock/car-side/car_side_02-thumb.webp",
+      "width": 1600,
+      "height": 1067,
+      "blur_data": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAACwAQCdASoQAAsAAsBMJZwAAuYpGOQAAPzvmXM6Ye7PnZVONq3I/DFifyXYc+i7AgA=",
+      "credit": {
+        "author": "Charlie from United Kingdom",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:1982_Citroen_BX_16_TRS_(pre-facelift)_(10477472365).jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "car_side_03",
+      "category": "car-side",
+      "source": "commons",
+      "ref": "File:Ford Focus versus Ford Explorer crash test IIHS.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "side_swipe"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "focus_red",
+      "colour": "Red",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "FDOR",
+          "damage_type": "deformed",
+          "box_2d": [
+            250,
+            250,
+            850,
+            600
+          ],
+          "kind": "damage",
+          "label": "Front door shell · deformed"
+        },
+        {
+          "part": "DGLS",
+          "damage_type": "shattered",
+          "box_2d": [
+            100,
+            240,
+            400,
+            480
+          ],
+          "kind": "damage",
+          "label": "Door glass · shattered"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/car-side/car_side_03.webp",
+      "thumb": "/assets/stock/car-side/car_side_03-thumb.webp",
+      "width": 1600,
+      "height": 898,
+      "blur_data": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAkAAsBMJQBOgBnr897kQAD+tr/6qicrIOscgRFLzsmaIvkJ9FXUfEcRYEF380Gacu9DNAAAAA==",
+      "credit": {
+        "author": "Brady Holt",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Ford_Focus_versus_Ford_Explorer_crash_test_IIHS.jpg",
+        "licence": "CC BY 3.0",
+        "licence_url": "https://creativecommons.org/licenses/by/3.0/"
+      }
+    },
+    {
+      "id": "cv_01",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Citroen C 15 D 2001 (10431763586).jpg",
+      "vehicle_type": "CV",
+      "zone": "right",
+      "view": "right",
+      "incidents": [
+        "side_swipe",
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "van_white",
+      "colour": "Pearl White",
+      "body": "lcv",
+      "boxes": [
+        {
+          "part": "CDOR",
+          "damage_type": "torn",
+          "box_2d": [
+            360,
+            440,
+            760,
+            640
+          ],
+          "kind": "damage",
+          "label": "Cabin door · torn"
+        },
+        {
+          "part": "LBSD",
+          "damage_type": "deformed",
+          "box_2d": [
+            300,
+            630,
+            690,
+            970
+          ],
+          "kind": "damage",
+          "label": "Load body side panel · deformed"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/commercial/cv_01.webp",
+      "thumb": "/assets/stock/commercial/cv_01-thumb.webp",
+      "width": 1600,
+      "height": 1200,
+      "blur_data": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoQAAwAAsBMJZwAAtZpydIAAP7sc0fhzGVXzKUDB7l70q8PCPXY0gi93cKxTHpNAiBAQAAA",
+      "credit": {
+        "author": "order_242 from Chile",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Citroen_C_15_D_2001_(10431763586).jpg",
+        "licence": "CC BY-SA 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by-sa/2.0/"
+      }
+    },
+    {
+      "id": "cv_02",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Damage to a silver car caused by an accident while parked in a garage.jpg",
+      "vehicle_type": "CV",
+      "zone": "left",
+      "view": "closeup",
+      "incidents": [
+        "side_swipe",
+        "pothole"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "van_silver",
+      "colour": "Silver",
+      "body": "lcv",
+      "boxes": [
+        {
+          "part": "LBSD",
+          "damage_type": "dent",
+          "box_2d": [
+            430,
+            0,
+            720,
+            560
+          ],
+          "kind": "damage",
+          "label": "Load body side panel · dent"
+        },
+        {
+          "part": "TYRE",
+          "damage_type": "burst",
+          "box_2d": [
+            570,
+            230,
+            1000,
+            720
+          ],
+          "kind": "damage",
+          "label": "Tyre · burst"
+        }
+      ],
+      "available": true,
+      "url": "/assets/stock/commercial/cv_02.webp",
+      "thumb": "/assets/stock/commercial/cv_02-thumb.webp",
+      "width": 1067,
+      "height": 1600,
+      "blur_data": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAACQAQCdASoLABAAAsBMJZwAAkm57agA/sKbwxcX1nOIVd3YmeMkgJo0oq4MUDWbefP7OlGhaLJ9SCWK5hHcIAAA",
+      "credit": {
+        "author": "Shixart1985",
+        "source": "commons",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Damage_to_a_silver_car_caused_by_an_accident_while_parked_in_a_garage.jpg",
+        "licence": "CC BY 2.0",
+        "licence_url": "https://creativecommons.org/licenses/by/2.0/"
+      }
+    },
+    {
+      "id": "scratch_01",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Car damage on fender observed in a parking lot.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "closeup",
+      "incidents": [
+        "parking_scrape",
+        "side_swipe"
+      ],
+      "severity": "minor",
+      "plates": [],
+      "group": "cu_black_1",
+      "colour": "Black",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "FNDR",
+          "damage_type": "scratch",
+          "box_2d": [
+            290,
+            520,
+            720,
+            770
+          ],
+          "kind": "damage",
+          "label": "Front fender · scratch"
+        }
+      ]
+    },
+    {
+      "id": "scratch_02",
+      "category": "car-side",
+      "source": "commons",
+      "ref": "File:KeyedPaintOnCar.JPG",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "parking_scrape",
+        "side_swipe"
+      ],
+      "severity": "minor",
+      "plates": [],
+      "group": "keyed_silver",
+      "colour": "Silver",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "RDOR",
+          "damage_type": "scratch",
+          "box_2d": [
+            80,
+            100,
+            400,
+            460
+          ],
+          "kind": "damage",
+          "label": "Rear door shell · scratch"
+        },
+        {
+          "part": "FDOR",
+          "damage_type": "scratch",
+          "box_2d": [
+            300,
+            400,
+            650,
+            950
+          ],
+          "kind": "damage",
+          "label": "Front door shell · scratch"
+        }
+      ]
+    },
+    {
+      "id": "car_side_04",
+      "category": "car-side",
+      "source": "commons",
+      "ref": "File:Damaged blue car sits in junkyard with open door and missing wheels.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "side_swipe"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "passat_blue",
+      "colour": "Blue",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "FDOR",
+          "damage_type": "deformed",
+          "box_2d": [
+            250,
+            150,
+            800,
+            400
+          ],
+          "kind": "damage",
+          "label": "Front door shell · deformed"
+        },
+        {
+          "part": "RDOR",
+          "damage_type": "dent",
+          "box_2d": [
+            280,
+            380,
+            760,
+            620
+          ],
+          "kind": "damage",
+          "label": "Rear door shell · dent"
+        },
+        {
+          "part": "FNDR",
+          "damage_type": "deformed",
+          "box_2d": [
+            300,
+            0,
+            650,
+            170
+          ],
+          "kind": "damage",
+          "label": "Front fender · deformed"
+        }
+      ]
+    },
+    {
+      "id": "car_side_05",
+      "category": "car-side",
+      "source": "commons",
+      "ref": "File:Damaged car door.jpg",
+      "vehicle_type": "Car",
+      "zone": "right",
+      "view": "right",
+      "incidents": [
+        "side_swipe"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "fiesta_white",
+      "colour": "Pearl White",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "FDOR",
+          "damage_type": "dent",
+          "box_2d": [
+            300,
+            400,
+            950,
+            770
+          ],
+          "kind": "damage",
+          "label": "Front door shell · dent"
+        },
+        {
+          "part": "DGLS",
+          "damage_type": "shattered",
+          "box_2d": [
+            80,
+            330,
+            560,
+            680
+          ],
+          "kind": "damage",
+          "label": "Door glass · shattered"
+        },
+        {
+          "part": "FNDR",
+          "damage_type": "scratch",
+          "box_2d": [
+            480,
+            740,
+            760,
+            880
+          ],
+          "kind": "damage",
+          "label": "Front fender · scratch"
+        }
+      ]
+    },
+    {
+      "id": "car_side_06",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Bullseye damage to windscreen.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "closeup",
+      "incidents": [
+        "side_swipe"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "cu_blue_glass",
+      "colour": "Blue",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "DGLS",
+          "damage_type": "shattered",
+          "box_2d": [
+            80,
+            280,
+            700,
+            680
+          ],
+          "kind": "damage",
+          "label": "Door glass · shattered"
+        }
+      ]
+    },
+    {
+      "id": "glass_03",
+      "category": "windshield",
+      "source": "commons",
+      "ref": "File:Aston Martin DBS (Quantum of Solace) bullet-impacts-on-front-glass National Motor Museum, Beaulieu.jpg",
+      "vehicle_type": "Car",
+      "zone": "glass",
+      "view": "closeup",
+      "incidents": [
+        "glass"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "hail_black",
+      "colour": "Black",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "crack",
+          "box_2d": [
+            80,
+            20,
+            950,
+            960
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · crack"
+        }
+      ]
+    },
+    {
+      "id": "car_rear_07",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:025 Durchgerostet Karosserie - car bodywork rusted through in BMW 318i E46.jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "closeup",
+      "incidents": [
+        "rear_end",
+        "side_swipe"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "cu_silver_rust",
+      "colour": "Silver",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "QPNL",
+          "damage_type": "corroded",
+          "box_2d": [
+            430,
+            330,
+            720,
+            950
+          ],
+          "kind": "pre_existing",
+          "label": "Quarter panel · corroded"
+        }
+      ]
+    },
+    {
+      "id": "car_front_13",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Hyundai Elantra Accident.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "elantra",
+      "colour": "Silver",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "BONT",
+          "damage_type": "deformed",
+          "box_2d": [
+            370,
+            350,
+            520,
+            980
+          ],
+          "kind": "damage",
+          "label": "Bonnet · deformed"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "torn",
+          "box_2d": [
+            600,
+            450,
+            920,
+            990
+          ],
+          "kind": "damage",
+          "label": "Front bumper · torn"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            480,
+            520,
+            600,
+            680
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · broken"
+        }
+      ]
+    },
+    {
+      "id": "car_front_14",
+      "category": "car-front",
+      "source": "commons",
+      "ref": "File:Damaged car in junkyard with a broken windshield.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "rollover_blue",
+      "colour": "Blue",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "ROOF",
+          "damage_type": "crushed",
+          "box_2d": [
+            80,
+            100,
+            330,
+            780
+          ],
+          "kind": "damage",
+          "label": "Roof panel · crushed"
+        },
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            300,
+            250,
+            700,
+            780
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · shattered"
+        }
+      ]
+    },
+    {
+      "id": "lamp_01",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Damaged car parked on gravel with broken front end and dirty headlight.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "closeup",
+      "incidents": [
+        "front_collision",
+        "animal"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "cu_green_1",
+      "colour": "Green",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "HLMP",
+          "damage_type": "crack",
+          "box_2d": [
+            250,
+            300,
+            600,
+            700
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly – halogen · crack"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "torn",
+          "box_2d": [
+            550,
+            300,
+            1000,
+            720
+          ],
+          "kind": "damage",
+          "label": "Front bumper · torn"
+        }
+      ]
+    },
+    {
+      "id": "lamp_02",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Damaged car tail light seen in a junkyard.jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "closeup",
+      "incidents": [
+        "rear_end"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "cu_blue_2",
+      "colour": "Blue",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            280,
+            330,
+            650,
+            720
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        },
+        {
+          "part": "RBMP",
+          "damage_type": "scratch",
+          "box_2d": [
+            650,
+            350,
+            880,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · scratch"
+        }
+      ]
+    },
+    {
+      "id": "lamp_03",
+      "category": "closeup",
+      "source": "openverse",
+      "ref": "b4d9f286-9c92-4e1f-aa48-6694bfcfbca9",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "closeup",
+      "incidents": [
+        "rear_end",
+        "parking_scrape"
+      ],
+      "severity": "minor",
+      "plates": [],
+      "group": "cu_blue_3",
+      "colour": "Blue",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            270,
+            100,
+            690,
+            700
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        }
+      ]
+    },
+    {
+      "id": "car_rear_02c",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Two car accident temporarily closes Rock Quarry Road (15468891310).jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "closeup",
+      "incidents": [
+        "rear_end"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          377,
+          371,
+          528,
+          548
+        ]
+      ],
+      "group": "focus",
+      "crop": [
+        250,
+        80,
+        780,
+        700
+      ],
+      "colour": "Black",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "TLGT",
+          "damage_type": "deformed",
+          "box_2d": [
+            151,
+            129,
+            472,
+            839
+          ],
+          "kind": "damage",
+          "label": "Tailgate / boot lid · deformed"
+        },
+        {
+          "part": "RBMP",
+          "damage_type": "deformed",
+          "box_2d": [
+            623,
+            32,
+            887,
+            871
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · deformed"
+        },
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            434,
+            81,
+            698,
+            242
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        }
+      ]
+    },
+    {
+      "id": "car_side_04c",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Damaged blue car sits in junkyard with open door and missing wheels.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "closeup",
+      "incidents": [
+        "side_swipe"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "passat_blue",
+      "crop": [
+        200,
+        100,
+        850,
+        700
+      ],
+      "colour": "Blue",
+      "body": "sedan",
+      "boxes": [
+        {
+          "part": "FDOR",
+          "damage_type": "deformed",
+          "box_2d": [
+            77,
+            83,
+            923,
+            500
+          ],
+          "kind": "damage",
+          "label": "Front door shell · deformed"
+        },
+        {
+          "part": "RDOR",
+          "damage_type": "dent",
+          "box_2d": [
+            123,
+            467,
+            862,
+            867
+          ],
+          "kind": "damage",
+          "label": "Rear door shell · dent"
+        }
+      ]
+    },
+    {
+      "id": "cv_03",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Old van with broken windshield parked in a junkyard during the day near abandoned cars and scrap metal.jpg",
+      "vehicle_type": "CV",
+      "zone": "glass",
+      "view": "front",
+      "incidents": [
+        "glass",
+        "front_collision"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "van_white_2",
+      "colour": "Pearl White",
+      "body": "lcv",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            180,
+            230,
+            620,
+            960
+          ],
+          "kind": "damage",
+          "label": "Windshield · shattered"
+        }
+      ]
+    },
+    {
+      "id": "glass_04",
+      "category": "windshield",
+      "source": "commons",
+      "ref": "File:2015-01-29 08 11 14 A cracked windshield in Elko, Nevada.JPG",
+      "vehicle_type": "Car",
+      "zone": "glass",
+      "view": "closeup",
+      "incidents": [
+        "glass"
+      ],
+      "severity": "minor",
+      "plates": [],
+      "group": "glass_dark",
+      "colour": "Black",
+      "body": "any",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "crack",
+          "box_2d": [
+            280,
+            330,
+            640,
+            970
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · crack"
+        }
+      ]
+    },
+    {
+      "id": "glass_05",
+      "category": "windshield",
+      "source": "commons",
+      "ref": "File:Cracked windshield (6295402403).jpg",
+      "vehicle_type": "Car",
+      "zone": "glass",
+      "view": "closeup",
+      "incidents": [
+        "glass"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "glass_star",
+      "colour": null,
+      "body": "any",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "crack",
+          "box_2d": [
+            40,
+            40,
+            960,
+            960
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · crack"
+        }
+      ]
+    },
+    {
+      "id": "glass_06",
+      "category": "windshield",
+      "source": "commons",
+      "ref": "File:Scaniawindshield.JPG",
+      "vehicle_type": "Car",
+      "zone": "glass",
+      "view": "closeup",
+      "incidents": [
+        "glass"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "glass_highway",
+      "colour": null,
+      "body": "any",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "crack",
+          "box_2d": [
+            0,
+            300,
+            950,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Windshield (laminated) · crack"
+        }
+      ]
+    },
+    {
+      "id": "tw_01",
+      "category": "two-wheeler",
+      "source": "commons",
+      "ref": "File:Akt motorcycle-crash.jpg",
+      "vehicle_type": "2W",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "skid_fall",
+        "side_swipe",
+        "front_collision"
+      ],
+      "severity": "moderate",
+      "plates": [],
+      "group": "tw_cruiser",
+      "colour": "Black",
+      "body": "motorcycle",
+      "boxes": [
+        {
+          "part": "MIRR",
+          "damage_type": "broken",
+          "box_2d": [
+            460,
+            90,
+            600,
+            230
+          ],
+          "kind": "damage",
+          "label": "Mirror · broken"
+        },
+        {
+          "part": "SPNL",
+          "damage_type": "scratch",
+          "box_2d": [
+            380,
+            220,
+            750,
+            470
+          ],
+          "kind": "damage",
+          "label": "Side panel · scratch"
+        },
+        {
+          "part": "SLNC",
+          "damage_type": "scratch",
+          "box_2d": [
+            650,
+            270,
+            870,
+            560
+          ],
+          "kind": "damage",
+          "label": "Silencer · scratch"
+        }
+      ]
+    },
+    {
+      "id": "tw_02",
+      "category": "two-wheeler",
+      "source": "commons",
+      "ref": "File:Crashed motorcycle in Gdańsk.JPG",
+      "vehicle_type": "2W",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "skid_fall",
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "tw_sport_black",
+      "colour": "Black",
+      "body": "motorcycle",
+      "boxes": [
+        {
+          "part": "FPNL",
+          "damage_type": "broken",
+          "box_2d": [
+            430,
+            60,
+            720,
+            380
+          ],
+          "kind": "damage",
+          "label": "Front panel / visor / fairing · broken"
+        },
+        {
+          "part": "HBAR",
+          "damage_type": "bent",
+          "box_2d": [
+            350,
+            80,
+            520,
+            230
+          ],
+          "kind": "damage",
+          "label": "Handlebar · bent"
+        },
+        {
+          "part": "WRIM",
+          "damage_type": "bent",
+          "box_2d": [
+            700,
+            270,
+            850,
+            490
+          ],
+          "kind": "damage",
+          "label": "Wheel rim · bent"
+        }
+      ]
+    },
+    {
+      "id": "tw_03",
+      "category": "two-wheeler",
+      "source": "commons",
+      "ref": "File:Honda City hit by motorcycle 1.jpg",
+      "vehicle_type": "2W",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "skid_fall",
+        "rear_end",
+        "side_swipe"
+      ],
+      "severity": "moderate",
+      "plates": [
+        [
+          580,
+          540,
+          730,
+          610
+        ]
+      ],
+      "group": "tw_silver",
+      "colour": "Silver",
+      "body": "motorcycle",
+      "boxes": [
+        {
+          "part": "TLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            540,
+            480,
+            640,
+            560
+          ],
+          "kind": "damage",
+          "label": "Tail lamp · broken"
+        },
+        {
+          "part": "SPNL",
+          "damage_type": "crack",
+          "box_2d": [
+            520,
+            380,
+            680,
+            520
+          ],
+          "kind": "damage",
+          "label": "Side panel · crack"
+        },
+        {
+          "part": "MIRR",
+          "damage_type": "broken",
+          "box_2d": [
+            430,
+            600,
+            520,
+            680
+          ],
+          "kind": "damage",
+          "label": "Mirror · broken"
+        }
+      ]
+    },
+    {
+      "id": "tw_04",
+      "category": "two-wheeler",
+      "source": "commons",
+      "ref": "File:Wrecked Yamaha YZF-R6 motorcycle - Springfield, Ohio, USA.jpg",
+      "vehicle_type": "2W",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "skid_fall",
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          620,
+          480,
+          680,
+          560
+        ]
+      ],
+      "group": "tw_yellow",
+      "colour": "Yellow",
+      "body": "motorcycle",
+      "boxes": [
+        {
+          "part": "FPNL",
+          "damage_type": "broken",
+          "box_2d": [
+            410,
+            300,
+            680,
+            650
+          ],
+          "kind": "damage",
+          "label": "Front panel / visor / fairing · broken"
+        },
+        {
+          "part": "FMDG",
+          "damage_type": "broken",
+          "box_2d": [
+            600,
+            230,
+            690,
+            500
+          ],
+          "kind": "damage",
+          "label": "Front mudguard · broken"
+        }
+      ]
+    },
+    {
+      "id": "tw_05",
+      "category": "two-wheeler",
+      "source": "commons",
+      "ref": "File:Crashed scooter (11381026443).jpg",
+      "vehicle_type": "2W",
+      "zone": "front",
+      "view": "left",
+      "incidents": [
+        "front_collision",
+        "skid_fall"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "tw_scooter_black",
+      "colour": "Black",
+      "body": "scooter",
+      "boxes": [
+        {
+          "part": "FPNL",
+          "damage_type": "broken",
+          "box_2d": [
+            180,
+            300,
+            650,
+            780
+          ],
+          "kind": "damage",
+          "label": "Front panel / visor / fairing · broken"
+        },
+        {
+          "part": "SPNL",
+          "damage_type": "broken",
+          "box_2d": [
+            430,
+            0,
+            700,
+            420
+          ],
+          "kind": "damage",
+          "label": "Side panel · broken"
+        },
+        {
+          "part": "WRIM",
+          "damage_type": "bent",
+          "box_2d": [
+            570,
+            740,
+            900,
+            980
+          ],
+          "kind": "damage",
+          "label": "Wheel rim · bent"
+        }
+      ]
+    },
+    {
+      "id": "tw_06",
+      "category": "two-wheeler",
+      "source": "commons",
+      "ref": "File:Scooter crash (11380944554).jpg",
+      "vehicle_type": "2W",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "tw_scooter_tree",
+      "colour": "Black",
+      "body": "scooter",
+      "boxes": [
+        {
+          "part": "HLMP",
+          "damage_type": "broken",
+          "box_2d": [
+            200,
+            400,
+            340,
+            530
+          ],
+          "kind": "damage",
+          "label": "Headlamp assembly · broken"
+        },
+        {
+          "part": "FPNL",
+          "damage_type": "broken",
+          "box_2d": [
+            140,
+            360,
+            520,
+            750
+          ],
+          "kind": "damage",
+          "label": "Front panel / visor / fairing · broken"
+        },
+        {
+          "part": "FMDG",
+          "damage_type": "broken",
+          "box_2d": [
+            690,
+            470,
+            900,
+            640
+          ],
+          "kind": "damage",
+          "label": "Front mudguard · broken"
+        }
+      ]
+    },
+    {
+      "id": "cv_04",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:083 Tumbled Over (9239399342).jpg",
+      "vehicle_type": "CV",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision",
+        "side_swipe"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          530,
+          280,
+          590,
+          345
+        ],
+        [
+          600,
+          320,
+          670,
+          375
+        ]
+      ],
+      "group": "truck_blue_in",
+      "colour": "Blue",
+      "body": "truck",
+      "boxes": [
+        {
+          "part": "FPNL",
+          "damage_type": "deformed",
+          "box_2d": [
+            400,
+            170,
+            780,
+            500
+          ],
+          "kind": "damage",
+          "label": "Front cabin panel / bonnet · deformed"
+        },
+        {
+          "part": "FBMP",
+          "damage_type": "bent",
+          "box_2d": [
+            600,
+            170,
+            800,
+            460
+          ],
+          "kind": "damage",
+          "label": "Front bumper (steel) · bent"
+        },
+        {
+          "part": "LBSD",
+          "damage_type": "deformed",
+          "box_2d": [
+            200,
+            520,
+            600,
+            740
+          ],
+          "kind": "damage",
+          "label": "Load body side panel · deformed"
+        }
+      ]
+    },
+    {
+      "id": "cv_05",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Truck accident-India.JPG",
+      "vehicle_type": "CV",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "side_swipe",
+        "front_collision"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "truck_tata",
+      "colour": "Pearl White",
+      "body": "truck",
+      "boxes": [
+        {
+          "part": "LBSD",
+          "damage_type": "deformed",
+          "box_2d": [
+            300,
+            0,
+            780,
+            270
+          ],
+          "kind": "damage",
+          "label": "Load body side panel · deformed"
+        },
+        {
+          "part": "CDOR",
+          "damage_type": "deformed",
+          "box_2d": [
+            300,
+            270,
+            700,
+            660
+          ],
+          "kind": "damage",
+          "label": "Cabin door · deformed"
+        }
+      ]
+    },
+    {
+      "id": "cv_06",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Damaged truck, outside White Horse Carbreakers - geograph.org.uk - 1433696.jpg",
+      "vehicle_type": "CV",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision",
+        "pothole"
+      ],
+      "severity": "severe",
+      "plates": [
+        [
+          230,
+          270,
+          310,
+          420
+        ]
+      ],
+      "group": "truck_blue_uk",
+      "colour": "Blue",
+      "body": "truck",
+      "boxes": [
+        {
+          "part": "FBMP",
+          "damage_type": "broken",
+          "box_2d": [
+            560,
+            250,
+            780,
+            600
+          ],
+          "kind": "damage",
+          "label": "Front bumper (steel) · broken"
+        },
+        {
+          "part": "FPNL",
+          "damage_type": "deformed",
+          "box_2d": [
+            330,
+            250,
+            650,
+            580
+          ],
+          "kind": "damage",
+          "label": "Front cabin panel / bonnet · deformed"
+        },
+        {
+          "part": "TYRE",
+          "damage_type": "burst",
+          "box_2d": [
+            650,
+            300,
+            780,
+            420
+          ],
+          "kind": "damage",
+          "label": "Tyre · burst"
+        }
+      ]
+    },
+    {
+      "id": "cv_07",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Damaged truck from Huwara rampage.jpg",
+      "vehicle_type": "CV",
+      "zone": "glass",
+      "view": "front",
+      "incidents": [
+        "glass",
+        "front_collision"
+      ],
+      "severity": "moderate",
+      "plates": [
+        [
+          510,
+          40,
+          610,
+          780
+        ]
+      ],
+      "group": "truck_white_cab",
+      "colour": "Pearl White",
+      "body": "truck",
+      "boxes": [
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            290,
+            0,
+            500,
+            1000
+          ],
+          "kind": "damage",
+          "label": "Windshield · shattered"
+        },
+        {
+          "part": "HLMP",
+          "damage_type": "crack",
+          "box_2d": [
+            640,
+            790,
+            730,
+            960
+          ],
+          "kind": "damage",
+          "label": "Headlamp · crack"
+        }
+      ]
+    },
+    {
+      "id": "cv_08",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:Pickup truck damaged by downed oak tree during Hurricane Sandy, Montgomery, NY.jpg",
+      "vehicle_type": "CV",
+      "zone": "front",
+      "view": "front",
+      "incidents": [
+        "front_collision",
+        "flood"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "pickup_tree",
+      "colour": "Pearl White",
+      "body": "lcv",
+      "boxes": [
+        {
+          "part": "FPNL",
+          "damage_type": "crushed",
+          "box_2d": [
+            620,
+            150,
+            820,
+            560
+          ],
+          "kind": "damage",
+          "label": "Front cabin panel / bonnet · crushed"
+        },
+        {
+          "part": "WSCR",
+          "damage_type": "shattered",
+          "box_2d": [
+            620,
+            420,
+            720,
+            720
+          ],
+          "kind": "damage",
+          "label": "Windshield · shattered"
+        }
+      ]
+    },
+    {
+      "id": "flood_01",
+      "category": "flood",
+      "source": "commons",
+      "ref": "File:FEMA - 1600 - Photograph by Dave Saville taken on 04-01-1997 in Minnesota.jpg",
+      "vehicle_type": "Car",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "flood"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "flood_silver",
+      "colour": "Silver",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "FDOR",
+          "damage_type": "submerged",
+          "box_2d": [
+            600,
+            320,
+            760,
+            560
+          ],
+          "kind": "damage",
+          "label": "Front door shell · submerged"
+        },
+        {
+          "part": "RDOR",
+          "damage_type": "submerged",
+          "box_2d": [
+            600,
+            540,
+            760,
+            760
+          ],
+          "kind": "damage",
+          "label": "Rear door shell · submerged"
+        },
+        {
+          "part": "TLGT",
+          "damage_type": "submerged",
+          "box_2d": [
+            620,
+            740,
+            750,
+            880
+          ],
+          "kind": "damage",
+          "label": "Tailgate / boot lid · submerged"
+        }
+      ]
+    },
+    {
+      "id": "flood_02",
+      "category": "closeup",
+      "source": "commons",
+      "ref": "File:Low94JanMitsuDashboard.jpg",
+      "vehicle_type": "Car",
+      "zone": "front",
+      "view": "closeup",
+      "incidents": [
+        "flood"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "flood_silver",
+      "colour": "Silver",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "AIRB",
+          "damage_type": "water damage",
+          "box_2d": [
+            280,
+            270,
+            880,
+            640
+          ],
+          "kind": "damage",
+          "label": "Airbag module · water damage"
+        }
+      ]
+    },
+    {
+      "id": "flood_03",
+      "category": "flood",
+      "source": "commons",
+      "ref": "File:Flooded car park - geograph.org.uk - 6329506.jpg",
+      "vehicle_type": "Car",
+      "zone": "rear",
+      "view": "rear",
+      "incidents": [
+        "flood"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "flood_red",
+      "colour": "Red",
+      "body": "hatch",
+      "boxes": [
+        {
+          "part": "RBMP",
+          "damage_type": "submerged",
+          "box_2d": [
+            520,
+            320,
+            620,
+            580
+          ],
+          "kind": "damage",
+          "label": "Rear bumper · submerged"
+        },
+        {
+          "part": "RDOR",
+          "damage_type": "submerged",
+          "box_2d": [
+            400,
+            340,
+            560,
+            560
+          ],
+          "kind": "damage",
+          "label": "Rear door shell · submerged"
+        }
+      ]
+    },
+    {
+      "id": "cv_09",
+      "category": "commercial",
+      "source": "commons",
+      "ref": "File:FEMA - 1623 - Photograph by Dave Saville taken on 04-01-1997 in Minnesota.jpg",
+      "vehicle_type": "CV",
+      "zone": "left",
+      "view": "left",
+      "incidents": [
+        "flood"
+      ],
+      "severity": "severe",
+      "plates": [],
+      "group": "flood_pickup",
+      "colour": "Pearl White",
+      "body": "lcv",
+      "boxes": [
+        {
+          "part": "LBSD",
+          "damage_type": "submerged",
+          "box_2d": [
+            450,
+            290,
+            580,
+            650
+          ],
+          "kind": "damage",
+          "label": "Load body side panel · submerged"
+        },
+        {
+          "part": "CDOR",
+          "damage_type": "submerged",
+          "box_2d": [
+            360,
+            280,
+            520,
+            480
+          ],
+          "kind": "damage",
+          "label": "Cabin door · submerged"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,56 @@
 # Build progress
 
+## Resume point
+**Stopped mid Stage 1 (wrap-up, 2026-10-02). App verified runnable:** backend starts (`/api/system/status` OK), `pytest -v` 49 passed,
+`npm run build` and `npm run contrast` pass. `claims.json` is unchanged (old seed output); nothing half-written.
+
+**Done in Stage 1 so far**
+- `server/scripts/fetch_stock_images.py`: `discover <category>` (Commons + Openverse; Pexels too if `PEXELS_API_KEY` is in `server/.env`;
+  CC0/PDM/BY/BY-SA only; Openverse throttled ≥ 4 s with 429 back-off) and `build [--prune-legacy]` (licence re-check from source metadata,
+  Flickr original-page check, plate blur, WebP 1600 + 320 thumb + blur placeholder, `CREDITS.json`, Windows-safe swap via `scripts/fs_sync.py`).
+- **58 damage photos curated + boxed** in `server/scripts/stock_curation.py` (the source of truth; running it rebuilds
+  `server/data/stock_photo_manifest.json`, which is currently consistent: 58 entries in PICKS order).
+  By theme: car front 14 · car rear 8 (incl. 1 same-car crop) · car side 7 (incl. 1 crop) · scratches 2 · lamps 3 · glass 6 ·
+  two-wheelers 6 · commercial 9 (incl. 1 flooded pickup) · flood 3. Clean-vehicle thumbnails: **0 (not started)**.
+  Boxes on the first 25 were verified on contact sheets (`server/.cache/stock/annotated/`); the other 33 are placed from gridded
+  views but **not yet rendered/verified**.
+- A trial `build` ran once, before photos 26–58 existed: only the first 25 are in `client/public/assets/stock/<category>/`
+  (legacy `fallback-*` placeholders kept because the current claims.json still uses them).
+- `document_requirements.json` written (§11.5, from `scripts/reference_data.py`; the seed rewrites it).
+- New: `scripts/make_specimen_docs.py` (per-claim renderer, bundled OFL fonts in `scripts/assets/fonts/`), `scripts/seed_documents.py`
+  (document records, match flags, `document_conditions`), `scripts/seed_media.py` (photo picker: vehicle group, incident, body, colour,
+  scenario/showcase uniqueness; damage items + boxes derived from photo boxes), `scripts/render_annotations.py` (verification sheets).
+- `seed.py` rewired to all of the above (+ `SCENARIO_PHOTOS`, native-script narratives, voice-note media, licence data in
+  `checks.dl.data` / `driving_licences.json`, 30 showcase claims unique). A dry-run of `generate()` validated all 250 claims before
+  the flood/2W/CV photos were added. **Seed NOT yet run.**
+- `client/public/assets/audio/scenarios/README.md` (5 file names + script lines). `GET /api/claims/{id}` adds `media[].available`
+  (file exists). `schemas/claim.py`: `Media.url` may be null (transcript-only voice notes).
+
+**Exact next sub-step:** clean-vehicle thumbnails. Run `server\.venv\Scripts\python -u scripts/fetch_stock_images.py discover clean`
+from `/server` (needs network outside the sandbox; Windows `curl` fails on certificate-revocation checks, Python works). Curate into
+`stock_curation.py` with out-category `"clean"`, view `"overall"`, no boxes, plus a `model_key` (e.g. `HYU-CRE`) where the photo shows that
+model — `build_manifest()` needs a small addition to carry `model_key`. Include a clean **scooter** (Activa theft scenario) and a clean LCV.
+
+**Remaining Stage 1 sub-steps after that**
+1. `python scripts/stock_curation.py`, then `python scripts/fetch_stock_images.py build --prune-legacy` (builds every photo, removes `fallback-*`).
+2. `python scripts/render_annotations.py manifest`; check the sheets for photos 26–58 and fix any box.
+3. `python scripts/seed.py` (writes claims and renders ~1,300 documents into `client/public/assets/documents/`). Confirm `users.json` is
+   byte-identical (`git diff --stat server/data/users.json`) and the summary shows `photo reuse fallbacks for unique sets: 0`.
+4. Restart uvicorn. Run `render_annotations.py scenarios` plus `claims <5 more ids>` and verify ≥ 10 annotated photos, including all 5 scenarios.
+5. Add tests: manifest boxes within 0–1000; every seeded box references a photo the claim has; scenario + showcase photos unique;
+   document URLs exist on disk; no Aadhaar/PAN images.
+6. Playwright check of Home (cards and table thumbnails show real photos). Then `pytest -v`, `npm run build`, `npm run contrast`.
+   Write the Stage 1 PROGRESS section: decisions (Commons/Openverse sources, photo-first damage items, same-car crops, audio availability
+   flag) and known follow-ups (thin scratch/close-up pool, few Indian-model photos, European scooters for 2W damage).
+
+**Background processes / caches:** no background tasks of mine are running (discovery stopped; the two `pyServer.py` python processes
+on this machine are unrelated). Git-ignored caches in `server/.cache/`:
+- `stock/candidates/<category>/`: candidates.json + numbered contact sheets. The `n` numbers in `stock_curation.py` refer to these files, so keep them. `clean/` was deleted (partial); re-run discover.
+- `stock/originals/`: downloaded originals, reused by build.
+- `stock/annotated/`: verification sheets.
+- `discover.log`.
+- `seed.py.bak`: the pre-rewire seed; delete once the new seed is verified.
+
 Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 
 | Phase | Status |

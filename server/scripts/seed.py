@@ -27,6 +27,9 @@ from app.schemas.claim import Claim  # noqa: E402
 from app.services import costing, dmn_engine, reference  # noqa: E402
 from app.services.json_store import read_json_sync, write_json_sync  # noqa: E402
 import reference_data as R  # noqa: E402
+import seed_media as SM  # noqa: E402
+import seed_documents as SD  # noqa: E402
+import make_specimen_docs as DOCS  # noqa: E402
 
 IST = timezone(timedelta(hours=5, minutes=30))
 STOCK = SERVER.parent / "client" / "public" / "assets" / "stock"
@@ -96,6 +99,7 @@ def seed_reference() -> None:
     write_json_sync("deductibles.json", R.DEDUCTIBLES)
     write_json_sync("fraud_rules.json", R.fraud_rules_json())
     write_json_sync("cities.json", R.cities_json())
+    write_json_sync("document_requirements.json", R.DOCUMENT_REQUIREMENTS)
     reference.reload()
 
 
@@ -111,15 +115,20 @@ POPULARITY = {"MAR-SWI": 9, "MAR-BAL": 8, "MAR-DZI": 7, "MAR-WAG": 7, "MAR-ALT":
               "TAT-ACE": 5, "ASH-DOS": 3, "MAH-BPU": 4}
 LANG_BY_STATE = {"Maharashtra": "mr", "Karnataka": "kn", "Tamil Nadu": "ta", "Kerala": "ml", "Telangana": "te",
                  "West Bengal": "bn", "Gujarat": "gu", "Odisha": "or"}
+LANGUAGE_LABEL = {"en": "English", "hi": "Hindi", "hi-en": "Hindi–English mix", "mr": "Marathi", "ml": "Malayalam", "ta": "Tamil",
+                  "te": "Telugu", "kn": "Kannada", "bn": "Bengali", "gu": "Gujarati", "or": "Odia"}
 COLOURS = ["Pearl White", "Silver", "Grey", "Red", "Blue", "Black", "Brown", "Orange"]
 
 
-def blur_data(category: str) -> str:
-    raw = (STOCK / category / "fallback-blur.webp").read_bytes()
-    return "data:image/webp;base64," + base64.b64encode(raw).decode()
+PUBLIC = SERVER.parent / "client" / "public"
+# Curated, processed stock photos (scripts/stock_curation.py → fetch_stock_images.py build). Claims without a match get none.
+PICKER = SM.MediaPicker((read_json_sync("stock_photo_manifest.json", {}) or {}).get("photos", []))
+PHOTO_COLOUR: dict[str, str] = {}   # vehicle id → colour fixed by the first photo set used for it
 
 
-BLUR = {d.name: blur_data(d.name) for d in STOCK.iterdir() if d.is_dir() and (d / "fallback-blur.webp").exists()}
+def file_kb(url: str) -> int:
+    path = PUBLIC / url.lstrip("/")
+    return max(1, round(path.stat().st_size / 1024)) if path.exists() else 0
 
 
 # ------------------------------------------------------------------------------------------------
@@ -312,23 +321,41 @@ def pick_items(incident: str, vtype: str, severity: str, *, catalogue_prefix: st
     return items
 
 
-def damage_block(items: list[dict], severity: str, photo_ids: list[str], *, pre_existing: list[dict] | None = None,
-                 narrative: dict | None = None) -> dict:
+def damage_block(items: list[dict], severity: str, media: list[dict], photos: list[dict], *, pre_existing: list[dict] | None = None,
+                 narrative: dict | None = None, overquote: bool = False) -> dict:
+    """Damage findings. Boxes come from the photos the claim uses (hand-placed in the manifest), so they sit on damage."""
     parts = reference.load().parts
     out = []
     for it in items:
         p = parts[it["part_code"]]
-        dmg = rng.choice(DAMAGE_WORDS.get(p["material"], ["dent"]))
+        suffix = it["part_code"].rsplit("-", 1)[-1]
+        on_photo = [b for ph in photos for b in ph["boxes"] if b["part"] == SM.PART_ALIASES.get(suffix, suffix)]
+        dmg = on_photo[0]["damage_type"] if on_photo else rng.choice(DAMAGE_WORDS.get(p["material"], ["dent"]))
+        fresh_boxes = SM.boxes_for(it["part_code"], suffix, media, photos, p["part"], kind="damage")
+        old_boxes = SM.boxes_for(it["part_code"], suffix, media, photos, p["part"], kind="pre_existing")
         sev = "severe" if it["operation"] == "replace" and severity != "minor" else ("moderate" if it["operation"] != "plastic_repair" else "minor")
+        low = rng.random() < 0.08 and not old_boxes
+        conf = round(rng.uniform(0.62, 0.74), 2) if low else round(rng.uniform(0.82, 0.98), 2)
+        ids = sorted({b["photo_id"] for b in fresh_boxes + old_boxes}) or [m["id"] for m in media[:1]]
         out.append({"part_code": p["part_code"], "part": p["part"], "zone": p["zone"], "damage_type": dmg, "severity": sev,
-                    "operation": it["operation"], "fresh": True, "confidence": round(rng.uniform(0.82, 0.98), 2),
-                    "photo_ids": photo_ids[:2], "boxes": [], "flag": "pass"})
-    zones = {i["zone"] for i in out}
+                    "operation": it["operation"], "fresh": not old_boxes, "confidence": conf, "photo_ids": ids,
+                    "boxes": old_boxes or fresh_boxes, "flag": "fail" if old_boxes else ("warn" if low else "pass")}
+                   | ({"flag_note": "Low confidence — needs human review"} if low else {}))
+    if overquote and out:
+        priciest = max((i for i in out if i["operation"] == "replace"), key=lambda i: parts[i["part_code"]]["replace"], default=out[0])
+        priciest["flag"], priciest["flag_note"] = "warn", "Garage quotes this part above the catalogue rate"
+    for pe in pre_existing or []:
+        pe.setdefault("boxes", [])
+        if not pe["boxes"]:
+            pe["boxes"] = [{"photo_id": m["id"], "box_2d": b["box_2d"], "label": f"{pe['part']} · {b['damage_type']}"}
+                           for m, ph in zip(media, photos) for b in ph["boxes"] if b.get("kind") == "pre_existing"]
+        pe["photo_ids"] = sorted({b["photo_id"] for b in pe["boxes"]}) or pe.get("photo_ids", [])
+    views = {m["slot"] for m in media}
     return {
         "items": out, "pre_existing": pre_existing or [],
         "narrative_consistency": narrative or {"consistent": True, "explanation": "Impact direction and severity match the description.",
                                                "confidence": round(rng.uniform(0.8, 0.95), 2)},
-        "photo_coverage": {z: (z in zones or rng.random() < 0.5) for z in ("front", "rear", "left", "right")} | {"closeup": True, "odometer": rng.random() < 0.6},
+        "photo_coverage": {z: z in views for z in ("front", "rear", "left", "right", "closeup")} | {"odometer": False},
         "overall_severity": severity,
     }
 
@@ -483,7 +510,7 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
                 checks_override: dict | None = None, pre_existing: list[dict] | None = None,
                 narrative_check: dict | None = None, recommended: str | None = None, decision_reasons: list[str] | None = None,
                 fir: dict | None = None, scenario_id: str | None = None, salvage_pct: float = 0.20,
-                front_impact: bool | None = None) -> dict:
+                front_impact: bool | None = None, photos: list[dict] | None = None, unique: bool = False) -> dict:
     vtype = vehicle["type"]
     city = customer["city"] if customer["city"] in CITY else "Pune"
     place = place or place_for(city)
@@ -503,6 +530,17 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
     if third_party is None:
         third_party = incident_type in ("rear_end", "front_collision", "side_swipe") and "FR-14" not in rules
 
+    # --- photos first: damage items, annotation boxes and the vehicle colour all follow from them ---
+    photo_vtype = "Car" if claim_type == "TP" else vtype
+    clean_photo = PICKER.clean_for(vtype, vehicle["model_key"])
+    if photos is None:
+        photos = [] if incident_type == "theft" else PICKER.for_claim(
+            photo_vtype, incident_type, model_key=vehicle["model_key"] if claim_type != "TP" else None, unique=unique,
+            parts={i["part_code"].rsplit("-", 1)[-1] for i in items} if items else None,
+            colour=PHOTO_COLOUR.get(vehicle["id"]), allow_pre_existing="FR-02" in rules)
+    if photos and claim_type != "TP" and photos[0].get("colour"):
+        vehicle["colour"] = PHOTO_COLOUR.setdefault(vehicle["id"], photos[0]["colour"])
+
     # --- damage + costing ---
     age_months = max(1, int((incident_at - datetime.fromisoformat(vehicle["registered_on"]).replace(tzinfo=IST)).days / 30.4))
     ctx = costing.VehicleContext(
@@ -512,19 +550,18 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
         garage_type=garage["type"], idv=policy["idv"], voluntary_deductible=policy["voluntary_deductible"],
         salvage_pct=salvage_pct, apply_deductible=claim_type != "TP",
     )
-    photo_cat = "two-wheeler" if vtype == "2W" else ("commercial-vehicle" if vtype == "CV" else INCIDENTS[incident_type]["photo"])
-    n_photos = 1 if incident_type == "theft" else rng.randint(2, 4)
+    shown = photos or ([clean_photo] if clean_photo and incident_type == "theft" else [])
     media = []
-    for i in range(n_photos):
+    for i, ph in enumerate(shown):
         captured = incident_at + timedelta(minutes=rng.randint(5, 50))
         if "FR-11" in rules:
             captured = incident_at - timedelta(days=rng.randint(2, 5))
-        cat = photo_cat if i == 0 else rng.choice([photo_cat, "car-side" if vtype == "Car" else photo_cat])
-        media.append({
-            "id": f"m_{i + 1}", "kind": "photo", "slot": ["front", "rear", "left", "closeup"][i % 4],
-            "url": f"/assets/stock/{cat}/fallback.webp", "thumb": f"/assets/stock/{cat}/fallback-thumb.webp",
-            "blur_data": BLUR.get(cat), "uploaded_at": iso(created + timedelta(seconds=rng.randint(5, 90))),
-            "size_kb": rng.randint(180, 900),
+        if incident_type == "theft":  # the customer's own photo of the vehicle, taken before it was stolen
+            captured = incident_at - timedelta(days=rng.randint(20, 300))
+        entry = SM.media_entry(ph, f"m_{i + 1}", "overall" if incident_type == "theft" else ph["view"])
+        media.append(entry | {
+            "uploaded_at": iso(created + timedelta(seconds=rng.randint(5, 90) + 20 * i)), "size_kb": file_kb(ph["url"]),
+            "caption": "Vehicle photo shared by the customer (before the theft)" if incident_type == "theft" else None,
             "exif": {"captured_at": iso(captured), "lat": round(CITY[city]["lat"] + rng.uniform(-.05, .05), 4),
                      "lng": round(CITY[city]["lng"] + rng.uniform(-.05, .05), 4), "device": rng.choice(["Pixel 8", "Galaxy A54", "iPhone 14", "Redmi Note 13", "OnePlus Nord"])},
             "quality": {"blur_score": round(rng.uniform(120, 260), 1), "brightness": round(rng.uniform(.4, .7), 2), "ok": True},
@@ -541,9 +578,9 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
             tp_model = rng.choice(MODELS_BY_TYPE["Car"])
             ctx = costing.VehicleContext(**{**ctx.__dict__, "segment": tp_model["segment"], "vehicle_type": "Car", "cc": tp_model["cc"]})
             prefix = tp_model["key"]
-            items = items or pick_items(incident_type if incident_type in ("rear_end", "front_collision", "side_swipe") else "rear_end", "Car", severity, catalogue_prefix=prefix)
+            items = items or SM.items_from_photos(photos, prefix, reference.load().parts, severity) or                 pick_items(incident_type if incident_type in ("rear_end", "front_collision", "side_swipe") else "rear_end", "Car", severity, catalogue_prefix=prefix)
         else:
-            items = items or pick_items(incident_type, vtype, severity, catalogue_prefix=vehicle["model_key"])
+            items = items or SM.items_from_photos(photos, vehicle["model_key"], reference.load().parts, severity) or                 pick_items(incident_type, vtype, severity, catalogue_prefix=vehicle["model_key"])
         base = costing.calculate_cost(items, ctx, front_impact=bool(front_impact if front_impact is not None else incident_type == "front_collision"))
         if variance is None:
             if "FR-06" in rules:
@@ -556,7 +593,7 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
         financials = costing.calculate_cost(items, ctx, front_impact=bool(front_impact if front_impact is not None else incident_type == "front_collision"),
                                             garage_quote=garage_quote)
         variance = financials["variance_pct"]
-        damage = damage_block(items, severity, photo_ids, pre_existing=pre_existing or (
+        damage = damage_block(items, severity, media, photos, overquote="FR-06" in rules, pre_existing=pre_existing or (
             [{"part": reference.load().parts[items[0]["part_code"]]["part"], "evidence": GENERIC_EVIDENCE["FR-02"], "confidence": 0.86, "photo_ids": photo_ids[:1]}]
             if "FR-02" in rules else []),
             narrative=narrative_check or ({"consistent": False, "explanation": GENERIC_EVIDENCE["FR-03"], "confidence": 0.74} if "FR-03" in rules else None))
@@ -652,6 +689,16 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
         "damaged_parts_mentioned": [i["part"].lower() for i in damage["items"][:3]],
     }
 
+    # --- voice note: scenarios point at the recorded file (README in assets/audio/scenarios); other voice FNOLs keep the
+    # transcript only. The API reports whether the audio file is actually present. ---
+    if scenario_id or (channel == "whatsapp" and language != "en" and rng.random() < 0.6):
+        words = len(narrative_original.split())
+        media.append({"id": f"m_{len(media) + 1}", "kind": "audio", "slot": "voice_note",
+                      "url": f"/assets/audio/scenarios/{scenario_id}.webm" if scenario_id else None,
+                      "duration_s": max(6, round(words / 2.3)), "transcript": narrative_original, "translation_en": narrative,
+                      "language": LANGUAGE_LABEL.get(language, language), "language_code": language,
+                      "uploaded_at": iso(created + timedelta(seconds=3)), "retained": bool(scenario_id)})
+
     # --- timeline / audit / communications ---
     timeline = [{"ts": iso(created), "actor": "customer", "type": "fnol_received", "text": f"FNOL received via {'WhatsApp' if channel == 'whatsapp' else channel.title()}"}]
     timeline += agent_steps(created, ai_seconds, fraud, checks, damage, channel)
@@ -703,24 +750,21 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
     sla = {"target_hours": sla_hours or 48, "due_at": iso(sla_start + timedelta(hours=sla_hours)) if sla_hours else None,
            "breached": bool(sla_hours) and NOW > sla_start + timedelta(hours=sla_hours)}
 
-    documents = [
-        {"id": "d_1", "type": "RC", "url": None, "status": "flagged" if "FR-15" in dmn_rules else "verified",
-         "extracted": {"registration": vehicle["registration"], "owner": customer["name"]},
-         "checks": [{"field": "owner", "level": "warn" if "FR-09" in dmn_rules else "pass",
-                     "message": "Owner differs from policyholder" if "FR-09" in dmn_rules else "Matches policyholder"}]},
-        {"id": "d_2", "type": "DL", "url": None, "status": "verified", "extracted": {"holder": customer["name"]},
-         "checks": [{"field": "validity", "level": "fail" if "FR-10" in dmn_rules else "pass",
-                     "message": "Expired" if "FR-10" in dmn_rules else "Valid on incident date"}]},
-        {"id": "d_3", "type": "Policy", "url": None, "status": "verified", "extracted": {"policy_no": policy["policy_no"]}, "checks": []},
-    ] + ([{"id": "d_4", "type": "FIR", "url": None, "status": "verified", "extracted": fir, "checks": []}] if fir else [])
+    settlement_mode = "cashless" if garage["cashless"] and claim_type not in ("Theft", "TP") else "reimbursement"
+    documents, conditions, licence = SD.documents_for(
+        rng=rng, fake=fake, customer=customer, vehicle=vehicle, model=MODELS[vehicle["model_key"]], policy=policy, garage=garage,
+        rto=vehicle["registration"][:5], incident_at=incident_at, created=created, claim_type=claim_type, rules=dmn_rules, fir=fir,
+        financials=financials, garage_quote=garage_quote, settlement_mode=settlement_mode, status=status, third_party=bool(third_party),
+        severity=severity, info_items=(decision.get("info_request") or {}).get("items", []), incident=incident)
+    checks["dl"]["data"] = {k: licence[k] for k in ("dl_number", "holder", "classes", "valid_from", "valid_to")}
 
     m = MODELS[vehicle["model_key"]]
     open_claim = status in OPEN
     return {
         "id": None, "status": status, "created_at": iso(created), "updated_at": updated, "channel": channel,
         "customer_id": customer["id"], "policy_no": policy["policy_no"], "vehicle_id": vehicle["id"], "claim_type": claim_type,
-        "incident": incident, "settlement": {"mode": "cashless" if garage["cashless"] and claim_type not in ("Theft", "TP") else "reimbursement",
-                                             "garage_id": garage["id"], "bank": None},
+        "incident": incident, "settlement": {"mode": settlement_mode, "garage_id": garage["id"], "bank": None},
+        "document_conditions": conditions,
         "media": media, "documents": documents, "checks": checks, "damage": damage, "financials": financials, "fraud": fraud,
         "decision": decision, "communications": communications,
         "assignee": None if route == "auto" and not open_claim else rng.choice(HANDLERS),
@@ -728,7 +772,8 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
         "ai_processing_s": ai_seconds, "sla": sla, "scenario_id": scenario_id,
         "customer_name": customer["name"], "city": city, "garage_name": garage["name"], "registration": vehicle["registration"],
         "vehicle": {"make": m["make"], "model": m["model"], "type": vtype, "segment": m["segment"], "colour": vehicle["colour"],
-                    "thumb": f"/assets/stock/{photo_cat}/fallback-thumb.webp", "blur_data": BLUR.get(photo_cat)},
+                    "thumb": (clean_photo or (photos[0] if photos else {})).get("thumb"),
+                    "blur_data": (clean_photo or (photos[0] if photos else {})).get("blur_data")},
         "amount_claimed": float(garage_quote if garage_quote is not None else financials["assessed_loss"]),
         "amount_approved": float(approved_amount or 0), "risk_score": fraud["score"], "risk_band": fraud["band"],
     }
@@ -747,6 +792,21 @@ SCENARIO_CUSTOMERS = {
 def garage_in(garages: list[dict], city: str, *, network: bool = True, type_: str | None = None) -> dict:
     pool = [g for g in garages if g["city"] == city and (not network or g["cashless"]) and (not type_ or g["type"] == type_)]
     return pool[0] if pool else next(g for g in garages if g["city"] == "Pune")
+
+
+# Curated best-match photos per demo scenario (stock_curation.py ids); none of them is used by any other
+# scenario or showcase claim.
+SCENARIO_PHOTOS = {
+    "clean_rear_end": ["car_rear_02", "car_rear_02c"],       # rear bumper + boot lid, plus a close-up of the same car
+    "fastag_mismatch": ["car_front_13", "car_front_05"],     # front-corner damage + oxidised bracket fracture (pre-existing)
+    "garage_overquote": ["car_side_04", "car_side_04c"],     # left doors dented, plus a close-up of the same car
+    "flood_total_loss": ["flood_01", "flood_02"],            # car standing in flood water
+}
+
+
+def scenario_photos(sid: str) -> list[dict] | None:
+    photos = PICKER.take_ids(SCENARIO_PHOTOS.get(sid, []))
+    return photos or None
 
 
 def scenario_claims(customers: dict, garages: list[dict], vehicles: list, policies: list) -> list[dict]:
@@ -773,7 +833,7 @@ def scenario_claims(customers: dict, garages: list[dict], vehicles: list, polici
         narrative="A truck hit my car from behind on NH48 near the Khed Shivapur toll at around 9 PM. The rear bumper and tailgate are damaged.",
         narrative_original="Khed Shivapur toll ke paas NH48 pe raat 9 baje ek truck ne peeche se thok diya. Peeche ka bumper aur dikki dono damage ho gaye.",
         checks_override={"fastag": {"level": "pass", "summary": "Khed Shivapur toll at 20:52 — matches the reported route and time", "data": {}, "latency_ms": 410}},
-        scenario_id="clean_rear_end"))
+        scenario_id="clean_rear_end", photos=scenario_photos("clean_rear_end")))
 
     # 2. fastag_mismatch — "hit a divider at 2 AM"; FASTag puts the car in Andheri → SIU.
     t = (NOW - timedelta(days=1)).replace(hour=2, minute=0)
@@ -784,14 +844,15 @@ def scenario_claims(customers: dict, garages: list[dict], vehicles: list, polici
         items=[{"part_code": "HYU-CRE-FBMP", "operation": "replace"}, {"part_code": "HYU-CRE-HLED", "operation": "replace"},
                {"part_code": "HYU-CRE-BMRF", "operation": "replace"}],
         variance=9.0, status="SIU_INVESTIGATION", incident_at=t, place="Mumbai–Pune Expressway near Khalapur", third_party=False,
-        narrative="Hit a divider on the Mumbai–Pune Expressway at 2 AM.",
+        narrative="Hit a divider on the Mumbai–Pune Expressway at 2 AM.", language="en",
+        narrative_original="I hit a divider on the Mumbai–Pune Expressway near Khalapur at about 2 AM. The front bumper and the left headlamp are broken.",
         evidence={"FR-01": "FASTag: vehicle in Andheri mall parking 01:30–03:00; no expressway toll in the 24 hours around the incident.",
                   "FR-02": "Orange-brown oxidation on the bumper bracket fracture edges — damage predates the incident.",
-                  "FR-03": "Low-speed scrape pattern; inconsistent with a divider impact at expressway speed."},
+                  "FR-03": "Front-corner impact with no divider scrape marks along the side; inconsistent with the described divider impact."},
         checks_override={"fastag": {"level": "fail", "summary": "Vehicle at Andheri mall parking 01:30–03:00; no expressway toll in 24 h", "data": {}, "latency_ms": 410}},
         pre_existing=[{"part": "Bumper inner bracket", "evidence": "Orange-brown oxidation on fracture edges", "confidence": 0.89, "photo_ids": ["m_2"]}],
-        narrative_check={"consistent": False, "explanation": "Low-speed scrape pattern does not match a divider impact at expressway speed.", "confidence": 0.71},
-        scenario_id="fastag_mismatch"))
+        narrative_check={"consistent": False, "explanation": "Damage is concentrated on the front corner with no divider scrape marks along the side, and the bracket fracture is corroded — not consistent with a fresh divider impact.", "confidence": 0.71},
+        scenario_id="fastag_mismatch", photos=scenario_photos("fastag_mismatch")))
 
     # 3. garage_overquote — Baleno pillar scrape in Kochi; garage quote 34% above → handler, approve revised.
     t = (NOW - timedelta(days=4)).replace(hour=23, minute=40)
@@ -802,9 +863,10 @@ def scenario_claims(customers: dict, garages: list[dict], vehicles: list, polici
         items=[{"part_code": "MAR-BAL-FDOR", "operation": "repair_moderate_dent"}, {"part_code": "MAR-BAL-RDOR", "operation": "repair_minor_dent"},
                {"part_code": "MAR-BAL-ORVM", "operation": "replace"}],
         variance=34.0, status="UNDER_REVIEW", incident_at=t, place="basement parking, Lulu Mall, Edappally", third_party=False, language="ml",
+        narrative_original="എടപ്പള്ളി ലുലു മാളിന്റെ ബേസ്‌മെന്റ് പാർക്കിങ്ങിൽ തിരിക്കുമ്പോൾ ഒരു തൂണിൽ ഉരസി. ഇടതുവശത്തെ ഡോറുകൾക്കും മിററിനും കേടുപാട് പറ്റി.",
         narrative="Scraped a pillar while turning in the basement parking at Lulu Mall, Edappally. Left doors and mirror damaged.",
         recommended="approve_revised", decision_reasons=["Damage is genuine and consistent", "Garage quote 34% above AI estimate", "Approve at AI-assessed amount"],
-        scenario_id="garage_overquote"))
+        scenario_id="garage_overquote", photos=scenario_photos("garage_overquote")))
 
     # 4. theft_two_wheeler — Activa stolen in Pimpri; FIR present, keys pending → info requested.
     t = (NOW - timedelta(days=12)).replace(hour=19, minute=30)
@@ -815,6 +877,7 @@ def scenario_claims(customers: dict, garages: list[dict], vehicles: list, polici
         incident_type="theft", claim_type="Theft", severity="severe", channel="whatsapp", rules={"FR-12"}, status="INFO_REQUESTED",
         incident_at=t, place="outside Pimpri vegetable market", third_party=False, fir=fir,
         narrative="Parked my Activa outside Pimpri vegetable market at 7:30 PM; it was missing when I came back. FIR filed the next day.",
+        language="hi", narrative_original="मैंने अपनी एक्टिवा शाम साढ़े सात बजे पिंपरी सब्ज़ी मंडी के बाहर पार्क की थी; वापस आया तो गाड़ी गायब थी। अगले दिन FIR दर्ज कराई।",
         scenario_id="theft_two_wheeler"))
 
     # 5. flood_total_loss — Swift submerged in Thane flooding → assessed > 75% IDV → total loss, handler.
@@ -828,7 +891,8 @@ def scenario_claims(customers: dict, garages: list[dict], vehicles: list, polici
         status="UNDER_REVIEW", incident_at=t, place="Vandana Cinema underpass, Thane West", third_party=False, salvage_pct=0.18,
         narrative="The car was parked near the Vandana underpass when overnight rain flooded the area; water reached the dashboard.",
         decision_reasons=["Assessed loss exceeds 75% of IDV", "Total loss path — salvage computed", "Handler review required"],
-        recommended="approve_total_loss", scenario_id="flood_total_loss"))
+        recommended="approve_total_loss", scenario_id="flood_total_loss", photos=scenario_photos("flood_total_loss"), language="mr",
+        narrative_original="रात्रभर पडलेल्या पावसामुळे वंदना अंडरपासजवळ पाणी साचलं. माझी गाडी तिथेच पार्क होती आणि पाणी डॅशबोर्डपर्यंत पोहोचलं."))
 
     # Rahul's history: 1 settled (14 months ago), 1 info requested (recent windshield).
     t = (NOW - timedelta(days=430)).replace(hour=18, minute=10)
@@ -838,13 +902,13 @@ def scenario_claims(customers: dict, garages: list[dict], vehicles: list, polici
         customer=customers["c_0001"], vehicle=vehicles[0], policy=p_old, garage=garage_in(garages, "Pune", type_="authorised"),
         created=t + timedelta(hours=3), incident_type="side_swipe", claim_type="OD", severity="minor", channel="app", rules=set(),
         items=[{"part_code": "HYU-CRE-FDOR", "operation": "repair_minor_dent"}, {"part_code": "HYU-CRE-ORVM", "operation": "replace"}],
-        variance=5.0, status="SETTLED", incident_at=t, place="Baner Road near Balewadi High Street"))
+        variance=5.0, status="SETTLED", incident_at=t, place="Baner Road near Balewadi High Street", unique=True))
     t = (NOW - timedelta(days=6)).replace(hour=11, minute=20)
     out.append(build_claim(
         customer=customers["c_0001"], vehicle=vehicles[0], policy=policies[0], garage=garage_in(garages, "Pune", type_="authorised"),
         created=t + timedelta(hours=1), incident_type="glass", claim_type="Glass", severity="minor", channel="whatsapp", rules=set(),
         items=[{"part_code": "HYU-CRE-WSCR", "operation": "replace"}], variance=3.0, status="INFO_REQUESTED", incident_at=t,
-        place="Mumbai–Pune Expressway near Lonavala"))
+        place="Mumbai–Pune Expressway near Lonavala", unique=True))
     return out
 
 
@@ -892,6 +956,8 @@ def generate() -> dict:
     created_times += [today_start + (NOW - today_start) * rng.uniform(0.05, 0.98) if NOW > today_start else NOW - timedelta(minutes=rng.randint(5, 300))
                       for _ in range(7)]
 
+    # Showcase claims (the 30 most recent — what Home shows first) get photo sets no other showcase/scenario claim uses.
+    showcase = set(sorted(created_times)[-30:])
     cid_n = 2
     city_pairs = [(c, d["w"]) for c, d in CITY.items()]
     for created in created_times:
@@ -953,7 +1019,8 @@ def generate() -> dict:
             policy["idv"] = int(round(assessed / rng.uniform(0.85, 1.05), -3))
             claim = build_claim(customer=customers[cid], vehicle=vehicle, policy=policy, garage=garage_in(garages, city),
                                 created=created, incident_type=incident, claim_type="OD", severity="severe", channel=channel,
-                                rules=rules - {"FR-06w"}, items=items, incident_at=incident_at, salvage_pct=rng.uniform(.15, .25))
+                                rules=rules - {"FR-06w"}, items=items, incident_at=incident_at, salvage_pct=rng.uniform(.15, .25),
+                                unique=created in showcase)
         else:
             fir = None
             if claim_type == "Theft":
@@ -961,7 +1028,8 @@ def generate() -> dict:
                        "date": (created - timedelta(days=rng.randint(0, 2))).date().isoformat()}
             garage = garage_in(garages, city, network=rng.random() < 0.8)
             claim = build_claim(customer=customers[cid], vehicle=vehicle, policy=policy, garage=garage, created=created,
-                                incident_type=incident, claim_type=claim_type, severity=severity, channel=channel, rules=rules, fir=fir)
+                                incident_type=incident, claim_type=claim_type, severity=severity, channel=channel, rules=rules, fir=fir,
+                                unique=created in showcase)
         policies.append(policy)
         claims.append(claim)
 
@@ -972,6 +1040,9 @@ def generate() -> dict:
         c["pipeline_run_id"] = f"run_{n:06d}"
         for msg in c["communications"]:
             msg["text"] = msg["text"].replace("{id}", c["id"])
+        for doc in c["documents"]:
+            if doc["extracted"].get("claim_id") == "{id}":
+                doc["extracted"]["claim_id"] = c["id"]
     return {"claims": claims, "customers": list(customers.values()), "vehicles": vehicles, "policies": policies, "garages": garages}
 
 
@@ -999,8 +1070,9 @@ def mocks_for(data: dict) -> dict:
             events.append({"ts": c["incident"]["datetime"][:11] + "01:30:00+05:30", "type": "parking", "plaza": "Andheri mall parking",
                            "city": "Mumbai", "lat": 19.12, "lng": 72.85, "amount": 120})
         iib.setdefault(reg, []).extend([{"insurer": "Other insurer", "type": "OD", "date": c["created_at"][:10]}] * (2 if c["checks"]["iib"]["level"] == "warn" else 0))
-        dls[f"MH{rng.randint(10, 50)}-XXXXXXX{rng.randint(1000, 9999)}"] = {"holder": c["customer_name"], "classes": ["LMV", "MCWG"],
-                                                                         "status": "expired" if c["checks"]["dl"]["level"] == "fail" else "valid"}
+        lic = c["checks"]["dl"]["data"]
+        dls[lic["dl_number"]] = {"holder": lic["holder"], "classes": lic["classes"], "valid_from": lic["valid_from"], "valid_to": lic["valid_to"],
+                                 "status": "expired" if c["checks"]["dl"]["level"] == "fail" else "valid"}
     return {"vahan.json": vahan, "fastag.json": fastag, "iib.json": iib, "driving_licences.json": dls, "police_records.json": police}
 
 
@@ -1036,6 +1108,7 @@ def seed() -> None:
     write_json_sync("customers.json", data["customers"])
     write_json_sync("vehicles.json", data["vehicles"])
     write_json_sync("policies.json", data["policies"])
+    n_docs = DOCS.render_all(data["claims"])  # sets each document's url/thumb; swapped in file by file when complete
     write_json_sync("claims.json", data["claims"])
     for name, value in mocks_for(data).items():
         write_json_sync(name, value)
@@ -1058,6 +1131,7 @@ def seed() -> None:
         if c["scenario_id"]:
             print(f"  {c['scenario_id']:<18} {c['id']}  {c['status']:<18} score={c['risk_score']:<3} net=₹{inr(c['financials']['net_payable'])}"
                   f"{'  TOTAL LOSS' if c['financials']['total_loss_check']['is_total_loss'] else ''}")
+    print(f"documents rendered: {n_docs} · photo reuse fallbacks for unique sets: {PICKER.shortfall}")
     print("All claims validated against schemas.claim.Claim")
 
 

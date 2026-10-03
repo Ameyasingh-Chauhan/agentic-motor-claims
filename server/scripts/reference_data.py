@@ -303,3 +303,53 @@ CITIES = [
 def cities_json() -> list[dict]:
     return [{"city": c, "state": s, "tier": t, "lat": lat, "lng": lng, "rto_codes": rto}
             for c, s, t, lat, lng, rto, _w in CITIES]
+
+
+# §11.5 Required documents by vehicle type. Conditional items carry the condition keys that trigger them.
+def _doc(key, label, **extra):
+    return {"doc": key, "label": label, **extra}
+
+
+DOCUMENT_REQUIREMENTS = {
+    "2W": {
+        "mandatory": [_doc("claim_form", "Claim form (signed or digital)"), _doc("policy", "Policy copy or cover note"),
+                      _doc("rc", "RC copy"), _doc("dl", "Driving licence of rider"), _doc("kyc", "KYC (Aadhaar / PAN / Voter ID / Passport)")],
+        "conditional": [
+            _doc("fir", "FIR", when=["theft", "third_party"], reason="Required for theft and third-party claims"),
+            _doc("original_rc", "Original RC", when=["theft"], reason="Surrendered on a theft settlement"),
+            _doc("original_policy", "Original policy", when=["theft"], reason="Required for theft settlement"),
+            _doc("tax_receipt", "Road tax receipt", when=["theft"], reason="Required for theft settlement"),
+            _doc("rto_theft_declaration", "RTO theft declaration", when=["theft"], reason="Informs the RTO the vehicle was stolen"),
+            _doc("original_keys", "All original keys", when=["theft"], reason="Confirms the vehicle was locked and keys are accounted for"),
+            _doc("repair_bills", "Original repair bills and payment receipts", when=["reimbursement"], reason="Needed to reimburse repairs you paid for"),
+        ],
+        "optional": [_doc("photos", "Photos of vehicle and site (strongly recommended)"), _doc("witness", "Witness details")],
+    },
+    "Car": {
+        "mandatory": [_doc("claim_form", "Claim form (signed or digitally authorised)"), _doc("rc", "RC (verified copy)"),
+                      _doc("dl", "Driving licence of driver"), _doc("policy", "Policy documents"), _doc("kyc", "KYC")],
+        "conditional": [
+            _doc("fir", "FIR", when=["theft", "major_accident", "bodily_injury", "malicious_damage", "third_party"],
+                 reason="Required for theft, major accidents, injury, malicious damage and third-party property damage"),
+            _doc("repair_estimate", "Repair estimate", when=["reimbursement"], reason="Needed to assess a reimbursement claim"),
+            _doc("repair_invoice", "Final invoices and payment receipts", when=["reimbursement"], reason="Needed to reimburse repairs you paid for"),
+            _doc("lender_noc", "Lender NOC + Form 35", when=["financed"], reason="The vehicle is hypothecated to a lender"),
+            _doc("rto_forms", "RTO Forms 28, 29, 30", when=["second_hand_or_total_loss", "theft"], reason="Transfer of ownership to the insurer"),
+            _doc("purchase_invoice", "Original purchase invoice", when=["rti_claim"], reason="Return-to-invoice add-on claim"),
+            _doc("original_keys", "Original keys", when=["theft"], reason="Confirms the keys are accounted for"),
+            _doc("subrogation_letter", "Subrogation letter", when=["theft"], reason="Transfers recovery rights to the insurer"),
+            _doc("discharge_voucher", "Claim discharge voucher", when=["theft"], reason="Signed on settlement of a theft claim"),
+        ],
+        "optional": [_doc("cancelled_cheque", "Cancelled cheque (required only for reimbursement)"), _doc("photos", "Photos / videos"),
+                     _doc("medical", "Medical reports & bills (bodily injury)")],
+    },
+    "CV": {
+        "mandatory": [_doc("claim_form", "Claim form"), _doc("rc", "RC"), _doc("dl", "Driving licence valid for the vehicle class"),
+                      _doc("fitness", "Fitness certificate"), _doc("permit", "Permit")],
+        "conditional": [
+            _doc("repair_estimate", "Repair estimates and final bills", when=["damage"], reason="Needed to assess the damage"),
+            _doc("fir", "FIR", when=["theft", "third_party"], reason="Required for theft and third-party claims"),
+        ],
+        "optional": [_doc("policy", "Physical policy copy (if not verifiable digitally)")],
+    },
+}
