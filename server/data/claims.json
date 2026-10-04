@@ -181068,5 +181068,1498 @@
     "risk_score": null,
     "risk_band": null,
     "garage_quote": 38500.0
+  },
+  {
+    "id": "ABC-MC-2026-000252",
+    "status": "DRAFT",
+    "created_at": "2026-10-04T21:52:46+05:30",
+    "updated_at": "2026-10-04T21:52:46+05:30",
+    "channel": "app",
+    "origin": "app",
+    "customer_id": "c_0001",
+    "policy_no": "ABC/PC/2026/188297",
+    "vehicle_id": "v_0001",
+    "claim_type": "OD",
+    "incident": {
+      "type": "rear_end",
+      "label": "Rear-end collision",
+      "datetime": "2026-10-04T21:52:46+05:30",
+      "reported_at": "2026-10-04T21:52:46+05:30",
+      "location": {
+        "text": "",
+        "city": "Pune",
+        "lat": 18.52,
+        "lng": 73.86
+      },
+      "narrative_original": "",
+      "narrative_language": "hi-en",
+      "narrative_en": "",
+      "cause": "Rear-end collision",
+      "third_party_involved": false,
+      "injuries": false,
+      "fir": null,
+      "damaged_parts_mentioned": []
+    },
+    "settlement": {
+      "mode": "reimbursement",
+      "garage_id": null,
+      "bank": null
+    },
+    "document_conditions": [],
+    "media": [],
+    "documents": [],
+    "checks": {},
+    "damage": {
+      "items": [],
+      "pre_existing": []
+    },
+    "financials": null,
+    "fraud": null,
+    "decision": null,
+    "communications": [],
+    "assignee": null,
+    "internal_notes": [],
+    "timeline": [],
+    "audit": [
+      {
+        "ts": "2026-10-04T21:52:46+05:30",
+        "actor": "u_003",
+        "action": "created",
+        "from": null,
+        "to": "DRAFT",
+        "reason": "Draft created via App"
+      }
+    ],
+    "pipeline_run_id": null,
+    "ai_processing_s": null,
+    "sla": {
+      "target_hours": 48,
+      "due_at": null,
+      "breached": false
+    },
+    "scenario_id": null,
+    "customer_name": "Rahul Sharma",
+    "city": "Pune",
+    "garage_name": null,
+    "registration": "MH 12 AB 1234",
+    "vehicle": {
+      "make": "Hyundai",
+      "model": "Creta",
+      "type": "Car",
+      "segment": "CAR_COMPACT_SUV_SEDAN",
+      "colour": "Silver",
+      "thumb": "/assets/stock/clean/clean_suv-thumb.webp",
+      "blur_data": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAwAAsBMJaACdADz4OoBIAD+lQvkBly74uOhNXtQUqwunHxpo1UzhDx3Enqq186dBhkJr1KU3FLuwAA="
+    },
+    "amount_claimed": 0.0,
+    "amount_approved": 0.0,
+    "risk_score": null,
+    "risk_band": null
+  },
+  {
+    "id": "ABC-MC-2026-000253",
+    "status": "SIU_INVESTIGATION",
+    "created_at": "2026-10-04T22:36:51+05:30",
+    "updated_at": "2026-10-04T22:37:30+05:30",
+    "channel": "app",
+    "origin": "app",
+    "customer_id": "c_0001",
+    "policy_no": "ABC/PC/2026/188297",
+    "vehicle_id": "v_0001",
+    "claim_type": "OD",
+    "incident": {
+      "type": "rear_end",
+      "label": "Rear-end collision",
+      "datetime": "2026-10-04T18:00:00+05:30",
+      "reported_at": "2026-10-04T22:36:51+05:30",
+      "location": {
+        "text": "Baner signal",
+        "city": "Pune",
+        "lat": 18.52,
+        "lng": 73.86
+      },
+      "narrative_original": "A tempo hit my Creta from behind at the Baner signal around 6 pm today. The rear bumper is cracked and the right tail lamp is broken.",
+      "narrative_language": "en-IN",
+      "narrative_en": "A tempo hit my Creta from behind at the Baner signal around 6 pm today. The rear bumper is cracked and the right tail lamp is broken.",
+      "cause": "Rear-end collision",
+      "third_party_involved": false,
+      "injuries": false,
+      "fir": null,
+      "damaged_parts_mentioned": [
+        "rear bumper",
+        "right tail lamp"
+      ]
+    },
+    "settlement": {
+      "mode": "cashless",
+      "garage_id": "g_001",
+      "bank": null
+    },
+    "document_conditions": [],
+    "media": [
+      {
+        "id": "m_1",
+        "kind": "photo",
+        "slot": "front",
+        "url": "/api/files/ABC-MC-2026-000253/m_1.webp",
+        "thumb": "/api/files/ABC-MC-2026-000253/m_1-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000253/m_1-original.jpg",
+        "caption": "Front",
+        "uploaded_at": "2026-10-04T22:34:25+05:30",
+        "uploaded_by": "customer",
+        "credit": null,
+        "mime": "image/jpeg",
+        "size_kb": 1127,
+        "original_name": "front.jpg",
+        "width": 1199,
+        "height": 1600,
+        "blur_data": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMABAAAsBMJZwCsAEK/MSniigA9GwLOyl6dTNZuPsvylP8BmjvSuVzWlMex3KTuJLMdCnnh5uGZwAA",
+        "exif": {
+          "captured_at": "2026-10-03T18:42:00+05:30",
+          "lat": 19.1408,
+          "lng": 72.8297,
+          "device": "samsung Galaxy S23"
+        },
+        "quality": {
+          "blur_score": 2281.5,
+          "brightness": 0.4,
+          "ok": true
+        }
+      },
+      {
+        "id": "m_2",
+        "kind": "photo",
+        "slot": "closeup",
+        "url": "/api/files/ABC-MC-2026-000253/m_2.webp",
+        "thumb": "/api/files/ABC-MC-2026-000253/m_2-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000253/m_2-original.jpg",
+        "caption": "Damage close-up",
+        "uploaded_at": "2026-10-04T22:34:30+05:30",
+        "uploaded_by": "customer",
+        "credit": null,
+        "mime": "image/jpeg",
+        "size_kb": 418,
+        "original_name": "closeup.jpg",
+        "width": 1402,
+        "height": 1600,
+        "blur_data": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoOABAAAsBMJZwAApze2131EzAA8o7GJ59lJ5/yoHzpywtQHfFuhsxJ0Hq37TrYwWFYAAAA",
+        "exif": {
+          "captured_at": "2026-10-03T18:42:40+05:30",
+          "lat": 19.1408,
+          "lng": 72.8297,
+          "device": "samsung Galaxy S23"
+        },
+        "quality": {
+          "blur_score": 836.5,
+          "brightness": 0.19,
+          "ok": true
+        }
+      }
+    ],
+    "documents": [
+      {
+        "id": "d_1",
+        "type": "RC",
+        "requirement": "rc",
+        "url": "/api/files/ABC-MC-2026-000253/d_1.webp",
+        "thumb": "/api/files/ABC-MC-2026-000253/d_1-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000253/d_1-original.jpg",
+        "status": "mismatch",
+        "extracted": {
+          "registration": "MH 02 DN 8165",
+          "owner": "Aadi Seth",
+          "vehicle_class": "LMV (Motor car)",
+          "make_model": "Maruti Suzuki Baleno",
+          "fuel": "Petrol",
+          "reg_date": "04 Jul 2025",
+          "chassis5": "51492",
+          "engine5": "86254"
+        },
+        "checks": [
+          {
+            "field": "registration",
+            "level": "fail",
+            "message": "Reg MH 02 DN 8165 does not match MH 12 AB 1234"
+          },
+          {
+            "field": "owner",
+            "level": "fail",
+            "message": "Owner Aadi Seth does not match Rahul Sharma"
+          },
+          {
+            "field": "make_model",
+            "level": "fail",
+            "message": "Make/model Maruti Suzuki Baleno does not match Hyundai Creta"
+          },
+          {
+            "field": "chassis5",
+            "level": "fail",
+            "message": "Chassis last 5 digits 51492 does not match 63520"
+          },
+          {
+            "field": "engine5",
+            "level": "fail",
+            "message": "Engine last 5 digits 86254 does not match 14916"
+          },
+          {
+            "field": "vehicle_class",
+            "level": "pass",
+            "message": "Vehicle class LMV matches expected class"
+          }
+        ],
+        "uploaded_at": "2026-10-04T22:35:50+05:30",
+        "uploaded_by": "customer",
+        "mime": "image/jpeg",
+        "size_kb": 153,
+        "original_name": "rc.jpg",
+        "width": 1400,
+        "height": 880,
+        "blur_data": "data:image/webp;base64,UklGRi4AAABXRUJQVlA4ICIAAACwAQCdASoQAAoAAsBMJaQAAu187MkAAP73JOBi+1CIgAAA",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 2554.1,
+          "brightness": 0.94,
+          "ok": true
+        },
+        "ai": {
+          "actual_type": "RC",
+          "type_mismatch": false,
+          "legibility": "clear",
+          "tampering": [],
+          "tampering_suspected": false,
+          "confidence": 0.95,
+          "needs_review": false,
+          "read_at": "2026-10-04T22:35:58+05:30"
+        }
+      },
+      {
+        "id": "d_2",
+        "type": "ClaimForm",
+        "requirement": "claim_form",
+        "url": null,
+        "thumb": null,
+        "status": "verified",
+        "extracted": {
+          "submitted_via": "Digital FNOL (app)",
+          "signed": "OTP-authorised"
+        },
+        "checks": [
+          {
+            "field": "signature",
+            "level": "pass",
+            "message": "Digitally authorised by OTP"
+          }
+        ],
+        "uploaded_at": "2026-10-04T22:36:53+05:30",
+        "uploaded_by": "system"
+      },
+      {
+        "id": "d_3",
+        "type": "Policy",
+        "requirement": "policy",
+        "url": null,
+        "thumb": null,
+        "status": "verified",
+        "extracted": {
+          "policy_no": "ABC/PC/2026/188297",
+          "product": "Private Car Package",
+          "cover": "OD+TP",
+          "period": "2026-05-30 – 2027-05-29",
+          "idv": 994000,
+          "source": "ABC policy core"
+        },
+        "checks": [
+          {
+            "field": "validity",
+            "level": "pass",
+            "message": "Retrieved from ABC policy core"
+          }
+        ],
+        "uploaded_at": "2026-10-04T22:36:53+05:30",
+        "uploaded_by": "system"
+      },
+      {
+        "id": "d_4",
+        "type": "KYC",
+        "requirement": "kyc",
+        "url": null,
+        "thumb": null,
+        "status": "verified",
+        "extracted": {
+          "aadhaar": "XXXX-XXXX-4292",
+          "pan": "XXXXX7139X",
+          "method": "CKYC registry lookup"
+        },
+        "checks": [
+          {
+            "field": "identity",
+            "level": "pass",
+            "message": "KYC verified in the CKYC registry"
+          }
+        ],
+        "uploaded_at": "2026-10-04T22:36:53+05:30",
+        "uploaded_by": "system"
+      }
+    ],
+    "checks": {
+      "policy": {
+        "level": "pass",
+        "summary": "Active · OD+TP · valid till 29 May 2027",
+        "data": {
+          "policy_no": "ABC/PC/2026/188297",
+          "cover": "OD+TP",
+          "start": "2026-05-30",
+          "end": "2027-05-29"
+        },
+        "latency_ms": 109
+      },
+      "vahan": {
+        "level": "pass",
+        "summary": "RC active · Private · not blacklisted",
+        "data": {
+          "registration": "MH 12 AB 1234",
+          "owner": "Rahul Sharma",
+          "class": "Car",
+          "make_model": "Hyundai Creta",
+          "rc_status": "active",
+          "hypothecation": null,
+          "blacklisted": false,
+          "stolen": false,
+          "registered_on": "2024-05-27"
+        },
+        "latency_ms": 412
+      },
+      "fastag": {
+        "level": "pass",
+        "summary": "No contradicting toll or parking events",
+        "data": {
+          "events_in_window": [],
+          "window_minutes": 90
+        },
+        "latency_ms": 374
+      },
+      "iib": {
+        "level": "warn",
+        "summary": "2 OD claim(s) in the last 12 months",
+        "data": {
+          "other_insurers": [],
+          "abc_claims": [
+            "ABC-MC-2026-000230",
+            "ABC-MC-2026-000238"
+          ]
+        },
+        "latency_ms": 473
+      },
+      "police": {
+        "level": "pending",
+        "summary": "Not required",
+        "data": {
+          "records": []
+        },
+        "latency_ms": 378
+      },
+      "kyc": {
+        "level": "pass",
+        "summary": "KYC verified",
+        "data": {},
+        "latency_ms": 120
+      },
+      "dl": {
+        "level": "pending",
+        "summary": "Driving licence not provided",
+        "data": {},
+        "latency_ms": 0
+      },
+      "vehicle_identity": {
+        "level": "fail",
+        "summary": "Photos do not match the insured vehicle",
+        "data": {
+          "evidence": [
+            "Photo m_1 shows Suzuki (0.92); insured vehicle is Hyundai Creta",
+            "Photo colour Black vs registered Silver"
+          ]
+        },
+        "latency_ms": 0
+      }
+    },
+    "damage": {
+      "items": [
+        {
+          "part_code": "HYU-CRE-FBMP",
+          "part": "Front bumper",
+          "zone": "front",
+          "damage_type": "tear",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.95,
+          "photo_ids": [
+            "m_1",
+            "m_2"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                278,
+                0,
+                574,
+                521
+              ],
+              "label": "Front bumper · tear"
+            },
+            {
+              "photo_id": "m_2",
+              "box_2d": [
+                342,
+                0,
+                891,
+                763
+              ],
+              "label": "Front bumper · tear"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "HYU-CRE-BONT",
+          "part": "Bonnet",
+          "zone": "front",
+          "damage_type": "dent",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.95,
+          "photo_ids": [
+            "m_1",
+            "m_2"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                0,
+                0,
+                237,
+                785
+              ],
+              "label": "Bonnet · dent"
+            },
+            {
+              "photo_id": "m_2",
+              "box_2d": [
+                0,
+                118,
+                240,
+                997
+              ],
+              "label": "Bonnet · dent"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "HYU-CRE-HLMP",
+          "part": "Headlamp assembly – halogen",
+          "zone": "front",
+          "damage_type": "shatter",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.95,
+          "photo_ids": [
+            "m_1",
+            "m_2"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                121,
+                0,
+                313,
+                335
+              ],
+              "label": "Headlamp assembly · shatter"
+            },
+            {
+              "photo_id": "m_2",
+              "box_2d": [
+                15,
+                0,
+                396,
+                526
+              ],
+              "label": "Headlamp assembly · shatter"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "HYU-CRE-GRIL",
+          "part": "Front grille",
+          "zone": "front",
+          "damage_type": "break",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.92,
+          "photo_ids": [
+            "m_1",
+            "m_2"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                150,
+                421,
+                331,
+                792
+              ],
+              "label": "Front grille · break"
+            },
+            {
+              "photo_id": "m_2",
+              "box_2d": [
+                201,
+                686,
+                426,
+                1000
+              ],
+              "label": "Front grille · break"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "HYU-CRE-FOGL",
+          "part": "Fog lamp",
+          "zone": "front",
+          "damage_type": "break",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.88,
+          "photo_ids": [
+            "m_1",
+            "m_2"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                465,
+                190,
+                569,
+                417
+              ],
+              "label": "Fog lamp · break"
+            },
+            {
+              "photo_id": "m_2",
+              "box_2d": [
+                685,
+                303,
+                878,
+                667
+              ],
+              "label": "Fog lamp · break"
+            }
+          ],
+          "flag": "pass"
+        }
+      ],
+      "pre_existing": [],
+      "uncatalogued": [],
+      "narrative_consistency": {
+        "consistent": false,
+        "explanation": "Photos depict severe front-end impact on a black Suzuki car, directly contradicting claimed rear-end damage on a silver Hyundai Creta.",
+        "confidence": 0.98
+      },
+      "photo_coverage": {
+        "front": true,
+        "rear": false,
+        "left": false,
+        "right": false,
+        "closeup": true,
+        "odometer": false
+      },
+      "photo_quality": {
+        "m_1": {
+          "usable": true,
+          "issues": []
+        },
+        "m_2": {
+          "usable": true,
+          "issues": []
+        }
+      },
+      "suggested_photos": [
+        "Full rear view of insured vehicle",
+        "Vehicle registration plate and VIN plate",
+        "Odometer reading"
+      ],
+      "overall_severity": "severe",
+      "total_loss_indicator": false,
+      "total_loss_evidence": null,
+      "notes": "Vehicle in photos is a black Suzuki with front-end damage, completely mismatching the insured silver Hyundai Creta and claimed rear-end accident scenario.",
+      "assessed_by": "agent:damage"
+    },
+    "financials": {
+      "currency": "INR",
+      "vehicle_age_months": 28,
+      "zero_dep": false,
+      "labour_rate": 1100.0,
+      "lines": [
+        {
+          "part_code": "HYU-CRE-FBMP",
+          "description": "Front bumper",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 12500.0,
+          "dep_pct": 50.0,
+          "dep_amount": 6250.0,
+          "net_parts": 6250.0,
+          "labour_hours": 1.5,
+          "labour_rate": 1100.0,
+          "labour": 1650.0,
+          "paint": 4704.0,
+          "paint_material_dep": 588.0,
+          "line_total": 12016.0
+        },
+        {
+          "part_code": "HYU-CRE-BONT",
+          "description": "Bonnet",
+          "zone": "front",
+          "operation": "replace",
+          "material": "metal",
+          "base_price": 14320.0,
+          "dep_pct": 15.0,
+          "dep_amount": 2148.0,
+          "net_parts": 12172.0,
+          "labour_hours": 1.0,
+          "labour_rate": 1100.0,
+          "labour": 1100.0,
+          "paint": 4704.0,
+          "paint_material_dep": 588.0,
+          "line_total": 17388.0
+        },
+        {
+          "part_code": "HYU-CRE-HLMP",
+          "description": "Headlamp assembly – halogen",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 9500.0,
+          "dep_pct": 50.0,
+          "dep_amount": 4750.0,
+          "net_parts": 4750.0,
+          "labour_hours": 0.5,
+          "labour_rate": 1100.0,
+          "labour": 550.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 5300.0
+        },
+        {
+          "part_code": "HYU-CRE-GRIL",
+          "description": "Front grille",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 3510.0,
+          "dep_pct": 50.0,
+          "dep_amount": 1755.0,
+          "net_parts": 1755.0,
+          "labour_hours": 0.0,
+          "labour_rate": 1100.0,
+          "labour": 0.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 1755.0
+        },
+        {
+          "part_code": "HYU-CRE-FOGL",
+          "description": "Fog lamp",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 2340.0,
+          "dep_pct": 50.0,
+          "dep_amount": 1170.0,
+          "net_parts": 1170.0,
+          "labour_hours": 0.5,
+          "labour_rate": 1100.0,
+          "labour": 550.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 1720.0
+        }
+      ],
+      "extras": [
+        {
+          "description": "Wheel alignment & balancing",
+          "amount": 1100.0
+        }
+      ],
+      "gross_parts": 42170.0,
+      "total_depreciation": 17249.0,
+      "net_parts": 26097.0,
+      "labour": 3850.0,
+      "paint_gross": 9408.0,
+      "paint_dep": 1176.0,
+      "assessed_loss": 39279.0,
+      "compulsory_deductible": 1000,
+      "voluntary_deductible": 0,
+      "salvage": 0.0,
+      "net_payable": 38279.0,
+      "display_net_payable": 38280,
+      "garage_quote": null,
+      "variance_pct": null,
+      "variance_level": null,
+      "total_loss_check": {
+        "idv": 994000,
+        "threshold_pct": 75,
+        "is_total_loss": false
+      },
+      "llm_arithmetic_discrepancy": null,
+      "ncb_impact": {
+        "current_pct": 25,
+        "after_claim_pct": 0
+      }
+    },
+    "fraud": {
+      "score": 100,
+      "band": "high",
+      "hard_stop": false,
+      "fired": [
+        {
+          "rule_id": "FR-03",
+          "name": "Narrative–damage inconsistency",
+          "level": "fail",
+          "points": 20,
+          "evidence": "Photos depict severe front-end impact on a black Suzuki car, directly contradicting claimed rear-end damage on a silver Hyundai Creta.",
+          "evidence_refs": [
+            "damage.narrative_consistency"
+          ],
+          "confidence": 0.98,
+          "expected": "Rear-end damage (cracked rear bumper and broken right tail lamp)",
+          "found": "Severe front-end damage including front bumper, bonnet, headlamp, and front grille",
+          "source": "m_1",
+          "why": "Physical damage in photo directly contradicts the reported loss narrative of being rear-ended by a tempo."
+        },
+        {
+          "rule_id": "FR-04",
+          "name": "Frequent claimant (IIB)",
+          "level": "warn",
+          "points": 15,
+          "evidence": "2 own-damage claims on this vehicle in the last 12 months (IIB + ABC)",
+          "evidence_refs": [
+            "checks.iib"
+          ],
+          "confidence": 0.9,
+          "expected": "Standard claim frequency history",
+          "found": "2 own-damage claims registered on this vehicle within the last 12 months",
+          "source": "iib",
+          "why": "Indicates elevated historical claim frequency on the subject vehicle."
+        },
+        {
+          "rule_id": "FR-09",
+          "name": "RC owner differs from policyholder",
+          "level": "warn",
+          "points": 15,
+          "evidence": "RC owner name matches the policyholder at ratio 0.38 (threshold 0.85)",
+          "evidence_refs": [
+            "checks.vahan"
+          ],
+          "confidence": 0.9,
+          "expected": "RC owner matching policyholder name (match ratio >= 0.85)",
+          "found": "RC owner name matches policyholder at ratio 0.38",
+          "source": "vahan",
+          "why": "Indicates mismatch between the registered vehicle owner and the insured policyholder."
+        },
+        {
+          "rule_id": "FR-11",
+          "name": "Photo metadata mismatch",
+          "level": "warn",
+          "points": 15,
+          "evidence": "Photo m_1 EXIF GPS is 128 km from the reported location",
+          "evidence_refs": [
+            "media.exif"
+          ],
+          "confidence": 0.9,
+          "expected": "Photo geotag corresponding to incident location at Baner signal",
+          "found": "EXIF GPS coordinates located 128 km away from the reported incident site",
+          "source": "m_1",
+          "why": "Geographical discrepancy indicates damage photos were not captured at the reported incident location."
+        },
+        {
+          "rule_id": "FR-16",
+          "name": "Vehicle identity mismatch",
+          "level": "fail",
+          "points": 30,
+          "evidence": "Photo m_1 shows Suzuki (0.92); insured vehicle is Hyundai Creta; Photo colour Black vs registered Silver",
+          "evidence_refs": [
+            "vehicle_identity"
+          ],
+          "confidence": 0.92,
+          "expected": "Silver Hyundai Creta matching policy and registration details",
+          "found": "Black Suzuki vehicle identified in submitted damage photos (confidence 0.92)",
+          "source": "m_1",
+          "why": "Indicates submitted images depict a completely different make, model, and colour from the insured vehicle."
+        },
+        {
+          "rule_id": "FR-18",
+          "name": "Vehicle detail unclear / colour mismatch",
+          "level": "warn",
+          "points": 5,
+          "evidence": "Photo colour Black vs registered Silver",
+          "evidence_refs": [
+            "vehicle_identity"
+          ],
+          "confidence": 0.9,
+          "expected": "Silver vehicle exterior per registration records",
+          "found": "Black vehicle exterior shown in photo m_1",
+          "source": "m_1",
+          "why": "Colour mismatch indicates vehicle in photographs does not match registered vehicle specifications."
+        }
+      ],
+      "not_fired": [
+        "FR-01",
+        "FR-02",
+        "FR-05",
+        "FR-06",
+        "FR-07",
+        "FR-08",
+        "FR-10",
+        "FR-12",
+        "FR-13",
+        "FR-14",
+        "FR-15",
+        "FR-17"
+      ],
+      "network_links": [],
+      "narrative": "Fraud score is 100 (high risk). Decisive factors include severe vehicle identity and colour mismatch (black Suzuki instead of silver Hyundai Creta), front-end impact contradicting a rear-end claim, and photo EXIF GPS located 128 km from the reported Baner location.",
+      "extra_observations": [
+        {
+          "text": "Driving licence of the driver operating at the time of loss has not been furnished.",
+          "evidence": "dl",
+          "confidence": 0.95
+        }
+      ],
+      "next_steps": [
+        "Conduct physical field survey and spot inspection of the insured silver Hyundai Creta.",
+        "Verify vehicle chassis and engine numbers against VAHAN records in person.",
+        "Request original non-compressed incident photographs directly from the policyholder's device.",
+        "Obtain valid driving licence copy of the driver operating during the loss event."
+      ]
+    },
+    "decision": {
+      "route": "SIU",
+      "recommended_action": "escalate_siu",
+      "auto": false,
+      "confidence": 0.9,
+      "reasons": [
+        "Photographed vehicle is a black Suzuki, conflicting with insured silver Hyundai Creta (FR-16, FR-18).",
+        "Front-end impact contradicts reported rear-end collision narrative at Baner signal (FR-03).",
+        "Photo EXIF GPS coordinates locate the image capture 128 km from reported accident site (FR-11).",
+        "Discrepancy noted between RC owner name and policyholder records (FR-09)."
+      ],
+      "policy_reasons": [
+        "Risk score 100 (high)"
+      ],
+      "policy_rule": "A5.3",
+      "reason_code": "HIGH_RISK",
+      "action": "escalate_siu",
+      "conditions": [],
+      "ai_summary": "Claim routed to SIU due to high-risk vehicle mismatch and narrative inconsistencies. Submitted photos show front-end damage to a black Suzuki 128 km away, conflicting with the claimed rear-end incident on a silver Hyundai Creta. Driving licence remains pending.",
+      "final_action": null,
+      "decided_by": null,
+      "decided_at": null,
+      "approved_amount": null,
+      "info_request": null
+    },
+    "communications": [
+      {
+        "id": "msg_1",
+        "channel": "sms",
+        "direction": "outbound",
+        "status": "sent",
+        "draft": false,
+        "text": "Dear Rahul, claim ABC-MC-2026-000253 (Creta MH 12 AB 1234) ke verification ke liye driver DL, vehicle ke 4 sides ki clear photos aur engine/chassis plate photo app ya WhatsApp par upload karein. Iske baad review aage badhega - ABC Insurance",
+        "text_en": "Dear Rahul, for claim ABC-MC-2026-000253 (Creta MH 12 AB 1234), please upload driver's DL, clear 4-side vehicle photos with number plates, and engine/chassis plate photo via app or WhatsApp to continue the review - ABC Insurance",
+        "lang_code": "hi-Latn",
+        "quick_replies": [],
+        "created_at": "2026-10-04T22:37:30+05:30",
+        "by": "agent:communication",
+        "generated_by": "live"
+      }
+    ],
+    "assignee": "u_002",
+    "internal_notes": [],
+    "timeline": [
+      {
+        "ts": "2026-10-04T22:36:51+05:30",
+        "actor": "customer",
+        "type": "fnol_received",
+        "text": "FNOL received via App"
+      },
+      {
+        "ts": "2026-10-04T22:36:56+05:30",
+        "actor": "agent:intake",
+        "type": "intake_complete",
+        "text": "FNOL structured (English)"
+      },
+      {
+        "ts": "2026-10-04T22:37:02+05:30",
+        "actor": "agent:document",
+        "type": "documents_read",
+        "text": "0 document(s) read"
+      },
+      {
+        "ts": "2026-10-04T22:37:08+05:30",
+        "actor": "agent:verification",
+        "type": "checks_complete",
+        "text": "DPI checks complete (4 of 7 passed)"
+      },
+      {
+        "ts": "2026-10-04T22:37:13+05:30",
+        "actor": "agent:damage",
+        "type": "damage_assessed",
+        "text": "5 damaged part(s) assessed · vehicle identity mismatch"
+      },
+      {
+        "ts": "2026-10-04T22:37:19+05:30",
+        "actor": "agent:fraud",
+        "type": "risk_scored",
+        "text": "Risk score 100 (high)"
+      },
+      {
+        "ts": "2026-10-04T22:37:24+05:30",
+        "actor": "agent:adjudication",
+        "type": "recommendation",
+        "text": "Escalate to SIU"
+      },
+      {
+        "ts": "2026-10-04T22:37:30+05:30",
+        "actor": "agent:communication",
+        "type": "customer_notified",
+        "text": "Customer update sent"
+      },
+      {
+        "ts": "2026-10-04T22:37:30+05:30",
+        "actor": "agent:adjudication",
+        "type": "siu_referral",
+        "text": "Referred to SIU"
+      }
+    ],
+    "audit": [
+      {
+        "ts": "2026-10-04T21:54:03+05:30",
+        "actor": "u_003",
+        "action": "created",
+        "from": null,
+        "to": "DRAFT",
+        "reason": "Draft created via App"
+      },
+      {
+        "ts": "2026-10-04T22:36:51+05:30",
+        "actor": "u_003",
+        "action": "status_change",
+        "from": "DRAFT",
+        "to": "SUBMITTED",
+        "reason": "Submitted in app; AI pipeline starting"
+      },
+      {
+        "ts": "2026-10-04T22:36:51+05:30",
+        "actor": "system",
+        "action": "status_change",
+        "from": "SUBMITTED",
+        "to": "PROCESSING",
+        "reason": "AI pipeline started (run_000003)"
+      },
+      {
+        "ts": "2026-10-04T22:37:30+05:30",
+        "actor": "agent:adjudication",
+        "action": "status_change",
+        "from": "PROCESSING",
+        "to": "SIU_INVESTIGATION",
+        "reason": "A5.3 Escalate to SIU · risk 100 (high)"
+      }
+    ],
+    "pipeline_run_id": "run_000003",
+    "ai_processing_s": 39,
+    "sla": {
+      "target_hours": 2160,
+      "due_at": "2027-01-02T22:37:30+05:30",
+      "breached": false
+    },
+    "scenario_id": null,
+    "customer_name": "Rahul Sharma",
+    "city": "Pune",
+    "garage_name": "Dani Kia Service, Baner",
+    "registration": "MH 12 AB 1234",
+    "vehicle": {
+      "make": "Hyundai",
+      "model": "Creta",
+      "type": "Car",
+      "segment": "CAR_COMPACT_SUV_SEDAN",
+      "colour": "Silver",
+      "thumb": "/assets/stock/clean/clean_suv-thumb.webp",
+      "blur_data": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAwAAsBMJaACdADz4OoBIAD+lQvkBly74uOhNXtQUqwunHxpo1UzhDx3Enqq186dBhkJr1KU3FLuwAA="
+    },
+    "amount_claimed": 39279.0,
+    "amount_approved": 0.0,
+    "risk_score": 100,
+    "risk_band": "high",
+    "wizard": {
+      "step": "review",
+      "form": {
+        "customer_id": "c_0001",
+        "customer_name": "Rahul Sharma",
+        "policy_no": "ABC/PC/2026/188297",
+        "safe": "yes",
+        "third_party": false,
+        "tp": {
+          "name": "",
+          "vehicle": "",
+          "phone": ""
+        },
+        "police": false,
+        "fir_number": "",
+        "fir_station": "",
+        "incident_tile": "accident",
+        "accident_type": "rear_end",
+        "input_mode": "text",
+        "narrative": "A tempo hit my Creta from behind at the Baner signal around 6 pm today. The rear bumper is cracked and the right tail lamp is broken.",
+        "intake": {
+          "transcript": null,
+          "language_codes": [
+            "en-IN"
+          ],
+          "language_label": "English",
+          "translation_en": "A tempo hit my Creta from behind at the Baner signal around 6 pm today. The rear bumper is cracked and the right tail lamp is broken.",
+          "incident_type": "accident",
+          "incident_at": "2026-10-04T18:00:00+05:30",
+          "datetime_conf": 0.9,
+          "location_text": "Baner signal",
+          "city": "Pune",
+          "cause": "hit from behind by tempo",
+          "counterparty": "truck",
+          "third_party": true,
+          "injuries": "unknown",
+          "police_informed": null,
+          "fir_number": null,
+          "drivable": null,
+          "driver_is_policyholder": null,
+          "driver_name": null,
+          "parts_mentioned": [
+            "rear bumper",
+            "right tail lamp"
+          ],
+          "missing": [
+            "injuries",
+            "drivable status",
+            "driver details",
+            "police report / FIR status"
+          ],
+          "follow_up": [
+            {
+              "local": "Hope you are safe. Was anyone injured in the accident?",
+              "en": "Hope you are safe. Was anyone injured in the accident?"
+            },
+            {
+              "local": "Is the car currently in a drivable condition?",
+              "en": "Is the car currently in a drivable condition?"
+            },
+            {
+              "local": "Who was driving the vehicle at the time of the incident?",
+              "en": "Who was driving the vehicle at the time of the incident?"
+            }
+          ]
+        },
+        "ai_filled": {
+          "date": true,
+          "time": true,
+          "location_text": true,
+          "city": true
+        },
+        "date": "2026-10-04",
+        "time": "18:00",
+        "city": "Pune",
+        "location_text": "Baner signal",
+        "road": "",
+        "lat": 18.52,
+        "lng": 73.86,
+        "settlement_mode": "cashless",
+        "garage_id": "g_001",
+        "garage_quote": "",
+        "bank": {
+          "account_name": "",
+          "account_last4": "",
+          "ifsc": "",
+          "bank_name": ""
+        },
+        "docs_later": true,
+        "financed": false,
+        "consent": true,
+        "scenario": null,
+        "quality_ok": {
+          "m_1": {
+            "blur": 8052,
+            "brightness": 0.4,
+            "poor": false,
+            "reason": null,
+            "kept": true
+          },
+          "m_2": {
+            "blur": 3375,
+            "brightness": 0.19,
+            "poor": false,
+            "reason": null,
+            "kept": true
+          }
+        },
+        "furthest": 6
+      },
+      "incident_chosen": true,
+      "financed": false,
+      "major_accident": false
+    },
+    "intake": {
+      "transcript": null,
+      "language_codes": [
+        "en-IN"
+      ],
+      "language_label": "English",
+      "translation_en": "A tempo hit my Creta from behind at the Baner signal around 6 pm today. The rear bumper is cracked and the right tail lamp is broken.",
+      "incident_type": "accident",
+      "incident_at": "2026-10-04T18:00:00+05:30",
+      "datetime_conf": 0.9,
+      "location_text": "Baner signal",
+      "city": "Pune",
+      "cause": "hit from behind by tempo",
+      "counterparty": "truck",
+      "third_party": true,
+      "injuries": "unknown",
+      "police_informed": null,
+      "fir_number": null,
+      "drivable": null,
+      "driver_is_policyholder": null,
+      "driver_name": null,
+      "parts_mentioned": [
+        "rear bumper",
+        "right tail lamp"
+      ],
+      "missing": [
+        "injuries",
+        "drivable status",
+        "driver details",
+        "police report / FIR status"
+      ],
+      "follow_up": [
+        {
+          "local": "Hope you are safe. Was anyone injured in the accident?",
+          "en": "Hope you are safe. Was anyone injured in the accident?"
+        },
+        {
+          "local": "Is the car currently in a drivable condition?",
+          "en": "Is the car currently in a drivable condition?"
+        },
+        {
+          "local": "Who was driving the vehicle at the time of the incident?",
+          "en": "Who was driving the vehicle at the time of the incident?"
+        }
+      ],
+      "distress": "calm",
+      "urgent_safety": false,
+      "injection_suspected": false,
+      "injection_quote": null,
+      "needs_review": false
+    },
+    "vehicle_identity": {
+      "status": "mismatch",
+      "summary": "Photos do not match the insured vehicle",
+      "photos": [
+        {
+          "photo_id": "m_1",
+          "make": "Suzuki",
+          "model": null,
+          "body": "hatch",
+          "colour": "Black",
+          "plate_text": null,
+          "plate_conf": 0,
+          "idcon": 0.92,
+          "same_vehicle": true,
+          "same_conf": 0.95,
+          "diff_reason": null,
+          "identified": true,
+          "make_model": "mismatch",
+          "body_result": "mismatch",
+          "colour_result": "mismatch",
+          "plate_result": "unclear"
+        },
+        {
+          "photo_id": "m_2",
+          "make": "Suzuki",
+          "model": null,
+          "body": "hatch",
+          "colour": "Black",
+          "plate_text": null,
+          "plate_conf": 0,
+          "idcon": 0.88,
+          "same_vehicle": true,
+          "same_conf": 0.95,
+          "diff_reason": null,
+          "identified": true,
+          "make_model": "mismatch",
+          "body_result": "mismatch",
+          "colour_result": "mismatch",
+          "plate_result": "unclear"
+        }
+      ],
+      "comparison": [
+        {
+          "attribute": "Make & model",
+          "observed": "Suzuki",
+          "confidence": 0.92,
+          "result": "mismatch",
+          "level": "fail",
+          "sources": {
+            "policy": {
+              "value": "Hyundai Creta",
+              "result": "mismatch"
+            },
+            "vahan": {
+              "value": "Hyundai Creta",
+              "result": "mismatch"
+            },
+            "rc": {
+              "value": "Maruti Baleno",
+              "result": "unclear"
+            }
+          }
+        },
+        {
+          "attribute": "Body type",
+          "observed": "hatch",
+          "confidence": 0.92,
+          "result": "mismatch",
+          "level": "fail",
+          "sources": {
+            "policy": {
+              "value": "suv",
+              "result": "mismatch"
+            }
+          }
+        },
+        {
+          "attribute": "Colour",
+          "observed": "Black",
+          "confidence": 0.92,
+          "result": "mismatch",
+          "level": "warn",
+          "sources": {
+            "policy": {
+              "value": "Silver",
+              "result": "mismatch"
+            }
+          }
+        },
+        {
+          "attribute": "Number plate",
+          "observed": null,
+          "confidence": 0.0,
+          "result": "unclear",
+          "level": "warn",
+          "sources": {
+            "policy": {
+              "value": "MH 12 AB 1234",
+              "result": "unclear"
+            },
+            "vahan": {
+              "value": "MH 12 AB 1234",
+              "result": "unclear"
+            },
+            "rc": {
+              "value": "MH 02 DN 8165",
+              "result": "unclear"
+            }
+          }
+        }
+      ],
+      "cross_photo": {
+        "level": "pass",
+        "summary": "All photos show the same vehicle",
+        "differing": []
+      },
+      "fr16": true,
+      "fr17": false,
+      "fr18": true,
+      "evidence": [
+        "Photo m_1 shows Suzuki (0.92); insured vehicle is Hyundai Creta",
+        "Photo colour Black vs registered Silver"
+      ],
+      "identity_summary": {
+        "make": "Suzuki",
+        "model": null,
+        "body": "hatch",
+        "colour": "Black",
+        "plate_text": null,
+        "confidence": 0.92
+      }
+    },
+    "llm_mode": "live",
+    "ai_sources": {
+      "intake": "skipped",
+      "document": "python",
+      "damage": "live",
+      "fraud": "live",
+      "adjudication": "live",
+      "communication": "live"
+    }
+  },
+  {
+    "id": "ABC-MC-2026-000254",
+    "status": "DRAFT",
+    "created_at": "2026-10-04T22:39:32+05:30",
+    "updated_at": "2026-10-04T22:39:34+05:30",
+    "channel": "app",
+    "origin": "app",
+    "customer_id": "c_0001",
+    "policy_no": "ABC/PC/2026/188297",
+    "vehicle_id": "v_0001",
+    "claim_type": "OD",
+    "incident": {
+      "type": "rear_end",
+      "label": "Rear-end collision",
+      "datetime": "2026-10-04T22:39:32+05:30",
+      "reported_at": "2026-10-04T22:39:32+05:30",
+      "location": {
+        "text": "",
+        "city": "Pune",
+        "lat": 18.52,
+        "lng": 73.86
+      },
+      "narrative_original": "",
+      "narrative_language": "hi-en",
+      "narrative_en": "",
+      "cause": "Rear-end collision",
+      "third_party_involved": false,
+      "injuries": false,
+      "fir": null,
+      "damaged_parts_mentioned": []
+    },
+    "settlement": {
+      "mode": "reimbursement",
+      "garage_id": null,
+      "bank": null
+    },
+    "document_conditions": [],
+    "media": [],
+    "documents": [],
+    "checks": {},
+    "damage": {
+      "items": [],
+      "pre_existing": []
+    },
+    "financials": null,
+    "fraud": null,
+    "decision": null,
+    "communications": [],
+    "assignee": null,
+    "internal_notes": [],
+    "timeline": [],
+    "audit": [
+      {
+        "ts": "2026-10-04T22:39:32+05:30",
+        "actor": "u_003",
+        "action": "created",
+        "from": null,
+        "to": "DRAFT",
+        "reason": "Draft created via App"
+      }
+    ],
+    "pipeline_run_id": null,
+    "ai_processing_s": null,
+    "sla": {
+      "target_hours": 48,
+      "due_at": null,
+      "breached": false
+    },
+    "scenario_id": null,
+    "customer_name": "Rahul Sharma",
+    "city": "Pune",
+    "garage_name": null,
+    "registration": "MH 12 AB 1234",
+    "vehicle": {
+      "make": "Hyundai",
+      "model": "Creta",
+      "type": "Car",
+      "segment": "CAR_COMPACT_SUV_SEDAN",
+      "colour": "Silver",
+      "thumb": "/assets/stock/clean/clean_suv-thumb.webp",
+      "blur_data": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoQAAwAAsBMJaACdADz4OoBIAD+lQvkBly74uOhNXtQUqwunHxpo1UzhDx3Enqq186dBhkJr1KU3FLuwAA="
+    },
+    "amount_claimed": 0.0,
+    "amount_approved": 0.0,
+    "risk_score": null,
+    "risk_band": null,
+    "wizard": {
+      "step": "safety",
+      "form": {
+        "customer_id": "c_0001",
+        "customer_name": "Rahul Sharma",
+        "policy_no": "ABC/PC/2026/188297",
+        "safe": null,
+        "third_party": null,
+        "tp": {
+          "name": "",
+          "vehicle": "",
+          "phone": ""
+        },
+        "police": null,
+        "fir_number": "",
+        "fir_station": "",
+        "incident_tile": null,
+        "accident_type": null,
+        "input_mode": "text",
+        "narrative": "",
+        "intake": null,
+        "ai_filled": {},
+        "date": "",
+        "time": "",
+        "city": "",
+        "location_text": "",
+        "road": "",
+        "lat": null,
+        "lng": null,
+        "settlement_mode": null,
+        "garage_id": null,
+        "garage_quote": "",
+        "bank": {
+          "account_name": "",
+          "account_last4": "",
+          "ifsc": "",
+          "bank_name": ""
+        },
+        "docs_later": false,
+        "financed": false,
+        "consent": false,
+        "scenario": null,
+        "quality_ok": {},
+        "furthest": 1
+      },
+      "incident_chosen": false,
+      "financed": false,
+      "major_accident": false
+    }
   }
 ]

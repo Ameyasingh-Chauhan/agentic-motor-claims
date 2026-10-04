@@ -76,7 +76,7 @@ function PrintSummary({ claim }) {
   );
 }
 
-function AdminClaimView({ claim }) {
+export function AdminClaimView({ claim }) {
   const [, setParams] = useSearchParams();
   const [modal, setModal] = useState(null);
   const [railOpen, setRailOpen] = useState(false);

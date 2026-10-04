@@ -1,11 +1,11 @@
 import { useEffect, useReducer } from "react";
 
-const TYPES = ["run_started", "agent_started", "agent_progress", "tool_called", "tool_result", "agent_retry", "agent_completed",
+export const TYPES = ["run_started", "agent_started", "agent_progress", "tool_called", "tool_result", "agent_retry", "agent_completed",
   "agent_fallback", "decision", "run_completed", "run_failed"];
 
-const initial = { events: [], agents: {}, decision: null, done: false, failed: null, connected: false, completed: null };
+export const initial = { events: [], agents: {}, decision: null, done: false, failed: null, connected: false, completed: null };
 
-function reduce(state, action) {
+export function reduce(state, action) {
   if (action.type === "connected") return { ...state, connected: action.value };
   if (action.type === "reset") return initial;
   const ev = action.event;
@@ -14,13 +14,19 @@ function reduce(state, action) {
   const d = ev.data;
   const agents = { ...state.agents };
   if (d.agent) {
-    const a = agents[d.agent] ?? { status: "waiting", lines: [] };
+    const a = agents[d.agent] ?? { status: "waiting", lines: [], tools: {} };
+    const line = (level, text, extra = {}) => [...a.lines, { level, text, ts: d.ts, ...extra }];
     if (ev.event === "agent_started") agents[d.agent] = { ...a, status: "running", display_name: d.display_name, started: d.ts };
-    else if (ev.event === "agent_completed") agents[d.agent] = { ...a, status: "done", level: d.level, summary: d.summary, duration_ms: d.duration_ms, source: d.source };
-    else if (ev.event === "agent_fallback") agents[d.agent] = { ...a, fallback: d.reason, lines: [...a.lines, { level: "warn", text: d.reason }] };
-    else if (ev.event === "agent_retry") agents[d.agent] = { ...a, lines: [...a.lines, { level: "warn", text: `Retry ${d.attempt}: ${d.reason}` }] };
-    else if (ev.event === "agent_progress") agents[d.agent] = { ...a, lines: [...a.lines, { level: d.level ?? "info", text: d.message }] };
-    else if (ev.event === "tool_result") agents[d.agent] = { ...a, lines: [...a.lines, { level: d.level, text: `${d.tool}: ${d.summary} (${d.latency_ms} ms)` }] };
+    else if (ev.event === "agent_completed") agents[d.agent] = { ...a, status: "done", level: d.level, summary: d.summary, duration_ms: d.duration_ms, source: d.source, tools: {}, retry: null };
+    else if (ev.event === "agent_fallback") agents[d.agent] = { ...a, fallback: d.reason, lines: line("warn", d.reason) };
+    else if (ev.event === "agent_retry") agents[d.agent] = { ...a, retry: d.attempt, lines: line("warn", `Retry ${d.attempt}: ${d.reason}`) };
+    else if (ev.event === "agent_progress") agents[d.agent] = { ...a, retry: null, lines: line(d.level ?? "info", d.message) };
+    else if (ev.event === "tool_called") agents[d.agent] = { ...a, tools: { ...(a.tools ?? {}), [d.tool]: d.input_summary ?? true }, lines: line("info", `${d.tool} · ${d.input_summary ?? "called"}`, { tool: d.tool, call: true }) };
+    else if (ev.event === "tool_result") {
+      const tools = { ...(a.tools ?? {}) };
+      delete tools[d.tool];
+      agents[d.agent] = { ...a, tools, lines: line(d.level, `${d.tool}: ${d.summary} (${d.latency_ms} ms)`, { tool: d.tool }) };
+    }
   }
   return {
     ...state, events, agents,

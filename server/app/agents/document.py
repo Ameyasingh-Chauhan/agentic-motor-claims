@@ -48,7 +48,9 @@ async def run(ctx: RunContext) -> dict:
     todo = files_to_read(ctx.claim)
     if not todo:
         ctx.sources["document"] = "python"
-        await ctx.progress("document", "No uploaded document images to read")
+        pre = [d for d in ctx.claim.get("documents", []) if (d.get("ai") or {}).get("read_at")]
+        await ctx.progress("document", f"{len(pre)} document(s) already read in the wizard — reusing the results: "
+                           + ", ".join(f"{d['type']} {d['status']}" for d in pre) if pre else "No uploaded document images to read")
         return {"documents": [], "missing": []}
     contents: list = []
     for d, path in todo:

@@ -175,8 +175,9 @@ def to_customer_view(c: dict) -> dict:
     out["decision"] = decision
     out["timeline"] = [{**e, "type": "declined" if e["type"] == "fraud_confirmed" else e["type"], "text": CUSTOMER_EVENT_TEXT.get(e["type"], e["text"]), "actor": "abc" if e["actor"].startswith(("agent:", "u_", "system")) else e["actor"]}
                        for e in c.get("timeline", []) if e["type"] in CUSTOMER_EVENT_TYPES]
-    out["documents"] = [{k: v for k, v in d.items() if k not in ("checks", "extracted", "uploaded_by", "original_url")}
-                        for d in c.get("documents", [])]
+    # While filing (DRAFT) the customer sees what was read from their documents and the match flags (§10.6 step 6).
+    doc_drop = ("ai", "uploaded_by", "original_url") if c["status"] == "DRAFT" else ("checks", "extracted", "uploaded_by", "original_url", "ai")
+    out["documents"] = [{k: v for k, v in d.items() if k not in doc_drop} for d in c.get("documents", [])]
     out["media"] = [{k: v for k, v in m.items() if k not in CUSTOMER_MEDIA_DROP} for m in c.get("media", [])]
     out["communications"] = [{k: v for k, v in m.items() if k != "generated_by"} for m in c.get("communications", []) if not m.get("draft")]
     fin = c.get("financials")

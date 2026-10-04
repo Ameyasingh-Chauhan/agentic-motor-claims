@@ -86,7 +86,7 @@ function NeedsList({ claim }) {
   );
 }
 
-function RespondModal({ claim, onClose }) {
+export function RespondModal({ claim, onClose }) {
   const [files, setFiles] = useState([]);
   const [message, setMessage] = useState("");
   const respond = useRespondToRequest(claim.id);

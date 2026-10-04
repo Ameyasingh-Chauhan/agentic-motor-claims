@@ -21,6 +21,7 @@ from .routers.claim_ops import router as claim_ops_router
 from .routers.stats import router as stats_router
 from .routers.notifications import router as notifications_router
 from .routers.pipeline import router as pipeline_router
+from .routers.wizard import router as wizard_router
 from .routers.dev import load_runtime_settings, router as dev_router
 from .services import gemini, pipeline_bus
 
@@ -55,6 +56,7 @@ def create_app() -> FastAPI:
     app.include_router(stats_router)
     app.include_router(notifications_router)
     app.include_router(pipeline_router)
+    app.include_router(wizard_router)
     app.include_router(dev_router)
 
     @app.get("/api/system/status")

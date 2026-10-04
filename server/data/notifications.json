@@ -1,5 +1,41 @@
 [
   {
+    "id": "n_048",
+    "user_id": "u_002",
+    "title": "SIU referral: ABC-MC-2026-000253",
+    "body": "Rahul Sharma · Escalate to SIU",
+    "href": "/claims/ABC-MC-2026-000253",
+    "created_at": "2026-10-04T22:37:30+05:30",
+    "read": false
+  },
+  {
+    "id": "n_047",
+    "user_id": "u_001",
+    "title": "SIU referral: ABC-MC-2026-000253",
+    "body": "Rahul Sharma · Escalate to SIU",
+    "href": "/claims/ABC-MC-2026-000253",
+    "created_at": "2026-10-04T22:37:30+05:30",
+    "read": false
+  },
+  {
+    "id": "n_046",
+    "user_id": "u_002",
+    "title": "New claim filed in app: ABC-MC-2026-000253",
+    "body": "Rahul Sharma · Creta",
+    "href": "/claims/ABC-MC-2026-000253",
+    "created_at": "2026-10-04T22:36:51+05:30",
+    "read": false
+  },
+  {
+    "id": "n_045",
+    "user_id": "u_001",
+    "title": "New claim filed in app: ABC-MC-2026-000253",
+    "body": "Rahul Sharma · Creta",
+    "href": "/claims/ABC-MC-2026-000253",
+    "created_at": "2026-10-04T22:36:51+05:30",
+    "read": false
+  },
+  {
     "id": "n_044",
     "user_id": "u_002",
     "title": "New claim filed in app: ABC-MC-2026-000251",

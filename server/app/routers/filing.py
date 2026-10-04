@@ -26,7 +26,8 @@ router = APIRouter(prefix="/api", tags=["filing"])
 INCIDENT_LABELS = {
     "rear_end": "Rear-end collision", "front_collision": "Front collision", "side_swipe": "Side impact", "parking_scrape": "Parking scrape",
     "pothole": "Pothole / road hazard", "animal": "Animal collision", "skid_fall": "Skid and fall", "glass": "Windshield damage",
-    "flood": "Flood / water ingress", "theft": "Vehicle theft",
+    "flood": "Flood / water ingress", "theft": "Vehicle theft", "fire": "Fire", "vandalism": "Vandalism / malicious damage",
+    "third_party": "Third-party damage",
 }
 DOC_TYPES = {"claim_form": "ClaimForm", "policy": "Policy", "rc": "RC", "dl": "DL", "kyc": "KYC", "fir": "FIR", "tax_receipt": "TaxReceipt",
              "repair_estimate": "Estimate", "repair_invoice": "Invoice", "repair_bills": "Invoice"}
@@ -49,6 +50,8 @@ class IncidentIn(BaseModel):
     narrative_language: str | None = None
     third_party_involved: bool | None = None
     injuries: bool | None = None
+    fir: dict | None = None
+    damaged_parts_mentioned: list[str] | None = None
 
 
 class ClaimCreate(BaseModel):
@@ -61,11 +64,22 @@ class ClaimCreate(BaseModel):
     garage_quote: float | None = Field(None, ge=0)
 
 
+class BankIn(BaseModel):
+    account_name: str | None = Field(None, max_length=120)
+    account_last4: str | None = Field(None, max_length=4)
+    ifsc: str | None = Field(None, max_length=11)
+    bank_name: str | None = Field(None, max_length=80)
+
+
 class ClaimPatch(BaseModel):
+    policy_no: str | None = None
     claim_type: Literal["OD", "TP", "Theft", "Glass", "Total loss"] | None = None
     incident: IncidentIn | None = None
     garage_id: str | None = None
     garage_quote: float | None = Field(None, ge=0)
+    settlement_mode: Literal["cashless", "reimbursement"] | None = None
+    bank: BankIn | None = None
+    wizard: dict | None = None    # the wizard's own UI state (step, safety answers, AI-filled markers…), draft only
 
 
 # ------------------------------------------------------------------------------------------------ helpers
@@ -143,9 +157,11 @@ def apply_incident(claim: dict, inc: IncidentIn, cities: dict) -> None:
         out["narrative_original"] = out["narrative_en"] = inc.narrative.strip()
     if inc.narrative_language:
         out["narrative_language"] = inc.narrative_language
-    for k in ("third_party_involved", "injuries"):
+    for k in ("third_party_involved", "injuries", "damaged_parts_mentioned"):
         if getattr(inc, k) is not None:
             out[k] = getattr(inc, k)
+    if inc.fir is not None:
+        out["fir"] = {k: str(v)[:80] for k, v in inc.fir.items() if k in ("number", "station", "date") and v} or None
 
 
 async def _reference() -> tuple[list, list, list, list, dict]:
@@ -224,13 +240,22 @@ async def create_claim(body: ClaimCreate, user=Depends(current_user)):
 
 @router.patch("/claims/{claim_id}")
 async def patch_claim(claim_id: str, body: ClaimPatch, user=Depends(current_user)):
-    _policies, _vehicles, _customers, garages, cities = await _reference()
+    policies, vehicles, customers, garages, cities = await _reference()
+    manifest = (await read_json("stock_photo_manifest.json", {}) or {}) if body.policy_no else {}
     now = now_ist()
 
     def patch(claims: list[dict]) -> dict:
         claim = find(claims, claim_id, user)
         if claim["status"] != "DRAFT":
             raise HTTPException(409, {"code": "not_draft", "message": "Only a draft can be edited"})
+        if body.policy_no and body.policy_no != claim["policy_no"]:
+            policy = next((p for p in policies if p["policy_no"] == body.policy_no), None)
+            if policy is None or policy["customer_id"] != claim["customer_id"]:
+                raise HTTPException(404, {"code": "policy_not_found", "message": "No policy found for that number"})
+            vehicle = next(v for v in vehicles if v["id"] == policy["vehicle_id"])
+            claim |= {"policy_no": policy["policy_no"], "vehicle_id": vehicle["id"], "registration": vehicle["registration"]}
+            claim["vehicle"] = {"make": vehicle["make"], "model": vehicle["model"], "type": vehicle["type"], "segment": vehicle["segment"],
+                                "colour": vehicle.get("colour"), **_vehicle_thumb(claims, vehicle, manifest)}
         if body.claim_type:
             claim["claim_type"] = body.claim_type
         if body.incident:
@@ -243,6 +268,14 @@ async def patch_claim(claim_id: str, body: ClaimPatch, user=Depends(current_user
             claim["garage_name"] = garage["name"]
         if body.garage_quote is not None:
             claim["garage_quote"] = claim["amount_claimed"] = float(body.garage_quote)
+        if body.settlement_mode:
+            claim["settlement"]["mode"] = body.settlement_mode
+            if body.settlement_mode == "reimbursement" and body.garage_id is None:
+                claim["settlement"]["garage_id"], claim["garage_name"] = None, None
+        if body.bank is not None:
+            claim["settlement"]["bank"] = body.bank.model_dump(exclude_none=True) or None
+        if body.wizard is not None:
+            claim["wizard"] = {**(claim.get("wizard") or {}), **body.wizard}
         claim["updated_at"] = iso(now)
         validated(claim)
         return claim

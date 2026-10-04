@@ -133,7 +133,14 @@ async def run(run_id: str, claim_id: str, *, pace: str, mode: str) -> None:
             read = (o or {}).get("documents", [])
             statuses = [d.get("status") for d in claim.get("documents", []) if d["id"] in {r["doc_id"] for r in read}]
             lvl = "fail" if "mismatch" in statuses else ("warn" if {"flagged", "received"} & set(statuses) else "pass")
-            return lvl, f"{len(read)} document(s) read · {statuses.count('verified')} verified" if read else "No document images to read"
+            if read:
+                return lvl, f"{len(read)} document(s) read · {statuses.count('verified')} verified"
+            pre = [d for d in claim.get("documents", []) if (d.get("ai") or {}).get("read_at")]
+            if pre:   # already read live in the wizard (POST /api/documents/extract)
+                st = [d["status"] for d in pre]
+                return ("fail" if "mismatch" in st else "warn" if "flagged" in st else "pass",
+                        f"{len(pre)} document(s) read in the wizard · {st.count('verified')} verified")
+            return "pass", "No document images to read"
 
         doc_task = asyncio.create_task(_step(ctx, "document", doc_fn, doc_sum))
 

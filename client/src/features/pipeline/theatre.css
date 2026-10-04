@@ -1,0 +1,16 @@
+/* Agent Theatre (§10.7): pipeline canvas + 360 px live log on the right. */
+.theatre-grid { display: grid; gap: calc(var(--spacing) * 4); grid-template-columns: minmax(0, 1fr); }
+.theatre-log { min-height: 24rem; }
+@media (min-width: 64rem) {
+  .theatre-grid { grid-template-columns: minmax(0, 1fr) 22.5rem; align-items: start; }
+  .theatre-log { position: sticky; top: calc(var(--topbar-h) + var(--spacing) * 4); height: calc(100dvh - var(--topbar-h) - var(--spacing) * 36); min-height: 24rem; }
+}
+
+/* Working agent: a soft blue glow that breathes (opacity only, on a pseudo-element). */
+.theatre-glow::after {
+  content: ""; position: absolute; inset: -4px; border-radius: inherit; pointer-events: none;
+  box-shadow: 0 0 0 3px var(--color-focus), 0 0 18px 2px var(--color-focus);
+  opacity: 0.25; animation: theatre-breathe 1.6s var(--ease-standard) infinite alternate;
+}
+@keyframes theatre-breathe { from { opacity: 0.12; } to { opacity: 0.45; } }
+@media (prefers-reduced-motion: reduce) { .theatre-glow::after { animation: none; opacity: 0.3; } }

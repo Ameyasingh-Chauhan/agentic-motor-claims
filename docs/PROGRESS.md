@@ -1,11 +1,20 @@
 # Build progress
 
 ## Resume point
-**Phase 5 — Agents & pipeline: complete (2026-10-04).** Stopped for the user's review and commit. Record: "Phase 5 — Agents & pipeline"
-at the end of this file; brief: `docs/PHASE_5_BRIEF.md`.
-**Exact next step:** Phase 6 (File a Claim wizard, Agent Theatre, Results) — only after the user approves Phase 5.
-**Constraints:** no full re-seed; tests only on temp data; do not commit.
-**Temporary state:** none. Real `server/data/` + `server/uploads/` restored after the browser pass (sha256 identical to the pre-test backup).
+**Phase 6 — File a Claim wizard, Agent Theatre, Results: IN PROGRESS (2026-10-04).** Brief (verbatim): `docs/PHASE_6_BRIEF.md`.
+**Plan:** 6.1 backend wizard API + tests → 6.2 wizard UI → 6.3 Agent Theatre → 6.4 Results → 6.5 browser acceptance, restore data.
+**Last completed sub-step:** 6.1 backend — `routers/wizard.py` (lookup, policyholders, policies, drafts, cities, garages,
+requirements, scenarios, `POST /api/intake/voice`, `POST /api/documents/extract`), `GET /api/pipeline/by-claim/{id}`, PATCH
+extensions (policy_no, settlement_mode, bank, wizard state, fir, parts, incident types fire/vandalism/third_party);
+`tests/test_wizard.py` (11) — `pytest` 155 pass.
+**6.2 (code written, builds; NOT yet browser-tested):** wizard in `client/src/features/file-claim/` (FileClaimPage, useWizard,
+rules, constants, WizardChrome, Step*.jsx, VoiceRecorder, CaptureModal, Silhouette, uploads.js, wizard.css).
+**6.3 + 6.4 (code written, builds; NOT yet browser-tested):** Theatre `features/pipeline/TheatrePage.jsx` (+ useTheatre, PipelineCanvas,
+LogPanel, theatreModel, ResultView, theatre.css), route `/processing/:claimId`; useRunEvents reducer extended (tools, retry, ts).
+**Exact next sub-step:** 6.5 browser acceptance (start uvicorn + vite, test as Rahul + admin), then restore data.
+**Temporary state:** pre-test backup of server/data + server/uploads in the session scratchpad (`backup/`, sha256 `manifest.txt`).
+Restore it after browser testing (copy back, compare manifest).
+**Constraints:** no full re-seed; tests only on temp data; restore server/data + server/uploads after own testing; do not commit.
 
 ### Phase 5 decisions (user + builder)
 - User: seeded claims (incl. 5 scenarios) are illustrative and untouched; no live identity check on them (UI: "Not assessed (historical

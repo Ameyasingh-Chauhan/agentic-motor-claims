@@ -1,0 +1,43 @@
+/* File a Claim wizard layout (§10.6). Three columns (stepper 280 · content ≤ 760 · assistant 320) when the viewport is wide
+   enough (≥ 1720 px leaves ≥ 1376 px beside the expanded sidebar); below that the assistant panel moves under the stepper so the
+   step content keeps a usable width at 1366×768. Viewport media queries (not container queries) keep layout cheap and stable. */
+.wz-cols {
+  display: grid;
+  gap: calc(var(--spacing) * 6);
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "main" "assist";
+}
+.wz-steps { grid-area: steps; display: none; }
+.wz-main { grid-area: main; min-width: 0; }
+.wz-assist { grid-area: assist; min-width: 0; }
+
+@media (min-width: 64rem) {
+  .wz-cols {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "steps main" "assist main";
+  }
+  .wz-steps { display: block; }
+}
+@media (min-width: 107.5rem) {
+  .wz-cols {
+    grid-template-columns: 17.5rem minmax(0, 47.5rem) 20rem;
+    grid-template-rows: auto;
+    grid-template-areas: "steps main assist";
+    justify-content: center;
+  }
+}
+.wz-sticky { position: sticky; top: calc(var(--topbar-h) + var(--spacing) * 4); }
+
+/* Recording level meter bars scale on Y only (transform). */
+.wz-level-bar { transform-origin: bottom; transition: transform 80ms linear; }
+
+/* Camera overlay: the silhouette is drawn over the live video. */
+.wz-camera { position: relative; aspect-ratio: 16 / 10; background: var(--panel-dark); border-radius: var(--radius-lg); overflow: hidden; }
+.wz-camera video, .wz-camera canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wz-camera .wz-overlay { position: absolute; inset: 8%; pointer-events: none; color: var(--on-dark); opacity: 0.85; }
+
+/* India map pin pulse */
+@keyframes wz-ping { from { transform: scale(0.6); opacity: 0.7; } to { transform: scale(2.2); opacity: 0; } }
+.wz-ping { transform-box: fill-box; transform-origin: center; animation: wz-ping 1.6s var(--ease-standard) infinite; }
+@media (prefers-reduced-motion: reduce) { .wz-ping { animation: none; } .wz-level-bar { transition: none; } }

@@ -53,6 +53,17 @@ def public_run(run: dict, user: dict) -> dict:
     return out
 
 
+@router.get("/by-claim/{claim_id}")
+async def run_for_claim(claim_id: str, user=Depends(current_user)):
+    """The claim's latest pipeline run (the Agent Theatre opens /processing/:claimId and follows this run)."""
+    claim = find(await read_json("claims.json", []), claim_id, user)
+    runs = [r for r in await read_json(pipeline_bus.FILE, []) if r["claim_id"] == claim_id and not str(r.get("trigger", "")).startswith("wizard_")]
+    run = next((r for r in reversed(runs) if r["id"] == claim.get("pipeline_run_id")), None) or (runs[-1] if runs else None)
+    if run is None:
+        raise HTTPException(404, "No pipeline run for this claim")
+    return public_run(run, user)
+
+
 @router.get("/{run_id}")
 async def run_state(run_id: str, user=Depends(current_user)):
     return public_run(await _authorised_run(run_id, user), user)

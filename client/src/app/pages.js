@@ -9,6 +9,7 @@ export const loaders = {
   claimDetail: () => import("../features/claims/ClaimDetailPage"),
   dashboard: () => import("../features/dashboard/DashboardPage"),
   fileClaim: () => import("../features/file-claim/FileClaimPage"),
+  theatre: () => import("../features/pipeline/TheatrePage"),
   whatsapp: () => import("../features/whatsapp/WhatsAppJourneyPage"),
   support: () => import("../features/support/SupportPage"),
   profile: () => import("../features/settings/ProfilePage"),

@@ -24,6 +24,7 @@ const router = createBrowserRouter([
       { path: "claims/:claimId", element: <P.claimDetail />, handle: { crumb: "Claim detail" } },
       { path: "dashboard", element: guard(<P.dashboard />, can.viewDashboard), handle: { crumb: "Dashboard" } },
       { path: "file-claim", element: <P.fileClaim />, handle: { crumb: "File a Claim" } },
+      { path: "processing/:claimId", element: <P.theatre />, handle: { crumb: "Agent Theatre" } },
       { path: "whatsapp", element: <P.whatsapp />, handle: { crumb: "WhatsApp Journey" } },
       { path: "support", element: <P.support />, handle: { crumb: "Support" } },
       { path: "profile", element: <P.profile />, handle: { crumb: "Profile" } },

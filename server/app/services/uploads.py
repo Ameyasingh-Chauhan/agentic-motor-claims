@@ -189,3 +189,11 @@ def remove(claim_id: str, item_id: str) -> None:
     for f in folder.glob(f"{item_id}*"):
         if f.name == item_id or f.name.startswith((f"{item_id}.", f"{item_id}-")):
             f.unlink(missing_ok=True)
+
+
+def remove_claim_dir(claim_id: str) -> None:
+    """A discarded draft: delete its whole private upload folder."""
+    import shutil
+    folder = claim_dir(claim_id)
+    if folder.is_dir():
+        shutil.rmtree(folder, ignore_errors=True)
