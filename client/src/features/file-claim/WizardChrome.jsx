@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Check, CloudCheck, CloudOff, LoaderCircle, Sparkles } from "lucide-react";
 import { cn } from "../../lib/cn";
-import { formatINRCompact } from "../../lib/format";
+import { formatDate, formatINRCompact } from "../../lib/format";
 import { LANGUAGE_NAMES } from "./constants";
+import { placeText } from "./rules";
 
 /** Vertical stepper (§10.6): status ticks, current step orange; reached steps are clickable. */
 export function VerticalStepper({ steps, current, furthest, issuesFor, onStep }) {
@@ -93,8 +94,8 @@ export function AssistantPanel({ stepKey, form, claim, policy, photoCount, docCo
     claim?.incident?.label && claim?.wizard?.incident_chosen && ["Incident", claim.incident.label],
     form.intake?.language_label && ["Language", form.intake.language_label],
     !form.intake && form.narrative && ["Statement", `${form.narrative.trim().split(/\s+/).length} words typed`],
-    form.date && ["When", `${form.date} ${form.time}`],
-    form.city && ["Where", [form.location_text, form.city].filter(Boolean).join(", ")],
+    form.date && ["When", `${formatDate(form.date)} · ${form.time}`],
+    form.city && ["Where", placeText(form.location_text, form.city)],
     photoCount > 0 && ["Photos", `${photoCount} uploaded`],
     docCount > 0 && ["Documents", `${docCount} uploaded`],
     form.settlement_mode && ["Settlement", form.settlement_mode === "cashless" ? `Cashless${claim?.garage_name ? ` · ${claim.garage_name}` : ""}` : "Reimbursement"],

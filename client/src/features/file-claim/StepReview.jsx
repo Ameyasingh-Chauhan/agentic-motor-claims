@@ -6,7 +6,7 @@ import { Checkbox } from "../../components/ui/Checkbox";
 import { SegmentedControl } from "../../components/ui/SegmentedControl";
 import { StatusFlag } from "../../components/ui/StatusFlag";
 import { ACCIDENT_TYPES, INCIDENT_TILES, LANGUAGE_NAMES } from "./constants";
-import { photosOf } from "./rules";
+import { photosOf, placeText } from "./rules";
 import { staggerDelay } from "../../lib/motion";
 
 function SummaryCard({ title, stepKey, issues, onEdit, children, index }) {
@@ -65,7 +65,7 @@ export function StepReview({ form, update, claim, policy, issuesFor, steps, onEd
         </SummaryCard>
         <SummaryCard index={i++} title="When & where" stepKey="when" issues={issuesFor("when")} onEdit={onEdit}>
           <Row k="When" v={form.date ? `${formatDate(form.date)} · ${form.time} IST` : ""} />
-          <Row k="Where" v={[form.location_text, form.road, form.city].filter(Boolean).join(", ")} />
+          <Row k="Where" v={placeText(form.location_text, form.road, form.city)} />
         </SummaryCard>
         <SummaryCard index={i++} title="Photos" stepKey="photos" issues={issuesFor("photos")} onEdit={onEdit}>
           {photos.length ? (

@@ -135,7 +135,7 @@ export function StepDocuments({ form, update, claim, draftId, refresh, errors, r
           const out = await api("/documents/extract", { method: "POST", body: { claim_id: draftId, doc_id: res.id } });
           if (out.document) {
             const fails = out.document.checks?.filter((c) => c.level === "fail").length ?? 0;
-            if (fails) toast.warning(`${item.label} read — ${fails} detail(s) don't match your policy. Please check you uploaded the right document.`);
+            if (fails) toast.warning(`${item.label} read — ${fails === 1 ? "1 detail doesn't" : `${fails} details don't`} match your policy. Please check you uploaded the right document.`);
             else toast.success(`${item.label} read — details match your policy`);
           }
           else toast.message(out.message);

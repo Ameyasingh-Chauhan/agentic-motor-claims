@@ -15,11 +15,12 @@ function messageFrom(body, fallback) {
 }
 
 /** fetch wrapper for /api: cookie credentials, JSON in/out, ApiError on non-2xx (network errors stay TypeError). */
-export async function api(path, { method = "GET", body, params, signal } = {}) {
+export async function api(path, { method = "GET", body, params, signal, keepalive } = {}) {
   const qs = params ? new URLSearchParams(Object.entries(params).filter(([, v]) => v != null && v !== "")).toString() : "";
   const res = await fetch(`/api${path}${qs ? `?${qs}` : ""}`, {
     method,
     signal,
+    keepalive,
     credentials: "include",
     headers: body ? { "Content-Type": "application/json" } : undefined,
     body: body ? JSON.stringify(body) : undefined,

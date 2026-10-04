@@ -1,20 +1,43 @@
 # Build progress
 
 ## Resume point
-**Phase 6 — File a Claim wizard, Agent Theatre, Results: IN PROGRESS (2026-10-04).** Brief (verbatim): `docs/PHASE_6_BRIEF.md`.
-**Plan:** 6.1 backend wizard API + tests → 6.2 wizard UI → 6.3 Agent Theatre → 6.4 Results → 6.5 browser acceptance, restore data.
-**Last completed sub-step:** 6.1 backend — `routers/wizard.py` (lookup, policyholders, policies, drafts, cities, garages,
-requirements, scenarios, `POST /api/intake/voice`, `POST /api/documents/extract`), `GET /api/pipeline/by-claim/{id}`, PATCH
-extensions (policy_no, settlement_mode, bank, wizard state, fir, parts, incident types fire/vandalism/third_party);
-`tests/test_wizard.py` (11) — `pytest` 155 pass.
-**6.2 (code written, builds; NOT yet browser-tested):** wizard in `client/src/features/file-claim/` (FileClaimPage, useWizard,
-rules, constants, WizardChrome, Step*.jsx, VoiceRecorder, CaptureModal, Silhouette, uploads.js, wizard.css).
-**6.3 + 6.4 (code written, builds; NOT yet browser-tested):** Theatre `features/pipeline/TheatrePage.jsx` (+ useTheatre, PipelineCanvas,
-LogPanel, theatreModel, ResultView, theatre.css), route `/processing/:claimId`; useRunEvents reducer extended (tools, retry, ts).
-**Exact next sub-step:** 6.5 browser acceptance (start uvicorn + vite, test as Rahul + admin), then restore data.
-**Temporary state:** pre-test backup of server/data + server/uploads in the session scratchpad (`backup/`, sha256 `manifest.txt`).
-Restore it after browser testing (copy back, compare manifest).
+**Phase 6 — File a Claim wizard, Agent Theatre, Results: BUILT + BROWSER-VERIFIED by builder (2026-10-05); awaiting user acceptance.**
+Brief (verbatim): `docs/PHASE_6_BRIEF.md`. Details: "Phase 6" section below.
+**Last completed sub-step:** 6.5 browser acceptance + fixes; data restored (sha256 manifest match, no extra uploads); pytest 156 pass,
+`npm run build` OK, `npm run contrast` OK.
+**Exact next sub-step:** user runs the Phase 6 test checklist (voice note, webcam, 1366×768 / 1920×1080 on a real screen); then Phase 7.
+**Temporary state:** none. Data = clean backup (`daf354c5…/scratchpad/backup`). NOTE: WIP commit d5c8362 contains test claims
+000253/000254 in claims.json — the working tree now removes them (claims/notifications/pipeline_runs differ from HEAD on purpose).
 **Constraints:** no full re-seed; tests only on temp data; restore server/data + server/uploads after own testing; do not commit.
+
+## Phase 6 — File a Claim wizard, Agent Theatre, Results (2026-10-04 → 05)
+### Delivered
+- 6.1 backend: `routers/wizard.py` (lookup, policyholders, policies, drafts, cities, garages, requirements, scenarios,
+  `POST /api/intake/voice`, `POST /api/documents/extract`), `GET /api/pipeline/by-claim/{id}`, PATCH extensions; `tests/test_wizard.py` (12).
+- 6.2 wizard `client/src/features/file-claim/`; 6.3 Theatre `features/pipeline/TheatrePage.jsx` at `/processing/:claimId`;
+  6.4 results (`ResultView.jsx`: handler = Claim Detail + "Processed by AI in N s" banner; customer = friendly confirmation).
+### Browser verification (2026-10-05, builder; Chrome window at 1280×585 CSS px — display is 150 % scaled, so 1366×768 not reachable)
+- Rahul, typed English, sample Baleno photos + RC/DL on his Creta policy → live run 39 s; RC/DL match flags shown live in the wizard;
+  FR-16 + FR-18 fired (make/model + colour), score 100 → SIU; customer views never mention fraud/score; claim on Home instantly.
+  FR-17 correctly did NOT fire (both photos show the same car — FR-17 needs photos of different cars within one claim).
+- Admin for Aadi Seth (photos match the insured Baleno) → RC/DL all match → live run 36 s, score 0, auto-decided, pre-auth issued.
+- All 5 sample scenarios pre-fill correctly (script-compared each draft with the seeded scenario: narrative in original language,
+  type, date/time, city, location, policy, customer, injuries, third party, police, garage; no photos/documents).
+- Refresh mid-wizard and mid-Theatre resume; Customer/Handler toggle; dark theme; "I'll provide later" path; Real speed run.
+### Fixes made during verification
+- Customer view leaked `documents[].quality.blur_score` (banned word "score") → reduced to `{ok}`; regression test added.
+- Autosave lost answers clicked < 800 ms before a refresh/step change → flush on every step change + keepalive flush on
+  `pagehide`/hidden (`api()` gained `keepalive`).
+- Theatre auto-open called `setParams` inside a state updater (React "setState in render" console error) → countdown in state,
+  navigation in an effect, robust to timer bursts (`<= 0`).
+- Photo-slot "Upload" label clipped at 1280 px → buttons wrap. "Baner Road, Pune, Pune" → `placeText()` dedupes city.
+- Result estimate rows now all rounded to ₹10 (§12.9) so they add up (₹37,560 − ₹1,000 = ₹36,560). Plurals ("detail(s)", "photo(s)").
+### Decisions
+- Builder screenshots of a hidden automation window freeze Motion/anime.js mid-frame (rAF = 0); layout was verified by DOM geometry.
+### Known follow-ups
+- NOT verified by builder (no microphone/camera in the automation browser): Hindi/Marathi voice note end-to-end, webcam capture.
+- Auto-open after the timer-burst fix was not re-run live (the original setState-in-render fix was); check it once in the checklist.
+- Garage list for a Creta in Pune offers Kia/Toyota dealers only (network data, not wizard logic).
 
 ### Phase 5 decisions (user + builder)
 - User: seeded claims (incl. 5 scenarios) are illustrative and untouched; no live identity check on them (UI: "Not assessed (historical

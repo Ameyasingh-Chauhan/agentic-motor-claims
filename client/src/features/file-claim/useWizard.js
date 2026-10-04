@@ -92,14 +92,14 @@ export function useWizard() {
     }
   }, [draftId, draft.data]);
 
-  const flush = useCallback(async () => {
+  const flush = useCallback(async ({ keepalive = false } = {}) => {
     clearTimeout(timer.current);
     timer.current = null;
     const { form: f, step: s, draftId: id } = latest.current;
     if (!id || !f) return null;
     setSave((p) => ({ ...p, state: "saving" }));
     try {
-      const claim = await api(`/claims/${id}`, { method: "PATCH", body: toPatch(f, s) });
+      const claim = await api(`/claims/${id}`, { method: "PATCH", body: toPatch(f, s), keepalive });
       qc.setQueryData(claimKey(id), (old) => ({ ...(old ?? {}), ...claim }));
       setSave({ state: "saved", at: new Date().toISOString(), error: null });
       return claim;
@@ -123,8 +123,16 @@ export function useWizard() {
   }, [flush]);
 
   useEffect(() => () => clearTimeout(timer.current), []);
-  // Save the step position too.
-  useEffect(() => { if (draftId && form && loadedFor.current === draftId) update({}); }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Save at once on every step change (with the step position), so a refresh right after Next never loses answers still in the debounce.
+  useEffect(() => { if (draftId && form && loadedFor.current === draftId) flush(); }, [step]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Leaving or hiding the page with a save still pending: send it with keepalive so it survives the unload.
+  useEffect(() => {
+    const send = () => { if (timer.current) flush({ keepalive: true }); };
+    const onVisibility = () => { if (document.visibilityState === "hidden") send(); };
+    window.addEventListener("pagehide", send);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => { window.removeEventListener("pagehide", send); document.removeEventListener("visibilitychange", onVisibility); };
+  }, [flush]);
 
   // One navigation per change: two functional setParams calls in the same tick would each start from the old URL.
   const goTo = useCallback((key, extra = {}) => {

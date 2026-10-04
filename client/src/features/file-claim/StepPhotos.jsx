@@ -62,7 +62,7 @@ function Slot({ slot, media, pending, quality, twoWheeler, onFile, onCamera, onR
           {poor && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-2 rounded-md bg-warning-bg p-2" role="alert">
               <span className="flex items-center gap-1 text-caption font-medium text-warning"><TriangleAlert size={14} aria-hidden="true" />{quality.reason} — retake?</span>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Button size="sm" variant="secondary" icon={RefreshCcw} onClick={onCamera}>Retake</Button>
                 <Button size="sm" variant="ghost" onClick={onKeep}>Keep</Button>
               </div>
@@ -70,7 +70,7 @@ function Slot({ slot, media, pending, quality, twoWheeler, onFile, onCamera, onR
           )}
         </AnimatePresence>
         {!media && pending?.status !== "uploading" && (
-          <div className="mt-auto flex gap-2">
+          <div className="mt-auto flex flex-wrap gap-2">
             <Button size="sm" variant="secondary" icon={Camera} onClick={onCamera}>Camera</Button>
             <Button size="sm" variant="ghost" icon={ImageUp} onClick={() => input.current?.click()}>Upload</Button>
           </div>

@@ -252,3 +252,11 @@ def test_document_extract_live_records_match_flags():
     assert out["status"] == "verified" and out["extracted"]["owner"] == "Rahul Sharma" and out["checks"][0]["message"] == "RC owner matches"
     stored = next(x for x in read_json_sync("claims.json", []) if x["id"] == d["id"])["documents"][0]
     assert stored["ai"]["read_at"] and stored["status"] == "verified"
+
+
+def test_customer_view_keeps_only_the_upload_quality_verdict():
+    from app.services.claim_views import to_customer_view
+    c = next(x for x in read_json_sync("claims.json") if x["customer_id"] == "c_0001")
+    c = {**c, "status": "DRAFT", "documents": [{"id": "d_1", "type": "RC", "requirement": "rc", "status": "received",
+                                                "quality": {"blur_score": 41.2, "brightness": 0.5, "ok": False}}]}
+    assert to_customer_view(c)["documents"][0]["quality"] == {"ok": False}

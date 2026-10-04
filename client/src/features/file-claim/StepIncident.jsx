@@ -11,6 +11,7 @@ import { Button } from "../../components/ui/Button";
 import { Badge } from "../../components/ui/Badge";
 import { SegmentedControl } from "../../components/ui/SegmentedControl";
 import { ACCIDENT_TYPES, INCIDENT_TILES, INTAKE_TILE, LANGUAGE_NAMES } from "./constants";
+import { placeText } from "./rules";
 import { VoiceRecorder } from "./VoiceRecorder";
 
 export function useCities() {
@@ -85,7 +86,7 @@ function IntakeResult({ intake, form, update }) {
   const lang = intake.language_label || intake.language_codes?.map((c) => LANGUAGE_NAMES[c] ?? c).join(" + ");
   const rows = [
     ["When", intake.incident_at ? formatDateTime(intake.incident_at) : "Not stated", "date"],
-    ["Where", [intake.location_text, intake.city].filter(Boolean).join(", ") || "Not stated", "location_text"],
+    ["Where", placeText(intake.location_text, intake.city) || "Not stated", "location_text"],
     ["Cause", intake.cause || "Not stated", "incident_tile"],
     ["Other party", COUNTERPARTY[intake.counterparty] ?? intake.counterparty, "third_party"],
     ["Injuries", INJURY[intake.injuries] ?? intake.injuries, "safe"],

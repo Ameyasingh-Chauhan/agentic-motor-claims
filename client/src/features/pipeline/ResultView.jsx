@@ -13,6 +13,9 @@ import { AdminClaimView } from "../claims/ClaimDetailPage";
 import { RespondModal } from "../claims/CustomerClaimView";
 import { ROUTE_TEXT, ROUTE_TONE } from "./theatreModel";
 
+/** §12.9: rupee values are shown rounded half-up to the nearest ₹10 (the server keeps exact values), so the rows add up. */
+const display10 = (v) => (v == null ? v : Math.round(v / 10) * 10);
+
 const TONE_CLS = { success: "border-success bg-success-bg text-success", warning: "border-warning bg-warning-bg text-warning", danger: "border-danger bg-danger-bg text-danger" };
 const LEVEL = { success: "pass", warning: "warn", danger: "fail" };
 
@@ -101,8 +104,8 @@ export function CustomerResult({ claim }) {
         <Card compact title="Estimate">
           {fin ? (
             <dl className="flex flex-col gap-2 text-sm">
-              <div className="flex justify-between gap-4"><dt className="text-muted">Estimated repair cost</dt><dd className="num font-semibold text-text">{formatINR(fin.assessed_loss)}</dd></div>
-              <div className="flex justify-between gap-4"><dt className="text-muted">What you may pay (deductible)</dt><dd className="num text-text">{formatINR(pay)}</dd></div>
+              <div className="flex justify-between gap-4"><dt className="text-muted">Estimated repair cost</dt><dd className="num font-semibold text-text">{formatINR(display10(fin.assessed_loss))}</dd></div>
+              <div className="flex justify-between gap-4"><dt className="text-muted">What you may pay (deductible)</dt><dd className="num text-text">{formatINR(display10(pay))}</dd></div>
               <div className="flex justify-between gap-4 border-t border-border pt-2"><dt className="text-muted">ABC pays{approved ? "" : " if approved"}</dt><dd className="num font-semibold text-text">{formatINR(fin.display_net_payable ?? fin.net_payable)}</dd></div>
               <p className="text-caption text-subtle">Estimates — the final amount is confirmed after the survey.</p>
             </dl>

@@ -71,7 +71,7 @@ function StartScreen({ admin, onStart, onResume }) {
                 <li key={d.id} className="flex items-center gap-3 rounded-md border border-border bg-surface px-4 py-3">
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-medium text-text"><span className="mono">{d.id}</span> · {d.vehicle} · {d.registration}</p>
-                    <p className="text-caption text-muted">{admin ? `${d.customer_name} · ` : ""}{d.incident ?? "Incident not chosen"} · {d.photos} photo(s) · saved {formatRelative(d.updated_at)}</p>
+                    <p className="text-caption text-muted">{admin ? `${d.customer_name} · ` : ""}{d.incident ?? "Incident not chosen"} · {d.photos} photo{d.photos === 1 ? "" : "s"} · saved {formatRelative(d.updated_at)}</p>
                   </div>
                   <Button size="sm" variant="ghost" icon={Trash2} onClick={() => discard(d.id)} aria-label={`Discard draft ${d.id}`}>Discard</Button>
                   <Button size="sm" variant="secondary" onClick={() => onResume(d)}>Continue</Button>
@@ -277,7 +277,7 @@ export default function FileClaimPage() {
               <div className="flex items-center justify-between gap-3 border-t border-border px-6 py-4">
                 <Button variant="ghost" icon={ArrowLeft} onClick={back} disabled={index === 0}>Back</Button>
                 <div className="flex items-center gap-3">
-                  {issues.length > 0 && shown[stepKey] && <span className="text-caption text-danger">{issues.length} item(s) to complete</span>}
+                  {issues.length > 0 && shown[stepKey] && <span className="text-caption text-danger">{issues.length} item{issues.length === 1 ? "" : "s"} to complete</span>}
                   <Button size="lg" icon={stepKey === "review" ? Send : undefined} iconRight={stepKey === "review" ? undefined : ArrowRight} onClick={next} loading={submitting}
                     disabledReason={stepKey === "review" && issues.length + steps.filter((s) => s.key !== "review" && issuesFor(s.key).length).length > 0
                       ? `Still missing: ${[...steps.filter((s) => s.key !== "review").flatMap((s) => issuesFor(s.key)), ...issues].map((x) => x.message).join("; ")}` : undefined}>

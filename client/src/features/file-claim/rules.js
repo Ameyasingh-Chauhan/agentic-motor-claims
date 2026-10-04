@@ -75,3 +75,8 @@ export function missingDocs(requirements) {
   return [...requirements.groups.mandatory, ...requirements.groups.situation]
     .filter((i) => i.required && !i.digital && i.uploaded.length === 0).map((i) => i.label);
 }
+
+/** "Baner Road, Pune" + "Pune" → "Baner Road, Pune": joins place parts, skipping any already contained in the text so far. */
+export function placeText(...parts) {
+  return parts.filter(Boolean).reduce((s, p) => (s.toLowerCase().includes(String(p).toLowerCase()) ? s : s ? `${s}, ${p}` : String(p)), "");
+}

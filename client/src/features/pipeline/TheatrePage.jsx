@@ -53,7 +53,7 @@ function Completion({ claim, decision, customerView, onResults, autoIn }) {
         {customerView ? (decision?.customer_message ?? "Your claim has been processed — here's your update.")
           : `${ROUTE_TEXT[route] ?? "Decision recorded"}${decision?.net_payable != null ? ` · net payable ₹${Math.round(decision.net_payable).toLocaleString("en-IN")}` : ""}${decision?.score != null ? ` · risk ${decision.score}` : ""}`}
       </p>
-      <Button iconRight={ArrowRight} onClick={onResults}>View full results{autoIn != null ? ` (${autoIn})` : ""}</Button>
+      <Button iconRight={ArrowRight} onClick={onResults}>View full results{autoIn > 0 ? ` (${autoIn})` : ""}</Button>
     </motion.div>
   );
 }
@@ -107,12 +107,16 @@ export default function TheatrePage() {
     qc.invalidateQueries({ queryKey: ["claims"] });
     if (finishedAtOpen || t.replaying || resultView || t.failed) return undefined;
     setAutoIn(2);
-    autoTimer.current = setInterval(() => setAutoIn((n) => {
-      if (n <= 1) { clearInterval(autoTimer.current); setParams({ view: "result" }); return null; }
-      return n - 1;
-    }), 1000);
+    autoTimer.current = setInterval(() => setAutoIn((n) => (n == null ? null : Math.max(0, n - 1))), 1000);
     return () => clearInterval(autoTimer.current);
   }, [t.done]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Navigate outside the state updater (a router update inside it would run during render).
+  useEffect(() => {
+    if (autoIn == null || autoIn > 0) return;   // <= 0: background-tab timers can fire in a burst
+    clearInterval(autoTimer.current);
+    setAutoIn(null);
+    setParams({ view: "result" });
+  }, [autoIn]); // eslint-disable-line react-hooks/exhaustive-deps
   const stopAuto = () => { clearInterval(autoTimer.current); setAutoIn(null); };
 
   const claim = claimQ.data;
