@@ -6,7 +6,7 @@ import { lazy } from "react";
  */
 export const loaders = {
   home: () => import("../features/home/HomePage"),
-  claimDetail: () => import("../features/claims/ClaimPlaceholderPage"),
+  claimDetail: () => import("../features/claims/ClaimDetailPage"),
   dashboard: () => import("../features/dashboard/DashboardPage"),
   fileClaim: () => import("../features/file-claim/FileClaimPage"),
   whatsapp: () => import("../features/whatsapp/WhatsAppJourneyPage"),

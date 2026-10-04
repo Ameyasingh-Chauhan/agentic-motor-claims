@@ -8,7 +8,8 @@ from collections import Counter
 from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import StreamingResponse
 
-from ..services.claim_views import SEGMENTS, customer_status, listed, now_ist, row, to_customer_view, with_media_availability
+from ..services.claim_views import SEGMENTS, customer_status, listed, now_ist, row
+from ..services.claim_detail import detail
 from ..services.json_store import read_json
 from .auth import current_user
 
@@ -138,8 +139,8 @@ async def export_csv(
 
 @router.get("/claims/{claim_id}")
 async def get_claim(claim_id: str, user=Depends(current_user)):
+    """Role-shaped detail (§10.4): admins get context + allowed actions; customers the customer-safe projection."""
     claim = next((c for c in await _visible(user, drafts=True) if c["id"] == claim_id), None)
     if claim is None:
         raise HTTPException(404, "Claim not found")
-    claim = with_media_availability(claim)
-    return to_customer_view(claim) if _is_customer(user) else claim
+    return await detail(claim, user, await read_json("claims.json", []))

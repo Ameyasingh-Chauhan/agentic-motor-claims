@@ -571,8 +571,8 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
         media.append(entry | {
             "uploaded_at": iso(created + timedelta(seconds=rng.randint(5, 90) + 20 * i)), "size_kb": file_kb(ph["url"]),
             "caption": "Vehicle photo shared by the customer (before the theft)" if incident_type == "theft" else None,
-            "exif": {"captured_at": iso(captured), "lat": round(CITY[city]["lat"] + rng.uniform(-.05, .05), 4),
-                     "lng": round(CITY[city]["lng"] + rng.uniform(-.05, .05), 4), "device": rng.choice(["Pixel 8", "Galaxy A54", "iPhone 14", "Redmi Note 13", "OnePlus Nord"])},
+            "exif": {"captured_at": iso(captured), **_coords(city, scenario_id if scenario_id != "fastag_mismatch" else None, spread=.05),
+                     "device": rng.choice(["Pixel 8", "Galaxy A54", "iPhone 14", "Redmi Note 13", "OnePlus Nord"])},
             "quality": {"blur_score": round(rng.uniform(120, 260), 1), "brightness": round(rng.uniform(.4, .7), 2), "ok": True},
         })
     photo_ids = [m["id"] for m in media]
@@ -691,8 +691,7 @@ def build_claim(*, customer: dict, vehicle: dict, policy: dict, garage: dict, cr
     narrative_original = narrative_original or narrative
     incident = {
         "type": incident_type, "label": INCIDENTS[incident_type]["label"], "datetime": iso(incident_at), "reported_at": iso(created),
-        "location": {"text": place, "city": city, "lat": round(CITY[city]["lat"] + rng.uniform(-.04, .04), 4),
-                     "lng": round(CITY[city]["lng"] + rng.uniform(-.04, .04), 4)},
+        "location": {"text": place, "city": city, **_coords(city, scenario_id, spread=.04)},
         "narrative_original": narrative_original, "narrative_language": language, "narrative_en": narrative,
         "cause": INCIDENTS[incident_type]["label"] + (f" with a {other}" if third_party else ""),
         "third_party_involved": bool(third_party), "injuries": False, "fir": fir,
@@ -802,6 +801,26 @@ SCENARIO_CUSTOMERS = {
 def garage_in(garages: list[dict], city: str, *, network: bool = True, type_: str | None = None) -> dict:
     pool = [g for g in garages if g["city"] == city and (not network or g["cashless"]) and (not type_ or g["type"] == type_)]
     return pool[0] if pool else next(g for g in garages if g["city"] == "Pune")
+
+
+# Real coordinates of each scenario's named place (the incident pin, FASTag distances and photo EXIF use them). fastag_mismatch
+# photos keep city (Mumbai) EXIF on purpose: they were taken in Mumbai, not on the expressway — part of the FR-01 story.
+SCENARIO_PLACES = {
+    "clean_rear_end": (18.3606, 73.8516),     # NH48 near Khed Shivapur toll plaza
+    "fastag_mismatch": (18.8305, 73.2797),    # Mumbai–Pune Expressway near Khalapur
+    "garage_overquote": (10.0271, 76.3083),   # Lulu Mall, Edappally, Kochi
+    "theft_two_wheeler": (18.6298, 73.7997),  # Pimpri
+}
+
+
+def _coords(city: str, scenario_id: str | None, *, spread: float) -> dict:
+    """City-jittered coordinates, or the scenario's real place. The jitter is drawn either way so the RNG sequence (and every other
+    seeded claim) is unchanged."""
+    dlat, dlng = rng.uniform(-spread, spread), rng.uniform(-spread, spread)
+    if scenario_id in SCENARIO_PLACES:
+        lat, lng = SCENARIO_PLACES[scenario_id]
+        return {"lat": round(lat + dlat / 40, 4), "lng": round(lng + dlng / 40, 4)}
+    return {"lat": round(CITY[city]["lat"] + dlat, 4), "lng": round(CITY[city]["lng"] + dlng, 4)}
 
 
 # Curated best-match photos per demo scenario (stock_curation.py ids). The five scenarios use distinct sets, chosen for

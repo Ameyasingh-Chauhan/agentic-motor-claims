@@ -9,6 +9,7 @@ import { RecentActivity } from "./RecentActivity";
 import { Reveal, RevealScope } from "./Reveal";
 import { StatusDonut } from "./StatusDonut";
 import { ScrollToClaims } from "./ScrollToClaims";
+import { HomeReturnMemory } from "./HomeReturnMemory";
 import { useHomeStats } from "./useHomeData";
 import "./home.css";
 
@@ -41,6 +42,7 @@ export default function HomePage() {
         </div>
         <Reveal index={11}><ClaimsBrowser customer={customer} /></Reveal>
         <ScrollToClaims />
+        <HomeReturnMemory />
       </div>
     </RevealScope>
   );

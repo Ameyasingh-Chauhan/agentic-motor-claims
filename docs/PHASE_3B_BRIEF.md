@@ -49,3 +49,8 @@ Working constraints given with the brief: do not re-run the full seed (~17 min) 
 the isolated temporary data fixture, never the real `server/data/`; one focused browser pass at the end of each stage (both themes,
 admin + Rahul); finish every part to a solid spec-compliant standard, polish ideas go to Known follow-ups; keep using ui-ux-pro-max and
 the motion skill/MCP for Claim Detail; usage-safe sub-steps per AGENTS.md; do not commit.
+
+========================================
+STAGE 3 ADDITION (user, 2026-10-04, with "continue")
+========================================
+Addition to Stage 3 actions: also add (1) "Mark as settled" for Approved and Pre-auth issued claims (records settlement amount, date and payment reference; status → SETTLED), (2) "Confirm fraud" for SIU investigation claims (status → FRAUD_CONFIRMED; customer sees only "Claim not approved" with a neutral reason), and (3) "Clear SIU review" (status → UNDER_REVIEW). Admins may override the AI's recommendation at any non-final status; SETTLED, WITHDRAWN and FRAUD_CONFIRMED are final (actions disabled with a tooltip; Undo still available within 6 s). Include these in the status-validity matrix and the action tests. Save this addition to docs/PHASE_3B_BRIEF.md.

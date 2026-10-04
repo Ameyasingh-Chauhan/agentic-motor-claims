@@ -17,6 +17,7 @@ from .config import get_settings, log_startup_state
 from .routers.auth import router as auth_router
 from .routers.claims import router as claims_router
 from .routers.filing import router as filing_router
+from .routers.claim_ops import router as claim_ops_router
 from .routers.stats import router as stats_router
 from .routers.notifications import router as notifications_router
 
@@ -43,6 +44,7 @@ def create_app() -> FastAPI:
     app.include_router(auth_router)
     app.include_router(claims_router)
     app.include_router(filing_router)
+    app.include_router(claim_ops_router)
     app.include_router(stats_router)
     app.include_router(notifications_router)
 

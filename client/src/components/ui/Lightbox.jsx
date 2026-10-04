@@ -28,6 +28,10 @@ export const ANNOTATION_SEVERITY = {
   moderate: { label: "Moderate", color: "var(--warning)" },
   severe: { label: "Severe", color: "var(--danger)" },
   pre_existing: { label: "Pre-existing", color: "var(--neutral-flag)" },
+  // Claim Detail damage colours (§10.4 C3): green fresh, amber low confidence / overquoted, red pre-existing.
+  fresh: { label: "Fresh damage", color: "var(--success)" },
+  review: { label: "Low confidence / overquoted", color: "var(--warning)" },
+  old: { label: "Pre-existing", color: "var(--danger)" },
 };
 
 function ToolButton({ icon: Icon, label, onClick, active, disabled }) {

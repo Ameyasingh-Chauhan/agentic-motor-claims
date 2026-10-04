@@ -1,0 +1,32 @@
+/* Claim Detail (§10.4). Evidence highlight: brief orange outline pulse on the element a flag points at.
+   Only opacity animates (CLAUDE.md rule 9); with reduced motion the outline simply shows, then goes. */
+.evidence-pulse {
+  position: relative;
+}
+.evidence-pulse::after {
+  content: "";
+  position: absolute;
+  inset: -0.25rem; /* one 4px grid step outside the target */
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+  animation: evidence-pulse 1.6s ease-out 1 forwards;
+}
+@keyframes evidence-pulse {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  40% { opacity: 0.3; }
+  60% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .evidence-pulse::after { animation: none; opacity: 1; }
+}
+
+/* Print-to-PDF claim summary: hide the app chrome and interactive controls. */
+@media print {
+  .app-sidebar, .app-shell header, .brand-accent-line, .no-print, [data-sonner-toaster] { display: none !important; }
+  .claim-print-only { display: block !important; }
+  body { background: white; }
+}
+.claim-print-only { display: none; }

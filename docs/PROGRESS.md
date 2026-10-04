@@ -1,18 +1,12 @@
 # Build progress
 
 ## Resume point
-**Phase 3B — follow `docs/PHASE_3B_BRIEF.md` (the user's brief, verbatim).** Stage 1 ✅ committed (`1e58b4c`).
-**Stage 2 — new-claim data persistence: ✅ complete (2026-10-04), not committed; waiting for the user to test and say "continue".**
-Last completed sub-step: **2.7 — browser pass (admin light + dark, Rahul dark + light), real data restored (sha256 identical to
-before the test; `server/uploads/` empty). pytest 69 passed, `npm run build` and `npm run contrast` pass.** Details: "Phase 3B Stage 2"
-at the end of this file.
-**Exact next step (only after "continue"):** Stage 3 — Claim Detail page (`/claims/:claimId`, BUILD_SPEC §10.4 + the brief's Stage 3
-list). Plan: 3.1 actions backend (POST /api/claims/{id}/actions status matrix, notes, messages, undo) + tests · 3.2 page shell (header +
-compact bar, flags strip, tabs, right rail, 404) · 3.3 Overview/Timeline/Damage · 3.4 Verification/Fraud/Financials · 3.5 Documents/
-Media/Communications/Audit · 3.6 actions UI (modals, optimistic, Undo) · 3.7 customer view + banned-word test · 3.8 shared-element
-transition + back-link restore · 3.9 browser pass.
-**Constraints:** no full re-seed without asking the user (~17 min); tests only on the temp-data fixture; do not commit.
-**Temporary state:** none.
+**Phase 3B — follow `docs/PHASE_3B_BRIEF.md`.** Stages 1–2 ✅. **Stage 3 — Claim Detail: ✅ complete (2026-10-04), not committed; waiting
+for the user to test.** Last completed sub-step: **3.9 — browser pass done and fixes applied; real data restored (sha256 identical to before
+the pass); pytest 99 passed, `npm run build` and `npm run contrast` pass.** Details: "Phase 3B Stage 3" at the end of this file.
+**Exact next step:** user tests Stage 3, then Phase 4 — Dashboard (BUILD_SPEC §10.5, §19 Phase 4; follow the §11.6 persistence contract).
+**Constraints:** no full re-seed without asking (~17 min); tests only on the temp-data fixture; do not commit.
+**Temporary state:** none. (`server/uploads/ABC-MC-2026-000251/` is the user's own Stage 2 sample claim — keep it.)
 
 ## Stage 1 record (2026-10-03)
 **Done this session (2026-10-03):**
@@ -63,7 +57,7 @@ Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 |---|---|
 | 1 — Foundation & design system | ✅ Done (2026-10-01) |
 | 2 — Backend core, data & auth | ⚠️ Partly stubbed — see Phase 1–2 audit |
-| 3 — Home & Claim Detail | 🟡 Home done (rework 2026-10-02); Stage 1 photos/documents done (2026-10-03); Claim Detail next |
+| 3 — Home & Claim Detail | ✅ Done (Home 2026-10-02; Stage 1 photos 10-03; Stage 2 persistence + Stage 3 Claim Detail 10-04) |
 | 4 — Dashboard | — |
 | 5 — Agents & pipeline | — |
 | 6 — File a Claim, Agent Theatre, Results | — |
@@ -449,3 +443,78 @@ The Phase 2 and 3A sections above overstated what was delivered. Verified state 
 - HEIC photos (iPhone default) are not accepted yet (Pillow needs `pillow-heif`); no malware scanning of uploads.
 - The topbar bell count refreshes on page load / panel open, not live.
 - Dev Tools: raw JSON viewer, pipeline inspector, LLM mode, demo reset remain Phase 5.
+
+## Phase 3B Stage 3 — Claim Detail (2026-10-04)
+
+### Delivered
+- [x] **Actions backend** — `services/claim_actions.py`: status-validity matrix for approve, approve_revised, request_info, escalate_siu,
+      reject, settle, confirm_fraud, clear_siu, reassign, note (+ undo); SETTLED / WITHDRAWN / FRAUD_CONFIRMED final; a human-readable
+      reason for every disabled action; overrides of the AI recorded; timeline + immutable audit + customer-safe message + notifications;
+      undo within 6 s (+4 s grace) restores the snapshot and withdraws the messages/notifications. `routers/claim_ops.py`:
+      `POST /api/claims/{id}/actions`, `/notes`, `/messages` (admin to customer, customer reply), `/respond` (customer answers an info
+      request, back to UNDER_REVIEW), `GET /export.csv` (audit).
+- [x] **Role-shaped detail** — `services/claim_detail.py`: admin `context` (policy, vehicle, customer + prior claims, garage, Vahan,
+      FASTag events within 36 h with distance and mismatch, IIB, police, DL, people, rule names, FR-07 network, **calculation ladder built
+      in Python**), `allowed_actions`, `document_checklist`, template AI draft. The customer projection also strips scenario_id,
+      pipeline_run_id, SLA, financial internals, document extraction/checks, photo quality/credit and drafts; approval/decline timeline
+      text is neutral.
+- [x] **Claim Detail page** (`client/src/features/claims/`): header with a 72 px compact bar that slides in after 120 px (transform +
+      opacity), action bar (AI recommendation highlighted in orange, contextual settle / confirm fraud / clear SIU, More menu, print to PDF,
+      copy link), flags strip (red, amber, then "N checks passed"; each chip switches tab, scrolls and pulses the evidence), 10 URL-synced
+      tabs, sticky right rail (AI summary, recommended decision, grouped flags, key numbers, SLA bar, assignee, internal notes; a drawer
+      below 1280 px), confirm modal (presets + required reason + effect preview + field errors), optimistic update with rollback, toast with
+      Undo, Home queries invalidated. Tabs: Overview, Timeline (pipeline groups), Damage (annotated image sized to the photo, Lightbox with
+      EXIF + credit, damage table, coverage, quality, EXIF match flags; "AI assessment pending" for app claims), Verification (accordion,
+      FASTag time-axis chart + table), Fraud (gauge, waterfall + running-total table, evidence deep links, not-fired list, network),
+      Financials (estimate vs quote, line items, animated ladder, notes), Documents (checklist + viewer), Media (filter, tiles, voice
+      notes), Communications (thread, editable/sendable draft), Audit (actor filter, CSV).
+- [x] **Customer view** (Rahul): Overview, Status timeline, Photos & documents, Messages, What happens next; "Respond to information
+      request" (upload + message) and "Contact support". Friendly 404 with search. The back link restores Home's URL + scroll
+      (`features/home/HomeReturnMemory.jsx`, invisible on Home).
+- [x] Tests: `tests/test_actions.py` (30: matrix for every status, each action, settle / confirm / clear, invalid-status rejection, audit,
+      override, app-filed claim, undo incl. expiry / other user / final status, recursive banned-word scan over all of Rahul's responses,
+      respond, messages + drafts + CSV, evidence context, ladder equals costing). 99 tests in total.
+
+### Verification (2026-10-04, Chrome, admin + Rahul, light + dark)
+- fastag_mismatch: red FASTag check (chart: Andheri parking 30 min before the reported time, about 60 km away), score 90 / high / SIU route,
+  red pre-existing bracket box on the photo, 4 evidence cards; the flag chip opens the Fraud tab at the FR-01 card.
+- garage_overquote: "Approve revised amount" highlighted, modal prefilled with ₹13,245 (quote ₹19,090) and the effect preview; confirm gives
+  PREAUTH_ISSUED persisted with timeline + audit; the toast's Undo returns it to UNDER_REVIEW with both audit rows kept.
+- flood_total_loss: the ladder ends on IDV ₹1,50,000 − salvage ₹27,000 − ₹1,000 = ₹1,22,000; recommendation "Settle as total loss".
+  theft_two_wheeler (info requested, missing items) and clean_rear_end (auto pre-auth) checked via the API and tests.
+- A settled claim has every action disabled. App claim 251: "Filed in app", pending panels, no boxes, Approve disabled. Unknown ID: 404 page.
+- Rahul: 5 tabs, no banned words on any tab; the Respond modal lists the requested items; a reply moves the claim to UNDER_REVIEW and shows
+  "You replied".
+- Back link: Home returns to `?status=SIU_INVESTIGATION` at the same scroll position. No console errors after cycling all tabs.
+- Fixed during the pass: page-wide horizontal overflow (absolutely positioned screen-reader labels escaping the flags strip), the waterfall
+  legend, edge-clipped box labels, the translation label for same-language narratives, rule-name casing in the summary, duplicate React keys
+  for paired parts, Home's scroll being saved after the shell had reset it, duplicated summary text and minus signs.
+
+### Decisions
+50. **No shared-element transition**: the app shell's `AnimatePresence mode="wait"` unmounts Home before the lazy detail route mounts, so a
+    `layoutId` handoff cannot work without changing Home's approved route transition. The detail header fades in over 200 ms (the brief's
+    fallback).
+51. **Action bar colours**: only the AI-recommended action is orange; every other action is secondary; red appears only on the modal's
+    confirm button for destructive actions. Settle / Confirm fraud / Clear SIU show as buttons only when the status makes them relevant
+    (otherwise they are in More, with the reason in the label).
+52. **Undo**: a 6 s toast; the server accepts 6 s + 4 s grace, only for the same person and only if nothing changed since; snapshots live in
+    memory (undo is not possible after a server restart); the audit keeps both the action and its undo.
+53. **Override** = an action that contradicts a definitive AI recommendation (approve / approve_revised / escalate_siu / total loss);
+    "review" leaves the decision to the human, so no override is recorded.
+54. **Notes are allowed on final claims**; reassign and all decisions are not. "Approve" needs the AI estimate; app-filed claims are
+    approved with "Approve revised amount", which creates a human decision record (`ai_pending: true`).
+55. **Every rupee on the Financials tab comes from Python** (the ladder is built server-side from costing.py's stored figures).
+56. **AI drafts are template-based** until the Communication agent exists (Phase 5); "Regenerate draft" is disabled with a tooltip.
+57. **Verification key fields come from the mock registries** (seeded `checks.*.data` is mostly empty).
+58. **Scenario coordinates**: the seed placed scenario incidents at city coordinates; `seed.SCENARIO_PLACES` fixes future seeds (only the 4
+    scenarios change) and `scripts/fix_scenario_locations.py` was applied to claims.json. fastag_mismatch photos keep Mumbai EXIF on purpose.
+
+### Known follow-ups
+- Not checked at a true 1920×1080 or 1366×768 (this display gives 1270 and 1045 CSS px); verify on a full-HD screen.
+- Disabled-button tooltips were verified as `aria-disabled` + reason, not visually (the automated browser tab throttles animations).
+- "What happens next" dates are simple offsets (filed + 1 / + 2 days / + garage turnaround); EXIF match thresholds are heuristics
+  (−30 min to +48 h; up to 10 km green, up to 30 km amber).
+- Print to PDF prints a short summary plus the current tab, not every tab.
+- The network graph only links claims through a shared garage (FR-07).
+- The customer's respond modal labels files as photo or document but does not map them to specific requested items.
+- The test suite takes about 90 s (mutating tests restore the 5 MB claims file after each test).
