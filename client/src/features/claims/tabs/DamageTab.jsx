@@ -8,6 +8,7 @@ import { EmptyState } from "../../../components/ui/EmptyState";
 import { cn } from "../../../lib/cn";
 import { formatDateTime } from "../../../lib/format";
 import { AnnotatedImage, BOX_TONE, Photo, toRect } from "../parts";
+import { VehicleIdentityCard } from "../VehicleIdentity";
 
 const SLOTS = [["front", "Front"], ["rear", "Rear"], ["left", "Left"], ["right", "Right"], ["closeup", "Close-up"], ["odometer", "Odometer"]];
 const MAX_H = 448; // 28rem — main photo height cap
@@ -171,6 +172,8 @@ export function DamageTab({ claim }) {
           )}
         </Card>
       ) : null}
+
+      <VehicleIdentityCard claim={claim} />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Card compact title="Photo quality & coverage">

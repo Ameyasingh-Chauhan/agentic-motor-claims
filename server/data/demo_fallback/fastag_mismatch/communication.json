@@ -1,0 +1,12 @@
+{
+  "message_local": "Hi Arjun, thank you for reporting claim {claim_id}. To complete the review we need a few details: full-vehicle photos showing the number plate, and any receipts from that night. You can upload them in the app.",
+  "message_en": "Hi Arjun, thank you for reporting claim {claim_id}. To complete the review we need a few details: full-vehicle photos showing the number plate, and any receipts from that night. You can upload them in the app.",
+  "lang_code": "en",
+  "quick_replies": [
+    "Upload now",
+    "Call me"
+  ],
+  "email_subject": null,
+  "email_local": null,
+  "email_en": null
+}

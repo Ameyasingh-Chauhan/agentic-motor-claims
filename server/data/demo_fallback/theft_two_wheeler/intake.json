@@ -1,0 +1,30 @@
+{
+  "transcript": "मैंने अपनी एक्टिवा शाम साढ़े सात बजे पिंपरी सब्ज़ी मंडी के बाहर पार्क की थी; वापस आया तो गाड़ी गायब थी। अगले दिन FIR दर्ज कराई।",
+  "language_codes": [
+    "hi"
+  ],
+  "language_label": "Hindi",
+  "translation_en": "Parked my Activa outside Pimpri vegetable market at 7:30 PM; it was missing when I came back. FIR filed the next day.",
+  "incident_type": "theft",
+  "incident_at": "2026-09-21T19:30:00+05:30",
+  "datetime_conf": 0.9,
+  "location_text": "outside Pimpri vegetable market",
+  "city": "Pimpri-Chinchwad",
+  "cause": "Vehicle theft",
+  "counterparty": "unknown",
+  "third_party": false,
+  "injuries": "none",
+  "police_informed": true,
+  "fir_number": "PMP/1129/2026",
+  "drivable": false,
+  "driver_is_policyholder": true,
+  "driver_name": "Imran Shaikh",
+  "parts_mentioned": [],
+  "missing": [],
+  "follow_up": [],
+  "distress": "upset",
+  "urgent_safety": false,
+  "injection_suspected": false,
+  "injection_quote": null,
+  "needs_review": false
+}

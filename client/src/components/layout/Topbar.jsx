@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { Menu, Search } from "lucide-react";
+import { FlaskConical, Menu, Search } from "lucide-react";
 import { BrandLogo } from "../ui/BrandLogo";
 import { Avatar } from "../ui/Avatar";
 import { Kbd } from "../ui/Kbd";
@@ -14,6 +14,20 @@ import { useAuthStore } from "../../store/authStore";
 import { formatClock } from "../../lib/format";
 import { roleLabel } from "../../lib/permissions";
 import { cn } from "../../lib/cn";
+import { Badge } from "../ui/Badge";
+import { Tooltip } from "../ui/Tooltip";
+import { useSystemStatus } from "../../hooks/useSystemStatus";
+
+/** Yellow "Demo mode" badge for admins when AI responses are pre-recorded (no key file, or LLM_MODE=demo) — spec §5. */
+function DemoModeBadge() {
+  const status = useSystemStatus();
+  if (status.data?.llm_mode !== "demo") return null;
+  return (
+    <Tooltip content="Demo mode — AI responses are pre-recorded">
+      <span tabIndex={0} className="rounded-sm"><Badge tone="warning" icon={FlaskConical}>Demo mode</Badge></span>
+    </Tooltip>
+  );
+}
 
 /** Live IST clock, updated every 30 s (aligned to the minute). */
 function Clock() {
@@ -75,6 +89,7 @@ export function Topbar() {
       </div>
 
       <div className="flex items-center gap-2">
+        {user?.role === "admin" && <DemoModeBadge />}
         <Clock />
         <button
           type="button"

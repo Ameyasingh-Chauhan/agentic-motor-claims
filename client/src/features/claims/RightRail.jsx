@@ -15,7 +15,7 @@ const ROUTE = { auto: { level: "pass", label: "Auto (straight-through)" }, handl
   SIU: { level: "fail", label: "SIU route" } };
 const OPEN = new Set(["SUBMITTED", "PROCESSING", "INFO_REQUESTED", "UNDER_REVIEW", "SIU_INVESTIGATION"]);
 
-/** 2–4 plain-English sentences built only from the claim's own fields (the live summary agent arrives in Phase 5). */
+/** Fallback summary built only from the claim's own fields — used when the pipeline wrote no `decision.ai_summary` (seeded claims). */
 export function aiSummary(c) {
   if (!c.fraud) {
     return `Filed in the app on ${formatDate(c.created_at)}: ${c.incident.label.toLowerCase()} near ${c.incident.location.text || c.city}. `
@@ -73,7 +73,7 @@ export function RightRail({ claim, flags, passed, onFlag, onAction, onAddNote, n
   return (
     <div className="flex flex-col gap-4">
       <Card compact title={<span className="inline-flex items-center gap-2"><Sparkles size={16} className="text-tint-blue" aria-hidden="true" />AI summary</span>}>
-        <p className="text-sm text-text">{aiSummary(claim)}</p>
+        <p className="text-sm text-text">{d?.ai_summary || aiSummary(claim)}</p>
       </Card>
 
       <Card compact title="Recommended decision">
@@ -88,7 +88,7 @@ export function RightRail({ claim, flags, passed, onFlag, onAction, onAddNote, n
             </div>
             {d.final_action && (
               <p className="text-caption text-muted">
-                Decided {d.final_action.replace("_", " ")} by {people[d.decided_by] ?? "a handler"} · {formatDateTime(d.decided_at)}
+                Decided {d.final_action.replace("_", " ")} by {d.decided_by?.startsWith("agent:") ? "the AI pipeline" : people[d.decided_by] ?? "a handler"} · {formatDateTime(d.decided_at)}
               </p>
             )}
           </div>

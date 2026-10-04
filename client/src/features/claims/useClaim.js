@@ -79,6 +79,20 @@ export function useSendMessage(id) {
   });
 }
 
+/** Regenerate the AI draft with the Communication agent (live Gemini; the template when the agent is unavailable). */
+export function useRegenerateDraft(id) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: () => api(`/claims/${id}/messages/draft`, { method: "POST" }),
+    onSuccess: (data) => {
+      qc.invalidateQueries({ queryKey: claimKey(id) });
+      if (data.source === "live") toast.success("New draft written by the Communication agent");
+      else toast.warning("AI unavailable — template draft used");
+    },
+    onError: (e) => toast.error(e.message || "Could not regenerate the draft"),
+  });
+}
+
 /** Customer: upload requested files then answer the information request. */
 export function useRespondToRequest(id) {
   const qc = useQueryClient();

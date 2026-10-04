@@ -1358,6 +1358,8 @@ Worked example (also included in the Damage prompt): Hyundai Creta (CAR_COMPACT_
 
 ## 13. Fraud rules (DMN) — `fraud_rules.json` + `dmn_engine.py`
 
+> **Phase 5:** rules FR-16–FR-18 (vehicle identity) are added per `docs/AGENT_PROMPTS.md` A6; FR-01–FR-15 are unchanged.
+
 Deterministic, explainable scoring. Score = min(100, Σ points of fired rules). Each rule has: id, name,
 description, inputs (paths into claim/checks/damage), condition, points, level, customer_safe_reason
 (for info requests), enabled.
@@ -1413,6 +1415,9 @@ a deterministic "clean" profile generated from a hash of the registration (so an
 ---
 
 ## 15. Agents & orchestration
+
+> **Phase 5 override:** `docs/AGENT_PROMPTS.md` is the source of truth for the call plan (5 Gemini calls, 7 agents), token
+> rules, prompts, the adjudication policy (A5), vehicle identity (A4) and rules FR-16–FR-18. Where it differs from §15–16 it wins.
 
 ### 15.1 Common agent framework (`agents/base.py`)
 
@@ -1493,6 +1498,10 @@ All events appended to `pipeline_runs.json`; on connect with `Last-Event-ID`, re
 ---
 
 ## 16. Agent prompts
+
+> **Phase 5 override:** `docs/AGENT_PROMPTS.md` is the source of truth for the call plan (5 Gemini calls, 7 agents), token
+> rules, prompts, the adjudication policy (A5), vehicle identity (A4) and rules FR-16–FR-18. The prompt files in `server/prompts/` follow its Parts B–H verbatim; the
+> prompts below (incl. `fraud.md` / `adjudication.md`, now one `investigation.md` call) are superseded.
 
 Store each as `server/prompts/<agent>.md`. Shared rules (prepend to every agent prompt as
 `prompts/_shared_rules.md`):

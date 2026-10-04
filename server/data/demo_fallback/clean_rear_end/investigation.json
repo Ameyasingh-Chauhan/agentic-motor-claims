@@ -1,0 +1,23 @@
+{
+  "evidence_cards": [
+    {
+      "rule_id": "FR-06",
+      "expected": "No indicator",
+      "found": "Garage quote ₹30,410 is 18.0% above the AI estimate of ₹25,772.",
+      "source": "financials.variance_pct",
+      "why": "Garage overquote — this may indicate the claim needs closer review.",
+      "confidence": 0.9
+    }
+  ],
+  "fraud_summary": "Score 5 (low). Garage overquote.",
+  "extra_observations": [],
+  "next_steps": [],
+  "decision_reasons": [
+    "Garage overquote"
+  ],
+  "conditions": [
+    "Pre-auth valid 15 days at the selected network garage"
+  ],
+  "customer_items": [],
+  "ai_summary": "Score 5 (low). Garage overquote. Garage overquote"
+}

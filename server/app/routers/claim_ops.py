@@ -176,6 +176,7 @@ async def send_message(claim_id: str, body: MessageBody, user=Depends(current_us
                "by": user["id"] if admin else "customer"}
         if admin and body.draft_id:
             msg["from_draft"] = body.draft_id
+            c["communications"] = [m for m in c["communications"] if not (m.get("draft") and m.get("id") == body.draft_id)]
         c["communications"].append(msg)
         c["updated_at"] = iso(now)
         if not admin:
@@ -192,6 +193,51 @@ async def send_message(claim_id: str, body: MessageBody, user=Depends(current_us
         await _notify([{"user_id": uid, "title": f"Customer replied: {claim['id']}", "body": body.text[:120], "href": f"/claims/{claim['id']}",
                         "created_at": iso(now)} for uid in await _people()])
     return {"claim": await _respond(claim, user)}
+
+
+@router.post("/{claim_id}/messages/draft")
+async def regenerate_draft(claim_id: str, user=Depends(current_user)):
+    """Regenerate the AI draft with the Communication agent (customer-safe facts only). Live when Gemini is available; otherwise the
+    template draft, and the response says which."""
+    _admin(user)
+    from ..agents import communication as comm
+    from ..agents.schemas import CommunicationOut
+    from ..services import gemini, prompts
+
+    claims = await read_json("claims.json", [])
+    claim = find(claims, claim_id, user)
+    if claim["status"] == "DRAFT":
+        raise HTTPException(409, {"code": "not_submitted", "message": "The claim has not been submitted yet"})
+    customers, garages = await read_json("customers.json", []), await read_json("garages.json", [])
+    customer = next(c for c in customers if c["id"] == claim["customer_id"])
+    garage = next((g for g in garages if g["id"] == (claim.get("settlement") or {}).get("garage_id")), None)
+    purpose = comm.PURPOSE_BY_STATUS.get(claim["status"], "under_review")
+    items = ((claim.get("decision") or {}).get("info_request") or {}).get("items") or []
+
+    async def standalone(variables: dict):
+        try:
+            out, rec = await gemini.generate(agent="communication", system=prompts.render("communication", variables),
+                                             contents=["Write the message now."], schema=CommunicationOut, temperature=0.5,
+                                             thinking="low", max_output_tokens=4096)
+            return out, "live"
+        except gemini.GeminiError:
+            return comm.template(claim, purpose, items, garage), "template"
+
+    out, source = await comm.compose(None, claim, purpose=purpose, items=items, garage=garage, customer=customer,
+                                     run_standalone=standalone)
+    now = now_ist()
+
+    def store(rows: list[dict]) -> dict:
+        c = find(rows, claim_id, user)
+        c["communications"] = [m for m in c["communications"] if not m.get("draft")]
+        entry = comm.message_entry(c, out, draft=True, source=source)
+        c["communications"].append(entry)
+        c["updated_at"] = iso(now)
+        validated(c)
+        return entry
+
+    entry = await update_json("claims.json", store, [])
+    return {"draft": entry, "source": source}
 
 
 @router.post("/{claim_id}/respond")

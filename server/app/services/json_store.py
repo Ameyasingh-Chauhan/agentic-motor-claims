@@ -12,6 +12,7 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import time
 from pathlib import Path
 from typing import Any, Callable
 
@@ -51,7 +52,14 @@ def _atomic_write(p: Path, value: Any) -> int:
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_suffix(p.suffix + ".tmp")
     tmp.write_text(json.dumps(value, ensure_ascii=False, indent=2), encoding="utf-8")
-    os.replace(tmp, p)
+    for attempt in range(8):  # Windows: a virus scanner or indexer may hold the target for a moment ("Access is denied")
+        try:
+            os.replace(tmp, p)
+            break
+        except PermissionError:
+            if attempt == 7:
+                raise
+            time.sleep(0.05 * (attempt + 1))
     return p.stat().st_mtime_ns
 
 

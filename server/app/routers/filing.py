@@ -1,8 +1,8 @@
 """New claims filed in the app (spec §11.6, §17): create draft → patch → upload files → submit, plus the private file endpoint.
 
 Every claims.json change runs inside `json_store.update_json` (read-modify-write under the file lock) and is validated against the
-§11.2 `Claim` schema before it is written, so app-filed claims have exactly the shape of seeded ones. Pipeline outputs (fraud,
-financials, decision, risk) stay null until the agent pipeline attaches to submit in Phase 5.
+§11.2 `Claim` schema before it is written, so app-filed claims have exactly the shape of seeded ones. Submit starts the agent pipeline
+(agents/orchestrator.py), which fills fraud, financials, decision and risk.
 """
 from __future__ import annotations
 
@@ -329,8 +329,12 @@ async def get_file(claim_id: str, name: str, user=Depends(current_user)):
     return FileResponse(path, media_type=uploads.media_type(path), headers={"Cache-Control": "private, max-age=3600"})
 
 
+class SubmitBody(BaseModel):
+    pace: Literal["presentation", "fast"] = "presentation"
+
+
 @router.post("/claims/{claim_id}/submit")
-async def submit_claim(claim_id: str, user=Depends(current_user)):
+async def submit_claim(claim_id: str, body: SubmitBody | None = None, user=Depends(current_user)):
     users = await read_json("users.json", [])
     now = now_ist()
 
@@ -355,7 +359,7 @@ async def submit_claim(claim_id: str, user=Depends(current_user)):
         c["timeline"].append({"ts": iso(now), "actor": actor_of(user), "type": "fnol_received",
                               "text": f"FNOL received via {CHANNEL_LABEL[c['channel']]}"})
         c["audit"].append({"ts": iso(now), "actor": user["id"], "action": "status_change", "from": "DRAFT", "to": "SUBMITTED",
-                           "reason": "Submitted in app; awaiting AI pipeline"})
+                           "reason": "Submitted in app; AI pipeline starting"})
         validated(c)
         return c
 
@@ -370,4 +374,6 @@ async def submit_claim(claim_id: str, user=Depends(current_user)):
                             "created_at": iso(now), "read": False})
 
     await update_json("notifications.json", notify, [])
-    return {"claim": view_for(user, claim), "run_id": None}  # run_id arrives with the agent pipeline (Phase 5)
+    from ..agents import orchestrator  # the pipeline runs server-side; the client follows it on /api/pipeline/{run_id}/events
+    run_id = await orchestrator.start(claim["id"], pace=(body or SubmitBody()).pace, trigger="submit")
+    return {"claim": view_for(user, claim), "run_id": run_id}

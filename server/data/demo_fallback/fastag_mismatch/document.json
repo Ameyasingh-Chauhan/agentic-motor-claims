@@ -1,0 +1,231 @@
+{
+  "documents": [
+    {
+      "doc_id": "d_3",
+      "declared_type": "RC",
+      "actual_type": "RC",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": "MH 12 XX 4521",
+        "owner": "Arjun Desai",
+        "vehicle_class": "LMV (Motor car)",
+        "make_model": "Hyundai Creta",
+        "fuel": "Petrol",
+        "reg_date": "2024-02-28",
+        "chassis5": "13868",
+        "engine5": "33543",
+        "financier": "HDFC Bank",
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "owner",
+          "level": "pass",
+          "msg": "Matches policyholder"
+        },
+        {
+          "field": "registration",
+          "level": "pass",
+          "msg": "Matches policy and Vahan record"
+        },
+        {
+          "field": "integrity",
+          "level": "pass",
+          "msg": "No signs of editing"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_4",
+      "declared_type": "DL",
+      "actual_type": "DL",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": "6112",
+        "holder": "Arjun Desai",
+        "valid_to_nt": "2038-12-11",
+        "valid_to_tr": null,
+        "classes": [
+          "LMV",
+          "MCWG"
+        ],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Valid on incident date"
+        },
+        {
+          "field": "class",
+          "level": "pass",
+          "msg": "Class LMV, MCWG covers the vehicle"
+        },
+        {
+          "field": "holder",
+          "level": "pass",
+          "msg": "Holder matches the driver named in the claim"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_5",
+      "declared_type": "Policy",
+      "actual_type": "POLICY",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": "ABC/PC/2026/665283",
+        "insured": "Arjun Desai",
+        "period_from": null,
+        "period_to": null,
+        "cover": "OD+TP",
+        "idv": 994000.0,
+        "add_ons": [
+          "Rsa"
+        ],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Active on the incident date"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_6",
+      "declared_type": "Estimate",
+      "actual_type": "ESTIMATE",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": "2026-10-02",
+        "facts": null,
+        "garage": "Vala Honda Service, Chembur, Mumbai",
+        "lines": [],
+        "total": 27390.0
+      },
+      "checks": [
+        {
+          "field": "total",
+          "level": "pass",
+          "msg": "Quote is 9.0% vs the AI estimate"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    }
+  ],
+  "missing": [],
+  "injection_suspected": false
+}

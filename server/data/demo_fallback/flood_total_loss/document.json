@@ -1,0 +1,231 @@
+{
+  "documents": [
+    {
+      "doc_id": "d_3",
+      "declared_type": "RC",
+      "actual_type": "RC",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": "MH 04 GH 3301",
+        "owner": "Kavita Joshi",
+        "vehicle_class": "LMV (Motor car)",
+        "make_model": "Maruti Suzuki Swift",
+        "fuel": "Petrol",
+        "reg_date": "2018-01-27",
+        "chassis5": "72874",
+        "engine5": "43469",
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "owner",
+          "level": "pass",
+          "msg": "Matches policyholder"
+        },
+        {
+          "field": "registration",
+          "level": "pass",
+          "msg": "Matches policy and Vahan record"
+        },
+        {
+          "field": "integrity",
+          "level": "pass",
+          "msg": "No signs of editing"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_4",
+      "declared_type": "DL",
+      "actual_type": "DL",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": "3757",
+        "holder": "Kavita Joshi",
+        "valid_to_nt": "2038-02-03",
+        "valid_to_tr": null,
+        "classes": [
+          "LMV",
+          "MCWG"
+        ],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Valid on incident date"
+        },
+        {
+          "field": "class",
+          "level": "pass",
+          "msg": "Class LMV, MCWG covers the vehicle"
+        },
+        {
+          "field": "holder",
+          "level": "pass",
+          "msg": "Holder matches the driver named in the claim"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_5",
+      "declared_type": "Policy",
+      "actual_type": "POLICY",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": "ABC/PC/2025/442919",
+        "insured": "Kavita Joshi",
+        "period_from": null,
+        "period_to": null,
+        "cover": "OD+TP",
+        "idv": 150000.0,
+        "add_ons": [
+          "Rsa"
+        ],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Active on the incident date"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_6",
+      "declared_type": "Estimate",
+      "actual_type": "ESTIMATE",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": "2026-09-28",
+        "facts": null,
+        "garage": "Salvi Kia Service, Majiwada, Thane",
+        "lines": [],
+        "total": 175130.0
+      },
+      "checks": [
+        {
+          "field": "total",
+          "level": "pass",
+          "msg": "Quote is 4.0% vs the AI estimate"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    }
+  ],
+  "missing": [],
+  "injection_suspected": false
+}

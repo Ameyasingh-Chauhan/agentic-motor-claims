@@ -1,0 +1,11 @@
+{
+  "message_local": "നമസ്കാരം പ്രിയ, ക്ലെയിം {claim_id} ഞങ്ങളുടെ ക്ലെയിംസ് ടീം പരിശോധിക്കുന്നു. രണ്ട് പ്രവൃത്തി ദിവസത്തിനുള്ളിൽ അറിയിക്കും.",
+  "message_en": "Hello Priya, claim {claim_id} is being reviewed by our claims team. We'll update you within 2 working days.",
+  "lang_code": "ml",
+  "quick_replies": [
+    "Talk to us"
+  ],
+  "email_subject": null,
+  "email_local": null,
+  "email_en": null
+}

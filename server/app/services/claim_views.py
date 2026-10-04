@@ -144,7 +144,8 @@ def row(c: dict, *, customer: bool, now: datetime) -> dict:
 
 
 CUSTOMER_DROP = {"fraud", "risk_score", "risk_band", "audit", "internal_notes", "assignee", "ai_processing_s", "scenario_id",
-                 "pipeline_run_id", "sla", "allowed_actions", "context", "document_conditions"}
+                 "pipeline_run_id", "sla", "allowed_actions", "context", "document_conditions", "vehicle_identity", "intake",
+                 "ai_sources", "llm_mode", "replay_of"}
 CUSTOMER_EVENT_TYPES = {"fnol_received", "customer_notified", "info_requested", "settled", "decision", "preauth_issued", "approved",
                         "declined", "fraud_confirmed", "withdrawn", "customer_responded", "file_uploaded"}
 # Financial figures a customer may see (the assessment itself — variance vs garage quote, discrepancy logs — stays internal).
@@ -163,11 +164,13 @@ def to_customer_view(c: dict) -> dict:
                      for k, v in c.get("checks", {}).items()}
     damage = dict(c.get("damage") or {})
     damage.pop("pre_existing", None)
-    damage.pop("narrative_consistency", None)
+    for k in ("narrative_consistency", "notes", "uncatalogued", "total_loss_evidence", "photo_quality"):
+        damage.pop(k, None)
     damage["items"] = [{k: v for k, v in i.items() if k not in ("boxes", "flag", "fresh")} for i in damage.get("items", [])]
     out["damage"] = damage
     decision = dict(c.get("decision") or {})
-    for k in ("reasons", "route", "recommended_action", "confidence", "auto", "decided_by", "ai_pending"):
+    for k in ("reasons", "route", "recommended_action", "confidence", "auto", "decided_by", "ai_pending", "policy_reasons", "policy_rule",
+              "reason_code", "action", "ai_summary"):
         decision.pop(k, None)
     out["decision"] = decision
     out["timeline"] = [{**e, "type": "declined" if e["type"] == "fraud_confirmed" else e["type"], "text": CUSTOMER_EVENT_TEXT.get(e["type"], e["text"]), "actor": "abc" if e["actor"].startswith(("agent:", "u_", "system")) else e["actor"]}
@@ -175,7 +178,7 @@ def to_customer_view(c: dict) -> dict:
     out["documents"] = [{k: v for k, v in d.items() if k not in ("checks", "extracted", "uploaded_by", "original_url")}
                         for d in c.get("documents", [])]
     out["media"] = [{k: v for k, v in m.items() if k not in CUSTOMER_MEDIA_DROP} for m in c.get("media", [])]
-    out["communications"] = [m for m in c.get("communications", []) if not m.get("draft")]
+    out["communications"] = [{k: v for k, v in m.items() if k != "generated_by"} for m in c.get("communications", []) if not m.get("draft")]
     fin = c.get("financials")
     out["financials"] = {k: fin[k] for k in CUSTOMER_FINANCIALS if k in fin} | {"total_loss": bool((fin.get("total_loss_check") or {}).get("is_total_loss"))} if fin else None
     out["settlement"] = {k: v for k, v in (c.get("settlement") or {}).items() if k != "settled_by"}

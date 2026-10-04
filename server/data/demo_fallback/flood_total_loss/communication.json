@@ -1,0 +1,11 @@
+{
+  "message_local": "नमस्कार कविता ताई, क्लेम {claim_id} आमच्या क्लेम्स टीमकडे तपासणीसाठी आहे. दोन कामकाजाच्या दिवसांत आम्ही कळवू.",
+  "message_en": "Hello Kavita, claim {claim_id} is with our claims team for review. We'll update you within 2 working days.",
+  "lang_code": "mr",
+  "quick_replies": [
+    "Talk to us"
+  ],
+  "email_subject": null,
+  "email_local": null,
+  "email_en": null
+}

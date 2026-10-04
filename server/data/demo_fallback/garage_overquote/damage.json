@@ -1,0 +1,102 @@
+{
+  "photos": [
+    {
+      "photo_id": "m_1",
+      "make": null,
+      "model": null,
+      "body": null,
+      "colour": null,
+      "plate_text": null,
+      "plate_conf": 0.0,
+      "idcon": 0.0,
+      "same_vehicle": null,
+      "same_conf": 0.0,
+      "diff_reason": null,
+      "usable": true,
+      "issues": []
+    }
+  ],
+  "identity_summary": {
+    "make": null,
+    "model": null,
+    "body": null,
+    "colour": null,
+    "plate_text": null,
+    "confidence": 0.0
+  },
+  "items": [
+    {
+      "code": "MAR-BAL-FDOR",
+      "part": "Front door shell",
+      "zone": "right",
+      "damage_type": "dent",
+      "severity": "moderate",
+      "operation": "repair_moderate_dent",
+      "fresh": true,
+      "confidence": 0.86,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            250,
+            80,
+            810,
+            620
+          ],
+          "label": "Front door shell · dent"
+        }
+      ]
+    },
+    {
+      "code": "MAR-BAL-RDOR",
+      "part": "Rear door shell",
+      "zone": "left",
+      "damage_type": "dent",
+      "severity": "moderate",
+      "operation": "repair_minor_dent",
+      "fresh": true,
+      "confidence": 0.86,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            250,
+            600,
+            810,
+            900
+          ],
+          "label": "Rear door shell · dent"
+        }
+      ]
+    }
+  ],
+  "uncatalogued": [],
+  "pre_existing": [],
+  "story": {
+    "consistent": true,
+    "why": "Impact direction and severity match the description.",
+    "confidence": 0.88
+  },
+  "coverage": {
+    "front": false,
+    "rear": false,
+    "left": true,
+    "right": false,
+    "closeup": false,
+    "odometer": false
+  },
+  "suggested_photos": [],
+  "overall_severity": "moderate",
+  "wheel_alignment": false,
+  "total_loss_indicator": false,
+  "total_loss_evidence": null,
+  "llm_estimate_inr": 6930.0,
+  "notes": "Recorded scenario output (demo mode).",
+  "injection_suspected": false
+}

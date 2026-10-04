@@ -29,6 +29,11 @@ shutil.copytree(PRISTINE / "data", DATA)
 shutil.copytree(PRISTINE / "uploads", UPLOADS)
 os.environ["AMC_DATA_DIR"] = str(DATA)
 os.environ["AMC_UPLOADS_DIR"] = str(UPLOADS)
+# Never reach Vertex from tests: demo mode by default; tests of the live path replace gemini._transport with a fake.
+os.environ["LLM_MODE"] = "demo"
+os.environ["AMC_MOCK_LATENCY_SCALE"] = "0"
+os.environ["PIPELINE_MIN_STEP_MS"] = "0"
+os.environ["AMC_PIPELINE_AUTOSTART"] = "0"
 atexit.register(shutil.rmtree, _ROOT, ignore_errors=True)
 
 

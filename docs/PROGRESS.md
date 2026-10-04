@@ -1,12 +1,31 @@
 # Build progress
 
 ## Resume point
-**Phase 3B — follow `docs/PHASE_3B_BRIEF.md`.** Stages 1–2 ✅. **Stage 3 — Claim Detail: ✅ complete (2026-10-04), not committed; waiting
-for the user to test.** Last completed sub-step: **3.9 — browser pass done and fixes applied; real data restored (sha256 identical to before
-the pass); pytest 99 passed, `npm run build` and `npm run contrast` pass.** Details: "Phase 3B Stage 3" at the end of this file.
-**Exact next step:** user tests Stage 3, then Phase 4 — Dashboard (BUILD_SPEC §10.5, §19 Phase 4; follow the §11.6 persistence contract).
-**Constraints:** no full re-seed without asking (~17 min); tests only on the temp-data fixture; do not commit.
-**Temporary state:** none. (`server/uploads/ABC-MC-2026-000251/` is the user's own Stage 2 sample claim — keep it.)
+**Phase 5 — Agents & pipeline: complete (2026-10-04).** Stopped for the user's review and commit. Record: "Phase 5 — Agents & pipeline"
+at the end of this file; brief: `docs/PHASE_5_BRIEF.md`.
+**Exact next step:** Phase 6 (File a Claim wizard, Agent Theatre, Results) — only after the user approves Phase 5.
+**Constraints:** no full re-seed; tests only on temp data; do not commit.
+**Temporary state:** none. Real `server/data/` + `server/uploads/` restored after the browser pass (sha256 identical to the pre-test backup).
+
+### Phase 5 decisions (user + builder)
+- User: seeded claims (incl. 5 scenarios) are illustrative and untouched; no live identity check on them (UI: "Not assessed (historical
+  claim)"). Identity check applies fully to NEW claims. Live re-runs of scenarios dropped; scenarios shown via seed + Demo-mode replay.
+- Sample claim switched to the black Maruti Baleno MH 02 DN 8165 (Aadi Seth): both photos are of the same car (front + crop), RC + DL
+  specimens, cashless network garage g_008; narrative matches the photo (e-scooter in frame — the first wording was flagged FR-03 live).
+- Claim form / policy / KYC are verified digitally (digital FNOL, policy core, CKYC) when not uploaded, as in seeded claims.
+- Blocking conditional docs: FIR only for theft/bodily injury; theft originals/keys/RTO declaration; estimate for reimbursement.
+- A5.6 "only medium driver is FR-06" = score without FR-06 < 30. A5.7 also blocked by any fired fail-level rule (FR-17 alone is 25 pts).
+- FR-07 garage link counts only for non-network garages; FR-08 ignores the stolen flag on theft claims; replays exclude their original.
+- Generic fallback = code defaults per agent (they need this claim's photo/doc ids); recorded files only for the 5 scenarios.
+- fastag_mismatch replay also fires FR-11 (EXIF GPS in Mumbai) → score 100, still SIU.
+- json_store retries os.replace on Windows "Access denied". Test switch AMC_PIPELINE_AUTOSTART=0 (tests drive runs).
+- Known data issue: duplicate vehicle id v_0042 in vehicles.json (orchestrator matches id + registration).
+- Demo-mode agent call records (`model: "demo"`, no attempts) are stored so the inspector shows each rendered prompt, but are not
+  counted as Gemini calls/tokens.
+- Identity comparison table: every source column compares what the photos show with that source (the RC plate column used to compare
+  the RC with the policy).
+- Seeded auto-decided claims show "Decided … by the AI pipeline" (they showed "by a handler"); the right-rail AI summary uses the
+  investigation call's `ai_summary` when present, else the field-built summary.
 
 ## Stage 1 record (2026-10-03)
 **Done this session (2026-10-03):**
@@ -59,7 +78,7 @@ Phases and acceptance criteria are defined in `BUILD_SPEC.md` §19.
 | 2 — Backend core, data & auth | ⚠️ Partly stubbed — see Phase 1–2 audit |
 | 3 — Home & Claim Detail | ✅ Done (Home 2026-10-02; Stage 1 photos 10-03; Stage 2 persistence + Stage 3 Claim Detail 10-04) |
 | 4 — Dashboard | — |
-| 5 — Agents & pipeline | — |
+| 5 — Agents & pipeline | ✅ Done (2026-10-04) — see "Phase 5 — Agents & pipeline" |
 | 6 — File a Claim, Agent Theatre, Results | — |
 | 7 — WhatsApp Journey | — |
 | 8 — Support, settings, polish | — |
@@ -518,3 +537,49 @@ The Phase 2 and 3A sections above overstated what was delivered. Verified state 
 - The network graph only links claims through a shared garage (FR-07).
 - The customer's respond modal labels files as photo or document but does not map them to specific requested items.
 - The test suite takes about 90 s (mutating tests restore the 5 MB claims file after each test).
+
+## Phase 5 — Agents & pipeline (2026-10-04)
+
+### Delivered
+- `services/gemini.py`: google-genai in Vertex mode (key file from `.env`, project from the key, location `global`, `GEMINI_MODEL`),
+  structured output (`application/json` + Pydantic schema), schema retry once with the error, transport backoff 1/2/4 s, fallback,
+  per-call prompt/raw/tokens/latency records, images as WebP ≤ 1280 px, thinking level per agent, Dev Tools forced failures.
+- `server/prompts/*.md` = AGENT_PROMPTS.md Parts B–H verbatim (checked by script); `services/prompts.py` renderer (unknown
+  placeholders raise, customer text escaped) with compact pipe-table injection of only this claim's catalogue/labour/paint slice.
+- Agents (`app/agents/`): Intake, Document, Verification (Python), Damage & vehicle identity, Fraud (DMN + investigation call),
+  Adjudication (Python policy A5, same call), Communication; orchestrator runs Document/Verification/Damage in parallel; Python computes
+  money (`costing.py`), score (`dmn_engine.py` + FR-16–18), routing and identity (`services/vehicle_identity.py`, A4).
+- SSE (`/api/pipeline/{run_id}/events`) per §15.4, persisted in `pipeline_runs.json` (last 40), Last-Event-ID replay, customer-safe
+  event filter, runs interrupted by a restart are closed at startup; `PIPELINE_MIN_STEP_MS` presentation pacing.
+- `POST /api/claims/{id}/submit` starts the pipeline; results written per §11.6 (status, checks, documents, damage, financials, fraud,
+  decision, message, timeline, audit, notifications); new Vehicle identity cards on Damage + Verification tabs.
+- Demo mode (`LLM_MODE=demo`, Dev Tools switch, or no key file): recorded `demo_fallback/` outputs for the 5 scenarios, code defaults
+  otherwise; yellow "Demo mode" badge for admins.
+- Dev Tools: LLM mode switch, Test Vertex connection, forced agent failures, sample in-app claim (files + runs the pipeline, live
+  progress), scenario replays, run inspector (events, rendered prompts, raw responses, tokens, latency, re-run). The inspector now
+  follows a run that is still in progress (SSE replay + live) when Dev Tools is reopened.
+- Regenerate draft on the Communications tab via the Communication agent.
+
+### Acceptance check (verified 2026-10-04, Chrome, live Vertex `gemini-3.7-flash`)
+- [x] **Sample claim live** — run_000001: Intake 5.4 s, Document 8.5 s, Damage 17.8 s, Investigation 9.2 s, Communication; photos with
+      boxes, identity consistent (Baleno 95 %/92 %, same vehicle), ladder ₹33,240 net, score 0, A5.7 auto pre-auth, Hinglish message.
+      **Tokens: 20,343** (15,111 in / 3,421 out / 1,811 thinking, 5 calls), 38.8 s end to end at presentation pace.
+- [x] **Different vehicle fires FR-16/FR-17** — Baleno front + a white car as the close-up: Gemini read "Toyota Innova Crysta" (0.98),
+      same_vehicle=false (0.99) → FR-16 +30, FR-17 +25, FR-18 +5 (colour), FR-04 +15 (Aadi's test claims) = 75 → A5.3 SIU; customer
+      message only asks for clear photos of all sides + plate. **Tokens: 21,847**, 43.5 s (fast pace).
+- [x] **Demo mode** — fastag_mismatch replay (SIU, 100) in 7 s; a new non-scenario claim in demo mode completes with conservative
+      defaults (handler). Key-file-missing path covered by `test_missing_key_file_runs_in_demo_mode_without_calling_gemini`.
+- [x] **Reopen mid-run / forced failure** — with the browser away the run continued server-side; on return Dev Tools picked up the
+      running run and streamed it (server log: SSE connect, then refetch on completion). Forced Damage failure: 3 retries (1/2/4 s) →
+      fallback → identity "not assessed", routed to handler, run completed (no hang).
+- [x] **Tests** — `pytest -v` 144 pass (Gemini mocked: costing exact, FR-16–18, A5 branches, identity comparison, schema retry +
+      fallback, forced failure, SSE replay, customer-safe events, key missing); `npm run build` (no warnings) and `npm run contrast` pass.
+
+### Known follow-ups
+- The Agent Theatre (Phase 6) is the real consumer of the SSE stream; in Phase 5 only Dev Tools shows live runs.
+- The customer-filtered SSE stream is unit-tested only (no customer UI shows a run until Phase 6).
+- Demo mode for a NEW non-scenario claim gives conservative defaults (0 parts, handler review), not a showcase result.
+- New cards (Vehicle identity, investigator summary) checked in light mode at this display's width only; dark mode and
+  1366×768/1920×1080 to recheck in the Phase 9 polish pass.
+- Live latency is ~40 s per claim (Damage ~18 s); fine for presentation pace, worth watching in Phase 6.
+- Duplicate vehicle id v_0042 in vehicles.json is worked around, not fixed (fixing it needs a re-seed).

@@ -1,0 +1,42 @@
+{
+  "evidence_cards": [
+    {
+      "rule_id": "FR-04",
+      "expected": "No indicator",
+      "found": "IIB shows 2 own-damage claims on this vehicle with other insurers in the last 12 months.",
+      "source": "checks.iib",
+      "why": "Frequent claimant (IIB) — this may indicate the claim needs closer review.",
+      "confidence": 0.9
+    },
+    {
+      "rule_id": "FR-06",
+      "expected": "No indicator",
+      "found": "Garage quote ₹19,090 is 34.0% above the AI estimate of ₹14,245.",
+      "source": "financials.variance_pct",
+      "why": "Garage overquote — this indicates the claim needs closer review.",
+      "confidence": 0.9
+    },
+    {
+      "rule_id": "FR-14",
+      "expected": "No indicator",
+      "found": "Single-vehicle incident between 23:00 and 05:00 with no witness.",
+      "source": "incident.datetime",
+      "why": "Unwitnessed night single-vehicle accident — this may indicate the claim needs closer review.",
+      "confidence": 0.9
+    }
+  ],
+  "fraud_summary": "Score 35 (medium). Frequent claimant (IIB); Garage overquote; Unwitnessed night single-vehicle accident.",
+  "extra_observations": [],
+  "next_steps": [
+    "Share the line-by-line variance with the garage",
+    "Approve at the assessed amount if the garage agrees"
+  ],
+  "decision_reasons": [
+    "Damage is genuine and consistent",
+    "Garage quote 34% above AI estimate",
+    "Approve at AI-assessed amount"
+  ],
+  "conditions": [],
+  "customer_items": [],
+  "ai_summary": "Score 35 (medium). Frequent claimant (IIB); Garage overquote; Unwitnessed night single-vehicle accident. Damage is genuine and consistent"
+}

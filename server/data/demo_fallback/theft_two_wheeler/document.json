@@ -1,0 +1,280 @@
+{
+  "documents": [
+    {
+      "doc_id": "d_3",
+      "declared_type": "RC",
+      "actual_type": "RC",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": "MH 14 EF 7788",
+        "owner": "Imran Shaikh",
+        "vehicle_class": "MCWG (Motor cycle with gear)",
+        "make_model": "Honda Activa",
+        "fuel": "Petrol",
+        "reg_date": "2025-01-16",
+        "chassis5": "53779",
+        "engine5": "85884",
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "owner",
+          "level": "pass",
+          "msg": "Matches policyholder"
+        },
+        {
+          "field": "registration",
+          "level": "pass",
+          "msg": "Matches policy and Vahan record"
+        },
+        {
+          "field": "integrity",
+          "level": "pass",
+          "msg": "No signs of editing"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_4",
+      "declared_type": "DL",
+      "actual_type": "DL",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": "3183",
+        "holder": "Imran Shaikh",
+        "valid_to_nt": "2039-07-09",
+        "valid_to_tr": null,
+        "classes": [
+          "MCWG"
+        ],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Valid on incident date"
+        },
+        {
+          "field": "class",
+          "level": "pass",
+          "msg": "Class MCWG covers the vehicle"
+        },
+        {
+          "field": "holder",
+          "level": "pass",
+          "msg": "Holder matches the driver named in the claim"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_5",
+      "declared_type": "Policy",
+      "actual_type": "POLICY",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": "ABC/TW/2025/534763",
+        "insured": "Imran Shaikh",
+        "period_from": null,
+        "period_to": null,
+        "cover": "OD+TP",
+        "idv": 66000.0,
+        "add_ons": [
+          "Rsa"
+        ],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Active on the incident date"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_6",
+      "declared_type": "FIR",
+      "actual_type": "FIR",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": "PMP/1129/2026",
+        "station": "Pimpri Police Station",
+        "date": "2026-09-22",
+        "facts": "Parked my Activa outside Pimpri vegetable market at 7:30 PM; it was missing when I came back. FIR filed the next day.",
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "details",
+          "level": "pass",
+          "msg": "Date, place and vehicle match the claim"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_7",
+      "declared_type": "TaxReceipt",
+      "actual_type": "OTHER",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "registration",
+          "level": "pass",
+          "msg": "Matches RC"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    }
+  ],
+  "missing": [],
+  "injection_suspected": false
+}

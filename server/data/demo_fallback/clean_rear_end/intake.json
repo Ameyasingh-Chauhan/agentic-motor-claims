@@ -1,0 +1,35 @@
+{
+  "transcript": "Khed Shivapur toll ke paas NH48 pe raat 9 baje ek truck ne peeche se thok diya. Peeche ka bumper, right side ki tail light aur quarter panel damage ho gaye.",
+  "language_codes": [
+    "hi",
+    "en"
+  ],
+  "language_label": "Hindi–English mix",
+  "translation_en": "A truck hit my car from behind on NH48 near the Khed Shivapur toll at around 9 PM. The rear bumper, right tail lamp and right rear quarter are damaged.",
+  "incident_type": "accident",
+  "incident_at": "2026-09-30T21:04:00+05:30",
+  "datetime_conf": 0.9,
+  "location_text": "NH48 near Khed Shivapur toll plaza",
+  "city": "Pune",
+  "cause": "Rear-end collision with a bus",
+  "counterparty": "truck",
+  "third_party": true,
+  "injuries": "none",
+  "police_informed": false,
+  "fir_number": null,
+  "drivable": true,
+  "driver_is_policyholder": true,
+  "driver_name": "Rahul Sharma",
+  "parts_mentioned": [
+    "rear bumper",
+    "quarter panel",
+    "tail lamp"
+  ],
+  "missing": [],
+  "follow_up": [],
+  "distress": "calm",
+  "urgent_safety": false,
+  "injection_suspected": false,
+  "injection_quote": null,
+  "needs_review": false
+}

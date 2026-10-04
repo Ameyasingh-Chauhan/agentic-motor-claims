@@ -88,7 +88,7 @@ def test_rahul_files_a_claim_end_to_end(uploads_dir):
 
     submitted = r.post(f"/api/claims/{cid}/submit")
     assert submitted.status_code == 200, submitted.text
-    assert submitted.json()["claim"]["status"] == "SUBMITTED" and submitted.json()["run_id"] is None
+    assert submitted.json()["claim"]["status"] == "SUBMITTED" and submitted.json()["run_id"].startswith("run_")  # pipeline: test_pipeline.py
 
     # Listed for admin and owner, found by ID and by registration (with or without spaces).
     for client in (a, r):
@@ -114,7 +114,8 @@ def test_rahul_files_a_claim_end_to_end(uploads_dir):
         assert m["available"] and m["url"].endswith(".webp") and m["thumb"].endswith("-thumb.webp")
         assert m["blur_data"].startswith("data:image/webp;base64,") and max(m["width"], m["height"]) <= 1600
         assert m["exif"]["captured_at"].startswith("2026-10-03T18:4") and m["exif"]["device"] == "samsung Galaxy S23"
-        assert m["exif"]["lat"] == pytest.approx(19.1197, abs=1e-3) and m["exif"]["lng"] == pytest.approx(72.8468, abs=1e-3)
+        gps = SAMPLE["claim"]["incident"]
+        assert m["exif"]["lat"] == pytest.approx(gps["lat"], abs=1e-3) and m["exif"]["lng"] == pytest.approx(gps["lng"], abs=1e-3)
         assert m["quality"]["ok"] and m["quality"]["blur_score"] > 0 and 0 < m["quality"]["brightness"] < 1
     (doc,) = detail["documents"]
     assert doc["type"] == "RC" and doc["requirement"] == "rc" and doc["status"] == "received" and doc["thumb"]

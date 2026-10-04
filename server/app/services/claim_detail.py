@@ -191,6 +191,6 @@ async def detail(claim: dict, user: dict, claims: list[dict]) -> dict:
     out["document_checklist"] = document_checklist(claim, reg["document_requirements"])
     out["allowed_actions"] = claim_actions.allowed_actions(claim)
     out["undo_seconds"] = claim_actions.UNDO_SECONDS
-    draft = ai_draft(claim, now)
+    draft = None if any(m.get("draft") for m in claim.get("communications", [])) else ai_draft(claim, now)
     out["communications"] = claim.get("communications", []) + ([draft] if draft else [])
     return out

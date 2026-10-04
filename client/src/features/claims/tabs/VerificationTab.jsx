@@ -7,6 +7,7 @@ import { LazyEChart } from "../../../components/charts/LazyEChart";
 import { formatDate, formatDateTime, toIST } from "../../../lib/format";
 import { CHECK_LABELS, CHECK_ORDER } from "../claimModel";
 import { KV } from "../parts";
+import { identityRows, identityStatus } from "../VehicleIdentity";
 
 function FastagChart({ events, incident }) {
   const at = new Date(incident.datetime).getTime();
@@ -89,6 +90,7 @@ function fieldsFor(key, claim) {
       ["Valid to", formatDate(d.valid_to)], ["Status", d.status ?? "valid"]]; }
     case "iib": return [["Claims at other insurers", String((ctx.iib ?? []).length)], ...(ctx.iib ?? []).slice(0, 4).map((r, i) => [`#${i + 1}`, `${r.insurer} · ${r.type} · ${formatDate(r.date)}`])];
     case "police": return [["Records", String((ctx.police ?? []).length)], ...(ctx.police ?? []).map((r, i) => [`#${i + 1}`, `${r.type.replace("_", " ")} · ${r.number} · ${r.station}`])];
+    case "vehicle_identity": return identityRows(claim);
     case "kyc": { const k = ctx.customer?.kyc; return k && [["Aadhaar", k.aadhaar], ["PAN", k.pan], ["Verified", k.verified ? "Yes (CKYC)" : "No"]]; }
     default: return null;
   }
@@ -96,7 +98,11 @@ function fieldsFor(key, claim) {
 
 /** Verification tab (§10.4 C4): one collapsible card per check; failing/warning checks open by default. */
 export function VerificationTab({ claim }) {
-  const checks = claim.checks ?? {};
+  const raw = claim.checks ?? {};
+  // Seeded (historical) claims were never photo-checked for identity: show that explicitly rather than hiding the card.
+  const checks = Object.keys(raw).length && !raw.vehicle_identity
+    ? { ...raw, vehicle_identity: { level: "pending", summary: identityStatus(claim).summary, data: {}, latency_ms: 0 } }
+    : raw;
   const keys = CHECK_ORDER.filter((k) => checks[k]);
   if (!keys.length) return <EmptyState title="No verification checks yet" description="The Verification agent queries Vahan, FASTag, IIB, police records and KYC when the pipeline runs." />;
   const openByDefault = keys.filter((k) => checks[k].level !== "pass");
@@ -105,7 +111,8 @@ export function VerificationTab({ claim }) {
       {keys.map((k) => {
         const ch = checks[k];
         const rows = fieldsFor(k, claim);
-        const raw = k === "fastag" ? claim.context?.fastag_events : { ...(ch.data ?? {}), ...(rows ? Object.fromEntries(rows) : {}) };
+        const json = k === "fastag" ? claim.context?.fastag_events : k === "vehicle_identity" ? claim.vehicle_identity ?? {}
+          : { ...(ch.data ?? {}), ...(rows ? Object.fromEntries(rows) : {}) };
         return (
           <div key={k} id={`check-${k}`}>
             <AccordionItem value={k} title={<span className="inline-flex items-center gap-3"><span className="font-semibold text-text">{CHECK_LABELS[k]}</span>
@@ -113,9 +120,10 @@ export function VerificationTab({ claim }) {
               subtitle={ch.summary}>
               <div className="flex flex-col gap-4">
                 {k === "fastag" ? <Fastag claim={claim} /> : rows && <KV rows={rows} />}
-                <p className="text-caption text-subtle">Response time {ch.latency_ms} ms · mock {CHECK_LABELS[k]} service</p>
+                <p className="text-caption text-subtle">{k === "vehicle_identity" ? "Damage agent reading compared in Python (details on the Damage tab)"
+                  : `Response time ${ch.latency_ms} ms · mock ${CHECK_LABELS[k]} service`}</p>
                 <Collapsible title={<span className="text-sm font-medium text-text">Raw response (JSON)</span>} headerClassName="px-0" contentClassName="px-0">
-                  <pre className="mono max-h-64 overflow-auto rounded-md bg-bg-muted p-3 text-caption text-text">{JSON.stringify(raw ?? {}, null, 2)}</pre>
+                  <pre className="mono max-h-64 overflow-auto rounded-md bg-bg-muted p-3 text-caption text-text">{JSON.stringify(json ?? {}, null, 2)}</pre>
                 </Collapsible>
               </div>
             </AccordionItem>

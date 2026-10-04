@@ -7,7 +7,7 @@ import { Badge } from "../../../components/ui/Badge";
 import { EmptyState } from "../../../components/ui/EmptyState";
 import { cn } from "../../../lib/cn";
 import { formatDateTime } from "../../../lib/format";
-import { useSendMessage } from "../useClaim";
+import { useRegenerateDraft, useSendMessage } from "../useClaim";
 
 const CHANNEL = { whatsapp: { icon: MessageCircle, label: "WhatsApp" }, sms: { icon: MessageSquare, label: "SMS" }, email: { icon: Mail, label: "Email" },
   app: { icon: Smartphone, label: "App" } };
@@ -31,15 +31,18 @@ function Draft({ draft, claimId }) {
   const [text, setText] = useState(draft.text);
   useEffect(() => setText(draft.text), [draft.text]);
   const send = useSendMessage(claimId);
+  const regen = useRegenerateDraft(claimId);
+  const by = draft.generated_by === "live" ? "the Communication agent (Gemini)" : draft.generated_by === "demo" ? "the Communication agent (demo mode)"
+    : "the Communication agent's template";
   return (
     <Card compact className="border-blue-600" title={<span className="inline-flex items-center gap-2"><Sparkles size={16} className="text-tint-blue" aria-hidden="true" />Suggested reply</span>}
       actions={<Badge tone="blue">Draft</Badge>}>
       <label htmlFor="draft-text" className="sr-only">Edit the draft</label>
       <Textarea id="draft-text" rows={3} value={text} onChange={(e) => setText(e.target.value)} />
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-        <p className="text-caption text-muted">Written by the Communication agent's template · customer-safe · sent on {CHANNEL[draft.channel]?.label ?? "SMS"}</p>
+        <p className="text-caption text-muted">Written by {by} · customer-safe · sent on {CHANNEL[draft.channel]?.label ?? "SMS"}</p>
         <span className="flex gap-2">
-          <Button size="sm" variant="ghost" icon={RefreshCw} disabledReason="Regenerating needs the live Communication agent (Phase 5)">Regenerate draft</Button>
+          <Button size="sm" variant="ghost" icon={RefreshCw} loading={regen.isPending} onClick={() => regen.mutate()}>Regenerate draft</Button>
           <Button size="sm" icon={Send} loading={send.isPending} disabledReason={text.trim() ? undefined : "The message is empty"}
             onClick={() => send.mutate({ text: text.trim(), draft_id: draft.id })}>Send</Button>
         </span>

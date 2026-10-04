@@ -1,0 +1,33 @@
+{
+  "transcript": "എടപ്പള്ളി ലുലു മാളിന്റെ ബേസ്‌മെന്റ് പാർക്കിങ്ങിൽ തിരിക്കുമ്പോൾ ഒരു തൂണിൽ ഉരസി. ഇടതുവശത്തെ രണ്ട് ഡോറുകൾക്കും ഉരഞ്ഞ് ചളുക്കം പറ്റി.",
+  "language_codes": [
+    "ml"
+  ],
+  "language_label": "Malayalam",
+  "translation_en": "Scraped a pillar while turning in the basement parking at Lulu Mall, Edappally. Both left doors scraped and dented.",
+  "incident_type": "accident",
+  "incident_at": "2026-09-29T23:40:00+05:30",
+  "datetime_conf": 0.9,
+  "location_text": "basement parking, Lulu Mall, Edappally",
+  "city": "Kochi",
+  "cause": "Parking scrape",
+  "counterparty": "object",
+  "third_party": false,
+  "injuries": "none",
+  "police_informed": false,
+  "fir_number": null,
+  "drivable": true,
+  "driver_is_policyholder": true,
+  "driver_name": "Priya Nair",
+  "parts_mentioned": [
+    "front door shell",
+    "rear door shell"
+  ],
+  "missing": [],
+  "follow_up": [],
+  "distress": "calm",
+  "urgent_safety": false,
+  "injection_suspected": false,
+  "injection_quote": null,
+  "needs_review": false
+}

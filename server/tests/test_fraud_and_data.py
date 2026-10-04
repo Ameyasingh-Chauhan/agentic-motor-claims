@@ -15,6 +15,7 @@ RULE_CONTEXTS = {
     "FR-08": {"blacklisted_or_stolen": True}, "FR-09": {"owner_mismatch": True}, "FR-10": {"invalid_dl": True},
     "FR-11": {"photo_metadata_mismatch": True}, "FR-12": {"late_intimation": True}, "FR-13": {"commercial_use": True},
     "FR-14": {"unwitnessed_night": True}, "FR-15": {"tampering_confidence": .8},
+    "FR-16": {"identity_mismatch": True}, "FR-17": {"photos_different_vehicles": True}, "FR-18": {"identity_unclear_or_colour": True},
 }
 
 

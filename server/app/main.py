@@ -20,6 +20,9 @@ from .routers.filing import router as filing_router
 from .routers.claim_ops import router as claim_ops_router
 from .routers.stats import router as stats_router
 from .routers.notifications import router as notifications_router
+from .routers.pipeline import router as pipeline_router
+from .routers.dev import load_runtime_settings, router as dev_router
+from .services import gemini, pipeline_bus
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
@@ -27,6 +30,10 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     log_startup_state(get_settings())
+    await load_runtime_settings()
+    interrupted = await pipeline_bus.mark_interrupted_runs()
+    if interrupted:
+        logging.getLogger("amc.pipeline").warning("%d pipeline run(s) were interrupted by a restart", interrupted)
     yield
 
 
@@ -47,6 +54,8 @@ def create_app() -> FastAPI:
     app.include_router(claim_ops_router)
     app.include_router(stats_router)
     app.include_router(notifications_router)
+    app.include_router(pipeline_router)
+    app.include_router(dev_router)
 
     @app.get("/api/system/status")
     async def system_status() -> dict:
@@ -57,7 +66,7 @@ def create_app() -> FastAPI:
             "app_name": s.app_name,
             "insurer_name": s.insurer_name,
             "demo_mode": s.demo_mode,
-            "llm_mode": s.effective_llm_mode,
+            "llm_mode": gemini.effective_mode(),
             "credentials_present": s.credentials_present,
             "model": s.gemini_model,
         }

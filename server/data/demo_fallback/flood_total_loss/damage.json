@@ -1,0 +1,326 @@
+{
+  "photos": [
+    {
+      "photo_id": "m_1",
+      "make": null,
+      "model": null,
+      "body": null,
+      "colour": null,
+      "plate_text": null,
+      "plate_conf": 0.0,
+      "idcon": 0.0,
+      "same_vehicle": null,
+      "same_conf": 0.0,
+      "diff_reason": null,
+      "usable": true,
+      "issues": []
+    }
+  ],
+  "identity_summary": {
+    "make": null,
+    "model": null,
+    "body": null,
+    "colour": null,
+    "plate_text": null,
+    "confidence": 0.0
+  },
+  "items": [
+    {
+      "code": "MAR-SWI-FBMP",
+      "part": "Front bumper",
+      "zone": "front",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.88,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            600,
+            330,
+            760,
+            600
+          ],
+          "label": "Front bumper · submerged"
+        }
+      ]
+    },
+    {
+      "code": "MAR-SWI-RBMP",
+      "part": "Rear bumper",
+      "zone": "rear",
+      "damage_type": "crack",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.95,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-BATT",
+      "part": "Battery",
+      "zone": "front",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.92,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-RADI",
+      "part": "Radiator",
+      "zone": "front",
+      "damage_type": "scratch",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.94,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-CNDS",
+      "part": "AC condenser",
+      "zone": "front",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.92,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-HLMP",
+      "part": "Headlamp assembly – halogen",
+      "zone": "front",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.98,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            520,
+            480,
+            640,
+            560
+          ],
+          "label": "Headlamp assembly – halogen · water damage"
+        }
+      ]
+    },
+    {
+      "code": "MAR-SWI-HLMP",
+      "part": "Headlamp assembly – halogen",
+      "zone": "front",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.9,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-TLMP",
+      "part": "Tail lamp",
+      "zone": "rear",
+      "damage_type": "scratch",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.85,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-TLMP",
+      "part": "Tail lamp",
+      "zone": "rear",
+      "damage_type": "scratch",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.85,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-FDOR",
+      "part": "Front door shell",
+      "zone": "right",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.97,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-FDOR",
+      "part": "Front door shell",
+      "zone": "right",
+      "damage_type": "scratch",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.88,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-RDOR",
+      "part": "Rear door shell",
+      "zone": "left",
+      "damage_type": "dent",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.98,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-RDOR",
+      "part": "Rear door shell",
+      "zone": "left",
+      "damage_type": "dent",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.85,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-AIRB",
+      "part": "Airbag module",
+      "zone": "interior",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.95,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-AIRB",
+      "part": "Airbag module",
+      "zone": "interior",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.93,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-FNDR",
+      "part": "Front fender",
+      "zone": "left",
+      "damage_type": "dent",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.95,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-FNDR",
+      "part": "Front fender",
+      "zone": "left",
+      "damage_type": "water",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.92,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    },
+    {
+      "code": "MAR-SWI-TLGT",
+      "part": "Tailgate / boot lid",
+      "zone": "rear",
+      "damage_type": "scratch",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.91,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": []
+    }
+  ],
+  "uncatalogued": [],
+  "pre_existing": [],
+  "story": {
+    "consistent": true,
+    "why": "Impact direction and severity match the description.",
+    "confidence": 0.82
+  },
+  "coverage": {
+    "front": true,
+    "rear": false,
+    "left": false,
+    "right": false,
+    "closeup": false,
+    "odometer": false
+  },
+  "suggested_photos": [],
+  "overall_severity": "severe",
+  "wheel_alignment": false,
+  "total_loss_indicator": true,
+  "total_loss_evidence": "Water line above the dashboard",
+  "llm_estimate_inr": 163590.0,
+  "notes": "Recorded scenario output (demo mode).",
+  "injection_suspected": false
+}

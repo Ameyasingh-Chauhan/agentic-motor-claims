@@ -83,9 +83,9 @@ function previewStatus(c, action) {
 
 export const CHECK_LABELS = {
   policy: "Policy core", vahan: "Vahan RC", dl: "Driving licence", fastag: "FASTag", iib: "IIB claim history", police: "Police / NCRB",
-  kyc: "KYC",
+  kyc: "KYC", vehicle_identity: "Vehicle identity",
 };
-export const CHECK_ORDER = ["policy", "vahan", "dl", "fastag", "iib", "police", "kyc"];
+export const CHECK_ORDER = ["policy", "vahan", "dl", "fastag", "iib", "police", "kyc", "vehicle_identity"];
 
 export const DOC_STATUS = {
   verified: { level: "pass", label: "Received & verified" },

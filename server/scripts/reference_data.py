@@ -225,6 +225,9 @@ FRAUD_RULES = [
     ("FR-13", "Commercial use of private vehicle", "Evidence of commercial use of a privately registered vehicle.", 15, "warn", "Please confirm how the vehicle is normally used."),
     ("FR-14", "Unwitnessed night single-vehicle accident", "Between 23:00 and 05:00, no third party and no witness.", 5, "warn", "If anyone saw the incident, please share their contact details."),
     ("FR-15", "Document tampering signs", "The document check reports tampering indicators with confidence ≥ 0.7.", 25, "fail", "Please upload a clearer copy of your documents."),
+    ("FR-16", "Vehicle identity mismatch", "Make/model or number plate in the photos does not match the policy, Vahan or RC record (confidence ≥ 0.75).", 30, "fail", "Please share clearer photos showing the whole vehicle and number plate."),
+    ("FR-17", "Different vehicles across photos", "At least one photo appears to show a different vehicle from the others (confidence ≥ 0.75).", 25, "fail", "Please share clearer photos showing the whole vehicle and number plate."),
+    ("FR-18", "Vehicle detail unclear / colour mismatch", "Colour differs from the registered colour, or make/model and plate are unclear on all photos.", 5, "warn", "Please share clearer photos showing the whole vehicle and number plate."),
 ]
 
 

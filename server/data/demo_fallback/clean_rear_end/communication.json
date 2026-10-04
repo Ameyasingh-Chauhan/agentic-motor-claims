@@ -1,0 +1,12 @@
+{
+  "message_local": "Namaste Rahul ji 🙏 Claim {claim_id} ke liye cashless pre-approval garage ko bhej diya gaya hai. Repair shuru ho sakti hai. Repair ke baad final invoice share karein.",
+  "message_en": "Hello Rahul, cashless pre-approval for claim {claim_id} has been sent to the garage. Repairs can begin. Please share the final invoice after the repair.",
+  "lang_code": "hi-Latn",
+  "quick_replies": [
+    "Garage details",
+    "Talk to us"
+  ],
+  "email_subject": null,
+  "email_local": null,
+  "email_en": null
+}

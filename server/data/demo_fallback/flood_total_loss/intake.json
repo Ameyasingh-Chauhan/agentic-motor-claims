@@ -1,0 +1,35 @@
+{
+  "transcript": "रात्रभर पडलेल्या पावसामुळे वंदना अंडरपासजवळ पाणी साचलं. माझी गाडी तिथेच पार्क होती आणि पाणी डॅशबोर्डपर्यंत पोहोचलं.",
+  "language_codes": [
+    "mr"
+  ],
+  "language_label": "Marathi",
+  "translation_en": "The car was parked near the Vandana underpass when overnight rain flooded the area; water reached the dashboard.",
+  "incident_type": "flood",
+  "incident_at": "2026-09-28T04:15:00+05:30",
+  "datetime_conf": 0.9,
+  "location_text": "Vandana Cinema underpass, Thane West",
+  "city": "Thane",
+  "cause": "Flood / water ingress",
+  "counterparty": "unknown",
+  "third_party": false,
+  "injuries": "none",
+  "police_informed": false,
+  "fir_number": null,
+  "drivable": false,
+  "driver_is_policyholder": true,
+  "driver_name": "Kavita Joshi",
+  "parts_mentioned": [
+    "front bumper",
+    "rear bumper",
+    "battery",
+    "radiator"
+  ],
+  "missing": [],
+  "follow_up": [],
+  "distress": "upset",
+  "urgent_safety": false,
+  "injection_suspected": false,
+  "injection_quote": null,
+  "needs_review": false
+}

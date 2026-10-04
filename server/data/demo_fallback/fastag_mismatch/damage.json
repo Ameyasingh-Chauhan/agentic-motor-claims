@@ -1,0 +1,141 @@
+{
+  "photos": [
+    {
+      "photo_id": "m_1",
+      "make": null,
+      "model": null,
+      "body": null,
+      "colour": null,
+      "plate_text": null,
+      "plate_conf": 0.0,
+      "idcon": 0.0,
+      "same_vehicle": null,
+      "same_conf": 0.0,
+      "diff_reason": null,
+      "usable": true,
+      "issues": []
+    }
+  ],
+  "identity_summary": {
+    "make": null,
+    "model": null,
+    "body": null,
+    "colour": null,
+    "plate_text": null,
+    "confidence": 0.0
+  },
+  "items": [
+    {
+      "code": "HYU-CRE-FBMP",
+      "part": "Front bumper",
+      "zone": "front",
+      "damage_type": "dent",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.91,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            560,
+            370,
+            790,
+            720
+          ],
+          "label": "Front bumper · broken"
+        }
+      ]
+    },
+    {
+      "code": "HYU-CRE-HLED",
+      "part": "Headlamp assembly – LED",
+      "zone": "front",
+      "damage_type": "dent",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": true,
+      "confidence": 0.86,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            280,
+            200,
+            400,
+            310
+          ],
+          "label": "Headlamp assembly – LED · broken"
+        }
+      ]
+    },
+    {
+      "code": "HYU-CRE-BMRF",
+      "part": "Bumper reinforcement / bracket",
+      "zone": "front",
+      "damage_type": "dent",
+      "severity": "severe",
+      "operation": "replace",
+      "fresh": false,
+      "confidence": 0.87,
+      "photo_ids": [
+        "m_1"
+      ],
+      "boxes": [
+        {
+          "photo_id": "m_1",
+          "box_2d": [
+            540,
+            540,
+            840,
+            720
+          ],
+          "label": "Bumper reinforcement / bracket · oxidised fracture"
+        }
+      ]
+    }
+  ],
+  "uncatalogued": [],
+  "pre_existing": [
+    {
+      "code": "HYU-CRE-BMRF",
+      "part": "Bumper inner bracket",
+      "photo_id": "m_1",
+      "evidence": "Orange-brown oxidation on fracture edges",
+      "confidence": 0.89,
+      "box": [
+        540,
+        540,
+        840,
+        720
+      ]
+    }
+  ],
+  "story": {
+    "consistent": false,
+    "why": "Damage is concentrated on the front corner with no divider scrape marks along the side, and the bracket fracture is corroded — not consistent with a fresh divider impact.",
+    "confidence": 0.71
+  },
+  "coverage": {
+    "front": true,
+    "rear": false,
+    "left": false,
+    "right": false,
+    "closeup": false,
+    "odometer": false
+  },
+  "suggested_photos": [],
+  "overall_severity": "severe",
+  "wheel_alignment": false,
+  "total_loss_indicator": false,
+  "total_loss_evidence": null,
+  "llm_estimate_inr": 33670.0,
+  "notes": "Recorded scenario output (demo mode).",
+  "injection_suspected": false
+}

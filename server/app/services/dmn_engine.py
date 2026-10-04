@@ -32,6 +32,10 @@ CONDITIONS: dict[str, Callable[[dict], bool]] = {
     "FR-13": lambda c: bool(c.get("commercial_use")),
     "FR-14": lambda c: bool(c.get("unwitnessed_night")),
     "FR-15": lambda c: (c.get("tampering_confidence") or 0) >= 0.70,
+    # AGENT_PROMPTS.md A6 — from the deterministic vehicle-identity comparison (services/vehicle_identity.py, A4).
+    "FR-16": lambda c: bool(c.get("identity_mismatch")),
+    "FR-17": lambda c: bool(c.get("photos_different_vehicles")),
+    "FR-18": lambda c: bool(c.get("identity_unclear_or_colour")),
 }
 
 EVIDENCE_REFS = {
@@ -39,7 +43,8 @@ EVIDENCE_REFS = {
     "FR-04": ["checks.iib"], "FR-05": ["checks.policy"], "FR-06": ["financials.variance_pct"],
     "FR-07": ["fraud.network_links"], "FR-08": ["checks.vahan"], "FR-09": ["checks.vahan"], "FR-10": ["checks.dl"],
     "FR-11": ["media.exif"], "FR-12": ["incident.reported_at"], "FR-13": ["checks.fastag"],
-    "FR-14": ["incident.datetime"], "FR-15": ["documents"],
+    "FR-14": ["incident.datetime"], "FR-15": ["documents"], "FR-16": ["vehicle_identity"], "FR-17": ["vehicle_identity.cross_photo"],
+    "FR-18": ["vehicle_identity"],
 }
 
 

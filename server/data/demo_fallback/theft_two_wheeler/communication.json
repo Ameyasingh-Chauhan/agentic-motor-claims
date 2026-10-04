@@ -1,0 +1,12 @@
+{
+  "message_local": "नमस्ते इमरान जी, क्लेम {claim_id} आगे बढ़ाने के लिए हमें चाहिए: गाड़ी की सभी ओरिजिनल चाबियाँ और RTO चोरी घोषणा। आप इन्हें ऐप में अपलोड कर सकते हैं।",
+  "message_en": "Hello Imran, to move claim {claim_id} forward we need: all original keys and the RTO theft declaration. You can upload them in the app.",
+  "lang_code": "hi",
+  "quick_replies": [
+    "Upload now",
+    "Call me"
+  ],
+  "email_subject": null,
+  "email_local": null,
+  "email_en": null
+}

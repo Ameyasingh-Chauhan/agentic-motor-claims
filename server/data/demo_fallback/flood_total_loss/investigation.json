@@ -1,0 +1,14 @@
+{
+  "evidence_cards": [],
+  "fraud_summary": "Score 0 (low). No risk indicators fired.",
+  "extra_observations": [],
+  "next_steps": [],
+  "decision_reasons": [
+    "Assessed loss exceeds 75% of IDV",
+    "Total loss path — salvage computed",
+    "Handler review required"
+  ],
+  "conditions": [],
+  "customer_items": [],
+  "ai_summary": "Score 0 (low). No risk indicators fired. Assessed loss exceeds 75% of IDV"
+}

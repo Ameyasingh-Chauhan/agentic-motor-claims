@@ -1,0 +1,24 @@
+{
+  "evidence_cards": [
+    {
+      "rule_id": "FR-12",
+      "expected": "No indicator",
+      "found": "Claim intimated more than 7 days after the incident.",
+      "source": "incident.reported_at",
+      "why": "Late intimation — this may indicate the claim needs closer review.",
+      "confidence": 0.9
+    }
+  ],
+  "fraud_summary": "Score 10 (low). Late intimation.",
+  "extra_observations": [],
+  "next_steps": [],
+  "decision_reasons": [
+    "Late intimation"
+  ],
+  "conditions": [],
+  "customer_items": [
+    "Original keys (all sets)",
+    "RTO theft declaration"
+  ],
+  "ai_summary": "Score 10 (low). Late intimation. Late intimation"
+}

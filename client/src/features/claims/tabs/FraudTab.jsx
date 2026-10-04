@@ -8,7 +8,6 @@ import { SegmentedControl } from "../../../components/ui/SegmentedControl";
 import { Collapsible } from "../../../components/ui/Collapsible";
 import { EmptyState } from "../../../components/ui/EmptyState";
 import { LazyEChart } from "../../../components/charts/LazyEChart";
-import { riskBand } from "../../../lib/format";
 
 const REF_TARGET = {
   "checks.fastag": ["verification", "check-fastag", "FASTag check"], "checks.vahan": ["verification", "check-vahan", "Vahan check"],
@@ -16,6 +15,7 @@ const REF_TARGET = {
   "checks.police": ["verification", "check-police", "Police records"], "checks.policy": ["verification", "check-policy", "Policy check"],
   "damage.pre_existing": ["damage", null, "Pre-existing damage photo"], "damage.narrative_consistency": ["damage", "narrative", "Narrative check"],
   "financials.variance": ["financials", "variance", "Garage quote variance"], "media.exif": ["damage", null, "Photo metadata"],
+  "vehicle_identity": ["damage", null, "Vehicle identity"], "vehicle_identity.cross_photo": ["damage", null, "Vehicle identity"],
 };
 
 function Waterfall({ fired, score }) {
@@ -94,19 +94,15 @@ function Network({ net, claim }) {
 export function FraudTab({ claim, onEvidence }) {
   const fraud = claim.fraud;
   const [view, setView] = useState("chart");
-  if (!fraud) return <EmptyState title="Risk scoring pending" description="The Fraud agent scores the claim against the 15 DMN rules when the pipeline runs." />;
+  if (!fraud) return <EmptyState title="Risk scoring pending" description="The Fraud agent scores the claim against the DMN rules when the pipeline runs." />;
   const fired = [...fraud.fired].sort((a, b) => b.points - a.points);
   const names = claim.context?.rule_names ?? {};
-  const band = riskBand(fraud.score);
   return (
     <div className="flex flex-col gap-6">
       <div className="grid gap-6 lg:grid-cols-[auto_minmax(0,1fr)]">
         <Card compact className="flex flex-col items-center justify-center">
           <RiskGauge score={fraud.score} />
-          <div className="mt-2 flex flex-col items-center gap-1">
-            <StatusFlag level={band.level} label={band.label} />
-            {fraud.hard_stop && <StatusFlag level="fail" label="Hard stop — SIU mandatory" />}
-          </div>
+          {fraud.hard_stop && <StatusFlag className="mt-2" level="fail" label="Hard stop — SIU mandatory" />}
         </Card>
         <Card compact title="Why this score" subtitle="Each fired rule's points stack to the total"
           actions={fired.length ? <SegmentedControl size="sm" label="Score view" value={view} onChange={setView} options={[{ value: "chart", label: "Chart" }, { value: "table", label: "Table" }]} /> : null}>
@@ -114,6 +110,24 @@ export function FraudTab({ claim, onEvidence }) {
             : <p className="inline-flex items-center gap-2 text-sm text-success"><CircleCheck size={16} aria-hidden="true" />No rule fired — score {fraud.score}.</p>}
         </Card>
       </div>
+
+      {claim.ai_sources && fraud.narrative && (
+        <Card compact title="Investigator summary" subtitle="Written by the Fraud agent — it explains the score; it cannot change it">
+          <p className="text-sm text-text">{fraud.narrative}</p>
+          {fraud.next_steps?.length > 0 && (
+            <>
+              <h3 className="mt-3 text-sm font-semibold text-text">Suggested next steps</h3>
+              <ol className="mt-1 list-decimal pl-5 text-sm text-text">{fraud.next_steps.map((s) => <li key={s}>{s}</li>)}</ol>
+            </>
+          )}
+          {fraud.extra_observations?.length > 0 && (
+            <>
+              <h3 className="mt-3 text-sm font-semibold text-text">Other observations (no points)</h3>
+              <ul className="mt-1 list-disc pl-5 text-sm text-text">{fraud.extra_observations.map((o) => <li key={o.text}>{o.text} <span className="text-caption text-muted">({o.evidence} · {Math.round(o.confidence * 100)}%)</span></li>)}</ul>
+            </>
+          )}
+        </Card>
+      )}
 
       {fired.length > 0 && (
         <div className="grid gap-4 md:grid-cols-2">
@@ -125,6 +139,7 @@ export function FraudTab({ claim, onEvidence }) {
               </div>
               <StatusFlag size="sm" level={r.level} label={r.level === "fail" ? "Critical" : "Warning"} className="self-start" />
               <p className="text-sm text-text">{r.evidence}</p>
+              {r.why && <p className="text-sm text-muted"><span className="font-medium text-text">Why it matters:</span> {r.why}</p>}
               <p className="text-caption text-muted">Confidence {Math.round((r.confidence ?? 0.9) * 100)}%</p>
               <div className="mt-auto flex flex-wrap gap-3">
                 {(r.evidence_refs ?? []).map((ref) => {

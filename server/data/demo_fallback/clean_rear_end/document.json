@@ -1,0 +1,231 @@
+{
+  "documents": [
+    {
+      "doc_id": "d_3",
+      "declared_type": "RC",
+      "actual_type": "RC",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": "MH 12 AB 1234",
+        "owner": "Rahul Sharma",
+        "vehicle_class": "LMV (Motor car)",
+        "make_model": "Hyundai Creta",
+        "fuel": "Petrol",
+        "reg_date": "2024-05-27",
+        "chassis5": "63520",
+        "engine5": "14916",
+        "financier": "Axis Bank",
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "owner",
+          "level": "pass",
+          "msg": "Matches policyholder"
+        },
+        {
+          "field": "registration",
+          "level": "pass",
+          "msg": "Matches policy and Vahan record"
+        },
+        {
+          "field": "integrity",
+          "level": "pass",
+          "msg": "No signs of editing"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_4",
+      "declared_type": "DL",
+      "actual_type": "DL",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": "1154",
+        "holder": "Rahul Sharma",
+        "valid_to_nt": "2041-12-19",
+        "valid_to_tr": null,
+        "classes": [
+          "LMV",
+          "MCWG"
+        ],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Valid on incident date"
+        },
+        {
+          "field": "class",
+          "level": "pass",
+          "msg": "Class LMV, MCWG covers the vehicle"
+        },
+        {
+          "field": "holder",
+          "level": "pass",
+          "msg": "Holder matches the driver named in the claim"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_5",
+      "declared_type": "Policy",
+      "actual_type": "POLICY",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": "ABC/PC/2026/188297",
+        "insured": "Rahul Sharma",
+        "period_from": null,
+        "period_to": null,
+        "cover": "OD+TP",
+        "idv": 994000.0,
+        "add_ons": [
+          "Rsa"
+        ],
+        "fir_no": null,
+        "station": null,
+        "date": null,
+        "facts": null,
+        "garage": null,
+        "lines": [],
+        "total": null
+      },
+      "checks": [
+        {
+          "field": "validity",
+          "level": "pass",
+          "msg": "Active on the incident date"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    },
+    {
+      "doc_id": "d_6",
+      "declared_type": "Estimate",
+      "actual_type": "ESTIMATE",
+      "type_mismatch": false,
+      "legibility": "clear",
+      "extracted": {
+        "registration": null,
+        "owner": null,
+        "vehicle_class": null,
+        "make_model": null,
+        "fuel": null,
+        "reg_date": null,
+        "chassis5": null,
+        "engine5": null,
+        "financier": null,
+        "valid_to": null,
+        "number_last4": null,
+        "holder": null,
+        "valid_to_nt": null,
+        "valid_to_tr": null,
+        "classes": [],
+        "policy_no": null,
+        "insured": null,
+        "period_from": null,
+        "period_to": null,
+        "cover": null,
+        "idv": null,
+        "add_ons": [],
+        "fir_no": null,
+        "station": null,
+        "date": "2026-10-01",
+        "facts": null,
+        "garage": "Dani Kia Service, Baner, Pune",
+        "lines": [],
+        "total": 30410.0
+      },
+      "checks": [
+        {
+          "field": "total",
+          "level": "warn",
+          "msg": "Quote is 18.0% vs the AI estimate"
+        }
+      ],
+      "tampering": [],
+      "tampering_suspected": false,
+      "watermark_noted": true,
+      "confidence": 0.93,
+      "needs_review": false
+    }
+  ],
+  "missing": [],
+  "injection_suspected": false
+}

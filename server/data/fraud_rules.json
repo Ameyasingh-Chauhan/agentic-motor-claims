@@ -136,5 +136,32 @@
     "level": "fail",
     "customer_safe_reason": "Please upload a clearer copy of your documents.",
     "enabled": true
+  },
+  {
+    "id": "FR-16",
+    "name": "Vehicle identity mismatch",
+    "description": "Make/model or number plate in the photos does not match the policy, Vahan or RC record (confidence ≥ 0.75).",
+    "points": 30,
+    "level": "fail",
+    "customer_safe_reason": "Please share clearer photos showing the whole vehicle and number plate.",
+    "enabled": true
+  },
+  {
+    "id": "FR-17",
+    "name": "Different vehicles across photos",
+    "description": "At least one photo appears to show a different vehicle from the others (confidence ≥ 0.75).",
+    "points": 25,
+    "level": "fail",
+    "customer_safe_reason": "Please share clearer photos showing the whole vehicle and number plate.",
+    "enabled": true
+  },
+  {
+    "id": "FR-18",
+    "name": "Vehicle detail unclear / colour mismatch",
+    "description": "Colour differs from the registered colour, or make/model and plate are unclear on all photos.",
+    "points": 5,
+    "level": "warn",
+    "customer_safe_reason": "Please share clearer photos showing the whole vehicle and number plate.",
+    "enabled": true
   }
 ]

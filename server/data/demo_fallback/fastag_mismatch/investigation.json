@@ -1,0 +1,57 @@
+{
+  "evidence_cards": [
+    {
+      "rule_id": "FR-01",
+      "expected": "No indicator",
+      "found": "FASTag: vehicle in Andheri mall parking 01:30–03:00; no expressway toll in the 24 hours around the incident.",
+      "source": "checks.fastag",
+      "why": "Location contradiction (FASTag/telematics) — this indicates the claim needs closer review.",
+      "confidence": 0.9
+    },
+    {
+      "rule_id": "FR-02",
+      "expected": "No indicator",
+      "found": "Orange-brown oxidation on the bumper bracket fracture edges — damage predates the incident.",
+      "source": "damage.pre_existing",
+      "why": "Pre-existing damage — this indicates the claim needs closer review.",
+      "confidence": 0.9
+    },
+    {
+      "rule_id": "FR-03",
+      "expected": "No indicator",
+      "found": "Front-corner impact with no divider scrape marks along the side; inconsistent with the described divider impact.",
+      "source": "damage.narrative_consistency",
+      "why": "Narrative–damage inconsistency — this indicates the claim needs closer review.",
+      "confidence": 0.9
+    },
+    {
+      "rule_id": "FR-14",
+      "expected": "No indicator",
+      "found": "Single-vehicle incident between 23:00 and 05:00 with no witness.",
+      "source": "incident.datetime",
+      "why": "Unwitnessed night single-vehicle accident — this may indicate the claim needs closer review.",
+      "confidence": 0.9
+    }
+  ],
+  "fraud_summary": "Score 90 (high). Location contradiction (FASTag/telematics); Pre-existing damage; Narrative–damage inconsistency.",
+  "extra_observations": [],
+  "next_steps": [
+    "Request Andheri mall parking receipt for 01:30–03:00",
+    "Physical survey of bumper bracket corrosion",
+    "Check expressway CCTV near Khalapur for 01:30–02:30",
+    "Interview the claimant on the route taken"
+  ],
+  "decision_reasons": [
+    "Location contradiction (FASTag/telematics)",
+    "Pre-existing damage",
+    "Narrative–damage inconsistency",
+    "Unwitnessed night single-vehicle accident"
+  ],
+  "conditions": [],
+  "customer_items": [
+    "Photos of the full vehicle showing the number plate",
+    "Location details for the night of the incident (any receipts)",
+    "Contact details of anyone who helped at the spot"
+  ],
+  "ai_summary": "Score 90 (high). Location contradiction (FASTag/telematics); Pre-existing damage; Narrative–damage inconsistency. Location contradiction (FASTag/telematics)"
+}

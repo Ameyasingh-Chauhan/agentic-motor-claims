@@ -1,0 +1,51 @@
+{
+  "photos": [
+    {
+      "photo_id": "m_1",
+      "make": null,
+      "model": null,
+      "body": null,
+      "colour": null,
+      "plate_text": null,
+      "plate_conf": 0.0,
+      "idcon": 0.0,
+      "same_vehicle": null,
+      "same_conf": 0.0,
+      "diff_reason": null,
+      "usable": true,
+      "issues": []
+    }
+  ],
+  "identity_summary": {
+    "make": null,
+    "model": null,
+    "body": null,
+    "colour": null,
+    "plate_text": null,
+    "confidence": 0.0
+  },
+  "items": [],
+  "uncatalogued": [],
+  "pre_existing": [],
+  "story": {
+    "consistent": true,
+    "why": "Not applicable for theft.",
+    "confidence": 0.9
+  },
+  "coverage": {
+    "front": false,
+    "rear": false,
+    "left": false,
+    "right": false,
+    "closeup": false,
+    "odometer": false
+  },
+  "suggested_photos": [],
+  "overall_severity": "severe",
+  "wheel_alignment": false,
+  "total_loss_indicator": false,
+  "total_loss_evidence": null,
+  "llm_estimate_inr": 0.0,
+  "notes": "Recorded scenario output (demo mode).",
+  "injection_suspected": false
+}
