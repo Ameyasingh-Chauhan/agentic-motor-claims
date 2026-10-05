@@ -147,7 +147,10 @@ export function buildFlags(claim) {
   if (narrative && narrative.consistent === false && !(claim.fraud?.fired ?? []).some((f) => f.rule_id === "FR-03")) {
     flags.push({ level: "warn", label: "Narrative inconsistent with damage", tab: "damage", target: "narrative", group: "Damage" });
   }
-  const rank = { fail: 0, warn: 1 };
+  if (claim.policy_source === "uploaded_document") {
+    flags.push({ level: "info", label: "Policy verified from uploaded document", tab: "overview", target: "policy-card", group: "Policy" });
+  }
+  const rank = { fail: 0, warn: 1, info: 2 };
   flags.sort((a, b) => rank[a.level] - rank[b.level]);
   return { flags, passed };
 }

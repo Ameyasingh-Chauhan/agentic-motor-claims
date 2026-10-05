@@ -57,19 +57,21 @@ function IncidentCard({ claim }) {
 }
 
 function PolicyCard({ claim, policy }) {
-  if (!policy) return <Card compact title={title(ShieldCheck, "Policy")}><p className="text-sm text-muted">Policy record not found.</p></Card>;
+  if (!policy) return <Card compact id="policy-card" title={title(ShieldCheck, "Policy")}><p className="text-sm text-muted">Policy record not found.</p></Card>;
   const at = claim.incident.datetime.slice(0, 10);
   const valid = policy.start <= at && at <= policy.end && policy.status !== "lapsed";
   const addOns = Object.entries(policy.add_ons ?? {}).filter(([, v]) => v).map(([k]) => ADD_ONS[k] ?? k);
+  const uploaded = claim.policy_source === "uploaded_document";
   return (
-    <Card compact title={title(ShieldCheck, "Policy")} actions={<StatusFlag size="sm" level={valid ? "pass" : "fail"} label={valid ? "Valid on incident date" : "Not valid on incident date"} />}>
+    <Card compact id="policy-card" title={title(ShieldCheck, "Policy")} actions={<StatusFlag size="sm" level={valid ? "pass" : "fail"} label={valid ? "Valid on incident date" : "Not valid on incident date"} />}>
       <KV rows={[
         ["Policy no.", <span key="p" className="mono">{policy.policy_no}</span>], ["Product", policy.product], ["Cover", policy.cover],
         ["Validity", `${formatDate(policy.start)} – ${formatDate(policy.end)}`], ["IDV", formatINR(policy.idv)], ["NCB", `${policy.ncb_pct}%`],
         policy.voluntary_deductible != null ? ["Voluntary deductible", formatINR(policy.voluntary_deductible)] : null,
       ]} />
-      <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-3 flex flex-wrap items-center gap-2">
         {addOns.length ? addOns.map((a) => <Badge key={a} tone="outline">{a}</Badge>) : <span className="text-caption text-subtle">No add-ons</span>}
+        {uploaded && <Badge tone="blue">Verified from uploaded document</Badge>}
       </div>
     </Card>
   );

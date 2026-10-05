@@ -1,8 +1,10 @@
 import { memo, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
+import { useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
 import { toast } from "sonner";
-import { CircleCheck, Copy, Ellipsis, ExternalLink, FileText } from "lucide-react";
+import { CircleCheck, Copy, Ellipsis, ExternalLink, FileText, Sparkles } from "lucide-react";
+import { api } from "../../lib/api";
 import { Avatar } from "../../components/ui/Avatar";
 import { IconButton } from "../../components/ui/Button";
 import { DropdownMenu } from "../../components/ui/Popover";
@@ -19,21 +21,33 @@ const TD = "overflow-hidden border-b border-border px-3 py-2 align-middle";
 const TH = "bg-surface px-3 py-3 text-left text-caption font-semibold text-muted border-b border-border whitespace-nowrap";
 // Each query (filter/sort/page) returns fresh objects, so compare what a row actually shows.
 export const sameClaim = (a, b) => a.c.id === b.c.id && a.c.updated_at === b.c.updated_at && a.c.status === b.c.status
-  && a.customer === b.customer && a.wide === b.wide && a.animate === b.animate && a.onIntent === b.onIntent;
+  && a.c.ai_pending === b.c.ai_pending && a.customer === b.customer && a.wide === b.wide && a.animate === b.animate && a.onIntent === b.onIntent;
 const ROW_MOTION = { layout: "position", initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, transition: { duration: 0.2 } };
 
-function RowMenu({ id }) {
+/** Admin-only: kick off the AI pipeline on this claim from the list, then jump to the Agent Theatre (Feature B). */
+export async function runAIProcessing(id, { navigate, qc }) {
+  try {
+    const out = await api(`/claims/${id}/process`, { method: "POST", body: {} });
+    qc.invalidateQueries({ queryKey: ["claims"] });
+    qc.invalidateQueries({ queryKey: ["stats"] });
+    navigate(`/processing/${id}`, { state: { runId: out.run_id } });
+  } catch (e) {
+    toast.error(e.body?.detail?.message || e.message || "Could not start AI processing");
+  }
+}
+
+function RowMenu({ id, aiPending, customer }) {
   const navigate = useNavigate();
-  return (
-    <DropdownMenu
-      trigger={<IconButton icon={Ellipsis} label={`Actions for ${id}`} size="sm" tooltip={false} />}
-      items={[
-        { label: "Open", icon: FileText, onSelect: () => navigate(`/claims/${id}`) },
-        { label: "Copy claim ID", icon: Copy, onSelect: () => navigator.clipboard?.writeText(id).then(() => toast.success(`Copied ${id}`)).catch(() => toast.error("Couldn't copy")) },
-        { label: "Open in new tab", icon: ExternalLink, onSelect: () => window.open(`/claims/${id}`, "_blank", "noopener") },
-      ]}
-    />
-  );
+  const qc = useQueryClient();
+  const items = [
+    { label: "Open", icon: FileText, onSelect: () => navigate(`/claims/${id}`) },
+    { label: "Copy claim ID", icon: Copy, onSelect: () => navigator.clipboard?.writeText(id).then(() => toast.success(`Copied ${id}`)).catch(() => toast.error("Couldn't copy")) },
+    { label: "Open in new tab", icon: ExternalLink, onSelect: () => window.open(`/claims/${id}`, "_blank", "noopener") },
+  ];
+  if (!customer && aiPending) {
+    items.push({ type: "separator" }, { label: "Run AI processing", icon: Sparkles, onSelect: () => runAIProcessing(id, { navigate, qc }) });
+  }
+  return <DropdownMenu trigger={<IconButton icon={Ellipsis} label={`Actions for ${id}`} size="sm" tooltip={false} />} items={items} />;
 }
 
 function onRowKeyDown(e, open) {
@@ -123,7 +137,7 @@ const ClaimRow = memo(function ClaimRow({ c, customer, wide, animate, onIntent }
         </td>
       )}
       <td className={cn(TD, "overflow-visible pr-6 text-right")} onClick={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}>
-        <RowMenu id={c.id} />
+        <RowMenu id={c.id} aiPending={c.ai_pending} customer={customer} />
       </td>
     </Row>
   );

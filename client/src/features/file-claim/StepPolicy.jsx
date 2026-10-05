@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "motion/react";
-import { CalendarClock, CarFront, Search, ShieldCheck, ShieldX, UserRound } from "lucide-react";
-import { api, ApiError } from "../../lib/api";
+import { CalendarClock, CarFront, CircleAlert, FileUp, Loader2, Search, ShieldCheck, ShieldX, Sparkles, UserRound } from "lucide-react";
+import { toast } from "sonner";
+import { api, ApiError, uploadFile } from "../../lib/api";
 import { cn } from "../../lib/cn";
 import { formatDate, formatINR } from "../../lib/format";
-import { Input, Field } from "../../components/ui/Input";
+import { Input, Field, Textarea } from "../../components/ui/Input";
+import { Select } from "../../components/ui/Select";
+import { Button } from "../../components/ui/Button";
 import { Skeleton } from "../../components/ui/Skeleton";
 import { EmptyState, ErrorState } from "../../components/ui/EmptyState";
 import { StatusFlag } from "../../components/ui/StatusFlag";
@@ -105,8 +108,176 @@ export function PolicyCard({ policy, selected, onSelect, compact }) {
   );
 }
 
+const POLICY_FIELDS = [
+  { group: "Policyholder", key: "insured", label: "Insured name" },
+  { group: "Policyholder", key: "insured_father", label: "Father's / husband's name" },
+  { group: "Policyholder", key: "insured_address", label: "Address", textarea: true },
+  { group: "Policyholder", key: "insured_contact", label: "Contact number" },
+  { group: "Policy", key: "policy_no", label: "Policy number" },
+  { group: "Policy", key: "period_from", label: "Cover from (YYYY-MM-DD)" },
+  { group: "Policy", key: "period_to", label: "Cover to (YYYY-MM-DD)" },
+  { group: "Policy", key: "cover", label: "Cover", options: ["OD+TP", "TP"] },
+  { group: "Policy", key: "idv", label: "IDV (₹)", number: true },
+  { group: "Policy", key: "ncb_pct", label: "NCB (%)", number: true },
+  { group: "Policy", key: "add_ons", label: "Add-ons (comma separated)", list: true },
+  { group: "Policy", key: "deductible_compulsory", label: "Compulsory deductible (₹)", number: true },
+  { group: "Policy", key: "deductible_voluntary", label: "Voluntary deductible (₹)", number: true },
+  { group: "Policy", key: "premium", label: "Premium paid (₹)", number: true },
+  { group: "Vehicle", key: "registration", label: "Registration number" },
+  { group: "Vehicle", key: "vehicle_make", label: "Make" },
+  { group: "Vehicle", key: "vehicle_model", label: "Model" },
+  { group: "Vehicle", key: "vehicle_variant", label: "Variant" },
+  { group: "Vehicle", key: "vehicle_colour", label: "Colour" },
+  { group: "Vehicle", key: "fuel", label: "Fuel" },
+  { group: "Vehicle", key: "vehicle_cc", label: "Engine (cc)", number: true },
+  { group: "Vehicle", key: "vehicle_year", label: "Year" },
+  { group: "Vehicle", key: "chassis5", label: "Chassis no. (last 5)" },
+  { group: "Vehicle", key: "engine5", label: "Engine no. (last 5)" },
+];
+
+/** One editable field with a confidence badge (amber below 0.75, per the extraction confidence). */
+function ExtractedField({ meta, value, confidence, onChange }) {
+  const text = Array.isArray(value) ? value.join(", ") : (value ?? "");
+  // A confidence score only means something next to the value it scores — an empty field (the model reported a
+  // confidence without actually extracting the text, which happens occasionally) reads as "not read automatically".
+  const hasConfidence = confidence != null && text !== "";
+  const low = hasConfidence && confidence < 0.75;
+  return (
+    <Field label={meta.label}>
+      {(p) => (
+        <div className="flex flex-col gap-1">
+          {meta.options ? (
+            <Select {...p} value={text || null} onChange={(v) => onChange(v)} placeholder="Select…" options={meta.options.map((o) => ({ value: o, label: o }))} />
+          ) : meta.textarea ? (
+            <Textarea {...p} rows={2} value={text} onChange={(e) => onChange(e.target.value)} />
+          ) : (
+            <Input {...p} type={meta.number ? "number" : "text"} value={text}
+              onChange={(e) => onChange(meta.number ? (e.target.value === "" ? "" : Number(e.target.value)) : e.target.value)} />
+          )}
+          {hasConfidence ? (
+            <span className={cn("inline-flex items-center gap-1 text-caption", low ? "text-warning" : "text-subtle")}>
+              {low && <CircleAlert size={12} aria-hidden="true" />}{Math.round(confidence * 100)}% confidence{low ? " — please check this" : ""}
+            </span>
+          ) : (
+            <span className="text-caption text-subtle">Not read automatically — enter it</span>
+          )}
+        </div>
+      )}
+    </Field>
+  );
+}
+
+/** Upload-a-document fallback for Step 1 (Feature A): reads the Document agent's extraction into an editable card,
+ * then creates the customer/vehicle/policy and a new draft claim from it on Confirm. */
+export function PolicyUploadCard({ onClaimCreated, onUsePolicy, prominent }) {
+  const inputRef = useRef(null);
+  const [status, setStatus] = useState("idle"); // idle | reading | ready | confirming
+  const [fields, setFields] = useState({});
+  const [confidence, setConfidence] = useState({});
+  const [staging, setStaging] = useState(null);
+  const [fileName, setFileName] = useState(null);
+  const [duplicate, setDuplicate] = useState(null);
+  const [error, setError] = useState(null);
+
+  const pick = () => inputRef.current?.click();
+  const setField = (key, value) => setFields((f) => ({ ...f, [key]: value }));
+
+  const onFile = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    setStatus("reading");
+    setError(null);
+    setDuplicate(null);
+    try {
+      const out = await uploadFile("/wizard/policy-document", file);
+      setFileName(file.name);
+      setStaging(out.staging ?? null);
+      setFields(out.extracted ?? {});
+      setConfidence(out.field_confidence ?? {});
+      setStatus("ready");
+      if (out.message) toast.info(out.message);
+    } catch (err) {
+      setError(err.message || "Couldn't read the file");
+      setStatus("idle");
+    }
+  };
+
+  const confirm = async () => {
+    setStatus("confirming");
+    setError(null);
+    try {
+      const body = { staging, fields: { ...fields, add_ons: typeof fields.add_ons === "string" ? fields.add_ons.split(",").map((s) => s.trim()).filter(Boolean) : fields.add_ons } };
+      const out = await api("/wizard/policy-document/confirm", { method: "POST", body });
+      (out.warnings ?? []).forEach((w) => toast.warning(w));
+      onClaimCreated(out.claim);
+    } catch (err) {
+      if (err instanceof ApiError && err.status === 409) {
+        setDuplicate(err.body?.detail?.policy ?? null);
+        setError(err.body?.detail?.message || err.message);
+      } else {
+        setError(err.message || "Couldn't create the claim");
+      }
+      setStatus("ready");
+    }
+  };
+
+  const fileInput = <input ref={inputRef} type="file" accept="image/*,application/pdf" className="hidden" onChange={onFile} />;
+
+  if (status === "idle") {
+    return (
+      <div className={cn("rounded-lg border p-4", prominent ? "border-border bg-surface" : "border-dashed border-border bg-bg-subtle")}>
+        {fileInput}
+        <Button variant={prominent ? "primary" : "secondary"} icon={FileUp} onClick={pick}>
+          {prominent ? "Upload your policy document" : "Or upload your policy document instead"}
+        </Button>
+        <p className="mt-2 text-caption text-subtle">A photo, scan or PDF of your policy schedule. We'll read it and fill in the details — you can edit anything before continuing.</p>
+        {error && <p className="mt-2 flex items-center gap-1 text-caption text-danger"><CircleAlert size={14} aria-hidden="true" />{error}</p>}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-4 rounded-lg border border-border bg-surface p-4">
+      {fileInput}
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <span className="inline-flex items-center gap-2 text-sm font-medium text-text">
+          <Sparkles size={16} className="text-tint-blue" aria-hidden="true" /> Extracted policy{fileName ? ` from “${fileName}”` : ""}
+        </span>
+        <Button size="sm" variant="ghost" onClick={pick} disabled={status === "reading" || status === "confirming"}>Upload a different file</Button>
+      </div>
+      {status === "reading" && <div className="flex items-center gap-2 text-sm text-muted"><Loader2 size={16} className="animate-spin" aria-hidden="true" /> Reading the document…</div>}
+      {error && <div className="flex items-start gap-2 rounded-md bg-danger-bg px-3 py-2 text-sm text-danger"><CircleAlert size={16} className="mt-0.5 shrink-0" aria-hidden="true" />{error}</div>}
+      {duplicate && (
+        <div className="rounded-lg border border-border bg-bg-subtle p-3">
+          <p className="mb-2 text-sm text-text">Use the existing policy instead:</p>
+          <PolicyCard policy={duplicate} onSelect={() => onUsePolicy(duplicate)} />
+        </div>
+      )}
+      {(status === "ready" || status === "confirming") && !duplicate && (
+        <>
+          {["Policyholder", "Policy", "Vehicle"].map((group) => (
+            <fieldset key={group} className="flex flex-col gap-3">
+              <legend className="mb-1 text-sm font-semibold text-text">{group}</legend>
+              <div className="grid gap-3 md:grid-cols-2">
+                {POLICY_FIELDS.filter((meta) => meta.group === group).map((meta) => (
+                  <ExtractedField key={meta.key} meta={meta} value={fields[meta.key]} confidence={confidence[meta.key]}
+                    onChange={(v) => setField(meta.key, v)} />
+                ))}
+              </div>
+            </fieldset>
+          ))}
+          <div className="flex justify-end">
+            <Button onClick={confirm} loading={status === "confirming"}>Confirm & continue</Button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 /** Step 1: the policyholder's policies + live lookup by policy number or registration. */
-export function StepPolicy({ form, update, admin, onPolicy }) {
+export function StepPolicy({ form, update, admin, onPolicy, onUploaded }) {
   const [q, setQ] = useState("");
   const dq = useDebounced(q.trim(), 350);
   const mine = useQuery({
@@ -145,6 +316,7 @@ export function StepPolicy({ form, update, admin, onPolicy }) {
           </motion.div>
         )}
       </AnimatePresence>
+      {notFound && <PolicyUploadCard prominent onClaimCreated={onUploaded} onUsePolicy={choose} />}
       <section aria-labelledby="mine-h" className="flex flex-col gap-3">
         <h3 id="mine-h" className="flex items-center gap-2 text-sm font-semibold text-text"><CalendarClock size={16} aria-hidden="true" className="text-muted" />
           {admin ? `${form.customer_name ?? "Policyholder"}'s policies` : "Your policies"}</h3>
@@ -153,6 +325,7 @@ export function StepPolicy({ form, update, admin, onPolicy }) {
           : mine.data.items.length === 0 ? <EmptyState compact title="No policies" description="There are no policies for this policyholder." />
           : mine.data.items.map((p) => <PolicyCard key={p.policy_no} policy={p} selected={form.policy_no === p.policy_no} onSelect={() => choose(p)} />)}
       </section>
+      {!notFound && <PolicyUploadCard onClaimCreated={onUploaded} onUsePolicy={choose} />}
     </div>
   );
 }

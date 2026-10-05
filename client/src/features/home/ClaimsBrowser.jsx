@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowDownUp, ChevronLeft, ChevronRight, Download, LayoutGrid, Search, Table2, X } from "lucide-react";
+import { ArrowDownUp, ChevronLeft, ChevronRight, Download, LayoutGrid, Search, Sparkles, Table2, X } from "lucide-react";
+import { toast } from "sonner";
 import { Button, IconButton } from "../../components/ui/Button";
 import { DropdownMenu } from "../../components/ui/Popover";
 import { EmptyState, ErrorState } from "../../components/ui/EmptyState";
 import { Input } from "../../components/ui/Input";
 import { SegmentedControl } from "../../components/ui/SegmentedControl";
 import { Skeleton } from "../../components/ui/Skeleton";
+import { api } from "../../lib/api";
 import { formatDate, formatINR, formatNumber } from "../../lib/format";
 import { cn } from "../../lib/cn";
 import { ClaimCards } from "./ClaimCards";
 import { ClaimsTable } from "./ClaimsTable";
 import { CLAIM_TYPES, DRILL_LABELS, RISK_BANDS, SEGMENT_LABELS, VEHICLE_TYPES } from "./constants";
 import { FiltersPopover } from "./FiltersPopover";
+import { ProcessAllModal } from "./ProcessAllModal";
 import { StatusChips } from "./StatusChips";
 import { exportUrl, useBrowserState, useClaimsList, useFacets, usePrefetchClaim } from "./useHomeData";
 
@@ -122,12 +125,24 @@ export function ClaimsBrowser({ customer }) {
   const prefetch = usePrefetchClaim();
   const sorts = SORTS.filter((s) => !s.admin || !customer);
   const animateRows = (data?.items?.length ?? 0) <= 50;
+  const aiPendingActive = state.segment === "ai_pending";
+  const [processAll, setProcessAll] = useState(null); // null closed, else the array of claim ids to run
 
   const download = () => {
     const a = document.createElement("a");
     a.href = exportUrl(state);
     a.download = "claims.csv";
     a.click();
+  };
+
+  const openProcessAll = async () => {
+    try {
+      const out = await api("/claims", { params: { segment: "ai_pending", page_size: 200 } });
+      if (!out.items.length) { toast.info("No claims are waiting for AI processing"); return; }
+      setProcessAll(out.items.map((c) => c.id));
+    } catch (e) {
+      toast.error(e.message || "Couldn't load the pending claims");
+    }
   };
 
   return (
@@ -147,6 +162,13 @@ export function ClaimsBrowser({ customer }) {
         />
         <SegmentedControl label="View" value={state.view} onChange={(view) => update({ view, page: state.page })}
           options={[{ value: "table", label: "Table", icon: Table2 }, { value: "cards", label: "Cards", icon: LayoutGrid }]} />
+        {!customer && (
+          <Button variant={aiPendingActive ? "primary" : "secondary"} icon={Sparkles}
+            onClick={() => update({ segment: aiPendingActive ? "" : "ai_pending", status: "" })}>
+            AI pending
+          </Button>
+        )}
+        {!customer && aiPendingActive && <Button variant="secondary" icon={Sparkles} onClick={openProcessAll}>Process all pending ({data?.total ?? 0})</Button>}
         <Button variant="secondary" icon={Download} onClick={download} disabled={!data?.total}>Export CSV</Button>
       </header>
 
@@ -183,6 +205,7 @@ export function ClaimsBrowser({ customer }) {
         )}
       </div>
       <Pagination data={data} state={state} update={update} />
+      {!customer && <ProcessAllModal open={processAll != null} onClose={() => setProcessAll(null)} claimIds={processAll ?? []} />}
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { toast } from "sonner";
 import {
@@ -88,13 +88,19 @@ function MoreMenu({ claim, onAction, exclude, size }) {
   );
 }
 
-function CompactActions({ claim, onAction }) {
+function CompactActions({ claim, onAction, onRunAI }) {
   const allowed = claim.allowed_actions ?? {};
   const keys = [...barActions(claim), ...MENU_ACTIONS.filter((k) => !barActions(claim).includes(k))];
   const items = keys.map((k) => ({
     label: allowed[k]?.allowed ? ACTION_META[k].label : `${ACTION_META[k].label} — ${allowed[k]?.reason ?? "not available"}`,
     icon: ACTION_META[k].icon, disabled: !allowed[k]?.allowed || !!claim._pending, onSelect: () => onAction(k),
   }));
+  if (claim.ai_processing?.action) {
+    items.unshift({
+      label: claim.ai_processing.action === "rerun" ? "Re-run AI processing" : "Run AI processing",
+      icon: Sparkles, onSelect: onRunAI,
+    }, { type: "separator" });
+  }
   return <DropdownMenu trigger={<Button size="sm" variant="secondary" icon={ChevronDown}>Actions</Button>} items={items} />;
 }
 
@@ -103,7 +109,7 @@ function CompactActions({ claim, onAction }) {
  * (transform + opacity only). Entrance is a 200 ms fade (the Home row → header shared-element transition is not used: the app's
  * route transition unmounts Home before the lazy detail route mounts — see PROGRESS decision).
  */
-export function ClaimHeader({ claim, admin, onAction, onBack }) {
+export function ClaimHeader({ claim, admin, onAction, onBack, onRunAI }) {
   const { scrollY } = useScroll();
   const [compact, setCompact] = useState(false);
   useMotionValueEvent(scrollY, "change", (y) => setCompact(y > COMPACT_AT));
@@ -130,7 +136,7 @@ export function ClaimHeader({ claim, admin, onAction, onBack }) {
               </span>
               <span className="ml-auto flex shrink-0 items-center gap-3">
                 {admin && claim.risk_score != null && <RiskChip score={claim.risk_score} />}
-                {admin && <CompactActions claim={claim} onAction={onAction} />}
+                {admin && <CompactActions claim={claim} onAction={onAction} onRunAI={onRunAI} />}
               </span>
             </motion.div>
           )}
@@ -162,12 +168,25 @@ export function ClaimHeader({ claim, admin, onAction, onBack }) {
               <span className="inline-flex items-center gap-1"><ch.icon size={16} aria-hidden="true" />{ch.label}</span>
             </div>
           </div>
-          {admin && (pending ? (
-            <span className="inline-flex items-center gap-2 rounded-lg bg-tint-blue-bg px-3 py-2 text-sm text-text">
-              <Hourglass size={16} className="text-tint-blue" aria-hidden="true" /> AI assessment pending
-            </span>
+          {admin && (claim.status === "PROCESSING" ? (
+            <Link to={`/processing/${claim.id}`} className="no-print inline-flex items-center gap-2 rounded-lg bg-tint-blue-bg px-3 py-2 text-sm font-medium text-tint-blue hover:underline">
+              <Hourglass size={16} aria-hidden="true" /> Processing… view Agent Theatre
+            </Link>
           ) : (
-            <RiskGauge score={claim.risk_score} size="sm" />
+            <div className="flex items-center gap-2">
+              {pending ? (
+                <span className="inline-flex items-center gap-2 rounded-lg bg-tint-blue-bg px-3 py-2 text-sm text-text">
+                  <Hourglass size={16} className="text-tint-blue" aria-hidden="true" /> AI assessment pending
+                </span>
+              ) : (
+                <RiskGauge score={claim.risk_score} size="sm" />
+              )}
+              {claim.ai_processing?.action && (
+                <Button size="sm" variant={pending ? "primary" : "secondary"} icon={Sparkles} className="no-print" onClick={onRunAI}>
+                  {claim.ai_processing.action === "rerun" ? "Re-run AI processing" : "Run AI processing"}
+                </Button>
+              )}
+            </div>
           ))}
         </div>
         {admin ? (

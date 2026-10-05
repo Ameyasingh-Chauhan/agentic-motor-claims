@@ -20,6 +20,7 @@ OPEN_STATUSES = {"SUBMITTED", "PROCESSING", "INFO_REQUESTED", "UNDER_REVIEW", "S
 PENDING_ACTION = {"INFO_REQUESTED", "UNDER_REVIEW", "SIU_INVESTIGATION"}
 PAID_STATUSES = {"APPROVED", "PREAUTH_ISSUED", "SETTLED"}
 CLOSED_UNPAID = {"DECLINED", "FRAUD_CONFIRMED", "WITHDRAWN"}
+AI_FINAL_STATUSES = {"SETTLED", "WITHDRAWN", "FRAUD_CONFIRMED"}  # never eligible for (re-)processing (Feature B)
 
 
 def listed(claims: list[dict]) -> list[dict]:
@@ -55,6 +56,32 @@ def fraud_saving(c: dict) -> float:
     if c["status"] == "FRAUD_CONFIRMED" or (c["status"] == "DECLINED" and c.get("risk_band") == "high"):
         return float(c.get("amount_claimed") or 0)
     return overquote_saving(c)
+
+
+def ai_pending(c: dict) -> bool:
+    """No completed AI assessment yet (filed before the pipeline existed, or a crashed run left it short)."""
+    return c.get("financials") is None or c.get("fraud") is None or c.get("decision") is None
+
+
+def ai_processing_eligible(c: dict) -> bool:
+    """Eligible for an admin to send for "Run AI processing" (Feature B): not a draft, not already running, not a
+    final status, and missing at least one AI result. (A clean-but-degraded run's "re-run" eligibility needs the
+    pipeline run record and is resolved per-claim — see `last_run_degraded`, async.)"""
+    if c["status"] in ("DRAFT", "PROCESSING") or c["status"] in AI_FINAL_STATUSES:
+        return False
+    return ai_pending(c)
+
+
+async def last_run_degraded(claim_id: str) -> bool:
+    """The claim's most recent pipeline run failed/timed out, or used a fallback/demo output for any agent — the
+    "Re-run AI processing" case (Feature B)."""
+    from . import pipeline_bus
+    run = await pipeline_bus.latest_for_claim(claim_id)
+    if run is None:
+        return False
+    if run.get("status") in ("failed", "interrupted"):
+        return True
+    return any(a.get("source") in ("fallback", "demo") for a in (run.get("agents") or {}).values())
 
 
 def is_decided(c: dict) -> bool:
@@ -95,6 +122,7 @@ SEGMENTS: dict[str, Callable[[dict], bool]] = {
     "auto_decided": is_auto,
     "pending_action": lambda c: c["status"] in PENDING_ACTION,
     "open": lambda c: c["status"] in OPEN_STATUSES,
+    "ai_pending": ai_processing_eligible,
 }
 for _key, _label, _statuses in BUCKETS + CUSTOMER_BUCKETS:
     SEGMENTS[f"bucket_{_key}"] = (lambda st: lambda c: c["status"] in st)(_statuses)
@@ -139,7 +167,8 @@ def row(c: dict, *, customer: bool, now: datetime) -> dict:
         "sla": sla_state(c, now),
     }
     if not customer:
-        out |= {"risk_score": c.get("risk_score"), "risk_band": c.get("risk_band"), "flags": flag_counts(c), "assignee": c.get("assignee")}
+        out |= {"risk_score": c.get("risk_score"), "risk_band": c.get("risk_band"), "flags": flag_counts(c), "assignee": c.get("assignee"),
+               "ai_pending": ai_processing_eligible(c)}
     return out
 
 

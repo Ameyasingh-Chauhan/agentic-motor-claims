@@ -5,14 +5,14 @@ import { PanelRightOpen, SearchX } from "lucide-react";
 import { useAuthStore } from "../../store/authStore";
 import { Tabs } from "../../components/ui/Tabs";
 import { Button } from "../../components/ui/Button";
-import { Drawer } from "../../components/ui/Modal";
+import { Drawer, Modal } from "../../components/ui/Modal";
 import { Input } from "../../components/ui/Input";
 import { Skeleton } from "../../components/ui/Skeleton";
 import { ErrorState } from "../../components/ui/EmptyState";
 import { ApiError } from "../../lib/api";
 import { formatDateTime, formatINR } from "../../lib/format";
 import { ADMIN_TABS, buildFlags } from "./claimModel";
-import { useClaim, useClaimAction } from "./useClaim";
+import { useClaim, useClaimAction, useRunAIProcessing } from "./useClaim";
 import { ClaimHeader, useBackToClaims } from "./ClaimHeader";
 import { FlagsStrip } from "./FlagsStrip";
 import { RightRail } from "./RightRail";
@@ -76,11 +76,35 @@ function PrintSummary({ claim }) {
   );
 }
 
+/** Confirmation before (re-)running the AI pipeline on an already-existing claim (Feature B). */
+function RunAiModal({ open, onClose, claim, onConfirm, pending }) {
+  const rerun = claim.ai_processing?.action === "rerun";
+  return (
+    <Modal open={open} onClose={onClose} title={rerun ? "Re-run AI processing" : "Run AI processing"} size="sm"
+      footer={(
+        <>
+          <Button variant="ghost" onClick={onClose} disabled={pending}>Cancel</Button>
+          <Button onClick={onConfirm} loading={pending}>{rerun ? "Re-run" : "Run"}</Button>
+        </>
+      )}>
+      <p className="text-sm text-text">
+        This runs the full AI pipeline (document reading, verification, damage assessment, fraud scoring and adjudication) on
+        {" "}<span className="mono">{claim.id}</span> using its existing photos, documents and description, and writes the results
+        onto the claim. You'll see it run live in the Agent Theatre.
+      </p>
+      {rerun && <p className="mt-2 text-caption text-subtle">The previous run didn't complete cleanly, so this will replace its results.</p>}
+    </Modal>
+  );
+}
+
 export function AdminClaimView({ claim }) {
   const [, setParams] = useSearchParams();
   const [modal, setModal] = useState(null);
   const [railOpen, setRailOpen] = useState(false);
+  const [runAiOpen, setRunAiOpen] = useState(false);
   const action = useClaimAction(claim.id);
+  const runAi = useRunAIProcessing(claim.id);
+  const navigate = useNavigate();
   const back = useBackToClaims();
   const { flags, passed } = buildFlags(claim);
   const pending = !claim.fraud;
@@ -95,6 +119,9 @@ export function AdminClaimView({ claim }) {
   const openAction = (key) => { action.reset(); setModal(key); };
   const confirm = (body) => action.mutate(body, { onSuccess: () => setModal(null) });
   const addNote = (text, done) => action.mutate({ action: "note", text, reason: text }, { onSuccess: done });
+  const confirmRunAi = () => runAi.mutate({}, {
+    onSuccess: (data) => { setRunAiOpen(false); navigate(`/processing/${claim.id}`, { state: { runId: data.run_id } }); },
+  });
 
   const rail = <RightRail claim={claim} flags={flags} passed={passed} onFlag={onFlag} onAction={openAction} onAddNote={addNote} notePending={action.isPending && action.variables?.action === "note"} />;
   const tabs = ADMIN_TABS.map((t) => ({
@@ -106,7 +133,7 @@ export function AdminClaimView({ claim }) {
   return (
     <div className="flex flex-col gap-4">
       <PrintSummary claim={claim} />
-      <ClaimHeader claim={claim} admin onAction={openAction} onBack={back} />
+      <ClaimHeader claim={claim} admin onAction={openAction} onBack={back} onRunAI={() => setRunAiOpen(true)} />
       <FlagsStrip flags={flags} passed={passed} pending={pending} onFlag={onFlag} />
       <div className="grid gap-6 xl:grid-cols-12">
         <div className="min-w-0 xl:col-span-8">
@@ -141,6 +168,7 @@ export function AdminClaimView({ claim }) {
         <ActionModal action={modal} claim={claim} people={claim.context?.people} onClose={() => setModal(null)} onConfirm={confirm}
           pending={action.isPending} error={action.error} />
       )}
+      <RunAiModal open={runAiOpen} onClose={() => setRunAiOpen(false)} claim={claim} onConfirm={confirmRunAi} pending={runAi.isPending} />
     </div>
   );
 }

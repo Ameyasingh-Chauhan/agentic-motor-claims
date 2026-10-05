@@ -18,6 +18,7 @@ import { DropdownMenu } from "../../components/ui/Popover";
 import { usePersistentState } from "../../hooks/usePersistentState";
 import { stepsFor, tileOf } from "./constants";
 import { stepIssues, photosOf } from "./rules";
+import { claimKey } from "../claims/useClaim";
 import { toPatch, useWizard } from "./useWizard";
 import { useUploads, uploadingFor } from "./uploads";
 import { AssistantPanel, SaveIndicator, VerticalStepper } from "./WizardChrome";
@@ -157,6 +158,13 @@ export default function FileClaimPage() {
   };
   const back = () => { if (index > 0) w.goTo(steps[index - 1].key); };
 
+  const onPolicyUploaded = (createdClaim) => {
+    qc.setQueryData(claimKey(createdClaim.id), createdClaim);
+    update({ policy_no: createdClaim.policy_no, customer_id: createdClaim.customer_id, customer_name: createdClaim.customer_name });
+    w.goTo(steps[index + 1].key, { draft: createdClaim.id });
+    toast.success("Policy verified from your document — continue filing the claim.");
+  };
+
   const submit = async () => {
     setSubmitting(true);
     try {
@@ -265,7 +273,7 @@ export default function FileClaimPage() {
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div key={stepKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25, ease: EASE }} className="px-6 py-6">
                   {stepKey === "policyholder" && <StepPolicyholder {...stepProps} />}
-                  {stepKey === "policy" && <StepPolicy {...stepProps} onPolicy={() => {}} />}
+                  {stepKey === "policy" && <StepPolicy {...stepProps} onPolicy={() => {}} onUploaded={onPolicyUploaded} />}
                   {stepKey === "safety" && <StepSafety {...stepProps} />}
                   {stepKey === "incident" && <StepIncident {...stepProps} onIntake={refresh} />}
                   {stepKey === "when" && <StepWhenWhere {...stepProps} />}

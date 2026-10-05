@@ -83,7 +83,8 @@ function fieldsFor(key, claim) {
   const p = ctx.policy;
   switch (key) {
     case "policy": return p && [["Policy", p.policy_no], ["Status", p.status], ["Valid", `${formatDate(p.start)} – ${formatDate(p.end)}`], ["Cover", p.cover],
-      ["Break-in before cover", p.previous_break_in ? "Yes" : "No"]];
+      ["Break-in before cover", p.previous_break_in ? "Yes" : "No"],
+      claim.policy_source === "uploaded_document" ? ["Verified from", "Uploaded document"] : null];
     case "vahan": return ctx.vahan && [["Owner", ctx.vahan.owner], ["Class", ctx.vahan.class], ["Make / model", ctx.vahan.make_model], ["RC status", ctx.vahan.rc_status],
       ["Hypothecation", ctx.vahan.hypothecation ?? "None"], ["Blacklisted", ctx.vahan.blacklisted ? "Yes" : "No"], ["Reported stolen", ctx.vahan.stolen ? "Yes" : "No"]];
     case "dl": { const d = ctx.dl ?? claim.checks?.dl?.data; return d && [["Licence", d.dl_number], ["Holder", d.holder], ["Classes", (d.classes ?? []).join(", ")],
@@ -104,10 +105,22 @@ export function VerificationTab({ claim }) {
     ? { ...raw, vehicle_identity: { level: "pending", summary: identityStatus(claim).summary, data: {}, latency_ms: 0 } }
     : raw;
   const keys = CHECK_ORDER.filter((k) => checks[k]);
-  if (!keys.length) return <EmptyState title="No verification checks yet" description="The Verification agent queries Vahan, FASTag, IIB, police records and KYC when the pipeline runs." />;
+  const uploadedNote = claim.policy_source === "uploaded_document" && (
+    <p className="rounded-md bg-tint-blue-bg px-3 py-2 text-sm text-tint-blue">Policy verified from an uploaded document.</p>
+  );
+  if (!keys.length) {
+    return (
+      <div className="flex flex-col gap-3">
+        {uploadedNote}
+        <EmptyState title="No verification checks yet" description="The Verification agent queries Vahan, FASTag, IIB, police records and KYC when the pipeline runs." />
+      </div>
+    );
+  }
   const openByDefault = keys.filter((k) => checks[k].level !== "pass");
   return (
-    <Accordion type="multiple" defaultValue={openByDefault.length ? openByDefault : [keys[0]]}>
+    <div className="flex flex-col gap-3">
+      {uploadedNote}
+      <Accordion type="multiple" defaultValue={openByDefault.length ? openByDefault : [keys[0]]}>
       {keys.map((k) => {
         const ch = checks[k];
         const rows = fieldsFor(k, claim);
@@ -130,6 +143,7 @@ export function VerificationTab({ claim }) {
           </div>
         );
       })}
-    </Accordion>
+      </Accordion>
+    </div>
   );
 }

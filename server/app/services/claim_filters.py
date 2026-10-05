@@ -68,9 +68,9 @@ SEGMENTS.update({
     "overridden": is_overridden,
 })
 INTERNAL_SEGMENTS = {"fraud_detected", "fraud_savings", "decided", "auto_decided", "pending_action", "human_decided", "overridden",
-                     "verified", "assessed", "bucket_siu", "bucket_needs_action"}
+                     "verified", "assessed", "bucket_siu", "bucket_needs_action", "ai_pending"}
 SEGMENT_LABELS = {"settled": "Settled", "verified": "Verified", "assessed": "Damage assessed", "human_decided": "Decided by a handler",
-                  "overridden": "AI recommendation overridden"}
+                  "overridden": "AI recommendation overridden", "ai_pending": "AI processing pending"}
 
 
 @dataclass

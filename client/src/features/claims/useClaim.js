@@ -93,6 +93,20 @@ export function useRegenerateDraft(id) {
   });
 }
 
+/** Admin: (re-)run the AI pipeline on an existing claim (Feature B). Returns {claim, run_id} on success — the caller
+ * navigates to /processing/:id with the run id. */
+export function useRunAIProcessing(id) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: (body) => api(`/claims/${id}/process`, { method: "POST", body }),
+    onSuccess: (data) => {
+      qc.setQueryData(claimKey(id), data.claim);
+      refreshEverywhere(qc);
+    },
+    onError: (e) => toast.error(e.body?.detail?.message || e.message || "Could not start AI processing"),
+  });
+}
+
 /** Customer: upload requested files then answer the information request. */
 export function useRespondToRequest(id) {
   const qc = useQueryClient();

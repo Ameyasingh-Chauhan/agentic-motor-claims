@@ -13,11 +13,23 @@ import math
 from datetime import datetime, timedelta
 
 from . import claim_actions
-from .claim_views import now_ist, to_customer_view, with_media_availability
+from .claim_views import AI_FINAL_STATUSES, ai_processing_eligible, last_run_degraded, now_ist, to_customer_view, with_media_availability
 from .json_store import read_json
 
 FASTAG_WINDOW = timedelta(hours=36)
 FAR_KM, NEAR_HOURS = 25, 6          # an event this far from the reported place this close in time is a contradiction
+AI_BLOCKED_REASON = {"DRAFT": "This claim has not been submitted yet.", "PROCESSING": "The AI pipeline is already running on this claim.",
+                     "SETTLED": "Settled claims cannot be sent for AI processing.", "WITHDRAWN": "Withdrawn claims cannot be sent for AI processing.",
+                     "FRAUD_CONFIRMED": "Fraud-confirmed claims cannot be sent for AI processing."}
+
+
+async def ai_processing_state(claim: dict) -> dict:
+    """What the admin's "Run / Re-run AI processing" button should show on this claim (Feature B)."""
+    if ai_processing_eligible(claim):
+        return {"action": "run", "reason": None}
+    if claim["status"] not in ("DRAFT", "PROCESSING") and claim["status"] not in AI_FINAL_STATUSES and await last_run_degraded(claim["id"]):
+        return {"action": "rerun", "reason": None}
+    return {"action": None, "reason": AI_BLOCKED_REASON.get(claim["status"], "This claim already has a complete AI assessment.")}
 
 
 def km(lat1, lng1, lat2, lng2) -> float:
@@ -189,6 +201,7 @@ async def detail(claim: dict, user: dict, claims: list[dict]) -> dict:
         "ladder": calculation_ladder(claim.get("financials")),
     }
     out["document_checklist"] = document_checklist(claim, reg["document_requirements"])
+    out["ai_processing"] = await ai_processing_state(claim)
     out["allowed_actions"] = claim_actions.allowed_actions(claim)
     out["undo_seconds"] = claim_actions.UNDO_SECONDS
     draft = None if any(m.get("draft") for m in claim.get("communications", [])) else ai_draft(claim, now)

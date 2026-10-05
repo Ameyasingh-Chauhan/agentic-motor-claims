@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import asyncio
 import hashlib
+import secrets
+import shutil
 from datetime import date
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
@@ -16,10 +18,11 @@ from pydantic import BaseModel
 
 from ..agents import adjudication as adj
 from ..config import get_settings
-from ..services.claim_views import now_ist
+from ..services import uploads, vehicle_catalog
+from ..services.claim_views import now_ist, to_customer_view, with_media_availability
 from ..services.json_store import read_json, update_json
 from .auth import current_user
-from .filing import find, is_admin, iso, upload, validated
+from .filing import ClaimCreate, create_claim, find, is_admin, iso, upload, validated
 
 router = APIRouter(prefix="/api", tags=["wizard"])
 
@@ -400,4 +403,217 @@ async def extract(body: ExtractBody, user=Depends(current_user)):
     return {"source": source, "document": {k: d.get(k) for k in ("id", "type", "requirement", "status", "extracted", "checks")}
             | {"actual_type": (d.get("ai") or {}).get("actual_type"), "type_mismatch": (d.get("ai") or {}).get("type_mismatch", False),
                "legibility": (d.get("ai") or {}).get("legibility")}}
+
+
+# ------------------------------------------------------------------------------------------------ policy from an uploaded document
+# Step 1 fallback (§10.6 / Feature A): read a policy document before any claim exists yet. The Document agent runs on a
+# throwaway placeholder context (reusing document.md/DocumentOut unchanged — see docs/FEATURE_BRIEF…), and the file sits in a
+# private staging folder (server/uploads/<token>/) until /confirm moves it onto the new claim; never confirmed = never attached.
+
+ADDON_WORDS = {"zero_dep": ("zero", "depreciation"), "consumables": ("consumable",), "engine_protect": ("engine",),
+              "rti": ("return to invoice", "rti"), "rsa": ("road", "assistance", "rsa")}
+
+
+def _addons_from(words: list[str]) -> dict:
+    hay = " ".join(words).casefold()
+    return {k: any(w in hay for w in ws) for k, ws in ADDON_WORDS.items()}
+
+
+@router.post("/wizard/policy-document")
+async def upload_policy_document(file: UploadFile = File(...), user=Depends(current_user)):
+    """Read an uploaded policy document (image or PDF) and return its extracted fields with confidence, before any
+    claim or policy record exists. Nothing is written to claims.json / policies.json here — see /confirm."""
+    data = await file.read(uploads.MAX_BYTES + 1)
+    staging_id = "stg-" + secrets.token_hex(8)
+    try:
+        processed = await asyncio.to_thread(uploads.process, staging_id, kind="document", filename=file.filename or "policy",
+                                            content_type=file.content_type, data=data)
+    except uploads.UploadError as e:
+        raise HTTPException(422, {"code": "invalid_file", "message": str(e)}) from e
+    fields = await asyncio.to_thread(uploads.finalise, staging_id, processed, "d_1")
+
+    from ..agents import document
+    from ..agents.base import RunContext
+    from ..services import gemini
+    today = now_ist().date().isoformat()
+    claim = {"id": staging_id, "scenario_id": None,
+             "documents": [{"id": "d_1", "type": "Policy", "url": fields["url"], "original_url": fields["original_url"],
+                            "status": "received"}],
+             "incident": {"datetime": f"{today}T00:00:00+05:30"}}
+    vehicle = {"registration": "", "make": "", "model": "", "type": "Car", "chassis": None, "engine": None}
+    mode = "demo" if gemini.effective_mode() == "demo" else "live"
+    ctx = RunContext(run_id=f"adhoc-{staging_id}", claim=claim, policy={"policy_no": ""}, vehicle=vehicle,
+                     customer={"name": ""}, garage=None, city={}, mode=mode, pace_ms=0)
+    try:
+        out = await document.run(ctx)
+    except Exception:  # noqa: BLE001
+        await asyncio.to_thread(uploads.remove_claim_dir, staging_id)
+        raise HTTPException(502, "The Document agent is unavailable — please enter the policy details manually")
+
+    source = ctx.sources.get("document", "python")
+    result = next(iter(out.get("documents", [])), None)
+    if source != "live" or result is None:
+        await asyncio.to_thread(uploads.remove_claim_dir, staging_id)
+        return {"source": source, "staging": None, "extracted": {}, "field_confidence": {},
+                "message": "Automatic reading is unavailable right now — enter the policy details manually below."}
+
+    extracted = {k: v for k, v in result["extracted"].items() if k != "field_confidence" and v not in (None, "", [], {})}
+    conf = {c["field"]: c["confidence"] for c in result["extracted"].get("field_confidence", [])}
+    return {"source": source, "staging": {"token": staging_id, "files": processed["files"]}, "extracted": extracted,
+            "field_confidence": conf, "overall_confidence": result.get("confidence", 0),
+            "legibility": result.get("legibility"), "tampering_suspected": result.get("tampering_suspected", False),
+            "watermark_noted": result.get("watermark_noted", False),
+            "file": {"original_name": processed["fields"]["original_name"], "mime": processed["fields"]["mime"]},
+            "message": None if not result.get("tampering_suspected") else
+            "Some signs on this document look altered — a handler will review it before the claim is processed."}
+
+
+class StagingRef(BaseModel):
+    token: str
+    files: dict[str, str]
+
+
+class ConfirmPolicyDocument(BaseModel):
+    staging: StagingRef | None = None
+    customer_id: str | None = None   # admin only: an existing policyholder chosen in step 0; else a new customer is made
+    fields: dict
+
+
+def _guess_city(address: str | None, cities: list[dict]) -> str:
+    addr = (address or "").casefold()
+    return next((c["city"] for c in cities if c["city"].casefold() in addr), cities[0]["city"] if cities else "Pune")
+
+
+def _next_id(rows: list[dict], key: str, prefix: str, width: int) -> str:
+    n = max((int(r[key].split("_", 1)[1]) for r in rows if str(r.get(key, "")).startswith(prefix + "_")
+             and r[key].split("_", 1)[1].isdigit()), default=0)
+    return f"{prefix}_{n + 1:0{width}d}"
+
+
+def _move_staged(staging_id: str, files: dict[str, str], claim_id: str, item_id: str) -> dict:
+    src_dir, dst_dir = uploads.claim_dir(staging_id), uploads.claim_dir(claim_id)
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    out = {}
+    for role, suffix in files.items():
+        s, d = src_dir / f"d_1{suffix}", dst_dir / f"{item_id}{suffix}"
+        if s.exists():
+            shutil.move(str(s), str(d))
+            out[role] = uploads.file_url(claim_id, d.name)
+    shutil.rmtree(src_dir, ignore_errors=True)
+    return {"url": out.get("main") or out.get("original"), "thumb": out.get("thumb"), "original_url": out.get("original")}
+
+
+@router.post("/wizard/policy-document/confirm")
+async def confirm_policy_document(body: ConfirmPolicyDocument, user=Depends(current_user)):
+    """Create customer + vehicle + policy from the (edited) extracted fields, start a new draft claim on that policy
+    (same path as any other draft) and attach the document to it. Blocks on a policy number already on file."""
+    f = body.fields
+    policy_no = (f.get("policy_no") or "").strip()
+    registration = (f.get("registration") or "").strip().upper()
+    insured = (f.get("insured") or "").strip()
+    values = {"policy_no": policy_no, "registration": registration, "insured": insured}
+    labels = {"policy_no": "Enter the policy number", "registration": "Enter the vehicle registration", "insured": "Enter the insured's name"}
+    missing = {k: m for k, m in labels.items() if not values[k]}
+    if missing:
+        raise HTTPException(422, {"code": "validation", "fields": missing})
+
+    policies, vehicles, customers = await _ref()
+    dup = next((p for p in policies if _norm(p["policy_no"]) == _norm(policy_no)), None)
+    if dup is not None:
+        vby, cby = {v["id"]: v for v in vehicles}, {c["id"]: c for c in customers}
+        same = _norm(vby.get(dup["vehicle_id"], {}).get("registration")) == _norm(registration)
+        raise HTTPException(409, {"code": "duplicate_policy", "policy": _policy_card(dup, vby[dup["vehicle_id"]], cby[dup["customer_id"]]),
+                                  "message": "A policy with this number is already on file"
+                                             + ("." if same else " with different details — this looks like a duplicate or forged document.")})
+
+    if is_admin(user):
+        customer = next((c for c in customers if c["id"] == body.customer_id), None) if body.customer_id else None
+    else:
+        customer = next((c for c in customers if c["id"] == user.get("customer_id")), None)
+    if customer is None:
+        cities = await read_json("cities.json", [])
+        customer = {"id": _next_id(customers, "id", "c", 4), "name": insured, "phone": f.get("insured_contact"), "email": None,
+                   "city": _guess_city(f.get("insured_address"), cities), "state": None, "address": f.get("insured_address"),
+                   "kyc": {"aadhaar": None, "pan": None, "verified": True}, "avatar": None, "preferred_language": "en"}
+
+        def add_customer(rows: list[dict]) -> None:
+            rows.append(customer)
+        await update_json("customers.json", add_customer, [])
+
+    vehicle = next((v for v in vehicles if _norm(v["registration"]) == _norm(registration)), None)
+    if vehicle is None:
+        make = (f.get("vehicle_make") or "").strip() or "Unknown"
+        model = (f.get("vehicle_model") or "").strip() or "Unknown"
+        model_key = await vehicle_catalog.ensure_model(make=make, model=model, variant=f.get("vehicle_variant"),
+                                                       cc=f.get("vehicle_cc"), fuel=f.get("fuel"), vtype="Car")
+        year = f.get("vehicle_year")
+        vehicle = {"id": _next_id(vehicles, "id", "v", 4), "registration": registration, "make": make, "model": model,
+                  "model_key": model_key, "variant": f.get("vehicle_variant"), "segment": None, "fuel": f.get("fuel") or "Petrol",
+                  "cc": f.get("vehicle_cc") or 0, "registered_on": f"{year}-01-01" if year else None, "colour": f.get("vehicle_colour"),
+                  "chassis": "X" * 12 + str(f.get("chassis5") or "00000")[-5:].rjust(5, "0"),
+                  "engine": "X" * 6 + str(f.get("engine5") or "00000")[-5:].rjust(5, "0"), "type": "Car", "use": "private"}
+
+        def add_vehicle(rows: list[dict]) -> None:
+            rows.append(vehicle)
+        await update_json("vehicles.json", add_vehicle, [])
+
+    models = await read_json("vehicle_models.json", [])
+    model_ref = next((m for m in models if m["key"] == vehicle.get("model_key")), {})
+    if vehicle.get("segment") is None and model_ref:
+        def fix_segment(rows: list[dict]) -> None:
+            next(v for v in rows if v["id"] == vehicle["id"])["segment"] = model_ref["segment"]
+        await update_json("vehicles.json", fix_segment, [])
+        vehicle["segment"] = model_ref["segment"]
+
+    end = f.get("period_to") or now_ist().date().replace(year=now_ist().date().year + 1).isoformat()
+    policy = {"policy_no": policy_no, "customer_id": customer["id"], "vehicle_id": vehicle["id"],
+             "product": "Private Car Package", "cover": f.get("cover") or "OD+TP",
+             "start": f.get("period_from") or now_ist().date().isoformat(), "end": end,
+             "idv": float(f.get("idv") or round(model_ref.get("ex_showroom", 700_000) * 0.75, -3)),
+             "ncb_pct": float(f.get("ncb_pct") or 0), "add_ons": _addons_from(f.get("add_ons") or []),
+             "voluntary_deductible": float(f.get("deductible_voluntary") or 0), "premium": float(f.get("premium") or 0),
+             "insurer": "ABC General Insurance", "status": "active", "previous_break_in": False}
+
+    def add_policy(rows: list[dict]) -> None:
+        rows.append(policy)
+    await update_json("policies.json", add_policy, [])
+
+    vclass = {"Car": "LMV", "2W": "MCWG", "CV": "Transport (LMV-TR / HGMV)"}.get(vehicle["type"], "LMV")
+
+    def add_vahan(rows: dict) -> None:
+        rows[vehicle["registration"]] = {"registration": vehicle["registration"], "owner": insured, "class": vclass,
+                                         "make_model": f"{vehicle['make']} {vehicle['model']}", "rc_status": "active",
+                                         "hypothecation": None, "blacklisted": False, "stolen": False,
+                                         "registered_on": vehicle.get("registered_on"), "profile": "uploaded_document"}
+    await update_json("vahan.json", add_vahan, {})
+
+    created = await create_claim(ClaimCreate(policy_no=policy_no, channel="app"), user=user)
+    now = iso(now_ist())
+
+    def attach(claims: list[dict]) -> dict:
+        c = find(claims, created["id"], user)
+        if body.staging is not None:
+            moved = _move_staged(body.staging.token, body.staging.files, c["id"], "d_1")
+            clean = {k: v for k, v in f.items() if v not in (None, "", [], {})}
+            c["documents"].append({"id": "d_1", "type": "Policy", "requirement": "policy", **moved, "status": "verified",
+                                   "extracted": clean, "checks": [], "uploaded_at": now, "uploaded_by": "customer" if user.get("role") == "customer" else user["id"],
+                                   "source": "uploaded_document"})
+        c["policy_source"] = "uploaded_document"
+        c["timeline"].append({"ts": now, "actor": "customer" if user.get("role") == "customer" else user["id"],
+                              "type": "policy_document_uploaded", "text": "Policy verified from an uploaded document"})
+        c["audit"].append({"ts": now, "actor": user["id"], "action": "policy_verified_uploaded_document", "from": None,
+                           "to": policy_no, "reason": "Policy, customer and vehicle created from an uploaded document"})
+        c["updated_at"] = now
+        validated(c)
+        return c
+
+    claim = await update_json("claims.json", attach, [])
+    end_date = date.fromisoformat(policy["end"])
+    warnings = []
+    if end_date < now_ist().date():
+        warnings.append("This policy has already expired — the claim can still be filed but is likely to be declined.")
+    if policy["cover"] != "OD+TP":
+        warnings.append("This policy does not include own-damage cover — the claim can still be filed but is likely to be declined.")
+    claim = with_media_availability(claim)
+    return {"claim": to_customer_view(claim) if user.get("role") == "customer" else claim, "warnings": warnings}
 

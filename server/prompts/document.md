@@ -14,7 +14,13 @@ PER DOCUMENT
    RC: registration, owner, class, make_model, fuel, reg_date, chassis5, engine5, financier,
        valid_to
    DL: number (last 4 only), holder, valid_to_nt, valid_to_tr, classes (MCWG, LMV, LMV-TR, TRANS)
-   POLICY: policy_no, insured, registration, from, to, cover (OD+TP|TP), idv, add_ons
+   POLICY: policy_no, insured, insured_father (father's/husband's name if printed), insured_address,
+       insured_contact (phone), period_from, period_to, cover (OD+TP|TP), idv, ncb_pct, add_ons
+       (zero_dep, consumables, engine_protect, rti, rsa — only those shown as active/opted),
+       deductible_compulsory, deductible_voluntary, premium (total premium paid), and the insured
+       vehicle's own registration, chassis5, engine5, fuel (reuse the RC-style fields above) plus
+       vehicle_make, vehicle_model, vehicle_variant, vehicle_colour, vehicle_cc, vehicle_year
+       (year of manufacture / first registration if shown).
    FIR: fir_no, station, date, facts (≤ 25 words)
    ESTIMATE/INVOICE: garage, date, lines [{desc, type: part|labour|paint, amount}], total
 4. checks: [{field, level: pass|warn|fail, msg ≤ 12 words}] against EXPECTED.
@@ -24,4 +30,7 @@ PER DOCUMENT
 5. tampering: list signs (misaligned/overwritten digits, font mismatch, pasted areas, cropped seal)
    with confidence; tampering_suspected only if any ≥ 0.75.
 6. A "SAMPLE – NOT VALID" watermark is expected in this demo: note it, never treat it as tampering.
+7. field_confidence: for every non-null field you extracted (any type), add one entry
+   {field: <the exact field name from §3>, confidence: 0–1 — how sure you are the printed value was
+   read correctly (not whether it matches EXPECTED)}. Omit fields you did not find.
 Mask IDs: DL last 4 only; never output Aadhaar/PAN numbers.

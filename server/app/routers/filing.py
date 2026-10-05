@@ -17,7 +17,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 from ..schemas.claim import Claim
 from ..services import uploads
-from ..services.claim_views import now_ist, to_customer_view, with_media_availability
+from ..services.claim_views import AI_FINAL_STATUSES, ai_pending, last_run_degraded, now_ist, to_customer_view, with_media_availability
 from ..services.json_store import read_json, update_json
 from .auth import current_user
 
@@ -409,4 +409,48 @@ async def submit_claim(claim_id: str, body: SubmitBody | None = None, user=Depen
     await update_json("notifications.json", notify, [])
     from ..agents import orchestrator  # the pipeline runs server-side; the client follows it on /api/pipeline/{run_id}/events
     run_id = await orchestrator.start(claim["id"], pace=(body or SubmitBody()).pace, trigger="submit")
+    return {"claim": view_for(user, claim), "run_id": run_id}
+
+
+# ------------------------------------------------------------------------------------------------ send an existing claim for AI processing (Feature B)
+
+class ProcessBody(BaseModel):
+    pace: Literal["presentation", "fast"] = "presentation"
+    reason: str | None = Field(None, max_length=300)
+
+
+@router.post("/claims/{claim_id}/process")
+async def process_claim(claim_id: str, body: ProcessBody | None = None, user=Depends(current_user)):
+    """Admin: run (or re-run) the AI pipeline on a claim that already exists — the same orchestrator.start() path
+    /submit uses, reusing the claim's existing photos, documents and narrative. Never available to customers."""
+    if not is_admin(user):
+        raise HTTPException(403, "Admins only")
+    body = body or ProcessBody()
+    now = now_ist()
+    state: dict = {"degraded": await last_run_degraded(claim_id)}
+
+    def record(claims: list[dict]) -> dict:
+        c = find(claims, claim_id, user)
+        if c["status"] == "DRAFT":
+            raise HTTPException(409, {"code": "not_submitted", "message": "This claim has not been submitted yet"})
+        if c["status"] == "PROCESSING":
+            raise HTTPException(409, {"code": "processing", "message": "The AI pipeline is already running on this claim"})
+        if c["status"] in AI_FINAL_STATUSES:
+            raise HTTPException(409, {"code": "final", "message": f"{c['status'].replace('_', ' ').title()} claims cannot be sent for AI processing"})
+        pending = ai_pending(c)
+        if not pending and not state["degraded"]:
+            raise HTTPException(409, {"code": "has_results", "message": "This claim already has a complete AI assessment"})
+        actor = user.get("display_name") or user.get("username") or user["id"]
+        reason = body.reason or ("Re-run requested" if not pending else "AI processing requested")
+        c["timeline"].append({"ts": iso(now), "actor": user["id"], "type": "ai_processing_started",
+                              "text": f"AI processing started by {actor}" + ("" if pending else f" — {reason}")})
+        c["audit"].append({"ts": iso(now), "actor": user["id"], "action": "ai_processing_started", "from": c["status"],
+                           "to": c["status"], "reason": reason})
+        c["updated_at"] = iso(now)
+        validated(c)
+        return c
+
+    claim = await update_json("claims.json", record, [])
+    from ..agents import orchestrator
+    run_id = await orchestrator.start(claim["id"], pace=body.pace, trigger="manual_process")
     return {"claim": view_for(user, claim), "run_id": run_id}

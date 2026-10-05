@@ -48,7 +48,7 @@ export const SEGMENT_LABELS = {
   bucket_paid: "Approved & settled", bucket_closed: "Declined & closed",
   bucket_c_in_progress: "In progress", bucket_c_needs_input: "Needs your input", bucket_c_paid: "Approved & paid", bucket_c_closed: "Closed",
   settled: "Settled", verified: "Verified", assessed: "Damage assessed", human_decided: "Decided by a handler",
-  overridden: "AI recommendation overridden",
+  overridden: "AI recommendation overridden", ai_pending: "AI processing pending",
 };
 
 /** Pill text for Dashboard drill-down filters (DRILL_KEYS). */

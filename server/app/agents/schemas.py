@@ -65,6 +65,11 @@ class EstimateLine(BaseModel):
     amount: float
 
 
+class FieldConf(BaseModel):
+    field: str
+    confidence: Conf
+
+
 class DocExtract(BaseModel):
     # RC
     registration: str | None = None
@@ -86,11 +91,26 @@ class DocExtract(BaseModel):
     # Policy
     policy_no: str | None = None
     insured: str | None = None
+    insured_father: str | None = None
+    insured_address: str | None = None
+    insured_contact: str | None = None
     period_from: str | None = None
     period_to: str | None = None
     cover: str | None = None
     idv: float | None = None
+    ncb_pct: float | None = None
     add_ons: list[str] = []
+    deductible_compulsory: float | None = None
+    deductible_voluntary: float | None = None
+    premium: float | None = None
+    vehicle_make: str | None = None
+    vehicle_model: str | None = None
+    vehicle_variant: str | None = None
+    vehicle_colour: str | None = None
+    vehicle_cc: float | None = None
+    vehicle_year: str | None = None
+    # Any document: per-field confidence (only for fields this document actually carries)
+    field_confidence: list[FieldConf] = []
     # FIR
     fir_no: str | None = None
     station: str | None = None
