@@ -173844,7 +173844,7 @@
     "id": "ABC-MC-2026-000241",
     "status": "SIU_INVESTIGATION",
     "created_at": "2026-10-02T02:41:00+05:30",
-    "updated_at": "2026-10-02T02:42:35+05:30",
+    "updated_at": "2026-10-05T12:49:16+05:30",
     "channel": "whatsapp",
     "customer_id": "c_0042",
     "policy_no": "ABC/PC/2026/665283",
@@ -174501,6 +174501,23 @@
         "draft": false,
         "created_at": "2026-10-02T02:42:35+05:30",
         "by": "agent:communication"
+      },
+      {
+        "id": "draft_ai_3",
+        "channel": "whatsapp",
+        "direction": "outbound",
+        "status": "draft",
+        "draft": true,
+        "text": "Hi Arjun, your claim ABC-MC-2026-000241 for Hyundai Creta (MH 12 XX 4521) at Vala Honda Service, Chembur is currently under review. 📋 A claims specialist is reviewing the details, and we will update you within 2 working days. Thank you for your patience.",
+        "text_en": "Hi Arjun, your claim ABC-MC-2026-000241 for Hyundai Creta (MH 12 XX 4521) at Vala Honda Service, Chembur is currently under review. 📋 A claims specialist is reviewing the details, and we will update you within 2 working days. Thank you for your patience.",
+        "lang_code": "en",
+        "quick_replies": [
+          "Check Status",
+          "Contact Support"
+        ],
+        "created_at": "2026-10-05T12:49:16+05:30",
+        "by": "agent:communication",
+        "generated_by": "live"
       }
     ],
     "assignee": "u_001",
