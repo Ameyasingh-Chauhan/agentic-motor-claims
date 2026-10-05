@@ -10,13 +10,14 @@ from datetime import datetime, timedelta
 from statistics import mean
 from typing import Callable
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, Request
 
 from ..services.claim_views import (
     BUCKETS, CUSTOMER_BUCKETS, OPEN_STATUSES, PAID_STATUSES, PENDING_ACTION, customer_status, fraud_saving, fy_start, is_auto, is_decided,
     is_fraud_detected, listed, now_ist, sla_state, status_at, to_customer_view, ts,
 )
 from ..config import get_settings
+from ..services import claim_filters, dashboard
 from ..services.json_store import read_json
 from .auth import current_user
 
@@ -237,3 +238,17 @@ async def home_stats(user=Depends(current_user)):
         "total_claims": len(claims),
         "recent_activity": customer_activity(claims, get_settings().insurer_name) if customer else recent_activity(claims, users, customer=False),
     }
+
+
+@router.get("/dashboard")
+async def dashboard_stats(request: Request, user=Depends(current_user)):
+    """All Dashboard datasets for the filter bar (§10.5): `range` preset (or custom `from`/`to`), vehicle_type, claim_type, city,
+    channel, garage_type (comma-separated). Computed from claims.json on every request (§11.6)."""
+    if user.get("role") != "admin":
+        raise HTTPException(403, {"code": "forbidden", "message": "You don't have access"})
+    params = dict(request.query_params)
+    try:
+        return dashboard.compute(await read_json("claims.json", []), params, await claim_filters.load_context(),
+                                 await read_json("pipeline_runs.json", []), await read_json("fraud_rules.json", []), now_ist())
+    except ValueError as exc:
+        raise HTTPException(422, {"code": "invalid_filter", "message": f"Invalid filter value: {exc}"}) from exc

@@ -18,13 +18,14 @@ const TINT = {
 };
 const SPARK_TONE = { blue: "blue", navy: "navy", green: "success", red: "danger", orange: "orange", amber: "amber" };
 
-const shell = "flex h-full flex-col rounded-lg border border-border bg-surface p-6 shadow-sm";
+const shellBase = "flex h-full flex-col rounded-lg border border-border bg-surface shadow-sm";
 
 /**
  * KpiCard (§7): tinted icon tile, one-line label, value (anime.js counter, once per `animateKey`), delta chip with
  * arrow, sparkline (or a custom `footer`), click-through link, skeleton and error states.
  * `deltaSemantics`: "up-good" (default) or "up-bad" (fraud, turnaround, pending ▲ are bad) decides the chip colour.
  * `deltaUnit`: "%" (relative change) or "pp" (percentage points, for rates).
+ * `compact`: 16px padding and a 24px value, for a six-across KPI strip (Dashboard).
  */
 export function KpiCard({
   label,
@@ -46,8 +47,10 @@ export function KpiCard({
   error,
   onRetry,
   animateKey,
+  compact = false,
   className,
 }) {
+  const shell = cn(shellBase, compact ? "p-4" : "p-6");
   if (loading) {
     return (
       <div className={cn(shell, className)} aria-busy="true">
@@ -80,13 +83,13 @@ export function KpiCard({
     <>
       <div className="flex items-center gap-3">
         {Icon && (
-          <span className={cn("flex h-10 w-10 shrink-0 items-center justify-center rounded-md", TINT[tone] ?? TINT.blue)}>
-            <Icon size={20} aria-hidden="true" />
+          <span className={cn("flex shrink-0 items-center justify-center rounded-md", compact ? "h-8 w-8" : "h-10 w-10", TINT[tone] ?? TINT.blue)}>
+            <Icon size={compact ? 16 : 20} aria-hidden="true" />
           </span>
         )}
         <span className="min-w-0 truncate text-sm font-medium text-muted">{label}</span>
       </div>
-      <div className="num mt-3 truncate text-3xl text-text">
+      <div className={cn("num mt-3 truncate text-text", compact ? "text-2xl font-bold" : "text-3xl")}>
         {valueNode ?? <AnimatedNumber value={value} format={format} animateKey={animateKey} />}
       </div>
       <div className="mt-1 flex h-6 items-center gap-2 text-caption whitespace-nowrap">
@@ -104,7 +107,7 @@ export function KpiCard({
               {deltaText}
               <span className="sr-only">{flat ? "no change" : up ? "increase" : "decrease"}</span>
             </span>
-            <span className="truncate text-subtle">{deltaLabel}</span>
+            {deltaLabel && <span className="truncate text-subtle">{deltaLabel}</span>}
           </>
         )}
       </div>

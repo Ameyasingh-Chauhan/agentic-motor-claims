@@ -11,7 +11,7 @@ import { formatDate, formatINR, formatNumber } from "../../lib/format";
 import { cn } from "../../lib/cn";
 import { ClaimCards } from "./ClaimCards";
 import { ClaimsTable } from "./ClaimsTable";
-import { CLAIM_TYPES, RISK_BANDS, SEGMENT_LABELS, VEHICLE_TYPES } from "./constants";
+import { CLAIM_TYPES, DRILL_LABELS, RISK_BANDS, SEGMENT_LABELS, VEHICLE_TYPES } from "./constants";
 import { FiltersPopover } from "./FiltersPopover";
 import { StatusChips } from "./StatusChips";
 import { exportUrl, useBrowserState, useClaimsList, useFacets, usePrefetchClaim } from "./useHomeData";
@@ -43,7 +43,16 @@ function ActivePills({ state, update, clearFilters }) {
     pills.push({ key: "amount", text: `${state.min_amount ? formatINR(state.min_amount) : "₹0"} – ${state.max_amount ? formatINR(state.max_amount) : "any"}`, clear: { min_amount: "", max_amount: "" } });
   }
   if (state.from || state.to) {
-    pills.push({ key: "date", text: `${state.from ? formatDate(state.from) : "Start"} – ${state.to ? formatDate(state.to) : "today"}`, clear: { from: "", to: "" } });
+    pills.push({ key: "date", text: `${state.date_on === "decided" ? "Decided " : ""}${state.from ? formatDate(state.from) : "Start"} – ${state.to ? formatDate(state.to) : "today"}`,
+      clear: { from: "", to: "", date_on: "" } });
+  }
+  if (state.min_risk || state.max_risk) {
+    pills.push({ key: "risk", text: `Risk score ${state.min_risk || 0}–${state.max_risk || 100}`, clear: { min_risk: "", max_risk: "" } });
+  }
+  for (const k of Object.keys(DRILL_LABELS)) {   // Dashboard drill-down filters
+    for (const v of state[k] ? state[k].split(",") : []) {
+      pills.push({ key: `${k}:${v}`, text: DRILL_LABELS[k](v), clear: { [k]: state[k].split(",").filter((x) => x !== v).join(",") } });
+    }
   }
   if (!pills.length) return null;
   return (

@@ -47,6 +47,17 @@
 
   /* Neutral dark panel (Lightbox, WhatsApp "under the hood") */
   --panel-dark: #1f1f1f;
+  /* WhatsApp-style replay (§10.9) — generic chat look, green-tinted */
+  --chat-header: #116d5b;
+  --chat-header-text: #ffffff;
+  --chat-bg: #efeae2;
+  --chat-pattern: rgba(17, 24, 39, 0.05);
+  --chat-in: #ffffff;
+  --chat-out: #d9fdd3;
+  --chat-meta: #667781;
+  --chat-tick-read: #1d8fd8;
+  --chat-action: #027a68;
+  --chat-on-action: #ffffff;
   --on-dark: #ffffff;
   --on-dark-muted: #c4c4c4;
 
@@ -147,6 +158,16 @@
 }
 
 [data-theme="dark"] {
+  --chat-header: #1e3a32;
+  --chat-header-text: #ededed;
+  --chat-bg: #181818;
+  --chat-pattern: rgba(255, 255, 255, 0.035);
+  --chat-in: #2a2a2a;
+  --chat-out: #1f4a3b;
+  --chat-meta: #a3a3a3;
+  --chat-tick-read: #53bdeb;
+  --chat-action: #4fd1b5;
+  --chat-on-action: #10201b;
   color-scheme: dark;
 
   /* Neutral charcoal greys (AutomationEdge product UI) — no navy or blue-tinted backgrounds. */
@@ -256,6 +277,15 @@
   --color-login-gradient: var(--login-gradient);
   --color-on-blue: var(--on-blue);
   --color-panel-dark: var(--panel-dark);
+  --color-chat-header: var(--chat-header);
+  --color-chat-header-text: var(--chat-header-text);
+  --color-chat-bg: var(--chat-bg);
+  --color-chat-in: var(--chat-in);
+  --color-chat-out: var(--chat-out);
+  --color-chat-meta: var(--chat-meta);
+  --color-chat-tick-read: var(--chat-tick-read);
+  --color-chat-action: var(--chat-action);
+  --color-chat-on-action: var(--chat-on-action);
   --color-on-dark: var(--on-dark);
   --color-on-dark-muted: var(--on-dark-muted);
   --color-primary: var(--primary);

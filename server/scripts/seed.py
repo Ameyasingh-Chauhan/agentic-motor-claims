@@ -30,6 +30,7 @@ import reference_data as R  # noqa: E402
 import seed_media as SM  # noqa: E402
 import seed_documents as SD  # noqa: E402
 import make_specimen_docs as DOCS  # noqa: E402
+import make_whatsapp_scenarios  # noqa: E402
 
 IST = timezone(timedelta(hours=5, minutes=30))
 STOCK = SERVER.parent / "client" / "public" / "assets" / "stock"
@@ -1139,11 +1140,7 @@ def seed() -> None:
     for name, value in mocks_for(data).items():
         write_json_sync(name, value)
     write_json_sync("notifications.json", notifications_for(data["claims"]))
-    scenario_ids = {c["scenario_id"]: c["id"] for c in data["claims"] if c["scenario_id"]}
-    whatsapp = read_json_sync("whatsapp_scenarios.json", []) or []
-    for s in whatsapp:
-        s["claim_id"] = scenario_ids.get(s["id"], s.get("claim_id"))
-    write_json_sync("whatsapp_scenarios.json", whatsapp)
+    write_json_sync("whatsapp_scenarios.json", make_whatsapp_scenarios.build(data["claims"]))  # §10.9 replays built from these claims
 
     claims = data["claims"]
     print(f"Seed anchor: {iso(NOW)}")

@@ -1,0 +1,2 @@
+/* Dashboard (§10.5): the filter bar sticks below the 64 px topbar. */
+.dash-filterbar { top: calc(var(--topbar-h) + var(--spacing) * 2); }

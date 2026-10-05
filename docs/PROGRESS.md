@@ -1,6 +1,15 @@
 # Build progress
 
 ## Resume point
+**Phase 7 — WhatsApp Journey: BUILT + VERIFIED by builder (2026-10-05); awaiting user acceptance.** Kept simple per user.
+Details: "Phase 7" section below. pytest 166 pass, `npm run build` OK, `npm run contrast` OK.
+**Exact next sub-step:** user runs the Phase 7 checklist; then Phase 8 (Support, settings, polish). **Temporary state:** none.
+
+**Phase 4 — Dashboard: BUILT + VERIFIED by builder (2026-10-05); awaiting user acceptance.** Brief: `docs/PHASE_4_BRIEF.md`.
+Details: "Phase 4" section below. pytest 163 pass, `npm run build` OK, `npm run contrast` OK.
+**Exact next sub-step:** user runs the Phase 4 test checklist; then the next phase per spec §19 (Phase 7 — WhatsApp Journey).
+**Temporary state:** none (dashboard is read-only; `server/data` untouched).
+
 **Phase 6 — File a Claim wizard, Agent Theatre, Results: BUILT + BROWSER-VERIFIED by builder (2026-10-05); awaiting user acceptance.**
 Brief (verbatim): `docs/PHASE_6_BRIEF.md`. Details: "Phase 6" section below.
 **Last completed sub-step:** 6.5 browser acceptance + fixes; data restored (sha256 manifest match, no extra uploads); pytest 156 pass,
@@ -9,6 +18,62 @@ Brief (verbatim): `docs/PHASE_6_BRIEF.md`. Details: "Phase 6" section below.
 **Temporary state:** none. Data = clean backup (`daf354c5…/scratchpad/backup`). NOTE: WIP commit d5c8362 contains test claims
 000253/000254 in claims.json — the working tree now removes them (claims/notifications/pipeline_runs differ from HEAD on purpose).
 **Constraints:** no full re-seed; tests only on temp data; restore server/data + server/uploads after own testing; do not commit.
+
+## Phase 7 — WhatsApp Journey (2026-10-05)
+### Delivered
+- `server/scripts/make_whatsapp_scenarios.py` builds `whatsapp_scenarios.json` from real claims (also called at the end of `seed.py`):
+  Happy path (238, Hinglish voice note, cashless pre-auth), More info needed (230), Theft (237, Hindi, FIR), Flagged (241, customer-safe
+  messages; risk findings + SIU only in `internal` under-the-hood blocks), Settlement & feedback (190). 68 messages, all 11 message types.
+- `GET /api/whatsapp/scenarios` (`routers/whatsapp.py`): admins get all five; customers only journeys on their own claims, internal blocks
+  removed. `tests/test_whatsapp.py` (3).
+- `client/src/features/whatsapp/`: page (scenario picker in the URL, controls, scenario card, "Why WhatsApp" + "Try it in the app"),
+  PhoneFrame (390 × 820 scaled to fit, generic chat — no WhatsApp logo), anime.js timer playback (`usePlayback`: play/pause, step, restart,
+  0.5×/1×/2×, scrubber with chapter markers; anime.js also animates bubble entrance), UnderTheHood (dark-scoped panel), PNG + key-frame ZIP
+  export (html-to-image + JSZip, lazy-loaded). Chat tokens `--chat-*` for light and dark. Dependency added: `jszip`.
+### Verification
+- Headless Chrome (scratchpad `shots/wa.mjs`, `wa2.mjs`): all five scenarios play to the end (2×; theft at 0.5×), step back/forward and
+  chapter jumps work, PNG (≈150 KB) and ZIP (≈260 KB) downloads produced, Rahul sees only his two journeys with no internal content, no
+  console errors; light + dark at 1366×768 and 1920×1080.
+### Decisions
+- Kept simple: journeys are scripted from claim data (not a live chat); chapters exist only where a journey has them (settlement = 1).
+- Under-the-hood panel uses the neutral `--panel-dark` (no navy, rule 15) with `data-theme="dark"` so its tokens stay readable in light mode.
+- Customers see the page with their own journeys only (other customers' replays would expose their data).
+### Known follow-ups
+- At 1366×768 the phone scales to ~0.65 so chat text is small (exports are full resolution).
+- Voice notes are shown (waveform + transcript) but not playable in the replay.
+
+## Phase 4 — Dashboard (2026-10-05)
+### Delivered
+- Backend: `services/claim_filters.py` — one filter predicate for the Home claims list and the Dashboard (new list params channel,
+  garage_type, garage, city_tier, dow, hour, rule, min_risk/max_risk, outcome, route, date_on; segments settled, verified, assessed,
+  human_decided, overridden; risk/fraud/routing filters and internal segments are ignored for customers). `services/dashboard.py` +
+  `GET /api/stats/dashboard` (admin; computed from claims.json per request): period presets, 6 KPIs with sparklines and deltas, 20 chart
+  datasets each with a computed insight and drill-down links. `tests/test_dashboard.py` (7).
+- Frontend `client/src/features/dashboard/`: sticky one-row FilterBar (period dropdown + custom range + 5 multi-selects + reset, URL
+  state), compact KPI strip, ChartCard (title, subtitle, info, insight, Export PNG/CSV, View as table, skeleton/empty/error, mount on first
+  view, axis-click drill), charts.js (20 builders from tokens), LegendList, GarageLeaderboard, motion.js (section stagger once per session).
+  Shared additions (additive, defaults unchanged): echarts funnel/sankey/heatmap/visualMap modules, EChart `onChartReady`, chartTheme
+  `bgMuted`/`blue50`, KpiCard `compact`, DateRangePicker `emptyLabel`. Home list accepts the drill-down keys (pills + Clear all).
+### Verification
+- Tests: FY totals equal the Home KPIs; > 80 drill-down links each equal the list total; filters change every chart consistently;
+  presets/buckets; a new claim shows instantly; agent stats read pipeline_runs.json; admin-only; customers cannot probe internal filters.
+- Headless Chrome (scratchpad `shots/shoot.mjs`, `drill.mjs`) at 1366×768 and 1920×1080, light + dark: no console errors; filter →
+  URL + KPIs update; status-legend drill → Home list with matching pills and equal count; charts resize after Ctrl+B.
+### Decisions
+- ui-ux-pro-max guidance applied: ≤ 6-slice donuts with labelled legends, sorted bars, funnel shows conversion and highlights the biggest
+  drop, Sankey labels always visible, table fallback per chart, no overshoot easing on data views. Its palette/font were overridden by tokens.
+- Period is a preset dropdown (not SegmentedControl) so the sticky bar fits one row; extra preset "Last 24 months"; default FY to date.
+- Buckets: day ≤ 31 days, week ≤ 120 days, else month. Deltas compare with the previous period of equal length.
+- Chart 1 "settled / approved" and chart 19 overrides are dated by decision (`date_on=decided`); chart 20 (YoY) ignores the date range.
+- Human override = handler-decided claim whose final pay/deny differs from the AI's pay/deny recommendation ("review" excluded).
+- Agent performance: live runs from pipeline_runs.json (fallback = failed step); seeded claims from gaps between agent timeline events and
+  `agent_fallback` audit entries. No drill-down (agents are not claims).
+- Turnaround chart uses a log axis (minutes for straight-through, days for SIU); values floored at 0.01 h.
+- Spans adapted to fill rows: Volume 8+4 / 4+4+4; Money 8+4; Fraud 6+6 / 4+8; Operations 4+5+3 + heatmap 12; Geo 6+6; AI 6+6; YoY 12.
+### Known follow-ups
+- 1366/1920 checked in headless Chrome only (the interactive Chrome window here is limited to ~1045 px by a side panel).
+- Agent-performance x-labels are rotated even at 1920 where they would fit flat.
+- Seed data: some claims use a garage from another city (leaderboard shows each garage's own city).
 
 ## Phase 6 — File a Claim wizard, Agent Theatre, Results (2026-10-04 → 05)
 ### Delivered

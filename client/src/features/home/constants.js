@@ -47,6 +47,23 @@ export const SEGMENT_LABELS = {
   bucket_in_progress: "In progress", bucket_needs_action: "Needs action", bucket_siu: "SIU investigation",
   bucket_paid: "Approved & settled", bucket_closed: "Declined & closed",
   bucket_c_in_progress: "In progress", bucket_c_needs_input: "Needs your input", bucket_c_paid: "Approved & paid", bucket_c_closed: "Closed",
+  settled: "Settled", verified: "Verified", assessed: "Damage assessed", human_decided: "Decided by a handler",
+  overridden: "AI recommendation overridden",
+};
+
+/** Pill text for Dashboard drill-down filters (DRILL_KEYS). */
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+export const DRILL_LABELS = {
+  channel: (v) => ({ whatsapp: "WhatsApp", app: "App", web: "Web", branch: "Branch" })[v] ?? v,
+  garage_type: (v) => ({ authorised: "Authorised dealer", multibrand: "Multi-brand garage", none: "No garage" })[v] ?? v,
+  garage: (v) => v,
+  city_tier: (v) => `Tier ${v} city`,
+  dow: (v) => DAYS[Number(v)] ?? v,
+  hour: (v) => `${String(v).padStart(2, "0")}:00–${String((Number(v) + 1) % 24).padStart(2, "0")}:00`,
+  rule: (v) => `Flag ${v}`,
+  outcome: (v) => ({ paid: "Outcome: paid / approved", declined: "Outcome: declined", fraud_confirmed: "Outcome: fraud confirmed",
+    withdrawn: "Outcome: withdrawn", open: "Outcome: still open" })[v] ?? v,
+  route: (v) => ({ auto: "Route: straight-through", handler: "Route: handler review", SIU: "Route: SIU", pending: "Route: not routed" })[v] ?? v,
 };
 
 export const INCIDENT_ICONS = {

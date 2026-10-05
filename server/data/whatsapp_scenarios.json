@@ -1,32 +1,1890 @@
 [
   {
-    "id": "clean_rear_end",
-    "title": "Clean Rear End",
+    "id": "happy_path",
+    "title": "Happy path",
+    "short": "Cashless approved",
+    "description": "Voice-note FNOL in Hinglish, photos and documents read live, straight-through cashless approval.",
     "claim_id": "ABC-MC-2026-000238",
-    "messages": []
+    "customer_id": "c_0001",
+    "customer_name": "Rahul Sharma",
+    "vehicle": "Hyundai Creta",
+    "registration": "MH 12 AB 1234",
+    "language": "hi-en",
+    "chapters": [
+      {
+        "key": "fnol",
+        "label": "FNOL",
+        "index": 0
+      },
+      {
+        "key": "photos",
+        "label": "Photos",
+        "index": 9
+      },
+      {
+        "key": "verification",
+        "label": "Verification",
+        "index": 11
+      },
+      {
+        "key": "decision",
+        "label": "Decision",
+        "index": 14
+      }
+    ],
+    "messages": [
+      {
+        "id": "w1",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:35:00+05:30",
+        "text": "Hi, mujhe claim karna hai",
+        "under_the_hood": null
+      },
+      {
+        "id": "w2",
+        "from": "business",
+        "type": "list",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:35:24+05:30",
+        "text": "Namaste Rahul! I'm the ABC claims assistant. What would you like to do?",
+        "button": "Choose an option",
+        "rows": [
+          {
+            "title": "Report a new claim",
+            "description": "Accident, theft, glass, flood"
+          },
+          {
+            "title": "Track a claim",
+            "description": "Status and next steps"
+          },
+          {
+            "title": "Talk to an expert",
+            "description": "Mon–Sat, 9 AM–7 PM"
+          }
+        ],
+        "chosen": "Report a new claim",
+        "under_the_hood": {
+          "agent": null,
+          "title": "Business account menu",
+          "tools": [],
+          "notes": [
+            "Verified business profile · auto-reply in < 1 s"
+          ],
+          "latency_ms": 320,
+          "internal": false
+        }
+      },
+      {
+        "id": "w3",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:35:36+05:30",
+        "text": "Report a new claim",
+        "under_the_hood": null
+      },
+      {
+        "id": "w4",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:36:00+05:30",
+        "text": "I found your policy for Hyundai Creta · MH 12 AB 1234. Is this the vehicle?",
+        "buttons": [
+          "Yes, this one",
+          "Another vehicle"
+        ],
+        "chosen": "Yes, this one",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Policy lookup by phone number",
+          "tools": [
+            {
+              "name": "Policy core",
+              "result": "Active · OD+TP · valid till 29 May 2027",
+              "level": "pass",
+              "latency_ms": 145
+            }
+          ],
+          "notes": [],
+          "latency_ms": 145,
+          "internal": false
+        }
+      },
+      {
+        "id": "w5",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:36:12+05:30",
+        "text": "Yes, this one",
+        "under_the_hood": null
+      },
+      {
+        "id": "w6",
+        "from": "business",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:36:36+05:30",
+        "text": "Tell me what happened — type it or send a voice note in any language.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w7",
+        "from": "customer",
+        "type": "voice",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:37:48+05:30",
+        "duration_s": 13,
+        "peaks": [
+          0.26,
+          0.75,
+          0.94,
+          0.99,
+          0.73,
+          0.68,
+          0.74,
+          0.48,
+          0.5,
+          0.8,
+          0.94,
+          0.69,
+          0.66,
+          0.44,
+          0.41,
+          0.27,
+          0.27,
+          0.96,
+          0.95,
+          0.66,
+          0.53,
+          0.74,
+          0.86,
+          0.63,
+          0.3,
+          0.63,
+          0.57,
+          0.65,
+          0.38,
+          0.41,
+          0.79,
+          0.38,
+          0.26,
+          0.75,
+          0.94,
+          0.99
+        ],
+        "transcript": "Khed Shivapur toll ke paas NH48 pe raat 9 baje ek truck ne peeche se thok diya. Peeche ka bumper, right side ki tail light aur quarter panel damage ho gaye.",
+        "translation": "A truck hit my car from behind on NH48 near the Khed Shivapur toll at around 9 PM. The rear bumper, right tail lamp and right rear quarter are damaged.",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Voice note transcribed and structured",
+          "tools": [
+            {
+              "name": "Speech-to-text",
+              "result": "Detected Hindi–English mix",
+              "level": "pass",
+              "latency_ms": 2100
+            },
+            {
+              "name": "Translate + extract",
+              "result": "Rear-end collision · NH48 near Khed Shivapur toll plaza · rear bumper, quarter panel, tail lamp",
+              "level": "pass",
+              "latency_ms": 1700
+            }
+          ],
+          "notes": [],
+          "latency_ms": 3800,
+          "internal": false
+        }
+      },
+      {
+        "id": "w8",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:38:12+05:30",
+        "text": "Thanks. Please share the location where it happened.",
+        "buttons": [
+          "Send location",
+          "Type the address"
+        ],
+        "chosen": "Send location",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Missing field: incident location",
+          "tools": [],
+          "notes": [
+            "Asks only for what the statement did not contain"
+          ],
+          "latency_ms": 900,
+          "internal": false
+        }
+      },
+      {
+        "id": "w9",
+        "from": "customer",
+        "type": "location",
+        "chapter": "fnol",
+        "ts": "2026-09-30T21:38:36+05:30",
+        "label": "NH48 near Khed Shivapur toll plaza",
+        "address": "NH48 near Khed Shivapur toll plaza, Pune",
+        "lat": 18.3606,
+        "lng": 73.8516,
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Location geocoded",
+          "tools": [
+            {
+              "name": "Geocoder",
+              "result": "NH48 near Khed Shivapur toll plaza, Pune (18.3606, 73.8516)",
+              "level": "pass",
+              "latency_ms": 240
+            }
+          ],
+          "notes": [],
+          "latency_ms": 240,
+          "internal": false
+        }
+      },
+      {
+        "id": "w10",
+        "from": "business",
+        "type": "text",
+        "chapter": "photos",
+        "ts": "2026-09-30T21:39:00+05:30",
+        "text": "Got it. Please send 2–4 photos: the full rear of the car and a close-up of the damage.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w11",
+        "from": "customer",
+        "type": "images",
+        "chapter": "photos",
+        "ts": "2026-09-30T21:41:00+05:30",
+        "images": [
+          {
+            "url": "/assets/stock/car-rear/car_rear_01.webp",
+            "thumb": "/assets/stock/car-rear/car_rear_01-thumb.webp",
+            "blur_data": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAsAAsBMJYwCsAEGR2p3YAD0dr3mWNixdkiDHUiFPUJ051SpzrlLWj3bcAAA"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "damage",
+          "title": "Damage assessed from the photos",
+          "tools": [
+            {
+              "name": "Photo quality",
+              "result": "Sharp, well lit, EXIF time and GPS present",
+              "level": "pass",
+              "latency_ms": 180
+            },
+            {
+              "name": "Vehicle identity",
+              "result": "Hyundai Creta, Silver — matches the policy",
+              "level": "pass",
+              "latency_ms": 2600
+            },
+            {
+              "name": "Parts and severity",
+              "result": "Rear bumper (replace), Quarter panel (repair_moderate_dent), Tail lamp (replace)",
+              "level": "pass",
+              "latency_ms": 9800
+            }
+          ],
+          "notes": [],
+          "latency_ms": 12600,
+          "internal": false
+        }
+      },
+      {
+        "id": "w12",
+        "from": "customer",
+        "type": "document",
+        "chapter": "verification",
+        "ts": "2026-09-30T21:41:36+05:30",
+        "name": "RC_MH12AB1234.pdf",
+        "pages": 1,
+        "size_kb": 194,
+        "thumb": "/assets/documents/ABC-MC-2026-000238/d_3-thumb.webp",
+        "under_the_hood": {
+          "agent": "document",
+          "title": "RC read and matched",
+          "tools": [
+            {
+              "name": "Document AI",
+              "result": "Matches policyholder; Matches policy and Vahan record",
+              "level": "pass",
+              "latency_ms": 2400
+            }
+          ],
+          "notes": [],
+          "latency_ms": 2400,
+          "internal": false
+        }
+      },
+      {
+        "id": "w13",
+        "from": "customer",
+        "type": "document",
+        "chapter": "verification",
+        "ts": "2026-09-30T21:42:12+05:30",
+        "name": "DL_MH12AB1234.pdf",
+        "pages": 1,
+        "size_kb": 194,
+        "thumb": "/assets/documents/ABC-MC-2026-000238/d_4-thumb.webp",
+        "under_the_hood": {
+          "agent": "document",
+          "title": "DL read and matched",
+          "tools": [
+            {
+              "name": "Document AI",
+              "result": "Valid on incident date; Class LMV, MCWG covers the vehicle",
+              "level": "pass",
+              "latency_ms": 2400
+            }
+          ],
+          "notes": [],
+          "latency_ms": 2400,
+          "internal": false
+        }
+      },
+      {
+        "id": "w14",
+        "from": "business",
+        "type": "status",
+        "chapter": "verification",
+        "ts": "2026-09-30T21:42:36+05:30",
+        "title": "Claim registered",
+        "claim_id": "ABC-MC-2026-000238",
+        "steps": [
+          {
+            "label": "Claim registered",
+            "state": "done"
+          },
+          {
+            "label": "Vehicle & documents checked",
+            "state": "done"
+          },
+          {
+            "label": "Damage assessed",
+            "state": "done"
+          },
+          {
+            "label": "Decision",
+            "state": "current"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "verification",
+          "title": "Checks against India's digital public infrastructure",
+          "tools": [
+            {
+              "name": "Vahan (RTO)",
+              "result": "RC active · Private · not blacklisted",
+              "level": "pass",
+              "latency_ms": 303
+            },
+            {
+              "name": "Sarathi DL",
+              "result": "Valid · LMV",
+              "level": "pass",
+              "latency_ms": 221
+            },
+            {
+              "name": "NPCI FASTag",
+              "result": "Khed Shivapur toll at 20:52 — matches the reported route and time",
+              "level": "pass",
+              "latency_ms": 410
+            },
+            {
+              "name": "IIB history",
+              "result": "1 claims in 3 years",
+              "level": "pass",
+              "latency_ms": 349
+            },
+            {
+              "name": "CKYC",
+              "result": "KYC verified",
+              "level": "pass",
+              "latency_ms": 81
+            }
+          ],
+          "notes": [],
+          "latency_ms": 1364,
+          "internal": false
+        }
+      },
+      {
+        "id": "w15",
+        "from": "business",
+        "type": "template",
+        "chapter": "decision",
+        "ts": "2026-09-30T21:43:36+05:30",
+        "header": "Cashless repair approved ✓",
+        "body": "Claim ABC-MC-2026-000238 for MH 12 AB 1234 is pre-approved for ₹24,772 at Dani Kia Service, Baner.",
+        "footer": "ABC General Insurance · Motor Claims",
+        "buttons": [
+          "Book drop-off",
+          "Get directions",
+          "Talk to us"
+        ],
+        "under_the_hood": {
+          "agent": "adjudication",
+          "title": "Straight-through decision",
+          "tools": [
+            {
+              "name": "Costing (Python)",
+              "result": "Assessed ₹25,772 − deductible ₹1,000 = ₹24,772",
+              "level": "pass",
+              "latency_ms": 40
+            },
+            {
+              "name": "Policy terms",
+              "result": "All checks passed · auto-approval within limits",
+              "level": "pass",
+              "latency_ms": 60
+            }
+          ],
+          "notes": [],
+          "latency_ms": 900,
+          "internal": false
+        }
+      },
+      {
+        "id": "w16",
+        "from": "customer",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-09-30T21:44:36+05:30",
+        "text": "Wah, itna jaldi! Thank you 🙏",
+        "under_the_hood": null
+      },
+      {
+        "id": "w17",
+        "from": "business",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-09-30T21:45:00+05:30",
+        "text": "Aapka swagat hai! Garage ko details bhej di gayi hain. Repair ke updates yahin milte rahenge.",
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Reply in the customer's language",
+          "tools": [],
+          "notes": [
+            "Hinglish detected from the voice note"
+          ],
+          "latency_ms": 1100,
+          "internal": false
+        }
+      }
+    ]
   },
   {
-    "id": "fastag_mismatch",
-    "title": "Fastag Mismatch",
-    "claim_id": "ABC-MC-2026-000241",
-    "messages": []
+    "id": "more_info",
+    "title": "More info needed",
+    "short": "Info requested",
+    "description": "The assistant asks only for what is missing, then confirms receipt — no phone calls.",
+    "claim_id": "ABC-MC-2026-000230",
+    "customer_id": "c_0001",
+    "customer_name": "Rahul Sharma",
+    "vehicle": "Hyundai Creta",
+    "registration": "MH 12 AB 1234",
+    "language": "en",
+    "chapters": [
+      {
+        "key": "fnol",
+        "label": "FNOL",
+        "index": 0
+      },
+      {
+        "key": "photos",
+        "label": "Photos",
+        "index": 7
+      },
+      {
+        "key": "verification",
+        "label": "Verification",
+        "index": 9
+      },
+      {
+        "key": "decision",
+        "label": "Decision",
+        "index": 10
+      }
+    ],
+    "messages": [
+      {
+        "id": "w1",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:14:00+05:30",
+        "text": "Hi, my windshield cracked",
+        "under_the_hood": null
+      },
+      {
+        "id": "w2",
+        "from": "business",
+        "type": "list",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:14:24+05:30",
+        "text": "Namaste Rahul! I'm the ABC claims assistant. What would you like to do?",
+        "button": "Choose an option",
+        "rows": [
+          {
+            "title": "Report a new claim",
+            "description": "Accident, theft, glass, flood"
+          },
+          {
+            "title": "Track a claim",
+            "description": "Status and next steps"
+          },
+          {
+            "title": "Talk to an expert",
+            "description": "Mon–Sat, 9 AM–7 PM"
+          }
+        ],
+        "chosen": "Report a new claim",
+        "under_the_hood": {
+          "agent": null,
+          "title": "Business account menu",
+          "tools": [],
+          "notes": [
+            "Verified business profile · auto-reply in < 1 s"
+          ],
+          "latency_ms": 320,
+          "internal": false
+        }
+      },
+      {
+        "id": "w3",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:14:36+05:30",
+        "text": "Report a new claim",
+        "under_the_hood": null
+      },
+      {
+        "id": "w4",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:15:00+05:30",
+        "text": "I found your policy for Hyundai Creta · MH 12 AB 1234. Is this the vehicle?",
+        "buttons": [
+          "Yes, this one",
+          "Another vehicle"
+        ],
+        "chosen": "Yes, this one",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Policy lookup by phone number",
+          "tools": [
+            {
+              "name": "Policy core",
+              "result": "Active · OD+TP · valid till 29 May 2027",
+              "level": "pass",
+              "latency_ms": 112
+            }
+          ],
+          "notes": [],
+          "latency_ms": 112,
+          "internal": false
+        }
+      },
+      {
+        "id": "w5",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:15:12+05:30",
+        "text": "Yes, this one",
+        "under_the_hood": null
+      },
+      {
+        "id": "w6",
+        "from": "business",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:15:36+05:30",
+        "text": "Sorry to hear that. Briefly, what happened?",
+        "under_the_hood": null
+      },
+      {
+        "id": "w7",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-27T12:16:24+05:30",
+        "text": "A stone flew up from a truck on Mumbai–Pune Expressway near Lonavala and cracked the windshield.",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Statement structured",
+          "tools": [
+            {
+              "name": "Extract",
+              "result": "Windshield damage · Mumbai–Pune Expressway near Lonavala",
+              "level": "pass",
+              "latency_ms": 1600
+            }
+          ],
+          "notes": [],
+          "latency_ms": 1600,
+          "internal": false
+        }
+      },
+      {
+        "id": "w8",
+        "from": "business",
+        "type": "text",
+        "chapter": "photos",
+        "ts": "2026-09-27T12:16:48+05:30",
+        "text": "Please send a photo of the windshield from outside and one close-up of the crack.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w9",
+        "from": "customer",
+        "type": "images",
+        "chapter": "photos",
+        "ts": "2026-09-27T12:18:48+05:30",
+        "images": [
+          {
+            "url": "/assets/stock/windshield/glass_02.webp",
+            "thumb": "/assets/stock/windshield/glass_02-thumb.webp",
+            "blur_data": "data:image/webp;base64,UklGRkQAAABXRUJQVlA4IDgAAADQAQCdASoQAAoAAsBMJZACdADuFupgAAD91NIWGfpZYQ1of9p62S7FBDa7gTP2HI/r6ctMIorYAA=="
+          },
+          {
+            "url": "/assets/stock/windshield/glass_01.webp",
+            "thumb": "/assets/stock/windshield/glass_01-thumb.webp",
+            "blur_data": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAsAAsBMJZwAAlqXko3tgAD4x3TwsTkwbRKJbQM1rtncApE0ZqoZCxj0jgAA"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "damage",
+          "title": "Damage assessed from the photos",
+          "tools": [
+            {
+              "name": "Photo quality",
+              "result": "Sharp, well lit, EXIF time and GPS present",
+              "level": "pass",
+              "latency_ms": 180
+            },
+            {
+              "name": "Vehicle identity",
+              "result": "Hyundai Creta, Silver — matches the policy",
+              "level": "pass",
+              "latency_ms": 2600
+            },
+            {
+              "name": "Parts and severity",
+              "result": "Windshield (laminated) (replace)",
+              "level": "pass",
+              "latency_ms": 9800
+            }
+          ],
+          "notes": [],
+          "latency_ms": 12600,
+          "internal": false
+        }
+      },
+      {
+        "id": "w10",
+        "from": "business",
+        "type": "status",
+        "chapter": "verification",
+        "ts": "2026-09-27T12:19:12+05:30",
+        "title": "Claim registered",
+        "claim_id": "ABC-MC-2026-000230",
+        "steps": [
+          {
+            "label": "Claim registered",
+            "state": "done"
+          },
+          {
+            "label": "Vehicle & documents checked",
+            "state": "done"
+          },
+          {
+            "label": "Damage assessed",
+            "state": "done"
+          },
+          {
+            "label": "Decision",
+            "state": "current"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "verification",
+          "title": "Checks against India's digital public infrastructure",
+          "tools": [
+            {
+              "name": "Vahan (RTO)",
+              "result": "RC active · Private · not blacklisted",
+              "level": "pass",
+              "latency_ms": 599
+            },
+            {
+              "name": "Sarathi DL",
+              "result": "Valid · LMV",
+              "level": "pass",
+              "latency_ms": 220
+            },
+            {
+              "name": "NPCI FASTag",
+              "result": "No contradicting toll or parking events",
+              "level": "pass",
+              "latency_ms": 536
+            },
+            {
+              "name": "IIB history",
+              "result": "0 claims in 3 years",
+              "level": "pass",
+              "latency_ms": 338
+            },
+            {
+              "name": "CKYC",
+              "result": "KYC verified",
+              "level": "pass",
+              "latency_ms": 94
+            }
+          ],
+          "notes": [],
+          "latency_ms": 1787,
+          "internal": false
+        }
+      },
+      {
+        "id": "w11",
+        "from": "business",
+        "type": "template",
+        "chapter": "decision",
+        "ts": "2026-09-27T12:20:12+05:30",
+        "header": "We need 2 more things",
+        "body": "To finish your claim, please send:\n• Odometer photo\n• Repair estimate from garage",
+        "footer": "Reply here — it takes a minute",
+        "buttons": [
+          "Send now",
+          "Remind me later"
+        ],
+        "under_the_hood": {
+          "agent": "adjudication",
+          "title": "Information needed before a decision",
+          "tools": [
+            {
+              "name": "Document checklist",
+              "result": "Missing: Odometer photo, Repair estimate from garage",
+              "level": "warn",
+              "latency_ms": 70
+            }
+          ],
+          "notes": [],
+          "latency_ms": 800,
+          "internal": false
+        }
+      },
+      {
+        "id": "w12",
+        "from": "customer",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-09-27T12:23:12+05:30",
+        "text": "Sending now",
+        "under_the_hood": null
+      },
+      {
+        "id": "w13",
+        "from": "customer",
+        "type": "document",
+        "chapter": "decision",
+        "ts": "2026-09-27T12:23:42+05:30",
+        "name": "Odometer.jpg",
+        "pages": 1,
+        "size_kb": 410,
+        "under_the_hood": {
+          "agent": "document",
+          "title": "Odometer photo read",
+          "tools": [
+            {
+              "name": "Document AI",
+              "result": "Odometer reading captured · readable",
+              "level": "pass",
+              "latency_ms": 1900
+            }
+          ],
+          "notes": [],
+          "latency_ms": 1900,
+          "internal": false
+        }
+      },
+      {
+        "id": "w14",
+        "from": "customer",
+        "type": "document",
+        "chapter": "decision",
+        "ts": "2026-09-27T12:24:06+05:30",
+        "name": "Estimate_Windshield.pdf",
+        "pages": 2,
+        "size_kb": 240,
+        "under_the_hood": {
+          "agent": "document",
+          "title": "Garage estimate read",
+          "tools": [
+            {
+              "name": "Document AI",
+              "result": "Estimate ₹15,060 from Dani Kia Service, Baner",
+              "level": "pass",
+              "latency_ms": 2300
+            },
+            {
+              "name": "Costing (Python)",
+              "result": "AI estimate ₹14,620 · quote within 5%",
+              "level": "pass",
+              "latency_ms": 50
+            }
+          ],
+          "notes": [],
+          "latency_ms": 2350,
+          "internal": false
+        }
+      },
+      {
+        "id": "w15",
+        "from": "business",
+        "type": "status",
+        "chapter": "decision",
+        "ts": "2026-09-27T12:24:30+05:30",
+        "title": "All documents received",
+        "claim_id": "ABC-MC-2026-000230",
+        "steps": [
+          {
+            "label": "Claim registered",
+            "state": "done"
+          },
+          {
+            "label": "Documents received",
+            "state": "done"
+          },
+          {
+            "label": "Final review",
+            "state": "current"
+          },
+          {
+            "label": "Repair",
+            "state": "todo"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Status update",
+          "tools": [],
+          "notes": [],
+          "latency_ms": 700,
+          "internal": false
+        }
+      }
+    ]
   },
   {
-    "id": "garage_overquote",
-    "title": "Garage Overquote",
-    "claim_id": "ABC-MC-2026-000235",
-    "messages": []
-  },
-  {
-    "id": "theft_two_wheeler",
-    "title": "Theft Two Wheeler",
+    "id": "theft",
+    "title": "Theft claim",
+    "short": "Two-wheeler theft",
+    "description": "Hindi voice note, FIR verified against police records, clear list of originals to hand over.",
     "claim_id": "ABC-MC-2026-000237",
-    "messages": []
+    "customer_id": "c_0044",
+    "customer_name": "Imran Shaikh",
+    "vehicle": "Honda Activa",
+    "registration": "MH 14 EF 7788",
+    "language": "hi",
+    "chapters": [
+      {
+        "key": "fnol",
+        "label": "FNOL",
+        "index": 0
+      },
+      {
+        "key": "verification",
+        "label": "Verification",
+        "index": 9
+      },
+      {
+        "key": "decision",
+        "label": "Decision",
+        "index": 13
+      }
+    ],
+    "messages": [
+      {
+        "id": "w1",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:24:00+05:30",
+        "text": "मेरी एक्टिवा चोरी हो गई",
+        "under_the_hood": null
+      },
+      {
+        "id": "w2",
+        "from": "business",
+        "type": "list",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:24:24+05:30",
+        "text": "Namaste Imran! I'm the ABC claims assistant. What would you like to do?",
+        "button": "Choose an option",
+        "rows": [
+          {
+            "title": "Report a new claim",
+            "description": "Accident, theft, glass, flood"
+          },
+          {
+            "title": "Track a claim",
+            "description": "Status and next steps"
+          },
+          {
+            "title": "Talk to an expert",
+            "description": "Mon–Sat, 9 AM–7 PM"
+          }
+        ],
+        "chosen": "Report a new claim",
+        "under_the_hood": {
+          "agent": null,
+          "title": "Business account menu",
+          "tools": [],
+          "notes": [
+            "Verified business profile · auto-reply in < 1 s"
+          ],
+          "latency_ms": 320,
+          "internal": false
+        }
+      },
+      {
+        "id": "w3",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:24:36+05:30",
+        "text": "Report a new claim",
+        "under_the_hood": null
+      },
+      {
+        "id": "w4",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:25:00+05:30",
+        "text": "I found your policy for Honda Activa · MH 14 EF 7788. Is this the vehicle?",
+        "buttons": [
+          "Yes, this one",
+          "Another vehicle"
+        ],
+        "chosen": "Yes, this one",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Policy lookup by phone number",
+          "tools": [
+            {
+              "name": "Policy core",
+              "result": "Active · OD+TP · valid till 07 Oct 2026",
+              "level": "pass",
+              "latency_ms": 181
+            }
+          ],
+          "notes": [],
+          "latency_ms": 181,
+          "internal": false
+        }
+      },
+      {
+        "id": "w5",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:25:12+05:30",
+        "text": "Yes, this one",
+        "under_the_hood": null
+      },
+      {
+        "id": "w6",
+        "from": "business",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:25:36+05:30",
+        "text": "I'm sorry. Please tell me what happened — a voice note in Hindi is fine.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w7",
+        "from": "customer",
+        "type": "voice",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:26:48+05:30",
+        "duration_s": 11,
+        "peaks": [
+          0.67,
+          0.3,
+          0.66,
+          0.94,
+          0.66,
+          0.68,
+          0.82,
+          0.74,
+          0.97,
+          0.49,
+          0.54,
+          0.34,
+          0.35,
+          0.72,
+          0.38,
+          0.68,
+          0.38,
+          0.55,
+          0.64,
+          0.66,
+          0.4,
+          0.73,
+          0.32,
+          0.99,
+          0.54,
+          0.45,
+          0.31,
+          0.29,
+          0.37,
+          0.67,
+          0.53,
+          0.48,
+          0.67,
+          0.3,
+          0.66,
+          0.94
+        ],
+        "transcript": "मैंने अपनी एक्टिवा शाम साढ़े सात बजे पिंपरी सब्ज़ी मंडी के बाहर पार्क की थी; वापस आया तो गाड़ी गायब थी। अगले दिन FIR दर्ज कराई।",
+        "translation": "Parked my Activa outside Pimpri vegetable market at 7:30 PM; it was missing when I came back. FIR filed the next day.",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Voice note transcribed and structured",
+          "tools": [
+            {
+              "name": "Speech-to-text",
+              "result": "Detected Hindi",
+              "level": "pass",
+              "latency_ms": 2100
+            },
+            {
+              "name": "Translate + extract",
+              "result": "Vehicle theft · outside Pimpri vegetable market · ",
+              "level": "pass",
+              "latency_ms": 1700
+            }
+          ],
+          "notes": [],
+          "latency_ms": 3800,
+          "internal": false
+        }
+      },
+      {
+        "id": "w8",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:27:12+05:30",
+        "text": "Thanks. Please share the location where it happened.",
+        "buttons": [
+          "Send location",
+          "Type the address"
+        ],
+        "chosen": "Send location",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Missing field: incident location",
+          "tools": [],
+          "notes": [
+            "Asks only for what the statement did not contain"
+          ],
+          "latency_ms": 900,
+          "internal": false
+        }
+      },
+      {
+        "id": "w9",
+        "from": "customer",
+        "type": "location",
+        "chapter": "fnol",
+        "ts": "2026-09-30T19:27:36+05:30",
+        "label": "outside Pimpri vegetable market",
+        "address": "outside Pimpri vegetable market, Pimpri-Chinchwad",
+        "lat": 18.6298,
+        "lng": 73.7997,
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Location geocoded",
+          "tools": [
+            {
+              "name": "Geocoder",
+              "result": "outside Pimpri vegetable market, Pimpri-Chinchwad (18.6298, 73.7997)",
+              "level": "pass",
+              "latency_ms": 240
+            }
+          ],
+          "notes": [],
+          "latency_ms": 240,
+          "internal": false
+        }
+      },
+      {
+        "id": "w10",
+        "from": "business",
+        "type": "text",
+        "chapter": "verification",
+        "ts": "2026-09-30T19:28:00+05:30",
+        "text": "Please send the FIR copy and the RC.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w11",
+        "from": "customer",
+        "type": "document",
+        "chapter": "verification",
+        "ts": "2026-09-30T19:28:36+05:30",
+        "name": "RC_MH14EF7788.pdf",
+        "pages": 1,
+        "size_kb": 194,
+        "thumb": "/assets/documents/ABC-MC-2026-000237/d_3-thumb.webp",
+        "under_the_hood": {
+          "agent": "document",
+          "title": "RC read and matched",
+          "tools": [
+            {
+              "name": "Document AI",
+              "result": "Matches policyholder; Matches policy and Vahan record",
+              "level": "pass",
+              "latency_ms": 2400
+            }
+          ],
+          "notes": [],
+          "latency_ms": 2400,
+          "internal": false
+        }
+      },
+      {
+        "id": "w12",
+        "from": "customer",
+        "type": "document",
+        "chapter": "verification",
+        "ts": "2026-09-30T19:29:12+05:30",
+        "name": "FIR_MH14EF7788.pdf",
+        "pages": 1,
+        "size_kb": 201,
+        "thumb": "/assets/documents/ABC-MC-2026-000237/d_6-thumb.webp",
+        "under_the_hood": {
+          "agent": "document",
+          "title": "FIR read and matched",
+          "tools": [
+            {
+              "name": "Document AI",
+              "result": "Date, place and vehicle match the claim",
+              "level": "pass",
+              "latency_ms": 2400
+            }
+          ],
+          "notes": [],
+          "latency_ms": 2400,
+          "internal": false
+        }
+      },
+      {
+        "id": "w13",
+        "from": "business",
+        "type": "status",
+        "chapter": "verification",
+        "ts": "2026-09-30T19:29:36+05:30",
+        "title": "FIR verified",
+        "claim_id": "ABC-MC-2026-000237",
+        "steps": [
+          {
+            "label": "Claim registered",
+            "state": "done"
+          },
+          {
+            "label": "FIR verified",
+            "state": "done"
+          },
+          {
+            "label": "Originals",
+            "state": "current"
+          },
+          {
+            "label": "Settlement",
+            "state": "todo"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "verification",
+          "title": "Theft checks",
+          "tools": [
+            {
+              "name": "Police records",
+              "result": "FIR PMP/1129/2026 verified",
+              "level": "pass",
+              "latency_ms": 294
+            },
+            {
+              "name": "Vahan (RTO)",
+              "result": "RC active · Private · not blacklisted",
+              "level": "pass",
+              "latency_ms": 484
+            },
+            {
+              "name": "IIB history",
+              "result": "1 claims in 3 years",
+              "level": "pass",
+              "latency_ms": 411
+            }
+          ],
+          "notes": [
+            "Late intimation (more than 48 h after the theft) noted for the handler"
+          ],
+          "latency_ms": 900,
+          "internal": true
+        }
+      },
+      {
+        "id": "w14",
+        "from": "business",
+        "type": "template",
+        "chapter": "decision",
+        "ts": "2026-09-30T19:30:36+05:30",
+        "header": "Next steps for your theft claim",
+        "body": "Please hand over at our Pimpri branch:\n• Original keys (all sets)\n• RTO non-use declaration (Form 26)\nWe settle on the insured value once these are received.",
+        "footer": "ABC General Insurance · Motor Claims",
+        "buttons": [
+          "Branch address",
+          "Book a visit"
+        ],
+        "under_the_hood": {
+          "agent": "adjudication",
+          "title": "Theft claims go to a handler",
+          "tools": [
+            {
+              "name": "Policy terms",
+              "result": "IDV-based settlement · FIR PMP/1129/2026 verified",
+              "level": "pass",
+              "latency_ms": 50
+            }
+          ],
+          "notes": [
+            "Theft claims are never auto-approved"
+          ],
+          "latency_ms": 700,
+          "internal": false
+        }
+      },
+      {
+        "id": "w15",
+        "from": "customer",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-09-30T19:31:36+05:30",
+        "text": "ठीक है, कल ब्रांच आऊँगा",
+        "under_the_hood": null
+      }
+    ]
   },
   {
-    "id": "flood_total_loss",
-    "title": "Flood Total Loss",
-    "claim_id": "ABC-MC-2026-000231",
-    "messages": []
+    "id": "flagged",
+    "title": "Flagged claim",
+    "short": "Additional verification",
+    "description": "The customer sees calm, neutral messages; the risk findings and SIU referral stay under the hood.",
+    "claim_id": "ABC-MC-2026-000241",
+    "customer_id": "c_0042",
+    "customer_name": "Arjun Desai",
+    "vehicle": "Hyundai Creta",
+    "registration": "MH 12 XX 4521",
+    "language": "en",
+    "chapters": [
+      {
+        "key": "fnol",
+        "label": "FNOL",
+        "index": 0
+      },
+      {
+        "key": "photos",
+        "label": "Photos",
+        "index": 9
+      },
+      {
+        "key": "verification",
+        "label": "Verification",
+        "index": 11
+      },
+      {
+        "key": "decision",
+        "label": "Decision",
+        "index": 12
+      }
+    ],
+    "messages": [
+      {
+        "id": "w1",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:35:00+05:30",
+        "text": "Hi, I had an accident last night",
+        "under_the_hood": null
+      },
+      {
+        "id": "w2",
+        "from": "business",
+        "type": "list",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:35:24+05:30",
+        "text": "Namaste Arjun! I'm the ABC claims assistant. What would you like to do?",
+        "button": "Choose an option",
+        "rows": [
+          {
+            "title": "Report a new claim",
+            "description": "Accident, theft, glass, flood"
+          },
+          {
+            "title": "Track a claim",
+            "description": "Status and next steps"
+          },
+          {
+            "title": "Talk to an expert",
+            "description": "Mon–Sat, 9 AM–7 PM"
+          }
+        ],
+        "chosen": "Report a new claim",
+        "under_the_hood": {
+          "agent": null,
+          "title": "Business account menu",
+          "tools": [],
+          "notes": [
+            "Verified business profile · auto-reply in < 1 s"
+          ],
+          "latency_ms": 320,
+          "internal": false
+        }
+      },
+      {
+        "id": "w3",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:35:36+05:30",
+        "text": "Report a new claim",
+        "under_the_hood": null
+      },
+      {
+        "id": "w4",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:36:00+05:30",
+        "text": "I found your policy for Hyundai Creta · MH 12 XX 4521. Is this the vehicle?",
+        "buttons": [
+          "Yes, this one",
+          "Another vehicle"
+        ],
+        "chosen": "Yes, this one",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Policy lookup by phone number",
+          "tools": [
+            {
+              "name": "Policy core",
+              "result": "Active · OD+TP · valid till 19 Mar 2027",
+              "level": "pass",
+              "latency_ms": 93
+            }
+          ],
+          "notes": [],
+          "latency_ms": 93,
+          "internal": false
+        }
+      },
+      {
+        "id": "w5",
+        "from": "customer",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:36:12+05:30",
+        "text": "Yes, this one",
+        "under_the_hood": null
+      },
+      {
+        "id": "w6",
+        "from": "business",
+        "type": "text",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:36:36+05:30",
+        "text": "Tell me what happened — type it or send a voice note in any language.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w7",
+        "from": "customer",
+        "type": "voice",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:37:48+05:30",
+        "duration_s": 10,
+        "peaks": [
+          0.29,
+          0.44,
+          0.3,
+          0.58,
+          0.49,
+          0.66,
+          0.33,
+          0.42,
+          0.71,
+          0.37,
+          0.29,
+          0.86,
+          0.53,
+          0.4,
+          0.34,
+          0.4,
+          0.61,
+          0.35,
+          0.75,
+          0.99,
+          0.59,
+          0.34,
+          0.66,
+          0.97,
+          0.71,
+          0.79,
+          0.72,
+          0.58,
+          0.98,
+          0.81,
+          0.61,
+          0.76,
+          0.29,
+          0.44,
+          0.3,
+          0.58
+        ],
+        "transcript": "I hit a divider on the Mumbai–Pune Expressway near Khalapur at about 2 AM. The front bumper and the right headlamp are broken.",
+        "translation": "Hit a divider on the Mumbai–Pune Expressway at 2 AM.",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Voice note transcribed and structured",
+          "tools": [
+            {
+              "name": "Speech-to-text",
+              "result": "Detected English",
+              "level": "pass",
+              "latency_ms": 2100
+            },
+            {
+              "name": "Translate + extract",
+              "result": "Front collision · Mumbai–Pune Expressway near Khalapur · front bumper, headlamp assembly – led, bumper reinforcement / bracket",
+              "level": "pass",
+              "latency_ms": 1700
+            }
+          ],
+          "notes": [],
+          "latency_ms": 3800,
+          "internal": false
+        }
+      },
+      {
+        "id": "w8",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:38:12+05:30",
+        "text": "Thanks. Please share the location where it happened.",
+        "buttons": [
+          "Send location",
+          "Type the address"
+        ],
+        "chosen": "Send location",
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Missing field: incident location",
+          "tools": [],
+          "notes": [
+            "Asks only for what the statement did not contain"
+          ],
+          "latency_ms": 900,
+          "internal": false
+        }
+      },
+      {
+        "id": "w9",
+        "from": "customer",
+        "type": "location",
+        "chapter": "fnol",
+        "ts": "2026-10-02T02:38:36+05:30",
+        "label": "Mumbai–Pune Expressway near Khalapur",
+        "address": "Mumbai–Pune Expressway near Khalapur, Mumbai",
+        "lat": 18.8305,
+        "lng": 73.2797,
+        "under_the_hood": {
+          "agent": "intake",
+          "title": "Location geocoded",
+          "tools": [
+            {
+              "name": "Geocoder",
+              "result": "Mumbai–Pune Expressway near Khalapur, Mumbai (18.8305, 73.2797)",
+              "level": "pass",
+              "latency_ms": 240
+            }
+          ],
+          "notes": [],
+          "latency_ms": 240,
+          "internal": false
+        }
+      },
+      {
+        "id": "w10",
+        "from": "business",
+        "type": "text",
+        "chapter": "photos",
+        "ts": "2026-10-02T02:39:00+05:30",
+        "text": "Please send photos of the front of the car and a close-up of the damage.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w11",
+        "from": "customer",
+        "type": "images",
+        "chapter": "photos",
+        "ts": "2026-10-02T02:41:00+05:30",
+        "images": [
+          {
+            "url": "/assets/stock/car-front/car_front_02.webp",
+            "thumb": "/assets/stock/car-front/car_front_02-thumb.webp",
+            "blur_data": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMABAAAsBMJYwAAloHxQ9AAAD++JU1Wr/R6bWXvrAITWhE17G1Y/UjICuBwyS2C0Ysd052x90+PEGIaAA="
+          }
+        ],
+        "under_the_hood": {
+          "agent": "damage",
+          "title": "Damage assessed — inconsistencies found",
+          "tools": [
+            {
+              "name": "Vehicle identity",
+              "result": "Hyundai Creta — matches the policy",
+              "level": "pass",
+              "latency_ms": 2600
+            },
+            {
+              "name": "Fresh vs old damage",
+              "result": "Oxidised fracture edges on the bumper bracket — pre-existing",
+              "level": "fail",
+              "latency_ms": 9400
+            }
+          ],
+          "notes": [],
+          "latency_ms": 12000,
+          "internal": true
+        }
+      },
+      {
+        "id": "w12",
+        "from": "business",
+        "type": "status",
+        "chapter": "verification",
+        "ts": "2026-10-02T02:41:24+05:30",
+        "title": "Claim registered",
+        "claim_id": "ABC-MC-2026-000241",
+        "steps": [
+          {
+            "label": "Claim registered",
+            "state": "done"
+          },
+          {
+            "label": "Vehicle & documents checked",
+            "state": "done"
+          },
+          {
+            "label": "Damage assessed",
+            "state": "done"
+          },
+          {
+            "label": "Decision",
+            "state": "current"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "verification",
+          "title": "Checks against India's digital public infrastructure",
+          "tools": [
+            {
+              "name": "Vahan (RTO)",
+              "result": "RC active · Private · not blacklisted",
+              "level": "pass",
+              "latency_ms": 287
+            },
+            {
+              "name": "Sarathi DL",
+              "result": "Valid · LMV",
+              "level": "pass",
+              "latency_ms": 297
+            },
+            {
+              "name": "NPCI FASTag",
+              "result": "Vehicle at Andheri mall parking 01:30–03:00; no expressway toll in 24 h",
+              "level": "fail",
+              "latency_ms": 410
+            },
+            {
+              "name": "IIB history",
+              "result": "1 claims in 3 years",
+              "level": "pass",
+              "latency_ms": 327
+            },
+            {
+              "name": "CKYC",
+              "result": "KYC verified",
+              "level": "pass",
+              "latency_ms": 101
+            }
+          ],
+          "notes": [],
+          "latency_ms": 1422,
+          "internal": true
+        }
+      },
+      {
+        "id": "w13",
+        "from": "business",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-10-02T02:42:24+05:30",
+        "text": "Thank you. We're doing some additional verification on claim ABC-MC-2026-000241 and will update you within 2 working days.",
+        "under_the_hood": {
+          "agent": "fraud",
+          "title": "Risk score 90 (high) → SIU",
+          "tools": [
+            {
+              "name": "FR-01",
+              "result": "FASTag: vehicle in Andheri mall parking 01:30–03:00; no expressway toll in the 24 hours around the incident.",
+              "level": "fail",
+              "latency_ms": 5
+            },
+            {
+              "name": "FR-02",
+              "result": "Orange-brown oxidation on the bumper bracket fracture edges — damage predates the incident.",
+              "level": "fail",
+              "latency_ms": 5
+            },
+            {
+              "name": "FR-03",
+              "result": "Front-corner impact with no divider scrape marks along the side; inconsistent with the described divider impact.",
+              "level": "fail",
+              "latency_ms": 5
+            },
+            {
+              "name": "FR-14",
+              "result": "Single-vehicle incident between 23:00 and 05:00 with no witness.",
+              "level": "warn",
+              "latency_ms": 5
+            }
+          ],
+          "notes": [
+            "The customer only sees neutral, customer-safe wording"
+          ],
+          "latency_ms": 4200,
+          "internal": true
+        }
+      },
+      {
+        "id": "w14",
+        "from": "business",
+        "type": "quick_replies",
+        "chapter": "decision",
+        "ts": "2026-10-02T02:42:48+05:30",
+        "text": "We need to confirm where the vehicle was at the time of the incident.",
+        "buttons": [
+          "Share details",
+          "Call me"
+        ],
+        "chosen": "Share details",
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Customer-safe follow-up question",
+          "tools": [],
+          "notes": [
+            "Generated from the fired rules, never mentions them"
+          ],
+          "latency_ms": 1300,
+          "internal": true
+        }
+      },
+      {
+        "id": "w15",
+        "from": "customer",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-10-02T02:44:48+05:30",
+        "text": "I was coming back from Lonavala, no one else was there.",
+        "under_the_hood": null
+      },
+      {
+        "id": "w16",
+        "from": "business",
+        "type": "text",
+        "chapter": "decision",
+        "ts": "2026-10-02T02:45:12+05:30",
+        "text": "Thanks, noted. Our team will contact you if anything else is needed.",
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Acknowledgement",
+          "tools": [],
+          "notes": [],
+          "latency_ms": 600,
+          "internal": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "settlement",
+    "title": "Settlement & feedback",
+    "short": "Paid & rated",
+    "description": "Garage marks the repair done, payment is released with a reference, and the customer rates the service.",
+    "claim_id": "ABC-MC-2026-000190",
+    "customer_id": "c_0110",
+    "customer_name": "Onveer Khalsa",
+    "vehicle": "Mahindra XUV700",
+    "registration": "MH 14 L 5637",
+    "language": "hi-en",
+    "chapters": [
+      {
+        "key": "settlement",
+        "label": "Settlement",
+        "index": 0
+      }
+    ],
+    "messages": [
+      {
+        "id": "w1",
+        "from": "business",
+        "type": "status",
+        "chapter": "settlement",
+        "ts": "2026-08-28T04:39:44+05:30",
+        "title": "Your car is ready",
+        "claim_id": "ABC-MC-2026-000190",
+        "steps": [
+          {
+            "label": "Claim approved",
+            "state": "done"
+          },
+          {
+            "label": "Repair",
+            "state": "done"
+          },
+          {
+            "label": "Payment to garage",
+            "state": "current"
+          },
+          {
+            "label": "Feedback",
+            "state": "todo"
+          }
+        ],
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Repair complete update from the garage",
+          "tools": [
+            {
+              "name": "Garage portal",
+              "result": "Mani Toyota Service, Pimpri-Chinchwad marked the repair complete",
+              "level": "pass",
+              "latency_ms": 300
+            }
+          ],
+          "notes": [],
+          "latency_ms": 300,
+          "internal": false
+        }
+      },
+      {
+        "id": "w2",
+        "from": "business",
+        "type": "payment",
+        "chapter": "settlement",
+        "ts": "2026-08-28T05:09:44+05:30",
+        "amount": 39350.0,
+        "payee": "Mani Toyota Service, Pimpri-Chinchwad",
+        "mode": "Cashless · NEFT to garage",
+        "reference": "SBIN0001904471",
+        "you_pay": 2000,
+        "under_the_hood": {
+          "agent": "adjudication",
+          "title": "Settlement released",
+          "tools": [
+            {
+              "name": "Costing (Python)",
+              "result": "Assessed ₹41,350 − deductible ₹2,000 = ₹39,350",
+              "level": "pass",
+              "latency_ms": 40
+            },
+            {
+              "name": "Payments",
+              "result": "NEFT to Mani Toyota Service, Pimpri-Chinchwad · UTR SBIN0001904471",
+              "level": "pass",
+              "latency_ms": 900
+            }
+          ],
+          "notes": [],
+          "latency_ms": 940,
+          "internal": false
+        }
+      },
+      {
+        "id": "w3",
+        "from": "customer",
+        "type": "text",
+        "chapter": "settlement",
+        "ts": "2026-08-28T05:59:44+05:30",
+        "text": "Gaadi mil gayi, kaam badhiya hua 👍",
+        "under_the_hood": null
+      },
+      {
+        "id": "w4",
+        "from": "business",
+        "type": "rating",
+        "chapter": "settlement",
+        "ts": "2026-08-28T06:00:02+05:30",
+        "text": "Glad to hear it! How was your claim experience?",
+        "stars": 5,
+        "comment": "Fast and easy, no paperwork",
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Feedback request",
+          "tools": [],
+          "notes": [],
+          "latency_ms": 500,
+          "internal": false
+        }
+      },
+      {
+        "id": "w5",
+        "from": "business",
+        "type": "text",
+        "chapter": "settlement",
+        "ts": "2026-08-28T06:00:32+05:30",
+        "text": "Thank you, Onveer! Claim ABC-MC-2026-000190 is now closed. Drive safe 🚗",
+        "under_the_hood": {
+          "agent": "communication",
+          "title": "Closing message",
+          "tools": [],
+          "notes": [
+            "NPS captured to the claim"
+          ],
+          "latency_ms": 400,
+          "internal": false
+        }
+      }
+    ]
   }
 ]

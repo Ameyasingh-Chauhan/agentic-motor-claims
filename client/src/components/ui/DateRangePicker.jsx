@@ -72,17 +72,17 @@ function MonthGrid({ month, from, to, hover, onPick, onHover }) {
  * DateRangePicker: presets + two-month calendar. value = { from: "YYYY-MM-DD", to: "YYYY-MM-DD", preset? }.
  * Future dates are disabled.
  */
-export function DateRangePicker({ value, onChange, className, label = "Date range" }) {
+export function DateRangePicker({ value, onChange, className, label = "Date range", emptyLabel = "All time" }) {
   const [draft, setDraft] = useState({ from: null, to: null });
   const [hover, setHover] = useState(null);
   const [cursor, setCursor] = useState(() => dayjs(value?.to ?? undefined).startOf("month").subtract(1, "month"));
 
   const display = useMemo(() => {
-    if (!value?.from) return "All time";
+    if (!value?.from) return emptyLabel;
     const preset = PRESETS.find((p) => p.key === value.preset);
     if (preset) return preset.label;
     return `${formatDate(value.from)} – ${formatDate(value.to)}`;
-  }, [value]);
+  }, [value, emptyLabel]);
 
   const pick = (d) => {
     if (!draft.from || draft.to) setDraft({ from: d, to: null });

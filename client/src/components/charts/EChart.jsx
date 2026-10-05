@@ -12,9 +12,10 @@ import { cn } from "../../lib/cn";
  * - `option` may be an object or a function `(tokens) => option` so colours come from CSS tokens.
  * - Theme switches re-merge the option in place (no dispose/re-init → no flicker).
  * - Resizes on container ResizeObserver AND the global `layout:resize` event (sidebar toggle end).
- * Height comes from the className (e.g. "h-72") so the box never shifts.
+ * Height comes from the className (e.g. "h-72") so the box never shifts. `onChartReady(instance)` exposes the ECharts instance
+ * (PNG export, zrender-level clicks).
  */
-function EChartImpl({ option, className, onEvents, ariaLabel, style }) {
+function EChartImpl({ option, className, onEvents, onChartReady, ariaLabel, style }) {
   const ref = useRef(null);
   const boxRef = useRef(null);
   const theme = useUiStore((s) => s.theme);
@@ -55,6 +56,7 @@ function EChartImpl({ option, className, onEvents, ariaLabel, style }) {
         lazyUpdate
         autoResize={false}
         onEvents={onEvents}
+        onChartReady={onChartReady}
         opts={{ renderer: "canvas" }}
         style={{ position: "absolute", inset: 0, height: "100%", width: "100%" }}
       />

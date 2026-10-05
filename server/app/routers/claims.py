@@ -5,10 +5,11 @@ import csv
 import io
 from collections import Counter
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from fastapi.responses import StreamingResponse
 
-from ..services.claim_views import SEGMENTS, customer_status, listed, now_ist, row
+from ..services import claim_filters
+from ..services.claim_views import customer_status, listed, now_ist, row
 from ..services.claim_detail import detail
 from ..services.json_store import read_json
 from .auth import current_user
@@ -40,44 +41,25 @@ def _csv(value: str | None) -> set[str]:
     return {v for v in (value or "").split(",") if v}
 
 
-def _filter(claims: list[dict], *, user: dict, q, vehicle_type, claim_type, city, garage, risk_band, min_amount, max_amount,
-            from_, to, segment) -> list[dict]:
-    needle = (q or "").strip().casefold()
-    compact = needle.replace(" ", "")
-    vt, ct, cities, bands = _csv(vehicle_type), _csv(claim_type), _csv(city), _csv(risk_band)
-    pred = SEGMENTS.get(segment) if segment else None
-    if segment and pred is None:
-        raise HTTPException(422, f"Unknown segment {segment}")
-    if _is_customer(user):
-        bands = set()  # risk is never filterable for customers
-
-    def keep(c: dict) -> bool:
-        if needle:
-            hay = " ".join((c["id"], c["customer_name"], c["city"], c["policy_no"])).casefold()
-            if needle not in hay and compact not in c["registration"].replace(" ", "").casefold():
-                return False
-        amount = c["amount_claimed"]
-        return ((not vt or c["vehicle"]["type"] in vt) and (not ct or c["claim_type"] in ct) and (not cities or c["city"] in cities)
-                and (not garage or c.get("garage_name") == garage) and (not bands or c.get("risk_band") in bands)
-                and (min_amount is None or amount >= min_amount) and (max_amount is None or amount <= max_amount)
-                and (not from_ or c["created_at"][:10] >= from_) and (not to or c["created_at"][:10] <= to)
-                and (pred is None or pred(c)))
-
-    return [c for c in claims if keep(c)]
+async def _filtered(request: Request, user: dict) -> list[dict]:
+    """Every list filter (Home browser + Dashboard drill-down keys, §10.5) through the shared predicate."""
+    try:
+        return claim_filters.apply(await _visible(user), dict(request.query_params), await claim_filters.load_context(),
+                                   customer=_is_customer(user))
+    except KeyError as exc:
+        raise HTTPException(422, f"Unknown segment {exc.args[0]}") from exc
+    except ValueError as exc:
+        raise HTTPException(422, f"Invalid filter value: {exc}") from exc
 
 
 @router.get("/claims")
 async def list_claims(
-    user=Depends(current_user), status: str | None = None, q: str | None = None, vehicle_type: str | None = None,
-    claim_type: str | None = None, city: str | None = None, garage: str | None = None, risk_band: str | None = None,
-    min_amount: float | None = None, max_amount: float | None = None, from_: str | None = Query(None, alias="from"),
-    to: str | None = None, segment: str | None = None, sort: str = "created_at:desc",
+    request: Request, user=Depends(current_user), status: str | None = None, sort: str = "created_at:desc",
     page: int = Query(1, ge=1), page_size: int = Query(25, ge=1, le=100),
 ):
     now = now_ist()
     customer = _is_customer(user)
-    rows = _filter(await _visible(user), user=user, q=q, vehicle_type=vehicle_type, claim_type=claim_type, city=city, garage=garage,
-                   risk_band=risk_band, min_amount=min_amount, max_amount=max_amount, from_=from_, to=to, segment=segment)
+    rows = await _filtered(request, user)
     # Chips: a SUBMITTED claim is waiting for the AI pipeline, so it counts (and filters) under "AI processing".
     chip = {"SUBMITTED": "PROCESSING"}
     shown = (lambda c: chip.get(s := customer_status(c["status"]), s)) if customer else (lambda c: chip.get(c["status"], c["status"]))
@@ -110,15 +92,9 @@ async def facets(user=Depends(current_user)):
 
 
 @router.get("/claims/export.csv")
-async def export_csv(
-    user=Depends(current_user), status: str | None = None, q: str | None = None, vehicle_type: str | None = None,
-    claim_type: str | None = None, city: str | None = None, garage: str | None = None, risk_band: str | None = None,
-    min_amount: float | None = None, max_amount: float | None = None, from_: str | None = Query(None, alias="from"),
-    to: str | None = None, segment: str | None = None, sort: str = "created_at:desc",
-):
+async def export_csv(request: Request, user=Depends(current_user), status: str | None = None, sort: str = "created_at:desc"):
     customer = _is_customer(user)
-    rows = _filter(await _visible(user), user=user, q=q, vehicle_type=vehicle_type, claim_type=claim_type, city=city, garage=garage,
-                   risk_band=risk_band, min_amount=min_amount, max_amount=max_amount, from_=from_, to=to, segment=segment)
+    rows = await _filtered(request, user)
     statuses = _csv(status)
     if statuses:
         rows = [c for c in rows if c["status"] in statuses]

@@ -1,6 +1,6 @@
 // Register only the ECharts modules we use (tree-shaken). Add modules here as charts need them.
 import * as echarts from "echarts/core";
-import { LineChart, BarChart, PieChart, GaugeChart, ScatterChart, GraphChart } from "echarts/charts";
+import { LineChart, BarChart, PieChart, GaugeChart, ScatterChart, GraphChart, FunnelChart, SankeyChart, HeatmapChart } from "echarts/charts";
 import {
   GridComponent,
   TooltipComponent,
@@ -10,6 +10,7 @@ import {
   MarkAreaComponent,
   AriaComponent,
   TitleComponent,
+  VisualMapComponent,
 } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 
@@ -20,6 +21,9 @@ echarts.use([
   GaugeChart,
   ScatterChart,
   GraphChart,
+  FunnelChart,
+  SankeyChart,
+  HeatmapChart,
   GridComponent,
   TooltipComponent,
   LegendComponent,
@@ -28,6 +32,7 @@ echarts.use([
   MarkAreaComponent,
   AriaComponent,
   TitleComponent,
+  VisualMapComponent,
   CanvasRenderer,
 ]);
 

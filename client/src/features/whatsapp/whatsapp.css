@@ -1,0 +1,16 @@
+/* WhatsApp-style replay (§10.9): generic chat wallpaper, map illustration and typing dots — tokens only. */
+.wa-wallpaper {
+  background-color: var(--chat-bg);
+  background-image: radial-gradient(var(--chat-pattern) 1.5px, transparent 1.5px), radial-gradient(var(--chat-pattern) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+.wa-map {
+  background-color: var(--bg-muted);
+  background-image: linear-gradient(var(--border) 2px, transparent 2px), linear-gradient(90deg, var(--border) 2px, transparent 2px),
+    linear-gradient(35deg, transparent 46%, var(--chat-out) 46%, var(--chat-out) 54%, transparent 54%);
+  background-size: 32px 32px, 32px 32px, 100% 100%;
+}
+.wa-dot { animation: wa-bounce 1s ease-in-out infinite; }
+@keyframes wa-bounce { 0%, 60%, 100% { opacity: 0.35; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
+@media (prefers-reduced-motion: reduce) { .wa-dot { animation: none; opacity: 0.7; } }

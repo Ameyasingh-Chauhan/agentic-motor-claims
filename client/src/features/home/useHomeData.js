@@ -6,12 +6,15 @@ import { prefetchPage } from "../../app/pages";
 
 /** Claims-browser filters that live in the URL (§8.6). `view`/`page_size` are UI-only but also persisted. */
 export const FILTER_KEYS = ["q", "status", "segment", "vehicle_type", "claim_type", "city", "risk_band", "min_amount", "max_amount", "from", "to"];
+/** Extra list filters a Dashboard drill-down can set (§10.5); shown as removable pills, cleared by "Clear all". */
+export const DRILL_KEYS = ["channel", "garage_type", "garage", "city_tier", "dow", "hour", "rule", "min_risk", "max_risk", "outcome", "route", "date_on"];
+const URL_FILTERS = [...FILTER_KEYS, ...DRILL_KEYS];
 export const DEFAULT_SORT = "created_at:desc";
 
 export function useBrowserState() {
   const [params, setParams] = useSearchParams();
   const state = useMemo(() => {
-    const out = Object.fromEntries(FILTER_KEYS.map((k) => [k, params.get(k) || ""]));
+    const out = Object.fromEntries(URL_FILTERS.map((k) => [k, params.get(k) || ""]));
     out.sort = params.get("sort") || DEFAULT_SORT;
     out.view = params.get("view") === "cards" ? "cards" : "table";
     out.page = Math.max(1, Number(params.get("page")) || 1);
@@ -54,7 +57,7 @@ export function useHomeStats() {
 
 export function useClaimsList(state) {
   const params = useMemo(() => {
-    const p = Object.fromEntries(FILTER_KEYS.map((k) => [k, state[k]]));
+    const p = Object.fromEntries(URL_FILTERS.map((k) => [k, state[k]]));
     return { ...p, sort: state.sort, page: state.page, page_size: state.page_size };
   }, [state]);
   return useQuery({
@@ -79,7 +82,7 @@ export function usePrefetchClaim() {
 
 export function exportUrl(state) {
   const p = new URLSearchParams();
-  for (const k of FILTER_KEYS) if (state[k]) p.set(k, state[k]);
+  for (const k of URL_FILTERS) if (state[k]) p.set(k, state[k]);
   if (state.sort !== DEFAULT_SORT) p.set("sort", state.sort);
   const qs = p.toString();
   return `/api/claims/export.csv${qs ? `?${qs}` : ""}`;

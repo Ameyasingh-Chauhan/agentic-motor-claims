@@ -16,6 +16,8 @@ export function readChartTokens() {
     warning: read(s, "--warning"),
     danger: read(s, "--danger"),
     neutral: read(s, "--neutral-flag"),
+    bgMuted: read(s, "--bg-muted"),
+    blue50: read(s, "--blue-50"),
     font: read(s, "--font-sans") || "Inter Variable, sans-serif",
   };
 }
