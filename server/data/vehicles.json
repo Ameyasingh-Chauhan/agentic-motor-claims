@@ -4214,5 +4214,22 @@
     "engine": "XXXXXX74011",
     "type": "Car",
     "use": "private"
+  },
+  {
+    "id": "v_0251",
+    "registration": "RJ 45 CM 4821",
+    "make": "KIA",
+    "model": "SELTOS",
+    "model_key": "KIA-SEL",
+    "variant": "HTX 1.5 PETROL",
+    "segment": "CAR_COMPACT_SUV_SEDAN",
+    "fuel": "Petrol",
+    "cc": 1497,
+    "registered_on": "2023-01-01",
+    "colour": "INTENSE RED",
+    "chassis": "XXXXXXXXXXXX00000",
+    "engine": "XXXXXX00000",
+    "type": "Car",
+    "use": "private"
   }
 ]

@@ -62,7 +62,8 @@ export function stepIssues(key, form, ctx = {}) {
     if (form.settlement_mode === "cashless" && !form.garage_id) add("garage", "Choose a network garage");
     if (form.settlement_mode === "reimbursement" || form.incident_tile === "theft") {
       const b = form.bank;
-      if (!b.account_name.trim() || !/^\d{4}$/.test(b.account_last4) || !/^[A-Za-z]{4}0[A-Za-z0-9]{6}$/.test(b.ifsc)) add("bank", "Enter the bank details (name, last 4 digits, IFSC)");
+      if (!b.account_name.trim() || !/^\d{4}$/.test(b.account_last4.trim()) || !/^[A-Za-z]{4}0[A-Za-z0-9]{6}$/.test(b.ifsc.trim()))
+        add("bank", "Enter the bank details (name, last 4 digits, IFSC)");
     }
   }
   if (key === "review" && !form.consent) add("consent", "Tick the declaration");

@@ -1,69 +1,126 @@
 [
   {
-    "city": "Pune",
-    "state": "Maharashtra",
-    "tier": 1,
-    "lat": 18.52,
-    "lng": 73.86,
-    "rto_codes": [
-      "MH 12",
-      "MH 14"
-    ]
+    "city": "Agartala",
+    "state": "Tripura",
+    "tier": 3,
+    "lat": 23.84,
+    "lng": 91.28,
+    "rto_codes": []
   },
   {
-    "city": "Mumbai",
-    "state": "Maharashtra",
-    "tier": 1,
-    "lat": 19.08,
-    "lng": 72.88,
-    "rto_codes": [
-      "MH 01",
-      "MH 02",
-      "MH 03",
-      "MH 47"
-    ]
-  },
-  {
-    "city": "Thane",
-    "state": "Maharashtra",
-    "tier": 1,
-    "lat": 19.22,
-    "lng": 72.98,
-    "rto_codes": [
-      "MH 04",
-      "MH 05"
-    ]
-  },
-  {
-    "city": "Nashik",
-    "state": "Maharashtra",
+    "city": "Agra",
+    "state": "Uttar Pradesh",
     "tier": 2,
-    "lat": 20.0,
-    "lng": 73.79,
-    "rto_codes": [
-      "MH 15"
-    ]
+    "lat": 27.18,
+    "lng": 78.01,
+    "rto_codes": []
   },
   {
-    "city": "Nagpur",
-    "state": "Maharashtra",
-    "tier": 2,
-    "lat": 21.15,
-    "lng": 79.09,
-    "rto_codes": [
-      "MH 31",
-      "MH 49"
-    ]
-  },
-  {
-    "city": "Pimpri-Chinchwad",
-    "state": "Maharashtra",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
     "tier": 1,
-    "lat": 18.63,
-    "lng": 73.8,
+    "lat": 23.02,
+    "lng": 72.57,
     "rto_codes": [
-      "MH 14"
+      "GJ 01",
+      "GJ 27"
     ]
+  },
+  {
+    "city": "Ahmednagar",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 19.09,
+    "lng": 74.74,
+    "rto_codes": []
+  },
+  {
+    "city": "Aizawl",
+    "state": "Mizoram",
+    "tier": 3,
+    "lat": 23.73,
+    "lng": 92.72,
+    "rto_codes": []
+  },
+  {
+    "city": "Ajmer",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 26.45,
+    "lng": 74.64,
+    "rto_codes": []
+  },
+  {
+    "city": "Akola",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 20.7,
+    "lng": 77.0,
+    "rto_codes": []
+  },
+  {
+    "city": "Alappuzha",
+    "state": "Kerala",
+    "tier": 3,
+    "lat": 9.49,
+    "lng": 76.33,
+    "rto_codes": []
+  },
+  {
+    "city": "Aligarh",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 27.88,
+    "lng": 78.08,
+    "rto_codes": []
+  },
+  {
+    "city": "Alwar",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 27.57,
+    "lng": 76.63,
+    "rto_codes": []
+  },
+  {
+    "city": "Ambala",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 30.38,
+    "lng": 76.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Amravati",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 20.93,
+    "lng": 77.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Amritsar",
+    "state": "Punjab",
+    "tier": 2,
+    "lat": 31.63,
+    "lng": 74.87,
+    "rto_codes": []
+  },
+  {
+    "city": "Anand",
+    "state": "Gujarat",
+    "tier": 3,
+    "lat": 22.56,
+    "lng": 72.95,
+    "rto_codes": []
+  },
+  {
+    "city": "Asansol",
+    "state": "West Bengal",
+    "tier": 2,
+    "lat": 23.68,
+    "lng": 86.97,
+    "rto_codes": []
   },
   {
     "city": "Aurangabad",
@@ -76,47 +133,44 @@
     ]
   },
   {
-    "city": "Kolhapur",
-    "state": "Maharashtra",
-    "tier": 3,
-    "lat": 16.7,
-    "lng": 74.24,
-    "rto_codes": [
-      "MH 09"
-    ]
-  },
-  {
-    "city": "New Delhi",
-    "state": "Delhi",
-    "tier": 1,
-    "lat": 28.61,
-    "lng": 77.21,
-    "rto_codes": [
-      "DL 3C",
-      "DL 8C",
-      "DL 4C",
-      "DL 1C"
-    ]
-  },
-  {
-    "city": "Gurugram",
-    "state": "Haryana",
-    "tier": 1,
-    "lat": 28.46,
-    "lng": 77.03,
-    "rto_codes": [
-      "HR 26"
-    ]
-  },
-  {
-    "city": "Noida",
+    "city": "Ayodhya",
     "state": "Uttar Pradesh",
-    "tier": 1,
-    "lat": 28.54,
-    "lng": 77.39,
-    "rto_codes": [
-      "UP 16"
-    ]
+    "tier": 3,
+    "lat": 26.8,
+    "lng": 82.2,
+    "rto_codes": []
+  },
+  {
+    "city": "Ballari",
+    "state": "Karnataka",
+    "tier": 3,
+    "lat": 15.14,
+    "lng": 76.92,
+    "rto_codes": []
+  },
+  {
+    "city": "Bareilly",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 28.37,
+    "lng": 79.43,
+    "rto_codes": []
+  },
+  {
+    "city": "Bathinda",
+    "state": "Punjab",
+    "tier": 3,
+    "lat": 30.21,
+    "lng": 74.95,
+    "rto_codes": []
+  },
+  {
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "tier": 3,
+    "lat": 15.85,
+    "lng": 74.5,
+    "rto_codes": []
   },
   {
     "city": "Bengaluru",
@@ -133,13 +187,95 @@
     ]
   },
   {
-    "city": "Mysuru",
-    "state": "Karnataka",
+    "city": "Berhampur",
+    "state": "Odisha",
+    "tier": 3,
+    "lat": 19.31,
+    "lng": 84.79,
+    "rto_codes": []
+  },
+  {
+    "city": "Bhagalpur",
+    "state": "Bihar",
+    "tier": 3,
+    "lat": 25.24,
+    "lng": 86.98,
+    "rto_codes": []
+  },
+  {
+    "city": "Bhavnagar",
+    "state": "Gujarat",
+    "tier": 3,
+    "lat": 21.76,
+    "lng": 72.15,
+    "rto_codes": []
+  },
+  {
+    "city": "Bhilai",
+    "state": "Chhattisgarh",
     "tier": 2,
-    "lat": 12.3,
-    "lng": 76.64,
+    "lat": 21.21,
+    "lng": 81.43,
+    "rto_codes": []
+  },
+  {
+    "city": "Bhilwara",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 25.35,
+    "lng": 74.63,
+    "rto_codes": []
+  },
+  {
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "tier": 2,
+    "lat": 23.26,
+    "lng": 77.41,
+    "rto_codes": []
+  },
+  {
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "tier": 2,
+    "lat": 20.3,
+    "lng": 85.82,
     "rto_codes": [
-      "KA 09"
+      "OD 02"
+    ]
+  },
+  {
+    "city": "Bikaner",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 28.02,
+    "lng": 73.31,
+    "rto_codes": []
+  },
+  {
+    "city": "Bilaspur",
+    "state": "Chhattisgarh",
+    "tier": 3,
+    "lat": 22.08,
+    "lng": 82.15,
+    "rto_codes": []
+  },
+  {
+    "city": "Bokaro",
+    "state": "Jharkhand",
+    "tier": 3,
+    "lat": 23.67,
+    "lng": 86.15,
+    "rto_codes": []
+  },
+  {
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "tier": 2,
+    "lat": 30.73,
+    "lng": 76.78,
+    "rto_codes": [
+      "CH 01"
     ]
   },
   {
@@ -166,6 +302,258 @@
     ]
   },
   {
+    "city": "Cuttack",
+    "state": "Odisha",
+    "tier": 2,
+    "lat": 20.47,
+    "lng": 85.88,
+    "rto_codes": []
+  },
+  {
+    "city": "Darbhanga",
+    "state": "Bihar",
+    "tier": 3,
+    "lat": 26.17,
+    "lng": 85.9,
+    "rto_codes": []
+  },
+  {
+    "city": "Davanagere",
+    "state": "Karnataka",
+    "tier": 3,
+    "lat": 14.47,
+    "lng": 75.92,
+    "rto_codes": []
+  },
+  {
+    "city": "Dehradun",
+    "state": "Uttarakhand",
+    "tier": 2,
+    "lat": 30.32,
+    "lng": 78.03,
+    "rto_codes": []
+  },
+  {
+    "city": "Dewas",
+    "state": "Madhya Pradesh",
+    "tier": 3,
+    "lat": 22.97,
+    "lng": 76.05,
+    "rto_codes": []
+  },
+  {
+    "city": "Dhanbad",
+    "state": "Jharkhand",
+    "tier": 2,
+    "lat": 23.8,
+    "lng": 86.43,
+    "rto_codes": []
+  },
+  {
+    "city": "Dharamshala",
+    "state": "Himachal Pradesh",
+    "tier": 3,
+    "lat": 32.22,
+    "lng": 76.32,
+    "rto_codes": []
+  },
+  {
+    "city": "Dhule",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 20.9,
+    "lng": 74.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Dibrugarh",
+    "state": "Assam",
+    "tier": 3,
+    "lat": 27.47,
+    "lng": 94.91,
+    "rto_codes": []
+  },
+  {
+    "city": "Durg",
+    "state": "Chhattisgarh",
+    "tier": 3,
+    "lat": 21.19,
+    "lng": 81.28,
+    "rto_codes": []
+  },
+  {
+    "city": "Durgapur",
+    "state": "West Bengal",
+    "tier": 2,
+    "lat": 23.52,
+    "lng": 87.31,
+    "rto_codes": []
+  },
+  {
+    "city": "Erode",
+    "state": "Tamil Nadu",
+    "tier": 3,
+    "lat": 11.34,
+    "lng": 77.73,
+    "rto_codes": []
+  },
+  {
+    "city": "Faridabad",
+    "state": "Haryana",
+    "tier": 1,
+    "lat": 28.41,
+    "lng": 77.32,
+    "rto_codes": []
+  },
+  {
+    "city": "Firozabad",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 27.15,
+    "lng": 78.4,
+    "rto_codes": []
+  },
+  {
+    "city": "Gandhinagar",
+    "state": "Gujarat",
+    "tier": 2,
+    "lat": 23.22,
+    "lng": 72.65,
+    "rto_codes": []
+  },
+  {
+    "city": "Gangtok",
+    "state": "Sikkim",
+    "tier": 3,
+    "lat": 27.33,
+    "lng": 88.61,
+    "rto_codes": []
+  },
+  {
+    "city": "Gaya",
+    "state": "Bihar",
+    "tier": 3,
+    "lat": 24.8,
+    "lng": 85.0,
+    "rto_codes": []
+  },
+  {
+    "city": "Ghaziabad",
+    "state": "Uttar Pradesh",
+    "tier": 1,
+    "lat": 28.67,
+    "lng": 77.42,
+    "rto_codes": []
+  },
+  {
+    "city": "Goa (Panaji)",
+    "state": "Goa",
+    "tier": 3,
+    "lat": 15.49,
+    "lng": 73.83,
+    "rto_codes": [
+      "GA 01"
+    ]
+  },
+  {
+    "city": "Gorakhpur",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 26.76,
+    "lng": 83.37,
+    "rto_codes": []
+  },
+  {
+    "city": "Greater Noida",
+    "state": "Uttar Pradesh",
+    "tier": 1,
+    "lat": 28.47,
+    "lng": 77.5,
+    "rto_codes": []
+  },
+  {
+    "city": "Guntur",
+    "state": "Andhra Pradesh",
+    "tier": 3,
+    "lat": 16.3,
+    "lng": 80.44,
+    "rto_codes": []
+  },
+  {
+    "city": "Gurugram",
+    "state": "Haryana",
+    "tier": 1,
+    "lat": 28.46,
+    "lng": 77.03,
+    "rto_codes": [
+      "HR 26"
+    ]
+  },
+  {
+    "city": "Guwahati",
+    "state": "Assam",
+    "tier": 2,
+    "lat": 26.14,
+    "lng": 91.74,
+    "rto_codes": []
+  },
+  {
+    "city": "Gwalior",
+    "state": "Madhya Pradesh",
+    "tier": 2,
+    "lat": 26.22,
+    "lng": 78.18,
+    "rto_codes": []
+  },
+  {
+    "city": "Haldwani",
+    "state": "Uttarakhand",
+    "tier": 3,
+    "lat": 29.22,
+    "lng": 79.53,
+    "rto_codes": []
+  },
+  {
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "tier": 3,
+    "lat": 29.95,
+    "lng": 78.16,
+    "rto_codes": []
+  },
+  {
+    "city": "Hazaribagh",
+    "state": "Jharkhand",
+    "tier": 3,
+    "lat": 23.99,
+    "lng": 85.36,
+    "rto_codes": []
+  },
+  {
+    "city": "Hisar",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 29.15,
+    "lng": 75.72,
+    "rto_codes": []
+  },
+  {
+    "city": "Howrah",
+    "state": "West Bengal",
+    "tier": 1,
+    "lat": 22.59,
+    "lng": 88.31,
+    "rto_codes": []
+  },
+  {
+    "city": "Hubballi-Dharwad",
+    "state": "Karnataka",
+    "tier": 2,
+    "lat": 15.36,
+    "lng": 75.12,
+    "rto_codes": []
+  },
+  {
     "city": "Hyderabad",
     "state": "Telangana",
     "tier": 1,
@@ -178,24 +566,187 @@
     ]
   },
   {
-    "city": "Ahmedabad",
-    "state": "Gujarat",
-    "tier": 1,
-    "lat": 23.02,
-    "lng": 72.57,
+    "city": "Imphal",
+    "state": "Manipur",
+    "tier": 3,
+    "lat": 24.82,
+    "lng": 93.94,
+    "rto_codes": []
+  },
+  {
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "tier": 2,
+    "lat": 22.72,
+    "lng": 75.86,
     "rto_codes": [
-      "GJ 01",
-      "GJ 27"
+      "MP 09"
     ]
   },
   {
-    "city": "Surat",
-    "state": "Gujarat",
+    "city": "Itanagar",
+    "state": "Arunachal Pradesh",
+    "tier": 3,
+    "lat": 27.1,
+    "lng": 93.62,
+    "rto_codes": []
+  },
+  {
+    "city": "Jabalpur",
+    "state": "Madhya Pradesh",
     "tier": 2,
-    "lat": 21.17,
-    "lng": 72.83,
+    "lat": 23.18,
+    "lng": 79.95,
+    "rto_codes": []
+  },
+  {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "tier": 2,
+    "lat": 26.91,
+    "lng": 75.79,
     "rto_codes": [
-      "GJ 05"
+      "RJ 14"
+    ]
+  },
+  {
+    "city": "Jalandhar",
+    "state": "Punjab",
+    "tier": 2,
+    "lat": 31.33,
+    "lng": 75.58,
+    "rto_codes": []
+  },
+  {
+    "city": "Jalgaon",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 21.01,
+    "lng": 75.56,
+    "rto_codes": []
+  },
+  {
+    "city": "Jammu",
+    "state": "Jammu and Kashmir",
+    "tier": 2,
+    "lat": 32.73,
+    "lng": 74.87,
+    "rto_codes": []
+  },
+  {
+    "city": "Jamnagar",
+    "state": "Gujarat",
+    "tier": 3,
+    "lat": 22.47,
+    "lng": 70.07,
+    "rto_codes": []
+  },
+  {
+    "city": "Jamshedpur",
+    "state": "Jharkhand",
+    "tier": 2,
+    "lat": 22.8,
+    "lng": 86.19,
+    "rto_codes": []
+  },
+  {
+    "city": "Jhansi",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 25.45,
+    "lng": 78.57,
+    "rto_codes": []
+  },
+  {
+    "city": "Jodhpur",
+    "state": "Rajasthan",
+    "tier": 2,
+    "lat": 26.24,
+    "lng": 73.02,
+    "rto_codes": []
+  },
+  {
+    "city": "Jorhat",
+    "state": "Assam",
+    "tier": 3,
+    "lat": 26.75,
+    "lng": 94.22,
+    "rto_codes": []
+  },
+  {
+    "city": "Junagadh",
+    "state": "Gujarat",
+    "tier": 3,
+    "lat": 21.52,
+    "lng": 70.46,
+    "rto_codes": []
+  },
+  {
+    "city": "Kannur",
+    "state": "Kerala",
+    "tier": 3,
+    "lat": 11.87,
+    "lng": 75.37,
+    "rto_codes": []
+  },
+  {
+    "city": "Kanpur",
+    "state": "Uttar Pradesh",
+    "tier": 2,
+    "lat": 26.45,
+    "lng": 80.33,
+    "rto_codes": []
+  },
+  {
+    "city": "Karimnagar",
+    "state": "Telangana",
+    "tier": 3,
+    "lat": 18.44,
+    "lng": 79.13,
+    "rto_codes": []
+  },
+  {
+    "city": "Karnal",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 29.69,
+    "lng": 76.99,
+    "rto_codes": []
+  },
+  {
+    "city": "Kharagpur",
+    "state": "West Bengal",
+    "tier": 3,
+    "lat": 22.35,
+    "lng": 87.32,
+    "rto_codes": []
+  },
+  {
+    "city": "Kochi",
+    "state": "Kerala",
+    "tier": 2,
+    "lat": 9.93,
+    "lng": 76.27,
+    "rto_codes": [
+      "KL 07"
+    ]
+  },
+  {
+    "city": "Kohima",
+    "state": "Nagaland",
+    "tier": 3,
+    "lat": 25.67,
+    "lng": 94.11,
+    "rto_codes": []
+  },
+  {
+    "city": "Kolhapur",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 16.7,
+    "lng": 74.24,
+    "rto_codes": [
+      "MH 09"
     ]
   },
   {
@@ -210,24 +761,68 @@
     ]
   },
   {
-    "city": "Jaipur",
-    "state": "Rajasthan",
-    "tier": 2,
-    "lat": 26.91,
-    "lng": 75.79,
-    "rto_codes": [
-      "RJ 14"
-    ]
+    "city": "Kollam",
+    "state": "Kerala",
+    "tier": 3,
+    "lat": 8.89,
+    "lng": 76.61,
+    "rto_codes": []
   },
   {
-    "city": "Udaipur",
-    "state": "Rajasthan",
+    "city": "Korba",
+    "state": "Chhattisgarh",
     "tier": 3,
-    "lat": 24.59,
-    "lng": 73.71,
-    "rto_codes": [
-      "RJ 27"
-    ]
+    "lat": 22.35,
+    "lng": 82.68,
+    "rto_codes": []
+  },
+  {
+    "city": "Kota",
+    "state": "Rajasthan",
+    "tier": 2,
+    "lat": 25.21,
+    "lng": 75.86,
+    "rto_codes": []
+  },
+  {
+    "city": "Kottayam",
+    "state": "Kerala",
+    "tier": 3,
+    "lat": 9.59,
+    "lng": 76.52,
+    "rto_codes": []
+  },
+  {
+    "city": "Kozhikode",
+    "state": "Kerala",
+    "tier": 2,
+    "lat": 11.26,
+    "lng": 75.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Kurnool",
+    "state": "Andhra Pradesh",
+    "tier": 3,
+    "lat": 15.83,
+    "lng": 78.04,
+    "rto_codes": []
+  },
+  {
+    "city": "Latur",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 18.4,
+    "lng": 76.58,
+    "rto_codes": []
+  },
+  {
+    "city": "Leh",
+    "state": "Ladakh",
+    "tier": 3,
+    "lat": 34.16,
+    "lng": 77.58,
+    "rto_codes": []
   },
   {
     "city": "Lucknow",
@@ -240,24 +835,545 @@
     ]
   },
   {
-    "city": "Indore",
-    "state": "Madhya Pradesh",
+    "city": "Ludhiana",
+    "state": "Punjab",
     "tier": 2,
-    "lat": 22.72,
+    "lat": 30.9,
     "lng": 75.86,
+    "rto_codes": []
+  },
+  {
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "tier": 2,
+    "lat": 9.93,
+    "lng": 78.12,
+    "rto_codes": []
+  },
+  {
+    "city": "Manali",
+    "state": "Himachal Pradesh",
+    "tier": 3,
+    "lat": 32.24,
+    "lng": 77.19,
+    "rto_codes": []
+  },
+  {
+    "city": "Mangaluru",
+    "state": "Karnataka",
+    "tier": 2,
+    "lat": 12.91,
+    "lng": 74.86,
+    "rto_codes": []
+  },
+  {
+    "city": "Margao",
+    "state": "Goa",
+    "tier": 3,
+    "lat": 15.27,
+    "lng": 73.96,
+    "rto_codes": []
+  },
+  {
+    "city": "Mathura",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 27.49,
+    "lng": 77.67,
+    "rto_codes": []
+  },
+  {
+    "city": "Meerut",
+    "state": "Uttar Pradesh",
+    "tier": 2,
+    "lat": 28.98,
+    "lng": 77.71,
+    "rto_codes": []
+  },
+  {
+    "city": "Mohali",
+    "state": "Punjab",
+    "tier": 2,
+    "lat": 30.7,
+    "lng": 76.72,
+    "rto_codes": []
+  },
+  {
+    "city": "Moradabad",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 28.84,
+    "lng": 78.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 19.08,
+    "lng": 72.88,
     "rto_codes": [
-      "MP 09"
+      "MH 01",
+      "MH 02",
+      "MH 03",
+      "MH 47"
     ]
   },
   {
-    "city": "Kochi",
-    "state": "Kerala",
+    "city": "Muzaffarnagar",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 29.47,
+    "lng": 77.7,
+    "rto_codes": []
+  },
+  {
+    "city": "Muzaffarpur",
+    "state": "Bihar",
+    "tier": 3,
+    "lat": 26.12,
+    "lng": 85.39,
+    "rto_codes": []
+  },
+  {
+    "city": "Mysuru",
+    "state": "Karnataka",
     "tier": 2,
-    "lat": 9.93,
-    "lng": 76.27,
+    "lat": 12.3,
+    "lng": 76.64,
     "rto_codes": [
-      "KL 07"
+      "KA 09"
     ]
+  },
+  {
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "tier": 2,
+    "lat": 21.15,
+    "lng": 79.09,
+    "rto_codes": [
+      "MH 31",
+      "MH 49"
+    ]
+  },
+  {
+    "city": "Nanded",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 19.15,
+    "lng": 77.31,
+    "rto_codes": []
+  },
+  {
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "tier": 2,
+    "lat": 20.0,
+    "lng": 73.79,
+    "rto_codes": [
+      "MH 15"
+    ]
+  },
+  {
+    "city": "Navi Mumbai",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 19.03,
+    "lng": 73.02,
+    "rto_codes": []
+  },
+  {
+    "city": "Nellore",
+    "state": "Andhra Pradesh",
+    "tier": 3,
+    "lat": 14.44,
+    "lng": 79.99,
+    "rto_codes": []
+  },
+  {
+    "city": "New Delhi",
+    "state": "Delhi",
+    "tier": 1,
+    "lat": 28.61,
+    "lng": 77.21,
+    "rto_codes": [
+      "DL 3C",
+      "DL 8C",
+      "DL 4C",
+      "DL 1C"
+    ]
+  },
+  {
+    "city": "Nizamabad",
+    "state": "Telangana",
+    "tier": 3,
+    "lat": 18.67,
+    "lng": 78.1,
+    "rto_codes": []
+  },
+  {
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "tier": 1,
+    "lat": 28.54,
+    "lng": 77.39,
+    "rto_codes": [
+      "UP 16"
+    ]
+  },
+  {
+    "city": "Palakkad",
+    "state": "Kerala",
+    "tier": 3,
+    "lat": 10.78,
+    "lng": 76.65,
+    "rto_codes": []
+  },
+  {
+    "city": "Panipat",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 29.39,
+    "lng": 76.97,
+    "rto_codes": []
+  },
+  {
+    "city": "Panvel",
+    "state": "Maharashtra",
+    "tier": 2,
+    "lat": 18.99,
+    "lng": 73.12,
+    "rto_codes": []
+  },
+  {
+    "city": "Patiala",
+    "state": "Punjab",
+    "tier": 3,
+    "lat": 30.34,
+    "lng": 76.39,
+    "rto_codes": []
+  },
+  {
+    "city": "Patna",
+    "state": "Bihar",
+    "tier": 2,
+    "lat": 25.59,
+    "lng": 85.14,
+    "rto_codes": []
+  },
+  {
+    "city": "Pimpri-Chinchwad",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 18.63,
+    "lng": 73.8,
+    "rto_codes": [
+      "MH 14"
+    ]
+  },
+  {
+    "city": "Port Blair",
+    "state": "Andaman and Nicobar Islands",
+    "tier": 3,
+    "lat": 11.67,
+    "lng": 92.75,
+    "rto_codes": []
+  },
+  {
+    "city": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "tier": 2,
+    "lat": 25.44,
+    "lng": 81.85,
+    "rto_codes": []
+  },
+  {
+    "city": "Puducherry",
+    "state": "Puducherry",
+    "tier": 3,
+    "lat": 11.94,
+    "lng": 79.81,
+    "rto_codes": []
+  },
+  {
+    "city": "Pune",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 18.52,
+    "lng": 73.86,
+    "rto_codes": [
+      "MH 12",
+      "MH 14"
+    ]
+  },
+  {
+    "city": "Puri",
+    "state": "Odisha",
+    "tier": 3,
+    "lat": 19.81,
+    "lng": 85.83,
+    "rto_codes": []
+  },
+  {
+    "city": "Purnia",
+    "state": "Bihar",
+    "tier": 3,
+    "lat": 25.78,
+    "lng": 87.47,
+    "rto_codes": []
+  },
+  {
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "tier": 2,
+    "lat": 21.25,
+    "lng": 81.63,
+    "rto_codes": []
+  },
+  {
+    "city": "Rajahmundry",
+    "state": "Andhra Pradesh",
+    "tier": 3,
+    "lat": 17.0,
+    "lng": 81.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "tier": 2,
+    "lat": 22.3,
+    "lng": 70.8,
+    "rto_codes": []
+  },
+  {
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "tier": 2,
+    "lat": 23.34,
+    "lng": 85.31,
+    "rto_codes": []
+  },
+  {
+    "city": "Ratlam",
+    "state": "Madhya Pradesh",
+    "tier": 3,
+    "lat": 23.33,
+    "lng": 75.04,
+    "rto_codes": []
+  },
+  {
+    "city": "Ratnagiri",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 16.99,
+    "lng": 73.31,
+    "rto_codes": []
+  },
+  {
+    "city": "Rishikesh",
+    "state": "Uttarakhand",
+    "tier": 3,
+    "lat": 30.09,
+    "lng": 78.27,
+    "rto_codes": []
+  },
+  {
+    "city": "Rohtak",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 28.89,
+    "lng": 76.6,
+    "rto_codes": []
+  },
+  {
+    "city": "Roorkee",
+    "state": "Uttarakhand",
+    "tier": 3,
+    "lat": 29.87,
+    "lng": 77.89,
+    "rto_codes": []
+  },
+  {
+    "city": "Rourkela",
+    "state": "Odisha",
+    "tier": 2,
+    "lat": 22.23,
+    "lng": 84.86,
+    "rto_codes": []
+  },
+  {
+    "city": "Sagar",
+    "state": "Madhya Pradesh",
+    "tier": 3,
+    "lat": 23.84,
+    "lng": 78.74,
+    "rto_codes": []
+  },
+  {
+    "city": "Saharanpur",
+    "state": "Uttar Pradesh",
+    "tier": 3,
+    "lat": 29.97,
+    "lng": 77.55,
+    "rto_codes": []
+  },
+  {
+    "city": "Salem",
+    "state": "Tamil Nadu",
+    "tier": 2,
+    "lat": 11.66,
+    "lng": 78.15,
+    "rto_codes": []
+  },
+  {
+    "city": "Sambalpur",
+    "state": "Odisha",
+    "tier": 3,
+    "lat": 21.47,
+    "lng": 83.97,
+    "rto_codes": []
+  },
+  {
+    "city": "Sangli",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 16.85,
+    "lng": 74.57,
+    "rto_codes": []
+  },
+  {
+    "city": "Satara",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 17.69,
+    "lng": 74.0,
+    "rto_codes": []
+  },
+  {
+    "city": "Satna",
+    "state": "Madhya Pradesh",
+    "tier": 3,
+    "lat": 24.58,
+    "lng": 80.83,
+    "rto_codes": []
+  },
+  {
+    "city": "Shillong",
+    "state": "Meghalaya",
+    "tier": 3,
+    "lat": 25.57,
+    "lng": 91.88,
+    "rto_codes": []
+  },
+  {
+    "city": "Shimla",
+    "state": "Himachal Pradesh",
+    "tier": 3,
+    "lat": 31.1,
+    "lng": 77.17,
+    "rto_codes": []
+  },
+  {
+    "city": "Shivamogga",
+    "state": "Karnataka",
+    "tier": 3,
+    "lat": 13.93,
+    "lng": 75.57,
+    "rto_codes": []
+  },
+  {
+    "city": "Sikar",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 27.61,
+    "lng": 75.14,
+    "rto_codes": []
+  },
+  {
+    "city": "Silchar",
+    "state": "Assam",
+    "tier": 3,
+    "lat": 24.83,
+    "lng": 92.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Siliguri",
+    "state": "West Bengal",
+    "tier": 2,
+    "lat": 26.73,
+    "lng": 88.4,
+    "rto_codes": []
+  },
+  {
+    "city": "Silvassa",
+    "state": "Dadra and Nagar Haveli and Daman and Diu",
+    "tier": 3,
+    "lat": 20.28,
+    "lng": 73.02,
+    "rto_codes": []
+  },
+  {
+    "city": "Solan",
+    "state": "Himachal Pradesh",
+    "tier": 3,
+    "lat": 30.9,
+    "lng": 77.1,
+    "rto_codes": []
+  },
+  {
+    "city": "Solapur",
+    "state": "Maharashtra",
+    "tier": 3,
+    "lat": 17.66,
+    "lng": 75.91,
+    "rto_codes": []
+  },
+  {
+    "city": "Sonipat",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 28.99,
+    "lng": 77.02,
+    "rto_codes": []
+  },
+  {
+    "city": "Srinagar",
+    "state": "Jammu and Kashmir",
+    "tier": 2,
+    "lat": 34.08,
+    "lng": 74.8,
+    "rto_codes": []
+  },
+  {
+    "city": "Surat",
+    "state": "Gujarat",
+    "tier": 2,
+    "lat": 21.17,
+    "lng": 72.83,
+    "rto_codes": [
+      "GJ 05"
+    ]
+  },
+  {
+    "city": "Thane",
+    "state": "Maharashtra",
+    "tier": 1,
+    "lat": 19.22,
+    "lng": 72.98,
+    "rto_codes": [
+      "MH 04",
+      "MH 05"
+    ]
+  },
+  {
+    "city": "Thanjavur",
+    "state": "Tamil Nadu",
+    "tier": 3,
+    "lat": 10.79,
+    "lng": 79.14,
+    "rto_codes": []
   },
   {
     "city": "Thiruvananthapuram",
@@ -270,33 +1386,141 @@
     ]
   },
   {
-    "city": "Chandigarh",
-    "state": "Chandigarh",
+    "city": "Thoothukudi",
+    "state": "Tamil Nadu",
+    "tier": 3,
+    "lat": 8.76,
+    "lng": 78.13,
+    "rto_codes": []
+  },
+  {
+    "city": "Thrissur",
+    "state": "Kerala",
     "tier": 2,
-    "lat": 30.73,
-    "lng": 76.78,
+    "lat": 10.53,
+    "lng": 76.21,
+    "rto_codes": []
+  },
+  {
+    "city": "Tiruchirappalli",
+    "state": "Tamil Nadu",
+    "tier": 2,
+    "lat": 10.79,
+    "lng": 78.7,
+    "rto_codes": []
+  },
+  {
+    "city": "Tirunelveli",
+    "state": "Tamil Nadu",
+    "tier": 3,
+    "lat": 8.71,
+    "lng": 77.76,
+    "rto_codes": []
+  },
+  {
+    "city": "Tirupati",
+    "state": "Andhra Pradesh",
+    "tier": 3,
+    "lat": 13.63,
+    "lng": 79.42,
+    "rto_codes": []
+  },
+  {
+    "city": "Tumakuru",
+    "state": "Karnataka",
+    "tier": 3,
+    "lat": 13.34,
+    "lng": 77.1,
+    "rto_codes": []
+  },
+  {
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "tier": 3,
+    "lat": 24.59,
+    "lng": 73.71,
     "rto_codes": [
-      "CH 01"
+      "RJ 27"
     ]
   },
   {
-    "city": "Bhubaneswar",
-    "state": "Odisha",
-    "tier": 2,
-    "lat": 20.3,
-    "lng": 85.82,
-    "rto_codes": [
-      "OD 02"
-    ]
+    "city": "Udupi",
+    "state": "Karnataka",
+    "tier": 3,
+    "lat": 13.34,
+    "lng": 74.75,
+    "rto_codes": []
   },
   {
-    "city": "Goa (Panaji)",
+    "city": "Ujjain",
+    "state": "Madhya Pradesh",
+    "tier": 3,
+    "lat": 23.18,
+    "lng": 75.78,
+    "rto_codes": []
+  },
+  {
+    "city": "Vadodara",
+    "state": "Gujarat",
+    "tier": 2,
+    "lat": 22.31,
+    "lng": 73.19,
+    "rto_codes": []
+  },
+  {
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "tier": 2,
+    "lat": 25.32,
+    "lng": 83.01,
+    "rto_codes": []
+  },
+  {
+    "city": "Vasco da Gama",
     "state": "Goa",
     "tier": 3,
-    "lat": 15.49,
-    "lng": 73.83,
-    "rto_codes": [
-      "GA 01"
-    ]
+    "lat": 15.4,
+    "lng": 73.81,
+    "rto_codes": []
+  },
+  {
+    "city": "Vellore",
+    "state": "Tamil Nadu",
+    "tier": 3,
+    "lat": 12.92,
+    "lng": 79.13,
+    "rto_codes": []
+  },
+  {
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "tier": 2,
+    "lat": 16.51,
+    "lng": 80.65,
+    "rto_codes": []
+  },
+  {
+    "city": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "tier": 2,
+    "lat": 17.69,
+    "lng": 83.22,
+    "rto_codes": []
+  },
+  {
+    "city": "Warangal",
+    "state": "Telangana",
+    "tier": 3,
+    "lat": 17.98,
+    "lng": 79.59,
+    "rto_codes": []
+  },
+  {
+    "city": "Yamunanagar",
+    "state": "Haryana",
+    "tier": 3,
+    "lat": 30.13,
+    "lng": 77.28,
+    "rto_codes": []
   }
 ]

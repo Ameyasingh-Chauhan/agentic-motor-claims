@@ -1,11 +1,14 @@
-import { useState } from "react";
-import { motion } from "motion/react";
-import { Clock, LocateFixed, MapPin, TriangleAlert } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "motion/react";
+import { Check, Clock, LocateFixed, MapPin, Search, TriangleAlert } from "lucide-react";
 import { toast } from "sonner";
 import { Field, Input } from "../../components/ui/Input";
-import { Select } from "../../components/ui/Select";
 import { Button } from "../../components/ui/Button";
 import { Skeleton } from "../../components/ui/Skeleton";
+import { useAnchoredPosition, useClickOutside } from "../../hooks/useOverlay";
+import { EASE } from "../../lib/motion";
+import { cn } from "../../lib/cn";
 import { AiMark, useCities } from "./StepIncident";
 import { daysAgo, istNow } from "./rules";
 
@@ -53,6 +56,78 @@ function haversine(a, b) {
   return 6371 * 2 * Math.asin(Math.sqrt(h));
 }
 
+/**
+ * Searchable city field: type to filter the full city list (every city in India we know of), or type a city
+ * not in the list and keep typing it in free text — the map pin only moves once a matching city is chosen.
+ */
+function CityCombobox({ id, cities, value, onChange, error, ...aria }) {
+  const [q, setQ] = useState(value ?? "");
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
+  const inputRef = useRef(null);
+  const listRef = useRef(null);
+  const refs = useMemo(() => [inputRef, listRef], []);
+  const pos = useAnchoredPosition(inputRef, listRef, open, { placement: "bottom-start", offset: 4 });
+
+  // Follow the form value (e.g. "Use my current location", a loaded draft) whenever the field isn't focused.
+  useEffect(() => { if (document.activeElement !== inputRef.current) setQ(value ?? ""); }, [value]);
+
+  const matches = useMemo(() => {
+    const needle = q.trim().toLowerCase();
+    if (!needle) return cities.slice(0, 8);
+    const starts = cities.filter((c) => c.city.toLowerCase().startsWith(needle));
+    const contains = cities.filter((c) => !c.city.toLowerCase().startsWith(needle) && c.city.toLowerCase().includes(needle));
+    return [...starts, ...contains].slice(0, 8);
+  }, [cities, q]);
+
+  useClickOutside(refs, open, () => setOpen(false));
+
+  const choose = (c) => {
+    setQ(c.city);
+    onChange(c.city, { lat: c.lat, lng: c.lng });
+    setOpen(false);
+    inputRef.current?.focus();
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); setOpen(true); setActive((i) => Math.min(i + 1, matches.length - 1)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); setActive((i) => Math.max(i - 1, 0)); }
+    else if (e.key === "Enter") { if (open && matches[active]) { e.preventDefault(); choose(matches[active]); } }
+    else if (e.key === "Escape") setOpen(false);
+  };
+
+  return (
+    <div className="relative">
+      <Input {...aria} ref={inputRef} id={id} icon={Search} value={q} autoComplete="off" role="combobox"
+        aria-expanded={open} aria-controls={`${id}-list`} aria-autocomplete="list" placeholder="Type any city or town in India"
+        onFocus={() => setOpen(true)}
+        onChange={(e) => { setQ(e.target.value); setOpen(true); setActive(0); onChange(e.target.value, { lat: null, lng: null }); }}
+        onKeyDown={onKeyDown} />
+      {createPortal(
+        <AnimatePresence>
+          {open && matches.length > 0 && (
+            <motion.ul ref={listRef} id={`${id}-list`} role="listbox" data-popover-layer=""
+              className="fixed top-0 left-0 z-[75] max-h-72 overflow-y-auto rounded-md border border-border bg-surface-raised p-1 shadow-lg"
+              style={{ x: pos.x, y: pos.y, minWidth: inputRef.current?.offsetWidth }}
+              initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.15, ease: EASE }}>
+              {matches.map((c, i) => (
+                <li key={c.city} role="option" aria-selected={c.city === value}
+                  onPointerEnter={() => setActive(i)} onPointerDown={(e) => e.preventDefault()} onClick={() => choose(c)}
+                  className={cn("flex min-h-9 cursor-pointer items-center justify-between gap-2 rounded-sm px-3 py-2 text-sm",
+                    i === active && "bg-bg-muted", c.city === value ? "font-medium text-text" : "text-muted")}>
+                  <span>{c.city}<span className="ml-1 text-caption text-subtle">{c.state}</span></span>
+                  {c.city === value && <Check size={16} aria-hidden="true" className="text-orange-700" />}
+                </li>
+              ))}
+            </motion.ul>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
+    </div>
+  );
+}
+
 export function StepWhenWhere({ form, update, errors, admin }) {
   const cities = useCities();
   const [locating, setLocating] = useState(false);
@@ -94,11 +169,10 @@ export function StepWhenWhere({ form, update, errors, admin }) {
         <div className="flex flex-col gap-4">
           <div className="flex flex-wrap items-end gap-3">
             <div className="min-w-56 flex-1">
-              <AiSlot state={form.ai_filled.city} onConfirm={() => confirm("city")}><Field label="City" error={errors.city} required>
+              <AiSlot state={form.ai_filled.city} onConfirm={() => confirm("city")}><Field label="City" error={errors.city} hint="Type any Indian city or town" required>
                 {(p) => cities.isPending ? <Skeleton className="h-10 w-full" /> : (
-                  <Select {...p} value={form.city || null} placeholder="Choose a city"
-                    options={(cities.data ?? []).map((c) => ({ value: c.city, label: c.city, description: c.state }))}
-                    onChange={(v) => { const c = cities.data.find((x) => x.city === v); edit("city", v, { lat: c?.lat ?? null, lng: c?.lng ?? null }); }} />
+                  <CityCombobox {...p} cities={cities.data ?? []} value={form.city}
+                    onChange={(v, extra) => edit("city", v, extra)} />
                 )}
               </Field></AiSlot>
             </div>

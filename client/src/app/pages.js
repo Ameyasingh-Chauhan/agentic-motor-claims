@@ -11,7 +11,6 @@ export const loaders = {
   fileClaim: () => import("../features/file-claim/FileClaimPage"),
   theatre: () => import("../features/pipeline/TheatrePage"),
   whatsapp: () => import("../features/whatsapp/WhatsAppJourneyPage"),
-  support: () => import("../features/support/SupportPage"),
   profile: () => import("../features/settings/ProfilePage"),
   settings: () => import("../features/settings/SettingsPage"),
   dev: () => import("../features/dev/DevToolsPage"),

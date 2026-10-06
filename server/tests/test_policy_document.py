@@ -194,3 +194,14 @@ def test_admin_can_create_for_a_new_policyholder():
     assert confirm.status_code == 200, confirm.text
     claim = confirm.json()["claim"]
     assert claim["customer_name"] == "Priya Deshmukh"
+    assert claim["customer_id"] and claim["policy_no"] == "ABC/PC/2025/777004"
+
+
+def test_admin_confirm_normalizes_document_dates():
+    a = admin()
+    fields = {**POLICY_EXTRACT, "policy_no": "ABC/PC/2025/777005", "registration": "MH 15 XZ 5567",
+              "period_from": "15-03-2026 00:00", "period_to": "14-03-2027 23:59"}
+    confirm = a.post("/api/wizard/policy-document/confirm", json={"staging": None, "fields": fields})
+    assert confirm.status_code == 200, confirm.text
+    policy = next(p for p in read_json_sync("policies.json") if p["policy_no"] == fields["policy_no"])
+    assert policy["start"] == "2026-03-15" and policy["end"] == "2027-03-14"

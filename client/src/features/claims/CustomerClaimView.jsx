@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { FileUp, LifeBuoy, MessageSquareReply, Paperclip, X } from "lucide-react";
+import { FileUp, MessageSquareReply, Paperclip, X } from "lucide-react";
 import { Tabs } from "../../components/ui/Tabs";
 import { Card } from "../../components/ui/Card";
 import { Button } from "../../components/ui/Button";
@@ -47,7 +47,7 @@ function WhatNext({ claim }) {
         <Stepper steps={STEPS} current={step} errorAt={closed ? 2 : undefined} />
         <p className="mt-4 text-sm text-text">
           {s === "INFO_REQUESTED" ? "We need a little more information from you — use “Respond to information request” above."
-            : closed ? "This claim was not approved. You can message us or contact support if you'd like to discuss it."
+            : closed ? "This claim was not approved. You can message us if you'd like to discuss it."
             : s === "SETTLED" ? `Your claim is settled${claim.settlement?.paid_amount ? ` — ${formatINR(claim.settlement.paid_amount)} paid (ref ${claim.settlement.payment_reference})` : ""}.`
             : ["APPROVED", "PREAUTH_ISSUED"].includes(s) ? "Your claim is approved." : "Our team is reviewing your photos and documents."}
         </p>
@@ -140,7 +140,6 @@ export function CustomerClaimView({ claim }) {
       <ClaimHeader claim={claim} admin={false} onBack={back} />
       <div className="no-print flex flex-wrap items-center gap-2">
         {claim.status === "INFO_REQUESTED" && <Button icon={MessageSquareReply} onClick={() => setRespond(true)}>Respond to information request</Button>}
-        <Button variant="secondary" icon={LifeBuoy} to="/support">Contact support</Button>
       </div>
       <Tabs tabs={CUSTOMER_TABS} urlParam="tab">
         {(value) => (

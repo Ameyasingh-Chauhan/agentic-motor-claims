@@ -188,13 +188,13 @@ export function StepDocuments({ form, update, claim, draftId, refresh, errors, r
         )}
         {(theft || form.settlement_mode === "reimbursement") && (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <Field label="Account holder name" required>{(p) => <Input {...p} value={form.bank.account_name} onChange={(e) => update({ bank: { ...form.bank, account_name: e.target.value } })} autoComplete="name" />}</Field>
-            <Field label="Bank name">{(p) => <Input {...p} value={form.bank.bank_name} onChange={(e) => update({ bank: { ...form.bank, bank_name: e.target.value } })} />}</Field>
+            <Field label="Account holder name" required>{(p) => <Input {...p} value={form.bank.account_name} onChange={(e) => update({ bank: { ...form.bank, account_name: e.target.value } })} autoComplete="off" />}</Field>
+            <Field label="Bank name">{(p) => <Input {...p} value={form.bank.bank_name} onChange={(e) => update({ bank: { ...form.bank, bank_name: e.target.value } })} autoComplete="off" />}</Field>
             <Field label="Account number — last 4 digits" hint="We never store the full number here" required>
-              {(p) => <Input {...p} inputMode="numeric" maxLength={4} value={form.bank.account_last4} onChange={(e) => update({ bank: { ...form.bank, account_last4: e.target.value.replace(/\D/g, "") } })} />}
+              {(p) => <Input {...p} inputMode="numeric" maxLength={4} autoComplete="off" value={form.bank.account_last4} onChange={(e) => update({ bank: { ...form.bank, account_last4: e.target.value.replace(/\D/g, "") } })} />}
             </Field>
             <Field label="IFSC" hint="11 characters, e.g. HDFC0001234" required>
-              {(p) => <Input {...p} maxLength={11} value={form.bank.ifsc} onChange={(e) => update({ bank: { ...form.bank, ifsc: e.target.value.toUpperCase() } })} />}
+              {(p) => <Input {...p} maxLength={11} autoComplete="off" value={form.bank.ifsc} onChange={(e) => update({ bank: { ...form.bank, ifsc: e.target.value.toUpperCase().replace(/\s/g, "") } })} />}
             </Field>
             {errors.bank && <p className="text-caption text-danger md:col-span-2">{errors.bank}</p>}
           </div>

@@ -125,7 +125,7 @@ export function VerificationTab({ claim }) {
         const ch = checks[k];
         const rows = fieldsFor(k, claim);
         const json = k === "fastag" ? claim.context?.fastag_events : k === "vehicle_identity" ? claim.vehicle_identity ?? {}
-          : { ...(ch.data ?? {}), ...(rows ? Object.fromEntries(rows) : {}) };
+          : { ...(ch.data ?? {}), ...(rows ? Object.fromEntries(rows.filter(Boolean)) : {}) };
         return (
           <div key={k} id={`check-${k}`}>
             <AccordionItem value={k} title={<span className="inline-flex items-center gap-3"><span className="font-semibold text-text">{CHECK_LABELS[k]}</span>

@@ -1,6 +1,53 @@
 # Build progress
 
 ## Resume point
+
+**2026-10-06 session 2 — bank-details validation fix, searchable city/map, Rohit Meena data removed.**
+- Fixed the "Reimbursement to my bank" step appearing to block on filled bank details: the "Account holder
+  name" input had `autoComplete="name"`, inviting the browser to autofill it from its own profile data —
+  that can populate the DOM without firing React's `onChange`, so `form.bank.account_name` stays empty while
+  the field visually looks filled, and Next shows "Enter the bank details" even though it looks done. Set
+  `autoComplete="off"` on all four bank fields; also strip whitespace from the IFSC input on change and trim
+  all three required bank values defensively before validating in `rules.js`, in case of a stray paste.
+- City is no longer a fixed 28-item dropdown: `cities.json` now has 181 Indian cities/towns across every
+  state and UT (was 28), and `StepWhenWhere.jsx` replaced the static `Select` with a new `CityCombobox` —
+  type to filter the full list (prefix matches first, then substring), click or Enter to choose; the map pin
+  only moves once a listed city is actually chosen (typing alone doesn't fabricate a pin). Verified in the
+  browser: typing "Coim" → Coimbatore, Tamil Nadu (south India pin); "Dehr" → Dehradun, Uttarakhand (north
+  India pin, newly added).
+- Removed all data for the pre-existing "ROHIT MEENA" demo customer per request (he'll be refiled): customer
+  `c_0249`, policy `ABC/PC/2025/604821`, vehicle `v_0250` / Vahan record `RJ 45 CM 4821`, claim
+  `ABC-MC-2026-000252` (PREAUTH_ISSUED) and its 5 notifications + pipeline run, plus its `server/uploads/`
+  folder. Left the unrelated "Leena Purohit" customer alone (name only superficially matches "rohit").
+- `pytest -v` (180 passed) and `npm run build` both pass after all changes.
+- Fixed `/api/wizard/policyholders` returning 500 when a policyholder has a null optional phone/city/search field; all searchable values are now normalized safely before joining. `pytest -q tests/test_wizard.py` passes (12 tests).
+- Fixed policy-document confirmation when Gemini omits a visible registration number: the upload route now performs one focused structured registration read before returning extracted fields. Verified against the affected specimen (`RJ 45 CM 4821`) and `pytest -q tests/test_policy_document.py tests/test_wizard.py` passes (20 tests).
+- Verified the supplied Rohit Meena specimen is absent from `server/data`; removed six abandoned staging folders containing copies of that document from `server/uploads`. The unrelated Bina Nadig records were preserved.
+
+**2026-10-06 session — Verification tab crash fix, new-claim-with-new-policy pipeline verified, Support removed.**
+- Fixed a crash in `VerificationTab.jsx`: the "policy" check's field rows include a `null` entry when the policy
+  wasn't verified from an uploaded document, and `Object.fromEntries(rows)` (used to build the raw-JSON panel)
+  throws on a `null` entry — React's error boundary caught it and the whole Verification tab went blank for every
+  claim. Fixed by filtering `rows.filter(Boolean)` before `Object.fromEntries`.
+- Fixed `StepPolicy.jsx`: when an admin starts "New policyholder — upload policy document", the "Policyholder's
+  policies" section queried with `customer_id: null` and `enabled: false`, which stays `isPending` forever in
+  TanStack Query v5 — showed a perpetual loading skeleton. Now hidden until a policyholder is chosen.
+- Browser-verified the full admin "file a new claim with a new policy" pipeline end to end: upload a policy
+  document → Gemini extracts fields (98–99% confidence) → duplicate-policy detection correctly flags a re-upload
+  of an existing document → editing to a unique policy/registration creates a new customer/vehicle/policy and a
+  draft claim → safety/incident (LLM narrative)/when-where/photos/documents/settlement → submit → Agent Theatre
+  runs all 7 agents live (Intake, Document, Verification, Damage, Fraud, Adjudication) with real Gemini output
+  (damage parts + severity, fraud score, adjudication recommendation) → claim renders correctly on the result
+  page and in Claim Detail (Verification tab included). Test claim/customer/policy/vehicle/vahan/upload records
+  were removed again after verification so `server/data` and `server/uploads` match the pre-session state.
+- Swept Home, Dashboard, every Claim Detail tab, and WhatsApp Journey for console errors — none found.
+- Removed the Support feature everywhere per request: sidebar nav item (`nav.js`), route and lazy loader
+  (`App.jsx`, `pages.js`), the "Contact support" button and its wording on the customer claim view
+  (`CustomerClaimView.jsx`), and deleted `client/src/features/support/`. `/support` now 404s via the normal
+  not-found route. No backend support router existed, so no server-side change was needed.
+- `pytest -v` (180 passed) and `npm run build` both pass after all changes.
+
+## Resume point
 **Phase 7 — WhatsApp Journey: BUILT + VERIFIED by builder (2026-10-05); awaiting user acceptance.** Kept simple per user.
 Details: "Phase 7" section below. pytest 166 pass, `npm run build` OK, `npm run contrast` OK.
 **Exact next sub-step:** user runs the Phase 7 checklist; then Phase 8 (Support, settings, polish). **Temporary state:** none.

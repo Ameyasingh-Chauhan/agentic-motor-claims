@@ -164,6 +164,10 @@ export default function FileClaimPage() {
     w.goTo(steps[index + 1].key, { draft: createdClaim.id });
     toast.success("Policy verified from your document — continue filing the claim.");
   };
+  const startNewPolicyholderUpload = () => {
+    update({ customer_id: null, customer_name: null, policy_no: null });
+    w.goTo("policy");
+  };
 
   const submit = async () => {
     setSubmitting(true);
@@ -272,7 +276,7 @@ export default function FileClaimPage() {
               </div>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div key={stepKey} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.25, ease: EASE }} className="px-6 py-6">
-                  {stepKey === "policyholder" && <StepPolicyholder {...stepProps} />}
+                  {stepKey === "policyholder" && <StepPolicyholder {...stepProps} onNewPolicyholder={admin ? startNewPolicyholderUpload : undefined} />}
                   {stepKey === "policy" && <StepPolicy {...stepProps} onPolicy={() => {}} onUploaded={onPolicyUploaded} />}
                   {stepKey === "safety" && <StepSafety {...stepProps} />}
                   {stepKey === "incident" && <StepIncident {...stepProps} onIntake={refresh} />}

@@ -11,10 +11,11 @@ import asyncio
 import hashlib
 import secrets
 import shutil
-from datetime import date
+from datetime import date, datetime
+from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from ..agents import adjudication as adj
 from ..config import get_settings
@@ -42,15 +43,29 @@ WHY = {
 
 
 def _expired(policy: dict, on: date | None = None) -> bool:
-    return date.fromisoformat(policy["end"]) < (on or now_ist().date())
+    return _parse_policy_date(policy["end"]) < (on or now_ist().date())
+
+
+def _parse_policy_date(value: str | None) -> date:
+    """Accept ISO and common Indian document date formats from extraction."""
+    text = str(value or "").strip()
+    for fmt in ("%Y-%m-%d", "%Y-%m-%d %H:%M", "%d-%m-%Y", "%d-%m-%Y %H:%M", "%d/%m/%Y", "%d/%m/%Y %H:%M"):
+        try:
+            return datetime.strptime(text, fmt).date()
+        except ValueError:
+            continue
+    try:
+        return datetime.fromisoformat(text.replace("Z", "+00:00")).date()
+    except ValueError as exc:
+        raise ValueError(f"Unsupported policy date: {value}") from exc
 
 
 def _policy_card(policy: dict, vehicle: dict, customer: dict) -> dict:
     today = now_ist().date()
-    end = date.fromisoformat(policy["end"])
+    end = _parse_policy_date(policy["end"])
     return {
         "policy_no": policy["policy_no"], "insurer": policy.get("insurer", "ABC General Insurance"), "product": policy.get("product"),
-        "cover": policy["cover"], "start": policy["start"], "end": policy["end"], "idv": policy["idv"], "ncb_pct": policy.get("ncb_pct"),
+        "cover": policy["cover"], "start": _parse_policy_date(policy["start"]).isoformat(), "end": end.isoformat(), "idv": policy["idv"], "ncb_pct": policy.get("ncb_pct"),
         "add_ons": [k for k, v in (policy.get("add_ons") or {}).items() if v], "expired": end < today,
         "days_left": (end - today).days, "customer_id": customer["id"], "customer_name": customer["name"], "city": customer["city"],
         "vehicle": {k: vehicle.get(k) for k in ("id", "registration", "make", "model", "variant", "type", "segment", "colour", "fuel",
@@ -85,7 +100,11 @@ async def policyholders(q: str = "", user=Depends(current_user)):
         if not pols:
             continue
         regs = [vby[p["vehicle_id"]]["registration"] for p in pols if p["vehicle_id"] in vby]
-        hay = _norm(" ".join([c["name"], c.get("phone", ""), c["city"], *[p["policy_no"] for p in pols], *regs]))
+        # Some policyholders (including seeded records) may not have a phone/city
+        # value.  Normalize every searchable field before joining so one null
+        # optional field cannot turn the policyholder lookup into a 500.
+        hay = _norm(" ".join(str(value or "") for value in [c.get("name"), c.get("phone"), c.get("city"),
+                                                               *[p.get("policy_no") for p in pols], *regs]))
         if nq and nq not in hay:
             continue
         out.append({"id": c["id"], "name": c["name"], "city": c["city"], "phone": c.get("phone"), "policies": len(pols),
@@ -124,7 +143,7 @@ async def lookup(q: str, user=Depends(current_user)):
         hits = [p for p in hits if p["customer_id"] == user.get("customer_id")]
     if not hits:
         raise HTTPException(404, {"code": "policy_not_found", "message": "No policy found for that number or registration"})
-    best = min(hits, key=lambda p: (_expired(p), -int(p["end"].replace("-", ""))))
+    best = min(hits, key=lambda p: (_expired(p), -_parse_policy_date(p["end"]).toordinal()))
     return _policy_card(best, vby[best["vehicle_id"]], cby[best["customer_id"]])
 
 
@@ -457,6 +476,26 @@ async def upload_policy_document(file: UploadFile = File(...), user=Depends(curr
         return {"source": source, "staging": None, "extracted": {}, "field_confidence": {},
                 "message": "Automatic reading is unavailable right now — enter the policy details manually below."}
 
+    # Policy schedules occasionally yield every field except the registration number. Ask one focused,
+    # structured vision question before returning the card so a clear registration cannot block confirmation.
+    if not result["extracted"].get("registration"):
+        try:
+            from ..services.gemini import image_part
+            image_path = uploads.safe_file(staging_id, Path(fields["url"]).name)
+            if image_path is not None:
+                focused, _ = await gemini.generate(
+                    agent="document_registration", system=(
+                        "Read this Indian motor insurance policy schedule. Return the vehicle registration number "
+                        "exactly as printed (for example, MH 12 AB 1234). It is usually labelled Registration No. "
+                        "or Vehicle Registration. Do not return the policy number. If visible, never return null."
+                    ), contents=[image_part(image_path, "policy schedule | registration")],
+                    schema=RegistrationExtract, temperature=0, thinking="low", max_output_tokens=256)
+                if focused.registration:
+                    result["extracted"]["registration"] = focused.registration.strip()
+                    result["extracted"].setdefault("field_confidence", []).append({"field": "registration", "confidence": 0.9})
+        except Exception:  # noqa: BLE001 - the normal extraction remains usable if the focused retry is unavailable
+            pass
+
     extracted = {k: v for k, v in result["extracted"].items() if k != "field_confidence" and v not in (None, "", [], {})}
     conf = {c["field"]: c["confidence"] for c in result["extracted"].get("field_confidence", [])}
     return {"source": source, "staging": {"token": staging_id, "files": processed["files"]}, "extracted": extracted,
@@ -471,6 +510,10 @@ async def upload_policy_document(file: UploadFile = File(...), user=Depends(curr
 class StagingRef(BaseModel):
     token: str
     files: dict[str, str]
+
+
+class RegistrationExtract(BaseModel):
+    registration: str | None = Field(None, description="Vehicle registration number. Copy it exactly as printed on the policy.")
 
 
 class ConfirmPolicyDocument(BaseModel):
@@ -507,7 +550,12 @@ def _move_staged(staging_id: str, files: dict[str, str], claim_id: str, item_id:
 async def confirm_policy_document(body: ConfirmPolicyDocument, user=Depends(current_user)):
     """Create customer + vehicle + policy from the (edited) extracted fields, start a new draft claim on that policy
     (same path as any other draft) and attach the document to it. Blocks on a policy number already on file."""
-    f = body.fields
+    f = dict(body.fields)
+    # Gemini/document providers occasionally use descriptive aliases; normalize them once at the API boundary.
+    aliases = {"policy_number": "policy_no", "policyNumber": "policy_no", "insured_name": "insured",
+               "policyholder_name": "insured", "vehicle_registration": "registration", "reg_no": "registration"}
+    for source, target in aliases.items():
+        if not f.get(target) and f.get(source): f[target] = f[source]
     policy_no = (f.get("policy_no") or "").strip()
     registration = (f.get("registration") or "").strip().upper()
     insured = (f.get("insured") or "").strip()
@@ -566,9 +614,12 @@ async def confirm_policy_document(body: ConfirmPolicyDocument, user=Depends(curr
         vehicle["segment"] = model_ref["segment"]
 
     end = f.get("period_to") or now_ist().date().replace(year=now_ist().date().year + 1).isoformat()
+    end = _parse_policy_date(end).isoformat()
+    start = f.get("period_from") or now_ist().date().isoformat()
+    start = _parse_policy_date(start).isoformat()
     policy = {"policy_no": policy_no, "customer_id": customer["id"], "vehicle_id": vehicle["id"],
              "product": "Private Car Package", "cover": f.get("cover") or "OD+TP",
-             "start": f.get("period_from") or now_ist().date().isoformat(), "end": end,
+             "start": start, "end": end,
              "idv": float(f.get("idv") or round(model_ref.get("ex_showroom", 700_000) * 0.75, -3)),
              "ncb_pct": float(f.get("ncb_pct") or 0), "add_ons": _addons_from(f.get("add_ons") or []),
              "voluntary_deductible": float(f.get("deductible_voluntary") or 0), "premium": float(f.get("premium") or 0),
@@ -608,7 +659,7 @@ async def confirm_policy_document(body: ConfirmPolicyDocument, user=Depends(curr
         return c
 
     claim = await update_json("claims.json", attach, [])
-    end_date = date.fromisoformat(policy["end"])
+    end_date = _parse_policy_date(policy["end"])
     warnings = []
     if end_date < now_ist().date():
         warnings.append("This policy has already expired — the claim can still be filed but is likely to be declined.")

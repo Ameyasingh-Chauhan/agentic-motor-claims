@@ -3966,5 +3966,21 @@
     },
     "avatar": null,
     "preferred_language": "en"
+  },
+  {
+    "id": "c_0250",
+    "name": "ROHIT MEENA",
+    "phone": "+91 98290 4XXXX",
+    "email": null,
+    "city": "Jaipur",
+    "state": null,
+    "address": "42, Shanti Nagar, Jagatpura, Jaipur, Rajasthan - 302017",
+    "kyc": {
+      "aadhaar": null,
+      "pan": null,
+      "verified": true
+    },
+    "avatar": null,
+    "preferred_language": "en"
   }
 ]

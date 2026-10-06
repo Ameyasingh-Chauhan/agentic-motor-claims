@@ -2726,5 +2726,29 @@
     "blacklisted": false,
     "stolen": false,
     "registered_on": "2020-02-05"
+  },
+  "RJ 14 TS 5501": {
+    "registration": "RJ 14 TS 5501",
+    "owner": "Bina Nadig",
+    "class": "LMV",
+    "make_model": "Mahindra Bolero Pik-Up",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": null,
+    "profile": "uploaded_document"
+  },
+  "RJ 45 CM 4821": {
+    "registration": "RJ 45 CM 4821",
+    "owner": "ROHIT MEENA",
+    "class": "LMV",
+    "make_model": "KIA SELTOS",
+    "rc_status": "active",
+    "hypothecation": null,
+    "blacklisted": false,
+    "stolen": false,
+    "registered_on": "2023-01-01",
+    "profile": "uploaded_document"
   }
 }

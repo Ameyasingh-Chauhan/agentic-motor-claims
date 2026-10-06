@@ -5725,5 +5725,28 @@
     "insurer": "ABC General Insurance",
     "status": "active",
     "previous_break_in": false
+  },
+  {
+    "policy_no": "ABC/PC/2025/604821",
+    "customer_id": "c_0250",
+    "vehicle_id": "v_0251",
+    "product": "Private Car Package",
+    "cover": "OD+TP",
+    "start": "2026-03-15",
+    "end": "2027-03-14",
+    "idv": 1120000.0,
+    "ncb_pct": 20.0,
+    "add_ons": {
+      "zero_dep": false,
+      "consumables": false,
+      "engine_protect": false,
+      "rti": false,
+      "rsa": true
+    },
+    "voluntary_deductible": 0.0,
+    "premium": 26859.0,
+    "insurer": "ABC General Insurance",
+    "status": "active",
+    "previous_break_in": false
   }
 ]

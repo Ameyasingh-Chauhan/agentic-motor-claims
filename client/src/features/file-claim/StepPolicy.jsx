@@ -24,7 +24,7 @@ function useDebounced(value, ms = 300) {
 const ADDON_LABEL = { zero_dep: "Zero depreciation", consumables: "Consumables", engine_protect: "Engine protect", rti: "Return to invoice", rsa: "Roadside assistance" };
 
 /** Step 0 (admins): searchable policyholder list. */
-export function StepPolicyholder({ form, update }) {
+export function StepPolicyholder({ form, update, onNewPolicyholder }) {
   const [q, setQ] = useState("");
   const dq = useDebounced(q);
   const list = useQuery({ queryKey: ["wizard", "policyholders", dq], queryFn: ({ signal }) => api("/wizard/policyholders", { params: { q: dq }, signal }), placeholderData: (p) => p });
@@ -33,12 +33,13 @@ export function StepPolicyholder({ form, update }) {
       <Field label="Search policyholders" hint="Name, phone, city, policy number or registration">
         {(p) => <Input {...p} icon={Search} value={q} onChange={(e) => setQ(e.target.value)} placeholder="Rahul Sharma, Pune or MH 12 AB 1234" autoFocus />}
       </Field>
+      {onNewPolicyholder && <Button type="button" variant="secondary" icon={FileUp} onClick={onNewPolicyholder}>New policyholder — upload policy document</Button>}
       {list.isPending ? (
         <div className="flex flex-col gap-2" aria-busy="true">{[0, 1, 2, 3].map((i) => <Skeleton key={i} className="h-16 w-full" rounded="md" />)}</div>
       ) : list.isError ? (
         <ErrorState compact title="Couldn't load policyholders" error={list.error} onRetry={() => list.refetch()} />
       ) : list.data.items.length === 0 ? (
-        <EmptyState compact title="No policyholder matches" description="Try a phone number or a registration." />
+        <EmptyState compact title="No policyholder matches" description="Not in our records? Upload their policy document to add them." action={onNewPolicyholder ? <Button type="button" variant="secondary" icon={FileUp} onClick={onNewPolicyholder}>New policyholder — upload policy document</Button> : undefined} />
       ) : (
         <ul className="flex max-h-[28rem] flex-col gap-2 overflow-y-auto pr-1" role="listbox" aria-label="Policyholders">
           {list.data.items.map((c) => {
@@ -109,11 +110,11 @@ export function PolicyCard({ policy, selected, onSelect, compact }) {
 }
 
 const POLICY_FIELDS = [
-  { group: "Policyholder", key: "insured", label: "Insured name" },
+  { group: "Policyholder", key: "insured", label: "Insured name", required: true },
   { group: "Policyholder", key: "insured_father", label: "Father's / husband's name" },
   { group: "Policyholder", key: "insured_address", label: "Address", textarea: true },
   { group: "Policyholder", key: "insured_contact", label: "Contact number" },
-  { group: "Policy", key: "policy_no", label: "Policy number" },
+  { group: "Policy", key: "policy_no", label: "Policy number", required: true },
   { group: "Policy", key: "period_from", label: "Cover from (YYYY-MM-DD)" },
   { group: "Policy", key: "period_to", label: "Cover to (YYYY-MM-DD)" },
   { group: "Policy", key: "cover", label: "Cover", options: ["OD+TP", "TP"] },
@@ -123,7 +124,7 @@ const POLICY_FIELDS = [
   { group: "Policy", key: "deductible_compulsory", label: "Compulsory deductible (₹)", number: true },
   { group: "Policy", key: "deductible_voluntary", label: "Voluntary deductible (₹)", number: true },
   { group: "Policy", key: "premium", label: "Premium paid (₹)", number: true },
-  { group: "Vehicle", key: "registration", label: "Registration number" },
+  { group: "Vehicle", key: "registration", label: "Registration number", required: true, hint: "Not read automatically from most policy schedules — type it in" },
   { group: "Vehicle", key: "vehicle_make", label: "Make" },
   { group: "Vehicle", key: "vehicle_model", label: "Model" },
   { group: "Vehicle", key: "vehicle_variant", label: "Variant" },
@@ -142,8 +143,9 @@ function ExtractedField({ meta, value, confidence, onChange }) {
   // confidence without actually extracting the text, which happens occasionally) reads as "not read automatically".
   const hasConfidence = confidence != null && text !== "";
   const low = hasConfidence && confidence < 0.75;
+  const missing = meta.required && !text;
   return (
-    <Field label={meta.label}>
+    <Field label={meta.label} required={meta.required}>
       {(p) => (
         <div className="flex flex-col gap-1">
           {meta.options ? (
@@ -159,7 +161,9 @@ function ExtractedField({ meta, value, confidence, onChange }) {
               {low && <CircleAlert size={12} aria-hidden="true" />}{Math.round(confidence * 100)}% confidence{low ? " — please check this" : ""}
             </span>
           ) : (
-            <span className="text-caption text-subtle">Not read automatically — enter it</span>
+            <span className={cn("inline-flex items-center gap-1 text-caption", missing ? "text-danger" : "text-subtle")}>
+              {missing && <CircleAlert size={12} aria-hidden="true" />}{meta.hint ?? (missing ? "Required — enter it" : "Not read automatically — enter it")}
+            </span>
           )}
         </div>
       )}
@@ -216,7 +220,8 @@ export function PolicyUploadCard({ onClaimCreated, onUsePolicy, prominent }) {
         setDuplicate(err.body?.detail?.policy ?? null);
         setError(err.body?.detail?.message || err.message);
       } else {
-        setError(err.message || "Couldn't create the claim");
+        const fields = err.body?.detail?.fields;
+        setError(fields ? Object.values(fields).join(" · ") : err.message || "Couldn't create the claim");
       }
       setStatus("ready");
     }
@@ -317,14 +322,16 @@ export function StepPolicy({ form, update, admin, onPolicy, onUploaded }) {
         )}
       </AnimatePresence>
       {notFound && <PolicyUploadCard prominent onClaimCreated={onUploaded} onUsePolicy={choose} />}
-      <section aria-labelledby="mine-h" className="flex flex-col gap-3">
-        <h3 id="mine-h" className="flex items-center gap-2 text-sm font-semibold text-text"><CalendarClock size={16} aria-hidden="true" className="text-muted" />
-          {admin ? `${form.customer_name ?? "Policyholder"}'s policies` : "Your policies"}</h3>
-        {mine.isPending ? <Skeleton className="h-36 w-full" rounded="lg" />
-          : mine.isError ? <ErrorState compact title="Couldn't load policies" error={mine.error} onRetry={() => mine.refetch()} />
-          : mine.data.items.length === 0 ? <EmptyState compact title="No policies" description="There are no policies for this policyholder." />
-          : mine.data.items.map((p) => <PolicyCard key={p.policy_no} policy={p} selected={form.policy_no === p.policy_no} onSelect={() => choose(p)} />)}
-      </section>
+      {(!admin || Boolean(form.customer_id)) && (
+        <section aria-labelledby="mine-h" className="flex flex-col gap-3">
+          <h3 id="mine-h" className="flex items-center gap-2 text-sm font-semibold text-text"><CalendarClock size={16} aria-hidden="true" className="text-muted" />
+            {admin ? `${form.customer_name ?? "Policyholder"}'s policies` : "Your policies"}</h3>
+          {mine.isPending ? <Skeleton className="h-36 w-full" rounded="lg" />
+            : mine.isError ? <ErrorState compact title="Couldn't load policies" error={mine.error} onRetry={() => mine.refetch()} />
+            : mine.data.items.length === 0 ? <EmptyState compact title="No policies" description="There are no policies for this policyholder." />
+            : mine.data.items.map((p) => <PolicyCard key={p.policy_no} policy={p} selected={form.policy_no === p.policy_no} onSelect={() => choose(p)} />)}
+        </section>
+      )}
       {!notFound && <PolicyUploadCard onClaimCreated={onUploaded} onUsePolicy={choose} />}
     </div>
   );
