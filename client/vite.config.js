@@ -2,7 +2,12 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
+// Fresh id every time the dev server (or a build) starts: the app signs out any session left over from an earlier run,
+// so `npm run dev` always opens on the login page (the session cookie is shared by every localhost port).
+const BOOT_ID = String(Date.now());
+
 export default defineConfig({
+  define: { __BOOT_ID__: JSON.stringify(BOOT_ID) },
   plugins: [react(), tailwindcss()],
   server: {
     port: 5173,

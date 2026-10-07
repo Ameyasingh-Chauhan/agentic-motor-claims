@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       { path: "whatsapp", element: <P.whatsapp />, handle: { crumb: "WhatsApp Journey" } },
       { path: "profile", element: <P.profile />, handle: { crumb: "Profile" } },
       { path: "settings", element: <P.settings />, handle: { crumb: "Settings" } },
+      { path: "data-manager", element: guard(<P.dataManager />, can.manageData), handle: { crumb: "Data Manager" } },
       { path: "dev", element: guard(<P.dev />, can.viewDevTools), handle: { crumb: "Dev Tools" } },
       { path: "styleguide", element: guard(<P.styleguide />, can.viewStyleguide), handle: { crumb: "Style guide" } },
       { path: "*", element: <P.notFound />, handle: { crumb: "Not found" } },

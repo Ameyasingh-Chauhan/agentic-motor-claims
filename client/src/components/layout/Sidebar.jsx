@@ -9,7 +9,7 @@ import { Kbd } from "../ui/Kbd";
 import { UserMenu } from "./UserMenu";
 import { useUiStore } from "../../store/uiStore";
 import { useAuthStore } from "../../store/authStore";
-import { NAV_ITEMS, DEV_NAV_ITEMS, visibleItems } from "../../app/nav";
+import { NAV_ITEMS, ADMIN_NAV_ITEMS, DEV_NAV_ITEMS, visibleItems } from "../../app/nav";
 import { prefetchPage } from "../../app/pages";
 import { roleLabel } from "../../lib/permissions";
 import { SPRING } from "../../lib/motion";
@@ -86,7 +86,7 @@ export function Sidebar({ variant = "rail", onNavigate }) {
   const theme = useUiStore((s) => s.theme);
   const collapsed = variant === "rail" && storeCollapsed;
   const main = visibleItems(NAV_ITEMS, user);
-  const dev = visibleItems(DEV_NAV_ITEMS, user);
+  const sections = [["Admin", visibleItems(ADMIN_NAV_ITEMS, user)], ["Developer", visibleItems(DEV_NAV_ITEMS, user)]].filter(([, items]) => items.length > 0);
 
   return (
     <div className="flex h-full flex-col">
@@ -113,22 +113,22 @@ export function Sidebar({ variant = "rail", onNavigate }) {
             <NavItem key={item.to} item={item} collapsed={collapsed} onNavigate={onNavigate} />
           ))}
         </ul>
-        {dev.length > 0 && (
-          <>
+        {sections.map(([title, items]) => (
+          <div key={title}>
             <div className="my-3 flex h-4 items-center gap-2 px-4" role="separator">
               <span className="h-px flex-1 bg-border" />
               <FadeLabel show={!collapsed} className="text-caption text-subtle">
-                Developer
+                {title}
               </FadeLabel>
               <span className={cn("h-px bg-border", collapsed ? "w-0" : "flex-1")} />
             </div>
             <ul className="flex flex-col gap-1">
-              {dev.map((item) => (
+              {items.map((item) => (
                 <NavItem key={item.to} item={item} collapsed={collapsed} onNavigate={onNavigate} />
               ))}
             </ul>
-          </>
-        )}
+          </div>
+        ))}
       </nav>
 
       <div className="flex shrink-0 flex-col gap-1 border-t border-border p-3">

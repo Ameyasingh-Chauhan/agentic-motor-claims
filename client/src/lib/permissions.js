@@ -9,6 +9,7 @@ export const can = {
   takeClaimActions: isAdmin,
   viewHandlerDetail: isAdmin,
   viewDevTools: isDeveloper,
+  manageData: (user) => isAdmin(user) || isDeveloper(user),
   viewStyleguide: isDeveloper,
 };
 

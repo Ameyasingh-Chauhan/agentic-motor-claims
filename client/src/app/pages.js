@@ -13,6 +13,7 @@ export const loaders = {
   whatsapp: () => import("../features/whatsapp/WhatsAppJourneyPage"),
   profile: () => import("../features/settings/ProfilePage"),
   settings: () => import("../features/settings/SettingsPage"),
+  dataManager: () => import("../features/data-manager/DataManagerPage"),
   dev: () => import("../features/dev/DevToolsPage"),
   styleguide: () => import("../features/styleguide/StyleguidePage"),
   notFound: () => import("../features/errors/NotFoundPage"),

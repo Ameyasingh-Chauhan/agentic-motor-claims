@@ -7,7 +7,7 @@ import { useEscape, useFocusTrap, useScrollLock } from "../../hooks/useOverlay";
 import { useHotkey } from "../../hooks/useHotkeys";
 import { useShortcutsStore } from "./shortcutsStore";
 import { useAuthStore } from "../../store/authStore";
-import { NAV_ITEMS, DEV_NAV_ITEMS, visibleItems } from "../../app/nav";
+import { NAV_ITEMS, ADMIN_NAV_ITEMS, DEV_NAV_ITEMS, visibleItems } from "../../app/nav";
 import { Kbd } from "../ui/Kbd";
 import { EASE } from "../../lib/motion";
 import { cn } from "../../lib/cn";
@@ -55,7 +55,7 @@ function PaletteInner({ onClose }) {
   useEffect(() => { if (!q.trim()) { setClaims([]); return; } let alive=true; const id=setTimeout(()=>fetch(`/api/claims?q=${encodeURIComponent(q)}&page_size=8`,{credentials:"include"}).then((r)=>r.ok?r.json():null).then((d)=>alive&&setClaims(d?.items||[])).catch(()=>{}),200); return ()=>{alive=false;clearTimeout(id)}; }, [q]);
 
   const groups = useMemo(() => {
-    const pages = [...visibleItems(NAV_ITEMS, user), ...visibleItems(DEV_NAV_ITEMS, user)].map((p) => ({
+    const pages = [...visibleItems(NAV_ITEMS, user), ...visibleItems(ADMIN_NAV_ITEMS, user), ...visibleItems(DEV_NAV_ITEMS, user)].map((p) => ({
       to: p.to,
       label: p.label,
       icon: p.icon,
