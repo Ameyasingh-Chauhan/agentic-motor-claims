@@ -41,7 +41,7 @@ class Settings(BaseSettings):
     google_cloud_project: str = ""
     google_cloud_location: str = "global"
     gemini_model: str = "gemini-3.7-flash"
-    gemini_timeout_seconds: int = 45
+    gemini_timeout_seconds: int = 90
     gemini_max_retries: int = 3
 
     llm_mode: Literal["auto", "live", "demo"] = "auto"

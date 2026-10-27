@@ -181088,9 +181088,9 @@
   },
   {
     "id": "ABC-MC-2026-000252",
-    "status": "DRAFT",
-    "created_at": "2026-10-07T15:55:17+05:30",
-    "updated_at": "2026-10-07T15:55:23+05:30",
+    "status": "UNDER_REVIEW",
+    "created_at": "2026-10-14T15:00:54+05:30",
+    "updated_at": "2026-10-14T15:02:35+05:30",
     "channel": "app",
     "origin": "app",
     "customer_id": "c_0250",
@@ -181098,66 +181098,1255 @@
     "vehicle_id": "v_0251",
     "claim_type": "OD",
     "incident": {
-      "type": "rear_end",
-      "label": "Rear-end collision",
-      "datetime": "2026-10-07T15:55:17+05:30",
-      "reported_at": "2026-10-07T15:55:17+05:30",
+      "type": "front_collision",
+      "label": "Front collision",
+      "datetime": "2026-10-11T11:56:00+05:30",
+      "reported_at": "2026-10-14T15:00:54+05:30",
       "location": {
-        "text": "",
-        "city": "Jaipur",
-        "lat": 26.91,
-        "lng": 75.79
+        "text": "Highway",
+        "city": "Udaipur",
+        "lat": 24.59,
+        "lng": 73.71
       },
-      "narrative_original": "",
+      "narrative_original": "Hit a road block",
       "narrative_language": "en",
-      "narrative_en": "",
-      "cause": "Rear-end collision",
+      "narrative_en": "Hit a road block",
+      "cause": "Front collision",
       "third_party_involved": false,
       "injuries": false,
       "fir": null,
       "damaged_parts_mentioned": []
     },
     "settlement": {
-      "mode": "reimbursement",
-      "garage_id": null,
+      "mode": "cashless",
+      "garage_id": "g_052",
       "bank": null
     },
     "document_conditions": [],
-    "media": [],
-    "documents": [],
-    "checks": {},
-    "damage": {
-      "items": [],
-      "pre_existing": []
+    "media": [
+      {
+        "id": "m_1",
+        "kind": "photo",
+        "slot": "front",
+        "url": "/api/files/ABC-MC-2026-000252/m_1.webp",
+        "thumb": "/api/files/ABC-MC-2026-000252/m_1-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000252/m_1-original.jpg",
+        "caption": "Front",
+        "uploaded_at": "2026-10-14T14:57:13+05:30",
+        "uploaded_by": "u_001",
+        "credit": null,
+        "mime": "image/jpeg",
+        "size_kb": 176,
+        "original_name": "sample1.jpg",
+        "width": 1170,
+        "height": 854,
+        "blur_data": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAAAQAgCdASoQAAwAAsBMJQBOgCPfRMdIYKMAAP4xd4g50igwDvd0gsmkfA2YsMyUKVT9z2dojOUOlfjUAAA=",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 1291.0,
+          "brightness": 0.41,
+          "ok": true
+        }
+      }
+    ],
+    "documents": [
+      {
+        "id": "d_1",
+        "type": "ClaimForm",
+        "requirement": "claim_form",
+        "url": "/api/files/ABC-MC-2026-000252/d_1.webp",
+        "thumb": "/api/files/ABC-MC-2026-000252/d_1-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000252/d_1-original.jpg",
+        "status": "verified",
+        "extracted": {
+          "registration": "RJ 45 CM 4821",
+          "vehicle_class": "LMV",
+          "make_model": "Kia Seltos HTX 1.5 Petrol (red)",
+          "fuel": "Petrol",
+          "number_last4": "4821",
+          "holder": "ROHIT MEENA",
+          "valid_to_nt": "2040-06-11",
+          "classes": [
+            "LMV"
+          ],
+          "policy_no": "ABC/PC/2025/604821",
+          "insured": "ROHIT MEENA",
+          "insured_contact": "+91 98290 4XXXX",
+          "vehicle_make": "Kia",
+          "vehicle_model": "Seltos",
+          "vehicle_variant": "HTX 1.5 Petrol",
+          "vehicle_colour": "red",
+          "fir_no": "0412/2026",
+          "station": "PS Kotputli",
+          "date": "05-10-2026",
+          "facts": "Collision with tractor-trolley turning across lane without indicator; frontal damage and airbag deployment.",
+          "garage": "Pink City Kia (authorised workshop), Tonk Road, Jaipur"
+        },
+        "checks": [
+          {
+            "field": "insured",
+            "level": "pass",
+            "message": "Insured name matches expected ROHIT MEENA"
+          },
+          {
+            "field": "registration",
+            "level": "pass",
+            "message": "Registration matches expected RJ 45 CM 4821"
+          },
+          {
+            "field": "policy_no",
+            "level": "pass",
+            "message": "Policy number matches expected ABC/PC/2025/604821"
+          },
+          {
+            "field": "vehicle_class",
+            "level": "pass",
+            "message": "Vehicle class matches expected LMV"
+          },
+          {
+            "field": "date",
+            "level": "warn",
+            "message": "Incident date 05-10-2026 differs from expected 2026-10-11"
+          }
+        ],
+        "uploaded_at": "2026-10-14T14:57:38+05:30",
+        "uploaded_by": "u_001",
+        "mime": "image/jpeg",
+        "size_kb": 314,
+        "original_name": "05_ClaimForm_RohitMeena.jpg",
+        "width": 1131,
+        "height": 1600,
+        "blur_data": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAAAQAgCdASoLABAAAsBMJZQCdH8AGBvtcTgAAP7GB8jg7I8Mh9vT7BrAAAA=",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 4374.2,
+          "brightness": 0.88,
+          "ok": true
+        },
+        "ai": {
+          "actual_type": "CLAIM_FORM",
+          "type_mismatch": false,
+          "legibility": "clear",
+          "tampering": [],
+          "tampering_suspected": false,
+          "confidence": 0.95,
+          "needs_review": false,
+          "read_at": "2026-10-14T15:01:25+05:30"
+        }
+      },
+      {
+        "id": "d_2",
+        "type": "RC",
+        "requirement": "rc",
+        "url": "/api/files/ABC-MC-2026-000252/d_2.webp",
+        "thumb": "/api/files/ABC-MC-2026-000252/d_2-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000252/d_2-original.jpg",
+        "status": "verified",
+        "extracted": {
+          "registration": "RJ 45 CM 4821",
+          "owner": "ROHIT MEENA",
+          "vehicle_class": "Motor Car (LMV)",
+          "make_model": "KIA INDIA PVT LTD SELTOS HTX 1.5 PETROL",
+          "fuel": "PETROL",
+          "reg_date": "14-11-2023",
+          "engine5": "G4FL•••••2173",
+          "valid_to": "13-11-2038",
+          "field_confidence": [
+            {
+              "field": "registration",
+              "confidence": 0.98
+            },
+            {
+              "field": "owner",
+              "confidence": 0.98
+            },
+            {
+              "field": "vehicle_class",
+              "confidence": 0.98
+            },
+            {
+              "field": "make_model",
+              "confidence": 0.98
+            },
+            {
+              "field": "fuel",
+              "confidence": 0.98
+            },
+            {
+              "field": "reg_date",
+              "confidence": 0.98
+            },
+            {
+              "field": "engine5",
+              "confidence": 0.95
+            },
+            {
+              "field": "valid_to",
+              "confidence": 0.98
+            }
+          ]
+        },
+        "checks": [
+          {
+            "field": "owner",
+            "level": "pass",
+            "message": "Matches expected insured name ROHIT MEENA."
+          },
+          {
+            "field": "registration",
+            "level": "pass",
+            "message": "Matches expected registration RJ 45 CM 4821."
+          },
+          {
+            "field": "make_model",
+            "level": "pass",
+            "message": "Matches expected KIA SELTOS."
+          },
+          {
+            "field": "vehicle_class",
+            "level": "pass",
+            "message": "Matches expected LMV class."
+          }
+        ],
+        "uploaded_at": "2026-10-14T14:57:47+05:30",
+        "uploaded_by": "u_001",
+        "mime": "image/jpeg",
+        "size_kb": 261,
+        "original_name": "01_RC_RJ45CM4821.jpg",
+        "width": 1131,
+        "height": 1600,
+        "blur_data": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAAAQAgCdASoLABAAAsBMJZwCdH8AGBwoVGAAAP7VF9lxypYMj0tNqmKvgAA=",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 3055.9,
+          "brightness": 0.9,
+          "ok": true
+        },
+        "ai": {
+          "actual_type": "RC",
+          "type_mismatch": false,
+          "legibility": "clear",
+          "tampering": [],
+          "tampering_suspected": false,
+          "confidence": 0.98,
+          "needs_review": false,
+          "read_at": "2026-10-14T14:57:56+05:30"
+        }
+      },
+      {
+        "id": "d_3",
+        "type": "DL",
+        "requirement": "dl",
+        "url": "/api/files/ABC-MC-2026-000252/d_3.webp",
+        "thumb": "/api/files/ABC-MC-2026-000252/d_3-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000252/d_3-original.jpg",
+        "status": "verified",
+        "extracted": {
+          "number_last4": "4821",
+          "holder": "ROHIT MEENA",
+          "valid_to_nt": "2040-06-11",
+          "classes": [
+            "MCWG",
+            "LMV"
+          ],
+          "field_confidence": [
+            {
+              "field": "number_last4",
+              "confidence": 0.98
+            },
+            {
+              "field": "holder",
+              "confidence": 0.98
+            },
+            {
+              "field": "valid_to_nt",
+              "confidence": 0.98
+            },
+            {
+              "field": "classes",
+              "confidence": 0.98
+            }
+          ]
+        },
+        "checks": [
+          {
+            "field": "holder",
+            "level": "pass",
+            "message": "Holder matches expected insured name ROHIT MEENA"
+          },
+          {
+            "field": "validity",
+            "level": "pass",
+            "message": "DL valid until 2040-06-11 covers incident date 2026-10-11"
+          },
+          {
+            "field": "vehicle_class",
+            "level": "pass",
+            "message": "Authorised for LMV matching expected vehicle class"
+          }
+        ],
+        "uploaded_at": "2026-10-14T14:58:10+05:30",
+        "uploaded_by": "u_001",
+        "mime": "image/jpeg",
+        "size_kb": 157,
+        "original_name": "02_DrivingLicence_RohitMeena.jpg",
+        "width": 1240,
+        "height": 1240,
+        "blur_data": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAADwAQCdASoQABAAAsBMJZQCdH8AGBqN24AA/eO+sXdftRfxGUDg1IMF0AA=",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 1742.3,
+          "brightness": 0.88,
+          "ok": true
+        },
+        "ai": {
+          "actual_type": "DL",
+          "type_mismatch": false,
+          "legibility": "clear",
+          "tampering": [],
+          "tampering_suspected": false,
+          "confidence": 0.98,
+          "needs_review": false,
+          "read_at": "2026-10-14T14:58:17+05:30"
+        }
+      },
+      {
+        "id": "d_4",
+        "type": "Policy",
+        "requirement": "policy",
+        "url": "/api/files/ABC-MC-2026-000252/d_4.webp",
+        "thumb": "/api/files/ABC-MC-2026-000252/d_4-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000252/d_4-original.jpg",
+        "status": "verified",
+        "extracted": {
+          "policy_no": "ABC/PC/2025/604821",
+          "insured": "ROHIT MEENA",
+          "insured_address": "42, Shanti Nagar, Jagatpura, Jaipur, Rajasthan - 302017",
+          "insured_contact": "+91 98290 4XXXX",
+          "period_from": "15-03-2026 00:00",
+          "period_to": "14-03-2027 23:59",
+          "cover": "OD+TP",
+          "idv": 1120000.0,
+          "ncb_pct": 20.0,
+          "add_ons": [
+            "rsa"
+          ],
+          "deductible_compulsory": 1000.0,
+          "deductible_voluntary": 0.0,
+          "premium": 26859.0,
+          "vehicle_make": "KIA",
+          "vehicle_model": "SELTOS",
+          "vehicle_variant": "HTX 1.5 PETROL",
+          "vehicle_colour": "INTENSE RED",
+          "vehicle_cc": 1497.0,
+          "vehicle_year": "2023",
+          "field_confidence": [
+            {
+              "field": "policy_no",
+              "confidence": 0.98
+            },
+            {
+              "field": "insured",
+              "confidence": 0.98
+            },
+            {
+              "field": "insured_address",
+              "confidence": 0.95
+            },
+            {
+              "field": "insured_contact",
+              "confidence": 0.95
+            },
+            {
+              "field": "period_from",
+              "confidence": 0.98
+            },
+            {
+              "field": "period_to",
+              "confidence": 0.98
+            },
+            {
+              "field": "cover",
+              "confidence": 0.98
+            },
+            {
+              "field": "idv",
+              "confidence": 0.98
+            },
+            {
+              "field": "ncb_pct",
+              "confidence": 0.98
+            },
+            {
+              "field": "add_ons",
+              "confidence": 0.95
+            },
+            {
+              "field": "deductible_compulsory",
+              "confidence": 0.98
+            },
+            {
+              "field": "deductible_voluntary",
+              "confidence": 0.95
+            },
+            {
+              "field": "premium",
+              "confidence": 0.98
+            },
+            {
+              "field": "vehicle_make",
+              "confidence": 0.98
+            },
+            {
+              "field": "vehicle_model",
+              "confidence": 0.98
+            },
+            {
+              "field": "vehicle_variant",
+              "confidence": 0.95
+            },
+            {
+              "field": "vehicle_colour",
+              "confidence": 0.95
+            },
+            {
+              "field": "vehicle_cc",
+              "confidence": 0.98
+            },
+            {
+              "field": "vehicle_year",
+              "confidence": 0.98
+            }
+          ]
+        },
+        "checks": [
+          {
+            "field": "insured",
+            "level": "pass",
+            "message": "Insured matches ROHIT MEENA"
+          },
+          {
+            "field": "policy_no",
+            "level": "pass",
+            "message": "Policy number matches expected ABC/PC/2025/604821"
+          },
+          {
+            "field": "registration",
+            "level": "pass",
+            "message": "Registration matches RJ 45 CM 4821"
+          },
+          {
+            "field": "make_model",
+            "level": "pass",
+            "message": "Make and model match KIA SELTOS"
+          },
+          {
+            "field": "incident_date",
+            "level": "pass",
+            "message": "Incident date falls within policy validity period"
+          }
+        ],
+        "uploaded_at": "2026-10-14T14:58:23+05:30",
+        "uploaded_by": "u_001",
+        "mime": "image/jpeg",
+        "size_kb": 294,
+        "original_name": "03_PolicySchedule_ABC-PC-2025-604821.jpg",
+        "width": 1131,
+        "height": 1600,
+        "blur_data": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAAAwAgCdASoLABAAAsBMJZQCdH8AGBwASAwAAAD+1RfZtB5Bgb8G9PsGsAA=",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 3739.1,
+          "brightness": 0.89,
+          "ok": true
+        },
+        "ai": {
+          "actual_type": "POLICY",
+          "type_mismatch": false,
+          "legibility": "clear",
+          "tampering": [],
+          "tampering_suspected": false,
+          "confidence": 0.98,
+          "needs_review": false,
+          "read_at": "2026-10-14T14:59:10+05:30"
+        }
+      },
+      {
+        "id": "d_5",
+        "type": "KYC",
+        "requirement": "kyc",
+        "url": "/api/files/ABC-MC-2026-000252/d_5.webp",
+        "thumb": "/api/files/ABC-MC-2026-000252/d_5-thumb.webp",
+        "original_url": "/api/files/ABC-MC-2026-000252/d_5-original.jpg",
+        "status": "verified",
+        "extracted": {
+          "insured": "ROHIT MEENA",
+          "insured_father": "RAMESH CHAND MEENA"
+        },
+        "checks": [
+          {
+            "field": "insured",
+            "level": "pass",
+            "message": "PAN card holder name matches expected ROHIT MEENA"
+          }
+        ],
+        "uploaded_at": "2026-10-14T14:58:50+05:30",
+        "uploaded_by": "u_001",
+        "mime": "image/jpeg",
+        "size_kb": 82,
+        "original_name": "PAN.jpg",
+        "width": 811,
+        "height": 511,
+        "blur_data": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAACQAQCdASoQAAoAAsBMJQBOgBHyMAAA+ag3tXgOIkMZ7lZOn3zZ7DSCwHgAAA==",
+        "exif": {
+          "captured_at": null,
+          "lat": null,
+          "lng": null,
+          "device": null
+        },
+        "quality": {
+          "blur_score": 300.1,
+          "brightness": 0.51,
+          "ok": true
+        },
+        "ai": {
+          "actual_type": "OTHER",
+          "type_mismatch": false,
+          "legibility": "clear",
+          "tampering": [],
+          "tampering_suspected": false,
+          "confidence": 0.95,
+          "needs_review": false,
+          "read_at": "2026-10-14T15:01:25+05:30"
+        }
+      }
+    ],
+    "checks": {
+      "policy": {
+        "level": "pass",
+        "summary": "Active · OD+TP · valid till 14 Mar 2027",
+        "data": {
+          "policy_no": "ABC/PC/2025/604821",
+          "cover": "OD+TP",
+          "start": "2026-03-15",
+          "end": "2027-03-14"
+        },
+        "latency_ms": 125
+      },
+      "vahan": {
+        "level": "pass",
+        "summary": "RC active · Private · not blacklisted",
+        "data": {
+          "registration": "RJ 45 CM 4821",
+          "owner": "ROHIT MEENA",
+          "class": "LMV",
+          "make_model": "KIA SELTOS",
+          "rc_status": "active",
+          "hypothecation": null,
+          "blacklisted": false,
+          "stolen": false,
+          "registered_on": "2023-01-01",
+          "profile": "uploaded_document"
+        },
+        "latency_ms": 380
+      },
+      "fastag": {
+        "level": "pass",
+        "summary": "No contradicting toll or parking events",
+        "data": {
+          "events_in_window": [],
+          "window_minutes": 90
+        },
+        "latency_ms": 581
+      },
+      "iib": {
+        "level": "pass",
+        "summary": "0 OD claim(s) in the last 12 months",
+        "data": {
+          "other_insurers": [],
+          "abc_claims": []
+        },
+        "latency_ms": 444
+      },
+      "police": {
+        "level": "pending",
+        "summary": "Not required",
+        "data": {
+          "records": []
+        },
+        "latency_ms": 253
+      },
+      "kyc": {
+        "level": "pass",
+        "summary": "KYC verified",
+        "data": {},
+        "latency_ms": 103
+      },
+      "dl": {
+        "level": "pass",
+        "summary": "Valid · LMV, MCWG",
+        "data": {
+          "dl_number": "XXXX4821",
+          "holder": "ROHIT MEENA",
+          "classes": [
+            "LMV",
+            "MCWG"
+          ],
+          "valid_to": "2040-06-11"
+        },
+        "latency_ms": 0
+      },
+      "vehicle_identity": {
+        "level": "fail",
+        "summary": "Photos do not match the insured vehicle",
+        "data": {
+          "evidence": [
+            "Plate read as RJ 45 (0.85); registered RJ 45 CM 4821"
+          ]
+        },
+        "latency_ms": 0
+      }
     },
-    "financials": null,
-    "fraud": null,
-    "decision": null,
-    "communications": [],
-    "assignee": null,
+    "damage": {
+      "items": [
+        {
+          "part_code": "KIA-SEL-BONT",
+          "part": "Bonnet",
+          "zone": "front",
+          "damage_type": "dent",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.98,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                229,
+                131,
+                467,
+                882
+              ],
+              "label": "Bonnet · dent"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-FBMP",
+          "part": "Front bumper",
+          "zone": "front",
+          "damage_type": "tear",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.96,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                504,
+                34,
+                1000,
+                868
+              ],
+              "label": "Front bumper · tear"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-GRIL",
+          "part": "Front grille",
+          "zone": "front",
+          "damage_type": "break",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.95,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                510,
+                0,
+                775,
+                650
+              ],
+              "label": "Front grille · break"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-HLED",
+          "part": "Headlamp assembly – LED",
+          "zone": "front",
+          "damage_type": "shatter",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.94,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                431,
+                108,
+                563,
+                222
+              ],
+              "label": "Headlamp assembly – LED · shatter"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-BMRF",
+          "part": "Bumper reinforcement / bracket",
+          "zone": "front",
+          "damage_type": "deform",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.9,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                448,
+                206,
+                706,
+                650
+              ],
+              "label": "Bumper reinforcement / bracket · deform"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-CNDS",
+          "part": "AC condenser",
+          "zone": "front",
+          "damage_type": "deform",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.88,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                549,
+                217,
+                691,
+                514
+              ],
+              "label": "AC condenser · deform"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-WSCR",
+          "part": "Windshield (laminated)",
+          "zone": "glass",
+          "damage_type": "crack",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.92,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                121,
+                381,
+                246,
+                796
+              ],
+              "label": "Windshield (laminated) · crack"
+            }
+          ],
+          "flag": "pass"
+        },
+        {
+          "part_code": "KIA-SEL-AIRB",
+          "part": "Airbag module",
+          "zone": "interior",
+          "damage_type": "tear",
+          "severity": "severe",
+          "operation": "replace",
+          "fresh": true,
+          "confidence": 0.95,
+          "photo_ids": [
+            "m_1"
+          ],
+          "boxes": [
+            {
+              "photo_id": "m_1",
+              "box_2d": [
+                139,
+                608,
+                246,
+                775
+              ],
+              "label": "Airbag module · tear"
+            }
+          ],
+          "flag": "pass"
+        }
+      ],
+      "pre_existing": [],
+      "uncatalogued": [],
+      "narrative_consistency": {
+        "consistent": true,
+        "explanation": "Heavy frontal collision damage with crushed bonnet, destroyed bumper, grille, condenser, and deployed airbag is consistent with hitting a road block.",
+        "confidence": 0.95
+      },
+      "photo_coverage": {
+        "front": true,
+        "rear": false,
+        "left": false,
+        "right": false,
+        "closeup": false,
+        "odometer": false
+      },
+      "photo_quality": {
+        "m_1": {
+          "usable": true,
+          "issues": []
+        }
+      },
+      "suggested_photos": [
+        "Full rear view of vehicle",
+        "Both side profile views",
+        "Instrument cluster showing odometer"
+      ],
+      "overall_severity": "severe",
+      "total_loss_indicator": false,
+      "total_loss_evidence": null,
+      "notes": "Extensive front structural and cosmetic damage with passenger airbag deployment. Requires full teardown and inspection of chassis rails and engine bay components.",
+      "assessed_by": "agent:damage"
+    },
+    "financials": {
+      "currency": "INR",
+      "vehicle_age_months": 45,
+      "zero_dep": false,
+      "labour_rate": 650.0,
+      "lines": [
+        {
+          "part_code": "KIA-SEL-BONT",
+          "description": "Bonnet",
+          "zone": "front",
+          "operation": "replace",
+          "material": "metal",
+          "base_price": 14410.0,
+          "dep_pct": 25.0,
+          "dep_amount": 3602.5,
+          "net_parts": 10807.5,
+          "labour_hours": 1.0,
+          "labour_rate": 650.0,
+          "labour": 650.0,
+          "paint": 4200,
+          "paint_material_dep": 525.0,
+          "line_total": 15132.5
+        },
+        {
+          "part_code": "KIA-SEL-FBMP",
+          "description": "Front bumper",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 8670.0,
+          "dep_pct": 50.0,
+          "dep_amount": 4335.0,
+          "net_parts": 4335.0,
+          "labour_hours": 1.5,
+          "labour_rate": 650.0,
+          "labour": 975.0,
+          "paint": 4200,
+          "paint_material_dep": 525.0,
+          "line_total": 8985.0
+        },
+        {
+          "part_code": "KIA-SEL-GRIL",
+          "description": "Front grille",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 3530.0,
+          "dep_pct": 50.0,
+          "dep_amount": 1765.0,
+          "net_parts": 1765.0,
+          "labour_hours": 0.0,
+          "labour_rate": 650.0,
+          "labour": 0.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 1765.0
+        },
+        {
+          "part_code": "KIA-SEL-HLED",
+          "description": "Headlamp assembly – LED",
+          "zone": "front",
+          "operation": "replace",
+          "material": "plastic",
+          "base_price": 17640.0,
+          "dep_pct": 50.0,
+          "dep_amount": 8820.0,
+          "net_parts": 8820.0,
+          "labour_hours": 0.5,
+          "labour_rate": 650.0,
+          "labour": 325.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 9145.0
+        },
+        {
+          "part_code": "KIA-SEL-BMRF",
+          "description": "Bumper reinforcement / bracket",
+          "zone": "front",
+          "operation": "replace",
+          "material": "metal",
+          "base_price": 3820.0,
+          "dep_pct": 25.0,
+          "dep_amount": 955.0,
+          "net_parts": 2865.0,
+          "labour_hours": 0.0,
+          "labour_rate": 650.0,
+          "labour": 0.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 2865.0
+        },
+        {
+          "part_code": "KIA-SEL-CNDS",
+          "description": "AC condenser",
+          "zone": "front",
+          "operation": "replace",
+          "material": "metal",
+          "base_price": 10000.0,
+          "dep_pct": 25.0,
+          "dep_amount": 2500.0,
+          "net_parts": 7500.0,
+          "labour_hours": 2.5,
+          "labour_rate": 650.0,
+          "labour": 1625.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 9125.0
+        },
+        {
+          "part_code": "KIA-SEL-WSCR",
+          "description": "Windshield (laminated)",
+          "zone": "glass",
+          "operation": "replace",
+          "material": "glass",
+          "base_price": 12500.0,
+          "dep_pct": 0.0,
+          "dep_amount": 0.0,
+          "net_parts": 12500.0,
+          "labour_hours": 2.0,
+          "labour_rate": 650.0,
+          "labour": 1300.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 13800.0
+        },
+        {
+          "part_code": "KIA-SEL-AIRB",
+          "description": "Airbag module",
+          "zone": "interior",
+          "operation": "replace",
+          "material": "airbag",
+          "base_price": 26460.0,
+          "dep_pct": 0.0,
+          "dep_amount": 0.0,
+          "net_parts": 26460.0,
+          "labour_hours": 2.0,
+          "labour_rate": 650.0,
+          "labour": 1300.0,
+          "paint": 0.0,
+          "paint_material_dep": 0.0,
+          "line_total": 27760.0
+        }
+      ],
+      "extras": [
+        {
+          "description": "Wheel alignment & balancing",
+          "amount": 650.0
+        }
+      ],
+      "gross_parts": 97030.0,
+      "total_depreciation": 23027.5,
+      "net_parts": 75052.5,
+      "labour": 6175.0,
+      "paint_gross": 8400.0,
+      "paint_dep": 1050.0,
+      "assessed_loss": 89227.5,
+      "compulsory_deductible": 1000,
+      "voluntary_deductible": 0.0,
+      "salvage": 0.0,
+      "net_payable": 88227.5,
+      "display_net_payable": 88230,
+      "garage_quote": null,
+      "variance_pct": null,
+      "variance_level": null,
+      "total_loss_check": {
+        "idv": 1120000.0,
+        "threshold_pct": 75,
+        "is_total_loss": false
+      },
+      "llm_arithmetic_discrepancy": null,
+      "ncb_impact": {
+        "current_pct": 20.0,
+        "after_claim_pct": 0
+      }
+    },
+    "fraud": {
+      "score": 30,
+      "band": "medium",
+      "hard_stop": false,
+      "fired": [
+        {
+          "rule_id": "FR-16",
+          "name": "Vehicle identity mismatch",
+          "level": "fail",
+          "points": 30,
+          "evidence": "Plate read as RJ 45 (0.85); registered RJ 45 CM 4821",
+          "evidence_refs": [
+            "vehicle_identity"
+          ],
+          "confidence": 0.98,
+          "expected": "Registration plate RJ 45 CM 4821 clearly visible on vehicle",
+          "found": "Plate read partially as RJ 45",
+          "source": "vehicle_identity",
+          "why": "Incomplete or mismatched registration plate in submitted photos is inconsistent with the insured vehicle identity."
+        }
+      ],
+      "not_fired": [
+        "FR-01",
+        "FR-02",
+        "FR-03",
+        "FR-04",
+        "FR-05",
+        "FR-06",
+        "FR-07",
+        "FR-08",
+        "FR-09",
+        "FR-10",
+        "FR-11",
+        "FR-12",
+        "FR-13",
+        "FR-14",
+        "FR-15",
+        "FR-17",
+        "FR-18"
+      ],
+      "network_links": [],
+      "narrative": "Fraud score is 30 (medium risk). Rule FR-16 triggered due to a vehicle identity mismatch, where submitted photos showed registration plate reading RJ 45 rather than the registered RJ 45 CM 4821.",
+      "extra_observations": [
+        {
+          "text": "Vehicle identity check flagged submitted photos as not matching insured vehicle details.",
+          "evidence": "vehicle_identity",
+          "confidence": 0.85
+        }
+      ],
+      "next_steps": [
+        "Conduct physical inspection of the vehicle to verify chassis and engine numbers",
+        "Request clear, high-resolution photographs of front and rear registration plates and VIN plate",
+        "Verify odometer reading and vehicle identity at the repair facility"
+      ]
+    },
+    "decision": {
+      "route": "handler",
+      "recommended_action": "review",
+      "auto": false,
+      "confidence": 0.9,
+      "reasons": [
+        "Routed to handler due to medium risk score of 30 from vehicle identity mismatch (FR-16).",
+        "Vehicle registration plate in photos does not fully match registered vehicle RJ 45 CM 4821."
+      ],
+      "policy_reasons": [
+        "Risk score 30 (medium) — handler review"
+      ],
+      "policy_rule": "A5.6",
+      "reason_code": "MEDIUM_RISK",
+      "action": "route_handler",
+      "conditions": [],
+      "ai_summary": "Claim routed to handler with medium risk score 30. Front collision damage assessed at ₹89,228 is consistent with reported loss, but vehicle photo shows an incomplete registration plate (RJ 45 vs RJ 45 CM 4821), requiring physical verification.",
+      "final_action": null,
+      "decided_by": null,
+      "decided_at": null,
+      "approved_amount": null,
+      "info_request": null
+    },
+    "communications": [
+      {
+        "id": "msg_1",
+        "channel": "sms",
+        "direction": "outbound",
+        "status": "sent",
+        "draft": false,
+        "text": "Dear Rohit, claim ABC-MC-2026-000252 for your Kia Seltos RJ 45 CM 4821 at Srinivas Toyota Service, Udaipur is under review by our specialist. We will update you within 2 working days. Team ABC General Insurance",
+        "text_en": "Dear Rohit, claim ABC-MC-2026-000252 for your Kia Seltos RJ 45 CM 4821 at Srinivas Toyota Service, Udaipur is under review by our specialist. We will update you within 2 working days. Team ABC General Insurance",
+        "lang_code": "en",
+        "quick_replies": [],
+        "created_at": "2026-10-14T15:02:35+05:30",
+        "by": "agent:communication",
+        "generated_by": "live"
+      }
+    ],
+    "assignee": "u_002",
     "internal_notes": [],
-    "timeline": [],
+    "timeline": [
+      {
+        "ts": "2026-10-14T15:00:54+05:30",
+        "actor": "u_001",
+        "type": "fnol_received",
+        "text": "FNOL received via App"
+      },
+      {
+        "ts": "2026-10-14T15:01:10+05:30",
+        "actor": "agent:intake",
+        "type": "intake_complete",
+        "text": "FNOL structured (English)"
+      },
+      {
+        "ts": "2026-10-14T15:01:24+05:30",
+        "actor": "agent:document",
+        "type": "documents_read",
+        "text": "2 document(s) read"
+      },
+      {
+        "ts": "2026-10-14T15:01:38+05:30",
+        "actor": "agent:verification",
+        "type": "checks_complete",
+        "text": "DPI checks complete (6 of 7 passed)"
+      },
+      {
+        "ts": "2026-10-14T15:01:52+05:30",
+        "actor": "agent:damage",
+        "type": "damage_assessed",
+        "text": "8 damaged part(s) assessed · vehicle identity mismatch"
+      },
+      {
+        "ts": "2026-10-14T15:02:06+05:30",
+        "actor": "agent:fraud",
+        "type": "risk_scored",
+        "text": "Risk score 30 (medium)"
+      },
+      {
+        "ts": "2026-10-14T15:02:21+05:30",
+        "actor": "agent:adjudication",
+        "type": "recommendation",
+        "text": "Route to claims handler"
+      },
+      {
+        "ts": "2026-10-14T15:02:35+05:30",
+        "actor": "agent:communication",
+        "type": "customer_notified",
+        "text": "Customer update sent"
+      },
+      {
+        "ts": "2026-10-14T15:02:35+05:30",
+        "actor": "agent:adjudication",
+        "type": "assigned",
+        "text": "Assigned to claims handler"
+      }
+    ],
     "audit": [
       {
-        "ts": "2026-10-07T15:55:17+05:30",
-        "actor": "u_002",
+        "ts": "2026-10-14T14:54:29+05:30",
+        "actor": "u_001",
         "action": "created",
         "from": null,
         "to": "DRAFT",
         "reason": "Draft created via App"
+      },
+      {
+        "ts": "2026-10-14T15:00:54+05:30",
+        "actor": "u_001",
+        "action": "status_change",
+        "from": "DRAFT",
+        "to": "SUBMITTED",
+        "reason": "Submitted in app; AI pipeline starting"
+      },
+      {
+        "ts": "2026-10-14T15:00:55+05:30",
+        "actor": "system",
+        "action": "status_change",
+        "from": "SUBMITTED",
+        "to": "PROCESSING",
+        "reason": "AI pipeline started (run_000004)"
+      },
+      {
+        "ts": "2026-10-14T15:02:35+05:30",
+        "actor": "agent:adjudication",
+        "action": "status_change",
+        "from": "PROCESSING",
+        "to": "UNDER_REVIEW",
+        "reason": "A5.6 Route to claims handler · risk 30 (medium)"
       }
     ],
-    "pipeline_run_id": null,
-    "ai_processing_s": null,
+    "pipeline_run_id": "run_000004",
+    "ai_processing_s": 99,
     "sla": {
       "target_hours": 48,
-      "due_at": null,
+      "due_at": "2026-10-16T15:02:35+05:30",
       "breached": false
     },
     "scenario_id": null,
     "customer_name": "ROHIT MEENA",
     "city": "Jaipur",
-    "garage_name": null,
+    "garage_name": "Srinivas Toyota Service, Udaipur",
     "registration": "RJ 45 CM 4821",
     "vehicle": {
       "make": "KIA",
@@ -181168,41 +182357,41 @@
       "thumb": "/assets/stock/clean/clean_hatch-thumb.webp",
       "blur_data": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoQAAwAAsBMJYwCdAEOwVFEAAD+8ghQ163L8HHazySavHJfYcf3eBe5IHDZ05gAAAA="
     },
-    "amount_claimed": 0.0,
+    "amount_claimed": 89227.5,
     "amount_approved": 0.0,
-    "risk_score": null,
-    "risk_band": null,
+    "risk_score": 30,
+    "risk_band": "medium",
     "wizard": {
-      "step": "policy",
+      "step": "review",
       "form": {
         "customer_id": "c_0250",
         "customer_name": "ROHIT MEENA",
         "policy_no": "ABC/PC/2025/604821",
-        "safe": null,
-        "third_party": null,
+        "safe": "yes",
+        "third_party": false,
         "tp": {
           "name": "",
           "vehicle": "",
           "phone": ""
         },
-        "police": null,
+        "police": true,
         "fir_number": "",
         "fir_station": "",
-        "incident_tile": null,
-        "accident_type": null,
+        "incident_tile": "accident",
+        "accident_type": "front_collision",
         "input_mode": "text",
-        "narrative": "",
+        "narrative": "Hit a road block",
         "intake": null,
         "ai_filled": {},
-        "date": "",
-        "time": "",
-        "city": "",
-        "location_text": "",
+        "date": "2026-10-11",
+        "time": "11:56",
+        "city": "Udaipur",
+        "location_text": "Highway",
         "road": "",
-        "lat": null,
-        "lng": null,
-        "settlement_mode": null,
-        "garage_id": null,
+        "lat": 24.59,
+        "lng": 73.71,
+        "settlement_mode": "cashless",
+        "garage_id": "g_052",
         "garage_quote": "",
         "bank": {
           "account_name": "",
@@ -181210,16 +182399,196 @@
           "ifsc": "",
           "bank_name": ""
         },
-        "docs_later": false,
+        "docs_later": true,
         "financed": false,
-        "consent": false,
+        "consent": true,
         "scenario": null,
-        "quality_ok": {},
-        "furthest": 2
+        "quality_ok": {
+          "m_1": {
+            "blur": 4544,
+            "brightness": 0.41,
+            "poor": false,
+            "reason": null,
+            "kept": true
+          }
+        },
+        "furthest": 7
       },
-      "incident_chosen": false,
+      "incident_chosen": true,
       "financed": false,
       "major_accident": false
+    },
+    "vehicle_identity": {
+      "status": "mismatch",
+      "summary": "Photos do not match the insured vehicle",
+      "photos": [
+        {
+          "photo_id": "m_1",
+          "make": "KIA",
+          "model": "SELTOS",
+          "body": "suv",
+          "colour": "INTENSE RED",
+          "plate_text": "RJ 45",
+          "plate_conf": 0.85,
+          "idcon": 0.98,
+          "same_vehicle": true,
+          "same_conf": 0.95,
+          "diff_reason": null,
+          "identified": true,
+          "make_model": "match",
+          "body_result": "match",
+          "colour_result": "match",
+          "plate_result": "mismatch"
+        }
+      ],
+      "comparison": [
+        {
+          "attribute": "Make & model",
+          "observed": "KIA SELTOS",
+          "confidence": 0.98,
+          "result": "match",
+          "level": "pass",
+          "sources": {
+            "policy": {
+              "value": "KIA SELTOS",
+              "result": "match"
+            },
+            "vahan": {
+              "value": "Kia SELTOS",
+              "result": "match"
+            },
+            "rc": {
+              "value": "Kia INDIA PVT LTD SELTOS HTX 1.5 PETROL",
+              "result": "match"
+            }
+          }
+        },
+        {
+          "attribute": "Body type",
+          "observed": "suv",
+          "confidence": 0.98,
+          "result": "match",
+          "level": "pass",
+          "sources": {
+            "policy": {
+              "value": "suv",
+              "result": "match"
+            }
+          }
+        },
+        {
+          "attribute": "Colour",
+          "observed": "INTENSE RED",
+          "confidence": 0.98,
+          "result": "match",
+          "level": "pass",
+          "sources": {
+            "policy": {
+              "value": "INTENSE RED",
+              "result": "match"
+            }
+          }
+        },
+        {
+          "attribute": "Number plate",
+          "observed": "RJ 45",
+          "confidence": 0.85,
+          "result": "mismatch",
+          "level": "fail",
+          "sources": {
+            "policy": {
+              "value": "RJ 45 CM 4821",
+              "result": "mismatch"
+            },
+            "vahan": {
+              "value": "RJ 45 CM 4821",
+              "result": "mismatch"
+            },
+            "rc": {
+              "value": "RJ 45 CM 4821",
+              "result": "mismatch"
+            }
+          }
+        }
+      ],
+      "cross_photo": {
+        "level": "pending",
+        "summary": "Only one photo — cross-photo check not applicable",
+        "differing": []
+      },
+      "fr16": true,
+      "fr17": false,
+      "fr18": false,
+      "evidence": [
+        "Plate read as RJ 45 (0.85); registered RJ 45 CM 4821"
+      ],
+      "identity_summary": {
+        "make": "KIA",
+        "model": "SELTOS",
+        "body": "suv",
+        "colour": "INTENSE RED",
+        "plate_text": "RJ 45",
+        "confidence": 0.95
+      }
+    },
+    "intake": {
+      "transcript": null,
+      "language_codes": [
+        "en"
+      ],
+      "language_label": "English",
+      "translation_en": "Hit a road block",
+      "incident_type": "accident",
+      "incident_at": null,
+      "datetime_conf": 0.0,
+      "location_text": null,
+      "city": null,
+      "cause": "Hit a roadblock",
+      "counterparty": "object",
+      "third_party": false,
+      "injuries": "unknown",
+      "police_informed": null,
+      "fir_number": null,
+      "drivable": null,
+      "driver_is_policyholder": null,
+      "driver_name": null,
+      "parts_mentioned": [],
+      "missing": [
+        "incident_at",
+        "location_text",
+        "injuries",
+        "drivable",
+        "driver_name",
+        "damaged_parts"
+      ],
+      "follow_up": [
+        {
+          "local": "Hope you are safe. Could you please confirm when and where this incident occurred?",
+          "en": "Hope you are safe. Could you please confirm when and where this incident occurred?"
+        },
+        {
+          "local": "Were there any injuries, and is the car currently drivable?",
+          "en": "Were there any injuries, and is the car currently drivable?"
+        },
+        {
+          "local": "Which parts of your car were damaged?",
+          "en": "Which parts of your car were damaged?"
+        }
+      ],
+      "distress": "calm",
+      "urgent_safety": false,
+      "injection_suspected": false,
+      "injection_quote": null,
+      "needs_review": true
+    },
+    "llm_mode": "live",
+    "ai_sources": {
+      "intake": "live",
+      "document": "live",
+      "damage": "live",
+      "fraud": "live",
+      "adjudication": "live",
+      "communication": "live"
     }
   }
 ]

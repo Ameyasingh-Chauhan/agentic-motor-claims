@@ -198,6 +198,9 @@ async def generate(*, agent: str, system: str, contents: list, schema: type[Base
         raise err
 
     msgs = list(contents)
+    # Photos / PDFs / audio plus thinking take far longer than text-only calls: scale the per-attempt budget with the media count.
+    n_media = sum(isinstance(c, MediaPart) for c in contents)
+    timeout_s = s.gemini_timeout_seconds * (1 + min(n_media, 6) * 0.5) if n_media else s.gemini_timeout_seconds
     transport_tries, schema_retry_used = 0, False
     started = time.perf_counter()
     while True:
@@ -207,7 +210,7 @@ async def generate(*, agent: str, system: str, contents: list, schema: type[Base
             if agent in _forced_failures:
                 raise asyncio.TimeoutError(f"Forced failure for {agent} (Dev Tools)")
             raw = await _transport(system=system, contents=msgs, schema=schema, temperature=temperature, thinking=thinking,
-                                   max_output_tokens=max_output_tokens, timeout_s=s.gemini_timeout_seconds)
+                                   max_output_tokens=max_output_tokens, timeout_s=timeout_s)
         except Exception as exc:  # noqa: BLE001 — classified below
             attempt |= {"latency_ms": int((time.perf_counter() - t0) * 1000), "error": _summ(exc)}
             rec.attempts.append(attempt)
